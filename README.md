@@ -1,1 +1,1 @@
-# FullstackFour - CFG Group Project
+# FullstackFour - Group Project
