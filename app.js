@@ -44,5 +44,5 @@ app.get('/villagers', (req, res) => {
 // creating and connecting to the port 
 const port = 3000;
 app.listen(port, () => {
-  console.log(`server is running on https://localhost:${port}`);
+  console.log(`server is running on http://localhost:${port}`);
 });
