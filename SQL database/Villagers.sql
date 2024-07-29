@@ -1,7 +1,7 @@
 CREATE DATABASE village;
 USE village;
--- //creating tables
 
+-- creating tables
 CREATE TABLE IF NOT EXISTS villagers (
     villager_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
@@ -29,11 +29,9 @@ CREATE TABLE IF NOT EXISTS villagers (
     event_name VARCHAR(50) NOT NULL,
     event_description TEXT NOT NULL,
     event_location ENUM('North London', 'South London', 'West London', 'East London'),
-	event_address TEXT NOT NULL,
+    event_address TEXT NOT NULL,
     event_postcode TEXT NOT NULL
 );
- 
-
 
 CREATE TABLE IF NOT EXISTS messages (
     message_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -82,6 +80,3 @@ VALUES
 ('Sarah', 'Jane','SJ', '1978-04-17', 'sarah.j@example.com', '222 Willow Drive', 'E5 5HH', 'East London', 'password505'),
 ('Daniel', 'Malik','DM', '1995-09-09', 'daniel.m@example.com', '333 Spruce Path', 'N7 7II', 'North London', 'password606'),
 ('Laura', 'Spencer','LS', '1982-06-19', 'laura.s@example.com', '444 Redwood Terrace', 'S4 4JJ', 'South London', 'password707');
-
-
-

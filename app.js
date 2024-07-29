@@ -7,15 +7,15 @@ require('dotenv').config();
 app.use(express.json());
 
 // connecting to the DB
-const dataBase = sql.createConnection({
-  host: 'localhost',
-  user: 'root',
+const database = sql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: 'village'
+  database: process.env.DB_NAME,
 });
 
 // checking we're connected to the DataBase 
-dataBase.connect((error) => {
+database.connect((error) => {
  if(error){
   console.error('Error connecting to the database:', error.stack);
   return;
@@ -25,21 +25,18 @@ dataBase.connect((error) => {
 
 // creating route end point
 app.get(`/`, (req, res) => {
-  res.status(200).send('Welcome to your Village!')
-  })
+  res.status(200).send('Welcome to your Village!')});
 
 // getting all villagers
 app.get('/villagers', (req, res) => {
   const userList = 'SELECT * FROM villagers ORDER BY villager_id ASC'
-  dataBase.query(userList, (error, results) => {
+  database.query(userList, (error, results) => {
     if (error) {
       return res.status(500).json({ message: 'An error has occurred', error: error.message });
     }
     res.status(200).json(results);
   });
 })
-
-
 
 // creating and connecting to the port 
 const port = 3000;
