@@ -8,3 +8,6 @@
 - run `npm install`
 - run `npm start`
 
+## Project Directory Tree
+
+![Project Directory Tree](images/project_directory_tree.png)
