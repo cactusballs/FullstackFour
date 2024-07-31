@@ -14,7 +14,6 @@ let cynthia = {
 
 console.log(`My name's ${cynthia.fullName} and I like ${cynthia.hobby}!`);
 
-
 let cat = {
     fullName: 'Cat Conquest',
     hobby: 'Yoga'
