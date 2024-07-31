@@ -15,7 +15,6 @@ let cynthia = {
 console.log(`My name's ${cynthia.fullName} and I like ${cynthia.hobby}!`);
 
 
-
 let cat = {
     fullName: 'Cat Conquest',
     hobby: 'Yoga'
@@ -29,3 +28,10 @@ let haianh = {
 }
 
 console.log(`My name's ${haianh.fullName} and I like to ${haianh.hobby}`);
+
+let chloe = {
+    fullName: 'Chloe Kirkbride-van Beijnen',
+    hobby: 'reading'
+}
+
+console.log(`My name's ${chloe.fullName} and I like to ${chloe.hobby}`);
