@@ -22,3 +22,10 @@ let cat = {
 }
 
 console.log(`My name's ${cat.fullName} and I like ${cat.hobby}!`);
+
+let haianh = {
+    fullName: 'Hai Anh Nguyen',
+    hobby: 'Share cat memes'
+}
+
+console.log(`My name's ${haianh.fullName} and I like to ${haianh.hobby}`);

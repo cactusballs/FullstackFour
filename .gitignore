@@ -134,3 +134,5 @@ dist
 
 # React Component Preview
 previewConfig.json
+
+.DS_Store
