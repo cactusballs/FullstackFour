@@ -41,3 +41,11 @@ let maria = {
 }
 
 console.log(`My name is ${maria.fullName} and I enjoy ${maria.hobby}`);
+
+
+let fatima = {
+    fullName: 'Fatima Abdullahi',
+    hobby: 'painting'
+}
+
+console.log(`My name is ${fatima.fullName} and I enjoy ${fatima.hobby}`);
