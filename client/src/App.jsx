@@ -6,6 +6,7 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
+  const namesHobbies = [{name: "Anh", message: "I like sharing cat memes"}]
   return (
     <>
       <div>
@@ -16,7 +17,14 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <div>
+        {namesHobbies.map((item) => {
+        return (<>
+          <h4>{item.name}</h4>
+          <p>{item.message}</p>
+        </>)
+      })}
+      </div>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
