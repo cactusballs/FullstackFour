@@ -34,3 +34,10 @@ let chloe = {
 }
 
 console.log(`My name's ${chloe.fullName} and I like to ${chloe.hobby}`);
+
+let maria = {
+    fullName: 'Maria Amparo Lopez',
+    hobby: 'hiking'
+}
+
+console.log(`My name is ${maria.fullName} and I enjoy ${maria.hobby}`);
