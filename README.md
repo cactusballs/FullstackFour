@@ -6,7 +6,14 @@
 - git clone from repo
 - copy of .env.example save as '.env' and update with personal details
 - run `npm install`
-- run `npm start`
+
+
+Running server:
+- run `npm start` in the console
+
+
+Running frontend / client:
+- `npm run dev` in the console (Vite used for Client)
 
 ## Project Directory Tree
 
