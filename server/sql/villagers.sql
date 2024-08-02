@@ -34,40 +34,40 @@ CREATE TABLE IF NOT EXISTS villagers (
     event_postcode TEXT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS messages (
-    message_id INT AUTO_INCREMENT PRIMARY KEY,
-    sender_id INT NOT NULL,
-    receiver_id INT NOT NULL,
-    content TEXT NOT NULL,
-    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (sender_id) REFERENCES villagers(villager_id) ON DELETE CASCADE,
-    FOREIGN KEY (receiver_id) REFERENCES villagers(villager_id) ON DELETE CASCADE
-);
+-- CREATE TABLE IF NOT EXISTS messages (
+--     message_id INT AUTO_INCREMENT PRIMARY KEY,
+--     sender_id INT NOT NULL,
+--     receiver_id INT NOT NULL,
+--     content TEXT NOT NULL,
+--     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     FOREIGN KEY (sender_id) REFERENCES villagers(villager_id) ON DELETE CASCADE,
+--     FOREIGN KEY (receiver_id) REFERENCES villagers(villager_id) ON DELETE CASCADE
+-- );
 
-CREATE TABLE IF NOT EXISTS group_chats (
-    group_id INT AUTO_INCREMENT PRIMARY KEY,
-    group_name VARCHAR(50) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+-- CREATE TABLE IF NOT EXISTS group_chats (
+--     group_id INT AUTO_INCREMENT PRIMARY KEY,
+--     group_name VARCHAR(50) NOT NULL,
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- );
 
-CREATE TABLE IF NOT EXISTS group_members (
-    group_id INT NOT NULL,
-    villager_id INT NOT NULL,
-    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (group_id, villager_id),
-    FOREIGN KEY (group_id) REFERENCES group_chats(group_id) ON DELETE CASCADE,
-    FOREIGN KEY (villager_id) REFERENCES villagers(villager_id) ON DELETE CASCADE
-);
+-- CREATE TABLE IF NOT EXISTS group_members (
+--     group_id INT NOT NULL,
+--     villager_id INT NOT NULL,
+--     added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     PRIMARY KEY (group_id, villager_id),
+--     FOREIGN KEY (group_id) REFERENCES group_chats(group_id) ON DELETE CASCADE,
+--     FOREIGN KEY (villager_id) REFERENCES villagers(villager_id) ON DELETE CASCADE
+-- );
 
-CREATE TABLE IF NOT EXISTS group_messages (
-    message_id INT AUTO_INCREMENT PRIMARY KEY,
-    group_id INT NOT NULL,
-    sender_id INT NOT NULL,
-    content TEXT NOT NULL,
-    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (group_id) REFERENCES group_chats(group_id) ON DELETE CASCADE,
-    FOREIGN KEY (sender_id) REFERENCES villagers(villager_id) ON DELETE CASCADE
-);
+-- CREATE TABLE IF NOT EXISTS group_messages (
+--     message_id INT AUTO_INCREMENT PRIMARY KEY,
+--     group_id INT NOT NULL,
+--     sender_id INT NOT NULL,
+--     content TEXT NOT NULL,
+--     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     FOREIGN KEY (group_id) REFERENCES group_chats(group_id) ON DELETE CASCADE,
+--     FOREIGN KEY (sender_id) REFERENCES villagers(villager_id) ON DELETE CASCADE
+-- );
 
 INSERT INTO villagers (first_name, last_name, user_name, birthday, email, villager_address, villager_postcode, villager_location, password)
 VALUES
@@ -82,15 +82,24 @@ VALUES
 ('Daniel', 'Malik','DM', '1995-09-09', 'daniel.m@example.com', '333 Spruce Path', 'N7 7II', 'North London', 'password606'),
 ('Laura', 'Spencer','LS', '1982-06-19', 'laura.s@example.com', '444 Redwood Terrace', 'S4 4JJ', 'South London', 'password707');
 
--- forum posts: starting with a single thread (at lowest level)
--- format: forum_THEME_QUESTION
-CREATE TABLE IF NOT EXISTS forum_becoming_a_parent_why_do_I_feel_useless (
-    message_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_name VARCHAR(50) NOT NULL, -- do we need both sender_id + user_name?
-    title TEXT, 
+
+-- db schema for forums: 
+-- -- TOPICS: e.g. becoming a parent, sleep, SEND. (sit in one only).
+-- -- users = villagers table above, user_name FK. no need to make new table.
+-- -- threads (starter post on thread), this will be marked with tags (parent type eg carer)
+-- -- posts_to_threads (replies to threads).
+
+
+CREATE TABLE IF NOT EXISTS threads (
+    thread_id INT AUTO_INCREMENT PRIMARY KEY,
+    thread_title TEXT, 
+    user_name VARCHAR(50) NOT NULL,
     content TEXT NOT NULL,
     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    -- tags for themes (will sit with a Y/N)
+    topic VARCHAR(50) NOT NULL, --  topic in becoming a parent, etc... from figma screen.
+    -- tags for themes (will sit with a Y/N). only ask this for the ORIGINAL question/forum post (i.e. thread) 
+    -- and then following replies inherit the tags from the original comment
+    -- can have as many tags as wanted, will be checkbox on front-end.
     carers_tag VARCHAR(1),
     expecting_parents_tag VARCHAR(1),
     new_parents_tag VARCHAR(1),
@@ -99,3 +108,21 @@ CREATE TABLE IF NOT EXISTS forum_becoming_a_parent_why_do_I_feel_useless (
     FOREIGN KEY (user_name) REFERENCES villagers(user_name) ON DELETE CASCADE
 );
 
+
+CREATE TABLE IF NOT EXISTS posts_to_threads (
+    post_id INT AUTO_INCREMENT PRIMARY KEY,
+    thread_id INT,
+    user_name VARCHAR(50) NOT NULL,
+    content TEXT NOT NULL,
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_name) REFERENCES villagers(user_name) ON DELETE CASCADE,
+    FOREIGN KEY (thread_id) REFERENCES threads(thread_id) ON DELETE CASCADE
+);
+
+
+INSERT INTO threads (thread_title, user_name, content, sent_at, topic, carers_tag, expecting_parents_tag, new_parents_tag, single_parents_tag, LGBTQIA_plus_parents_tag),
+VALUES ('HELP! 38 weeks and  still no name', 'CC', 'please help me name my child I cannot decide :(((( I am a single mom but am very indecisive','Becoming a parent','N','Y','N','Y','N');
+
+
+-- INSERT INTO posts_to_threads (thread_id, user_name, content, sent_at)
+-- VALUES ();
