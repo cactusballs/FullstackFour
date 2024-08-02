@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS villagers (
     villager_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
-    user_name VARCHAR(50) NOT NULL,
+    user_name VARCHAR(50) NOT NULL UNIQUE,
     birthday DATE NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
 	villager_address TEXT NOT NULL,
@@ -80,3 +80,21 @@ VALUES
 ('Sarah', 'Jane','SJ', '1978-04-17', 'sarah.j@example.com', '222 Willow Drive', 'E5 5HH', 'East London', 'password505'),
 ('Daniel', 'Malik','DM', '1995-09-09', 'daniel.m@example.com', '333 Spruce Path', 'N7 7II', 'North London', 'password606'),
 ('Laura', 'Spencer','LS', '1982-06-19', 'laura.s@example.com', '444 Redwood Terrace', 'S4 4JJ', 'South London', 'password707');
+
+--forum posts: starting with a single thread (at lowest level)
+--format: forum_THEME_QUESTION
+CREATE TABLE IF NOT EXISTS forum_becoming_a_parent_why_do_I_feel_useless (
+    message_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_name VARCHAR(50) NOT NULL, -- do we need both sender_id + user_name?
+    title TEXT, 
+    content TEXT NOT NULL,
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    --tags for themes (will sit with a Y/N)
+    carers_tag VARCHAR(1),
+    expecting parents_tag VARCHAR(1),
+    new_parents_tag VARCHAR(1),
+    single_parents_tag VARCHAR(1),
+    LGBTQIA_plus_parents_tag VARCHAR(1),
+    FOREIGN KEY (user_name) REFERENCES villagers(user_name) ON DELETE CASCADE
+);
+
