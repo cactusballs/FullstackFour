@@ -41,6 +41,8 @@ app.get('/villagers', (req, res) => {
 
 
 // getting thread 1
+//not a final idea for coding but shows how the tables come together to generate threads and posts.
+//final FE will need thread title at the top but this can't be shown as part of 'union' query.
 app.get('/thread1', (req, res) => {
   const thread1 = 'SELECT thread_id, user_name, content, sent_at, \'thread\' AS level '+
 'FROM threads UNION SELECT thread_id, user_name, content, sent_at, \'post\' AS level '+
@@ -52,6 +54,8 @@ app.get('/thread1', (req, res) => {
     res.status(200).json(results);
   });
 })
+
+
 
 // creating and connecting to the port 
 const port = process.env.PORT;
