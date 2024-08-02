@@ -1,3 +1,4 @@
+drop database if exists village;
 CREATE DATABASE village;
 USE village;
 
@@ -81,17 +82,17 @@ VALUES
 ('Daniel', 'Malik','DM', '1995-09-09', 'daniel.m@example.com', '333 Spruce Path', 'N7 7II', 'North London', 'password606'),
 ('Laura', 'Spencer','LS', '1982-06-19', 'laura.s@example.com', '444 Redwood Terrace', 'S4 4JJ', 'South London', 'password707');
 
---forum posts: starting with a single thread (at lowest level)
---format: forum_THEME_QUESTION
+-- forum posts: starting with a single thread (at lowest level)
+-- format: forum_THEME_QUESTION
 CREATE TABLE IF NOT EXISTS forum_becoming_a_parent_why_do_I_feel_useless (
     message_id INT AUTO_INCREMENT PRIMARY KEY,
     user_name VARCHAR(50) NOT NULL, -- do we need both sender_id + user_name?
     title TEXT, 
     content TEXT NOT NULL,
     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    --tags for themes (will sit with a Y/N)
+    -- tags for themes (will sit with a Y/N)
     carers_tag VARCHAR(1),
-    expecting parents_tag VARCHAR(1),
+    expecting_parents_tag VARCHAR(1),
     new_parents_tag VARCHAR(1),
     single_parents_tag VARCHAR(1),
     LGBTQIA_plus_parents_tag VARCHAR(1),
