@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const sql = require('mysql2');
-require('dotenv').config();
+require('dotenv').config({ path: '../.env' });
 
 app.use(express.json());
 
@@ -43,3 +43,13 @@ const port = 3000;
 app.listen(port, () => {
   console.log(`server is running on http://localhost:${port}`);
 });
+
+
+//for troubleshooting connection to db
+// console.log(process.env.DB_HOST);
+// console.log(process.env.DB_USER);
+// console.log(process.env.DB_PASSWORD);
+// console.log(process.env.DB_NAME);
+// console.log(process.env.PORT);
+
+
