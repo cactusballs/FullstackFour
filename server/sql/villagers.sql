@@ -96,7 +96,8 @@ CREATE TABLE IF NOT EXISTS threads (
     user_name VARCHAR(50) NOT NULL,
     content TEXT NOT NULL,
     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    topic VARCHAR(50) NOT NULL, --  topic in becoming a parent, etc... from figma screen.
+    topic ENUM('Becoming a parent','Being a parent','Being a carer','Education','Childcare','Sleep','SEND','Mind, body and soul','Charities') NOT NULL,
+    --  topic in becoming a parent, etc... from figma screen.
     -- tags for themes (will sit with a Y/N). only ask this for the ORIGINAL question/forum post (i.e. thread) 
     -- and then following replies inherit the tags from the original comment
     -- can have as many tags as wanted, will be checkbox on front-end.
@@ -120,9 +121,9 @@ CREATE TABLE IF NOT EXISTS posts_to_threads (
 );
 
 
-INSERT INTO threads (thread_title, user_name, content, sent_at, topic, carers_tag, expecting_parents_tag, new_parents_tag, single_parents_tag, LGBTQIA_plus_parents_tag),
+INSERT INTO threads (thread_title, user_name, content, topic, carers_tag, expecting_parents_tag, new_parents_tag, single_parents_tag, LGBTQIA_plus_parents_tag)
 VALUES ('HELP! 38 weeks and  still no name', 'CC', 'please help me name my child I cannot decide :(((( I am a single mom but am very indecisive','Becoming a parent','N','Y','N','Y','N');
 
 
--- INSERT INTO posts_to_threads (thread_id, user_name, content, sent_at)
--- VALUES ();
+INSERT INTO posts_to_threads (thread_id, user_name, content)
+VALUES (1,'LJ','Lottie is a cool name!'),(1,'FA','Fatima is a cool name!');
