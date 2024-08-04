@@ -2,8 +2,10 @@
 const express = require('express');
 const app = express();
 const sql = require('mysql2');
+const cors = require('cors');
 require('dotenv').config({ path: '../.env' });
 
+app.use(cors());
 app.use(express.json());
 
 // connecting to the DB
@@ -12,6 +14,7 @@ const database = sql.createConnection({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
+  port: process.env.DB_PORT,
 });
 
 // checking we're connected to the DataBase 
@@ -55,10 +58,39 @@ app.get('/thread1', (req, res) => {
   });
 })
 
+// Route to create a new forum topic
+app.post('/api/forum', (req, res) => {
+  const { title, content, user_name, topic, carers_tag, expecting_parents_tag, new_parents_tag, single_parents_tag, LGBTQIA_plus_parents_tag } = req.body;
+  const sql = `
+    INSERT INTO threads (thread_title, content, user_name, topic, carers_tag, expecting_parents_tag, new_parents_tag, single_parents_tag, LGBTQIA_plus_parents_tag)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `;
+  const values = [title, content, user_name, topic, carers_tag, expecting_parents_tag, new_parents_tag, single_parents_tag, LGBTQIA_plus_parents_tag];
+  database.query(sql, values, (error, results) => {
+    if (error) {
+      return res.status(500).json({ message: 'An error occurred', error: error.message });
+    }
+    res.status(201).json({ message: 'Topic created successfully' });
+  });
+});
 
+// Route to fetch user data
+app.get('/api/user/:userId', (req, res) => {
+  const userId = req.params.userId;
+  const sql = 'SELECT * FROM villagers WHERE villager_id = ?';
+  database.query(sql, [userId], (error, results) => {
+    if (error) {
+      return res.status(500).json({ message: 'An error occurred', error: error.message });
+    }
+    if (results.length === 0) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json(results[0]);
+  });
+});
 
 // creating and connecting to the port 
-const port = process.env.PORT;
+const port = process.env.SERVER_PORT || 3000; ;
 app.listen(port, () => {
   console.log(`server is running on http://localhost:${port}`);
 });
