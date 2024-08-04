@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
 import './ForumSubmissionForm.css'
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import ForumButton from './ForumButton';
+// import axios from 'axios';
+// import { useNavigate } from 'react-router-dom';
 
 const ForumSubmission = () => {
   const [title, setTitle] = useState('');
@@ -18,7 +18,7 @@ const ForumSubmission = () => {
   });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // Placeholder user data
   const user_name = 'PlaceholderTillLinkLoginUserInfo';
@@ -111,7 +111,7 @@ const ForumSubmission = () => {
         <div className="tags mt-3">
           <label>Tags</label>
           <div className="mt-2 flex flex-wrap gap-2">
-            {['Carers', 'Expecting Parents', 'New Parents', 'Single Parents', 'Rainbow Parents'].map(tag => (
+            {['Carers', 'Expecting Parents', 'New Parents', 'Single Parents', 'LGBTQIA_plus_parents_tags'].map(tag => (
               <label key={tag}>
                 <input
                   type="checkbox"
@@ -123,12 +123,9 @@ const ForumSubmission = () => {
             ))}
           </div>
         </div>
-        <button
-          type="submit"
-          className="mt-8 w-[230px] mx-auto flex items-center gap-2 bg-purple-700 rounded-md shadow-sm px-8 py-2 cursor-pointer text-white"
-        >
-          Submit Topic
-        </button>
+        <ForumButton onClick={handleSubmit}>
+          Submit Thread
+        </ForumButton>
         {error && <p className="error">{error}</p>}
         {success && <p className="success">{success}</p>}
       </form>

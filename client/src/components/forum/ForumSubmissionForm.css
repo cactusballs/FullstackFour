@@ -6,7 +6,7 @@ container {
     border: 1px solid #0F5C3C; 
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    overflow-x: hidden;
   }
   
   /* Form header styling */
@@ -53,26 +53,7 @@ container {
     white-space: pre-wrap; /* Allows text wrapping */
   }
   
-  button {
-    background-color: #485F39; 
-    color: white;
-    padding: 0.6em 1.2em;
-    border: none;
-    border-radius: 8px; /* Matches global button style */
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    justify-content: center;
-    transition: background-color 0.3s;
-    font-family: inherit; /* Matches global font */
-    font-size: 1em; /* Matches global button size */
-    font-weight: 500; /* Matches global button weight */
-  }
-  
-  button:hover {
-    background-color: #0F5C3C; 
-  }
+
   
   .error {
     color: red;
@@ -89,13 +70,6 @@ container {
     color: #213547; 
     text-align: right;
   }
-  /* Colours from figma (11) #000000 black #FFFFFF white
-  #485F39 forest green
-  #7E3400 brown 
-  #F0F1E8 #D0D2B7 #D9D9D9 various shades of white? 
-  #A4B387 light green
-  #0F5C3C dark green
-  #F5F5F5 a white?
-  #FF9900 orange*/
+
   
    

@@ -58,6 +58,17 @@ app.get('/thread1', (req, res) => {
   });
 })
 
+// displaying all threads in forum main - need to change but it works!
+app.get('/threads', (req, res) => {
+  const sql = 'SELECT * FROM threads';
+  database.query(sql, (error, results) => {
+    if (error) {
+      return res.status(500).json({ message: 'An error has occurred', error: error.message });
+    }
+    res.status(200).json(results);
+  });
+});
+
 // Route to create a new forum topic
 app.post('/api/forum', (req, res) => {
   const { title, content, user_name, topic, carers_tag, expecting_parents_tag, new_parents_tag, single_parents_tag, LGBTQIA_plus_parents_tag } = req.body;
