@@ -5,6 +5,7 @@
   grid-template-columns: 50vw 30vw;
   gap: 20px;
   align-items: start;
+  overflow: hidden;
 }
 
 /* the title */
@@ -17,11 +18,13 @@
 .TownHall,
 .TopPicks {
   background-color: #ABB3AB;
-  color:#233115;
+  color: #233115;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex; 
+  flex-direction: column; 
 }
 /* styling for the headers of the two cards */
 .TownHall h3,
@@ -39,13 +42,12 @@
 
 .TownHall {
   grid-column: 1 / 2;
-  height: 60vh;
 }
 
 
 .TopPicks {
   grid-column: 2 / 3;
-  height: 60vh;
+ 
 }
 
 .TownHallPosts {

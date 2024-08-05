@@ -61,9 +61,9 @@ const ForumSubmission = () => {
 
   return (
     <div className="container">
-      <div className="header">
+      {/* <div className="header">
         <h1>Create a New Forum Topic</h1>
-      </div>
+      </div> */}
       <form onSubmit={handleSubmit} className="form">
         <div className="title">
           <label>Title</label>

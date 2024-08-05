@@ -22,7 +22,8 @@ container {
   
   /* Form elements styling */
   .form {
-    width: 100%;
+    width: 80%;
+    height: 60%;
     font-family: inherit; /* Matches global font */
   }
   

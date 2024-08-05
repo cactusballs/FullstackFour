@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ForumMain.css';
+import ForumSubmission from './ForumSubmissionForm.jsx';
 
 const ForumMain = () => {
   // trying to connect to the DB
@@ -40,7 +41,8 @@ const ForumMain = () => {
         )}
       </div>
       <div className='TopPicks'>
-        <h3>Top picks for you...</h3>
+        <h3>Post your own...</h3>
+        <ForumSubmission />
       </div>
     </div>
   );
