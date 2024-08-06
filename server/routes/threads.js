@@ -2,10 +2,7 @@ const express = require("express");
 const threadRouter = express.Router();
 const database = require("../database");
 
-// creating route end point
-// threadRouter.get(`/`, (req, res) => {
-//   res.status(200).send("Welcome to your threads!");
-// });
+
 
 
 //ALL ENDPOINTS HERE PRECEDED BY /THREADS e.g. /THREADS/THREAD1:
@@ -30,12 +27,12 @@ threadRouter.get("/", async (req, res) => {
 
 
 
-//query not returning expected results - check/tweak?
+//query not returning expected results - check/tweak? update to take parameter so can return a thread + posts
 threadRouter.get("/thread1", async (req, res) => {
     const thread1 =
       "SELECT thread_id, user_name, content, sent_at, 'thread' AS level " +
       "FROM threads UNION SELECT thread_id, user_name, content, sent_at, 'post' AS level " +
-      "FROM posts_to_threads ORDER BY sent_at;";
+      "FROM posts_to_threads ORDER BY thread_id, sent_at;";
   
     try {
       const [results] = await database.query(thread1);
