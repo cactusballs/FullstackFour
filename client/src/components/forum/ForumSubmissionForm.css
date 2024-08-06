@@ -50,7 +50,7 @@ container {
     background-color: #FFF; 
     font-family: inherit; /* Matches global font */
     color: #213547;
-    resize: none; /* Prevents resising */
+    resize: none; /* Prevents resizing */
     white-space: pre-wrap; /* Allows text wrapping */
   }
   

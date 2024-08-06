@@ -115,3 +115,55 @@ app.listen(port, () => {
 // console.log(process.env.PORT);
 
 
+
+
+// defining API endpoints for each topic forum using query parameters
+
+
+
+//Parameters:
+//   1 "Becoming a parent",
+//   2 "Being a parent",
+//   3 "Being a carer",
+//   4 "Education",
+//   5 "Childcare",
+//   6 "Sleep",
+//   7 "SEND",
+//   8 "Mind, body and soul",
+//   9 "Charities",
+
+//'SELECT topic FROM village.threads'
+
+
+app.get('/api/topics/', (req, res) => {
+
+
+  const topicArray = [
+    "Becoming a parent",
+    "Being a parent",
+    "Being a carer",
+    "Education",
+    "Childcare",
+    "Sleep",
+    "SEND",
+    "Mind, body and soul",
+    "Charities",
+  ];
+
+  const refArray = topicArray.map((_,index) => index+1);
+  console.log(refArray); //or put into an object??
+
+
+  const topicId = req.params.userId; //update to pull each id as a different topic, so filters on topic
+  const sql = `SELECT * FROM village.threads where topic = 'Being a parent'`
+  database.query(sql, (error, results) => {
+    if (error) {
+      console.log(error);
+      return res.status(500).json({ message: 'An error occurred', error: error.message });
+    }
+    if (results.length === 0) {
+      return res.status(404).json({ message: 'Topic not found' });
+    }
+    res.status(200).json(results);
+  });
+});
