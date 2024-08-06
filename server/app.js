@@ -1,7 +1,7 @@
 // creating the server 
 const express = require('express');
 const app = express();
-const sql = require('mysql2');
+const sql = require('mysql2/promise');
 const cors = require('cors');
 require('dotenv').config({ path: '../.env' });
 
@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 // connecting to the DB
-const database = sql.createConnection({
+const database = sql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
@@ -18,13 +18,30 @@ const database = sql.createConnection({
 });
 
 // checking we're connected to the DataBase 
-database.connect((error) => {
- if(error){
-  console.error('Error connecting to the database:', error.stack);
-  return;
- }
- console.log('Connected to the database.');
+// database.connect((error) => {
+//  if(error){
+//   console.error('Error connecting to the database:', error.stack);
+//   return;
+//  }
+//  console.log('Connected to the database.');
+// });
+
+
+app.get("/check", async (req, res) => {
+  try {
+    const connect = await database.getConnection();
+    connect.release();
+    const successMessage = `Connected successfully to ${process.env.DB_NAME} database`;
+    res.status(200).json({ message: successMessage });
+    console.log(successMessage);
+  } catch (err) {
+    const errorMessage = `Request failed, error: ${err.message}`
+    res.status(500).json({ message: errorMessage });
+    console.log(errorMessage);
+  }
 });
+
+
 
 // creating route end point
 app.get(`/`, (req, res) => {
