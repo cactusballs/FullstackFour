@@ -4,18 +4,16 @@ const app = express();
 const sql = require('mysql2/promise');
 const cors = require('cors');
 require('dotenv').config({ path: '../.env' });
+const database = require("./database");
 
 app.use(cors());
 app.use(express.json());
 
-// connecting to the DB via pool
-const database = sql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  port: process.env.DB_PORT,
-});
+//routing
+const threadRouter = require("./routes/threads");
+app.use("/threads", threadRouter);
+
+
 
 
 // creating and connecting to the port 
@@ -42,22 +40,26 @@ app.get("/check", async (req, res) => {
 });
 
 
-
 // creating route end point
 app.get(`/`, (req, res) => {
   res.status(200).send('Welcome to your Village!')});
 
 
+
+
+
+
 // getting all villagers
-app.get('/villagers', (req, res) => {
-  const userList = 'SELECT * FROM villagers ORDER BY villager_id ASC'
-  database.query(userList, (error, results) => {
-    if (error) {
-      return res.status(500).json({ message: 'An error has occurred', error: error.message });
-    }
+app.get('/villagers', async (req, res) => {
+  const userList = 'SELECT * FROM villagers ORDER BY villager_id ASC';
+  try {
+    const [results] = await database.query(userList);
     res.status(200).json(results);
-  });
-})
+  } catch (error) {
+    res.status(500).json({ message: 'An error has occurred', error: error.message });
+  }
+});
+
 
 
 
@@ -79,17 +81,7 @@ app.get('/thread1', async (req, res) => {
 });
 
 
-// displaying all threads in forum main - need to change but it works!
-app.get('/threads', async (req, res) => {
-  const sql = 'SELECT * FROM threads';
 
-  try {
-    const [results] = await database.query(sql);
-    res.status(200).json(results);
-  } catch (error) {
-    res.status(500).json({ message: 'An error has occurred', error: error.message });
-  }
-});
 
 
 // Route to create a new forum topic
@@ -186,3 +178,6 @@ app.get('/api/topics/', (req, res) => {
     res.status(200).json(results);
   });
 });
+
+
+module.exports = database;
