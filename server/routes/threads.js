@@ -27,7 +27,7 @@ threadRouter.get("/", async (req, res) => {
 
 
 
-//query not returning expected results - check/tweak? update to take parameter so can return a thread + posts
+//update to take parameter so can return a thread + posts
 threadRouter.get("/thread1", async (req, res) => {
     const thread1 =
       "SELECT thread_id, user_name, content, sent_at, 'thread' AS level " +
