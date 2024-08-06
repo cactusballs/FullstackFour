@@ -1,7 +1,7 @@
 // creating the server 
 const express = require('express');
 const app = express();
-const sql = require('mysql2/promise');
+const sql = require('mysql2/promise'); //possibly don't need import here anymore? as db.js handles
 const cors = require('cors');
 require('dotenv').config({ path: '../.env' });
 const database = require("./database");
@@ -146,9 +146,42 @@ app.get('/api/user/:userId', async (req, res) => {
 //'SELECT topic FROM village.threads'
 
 
-app.get('/api/topics/', (req, res) => {
+// app.get('/api/topics/', (req, res) => {
 
 
+//   const topicArray = [
+//     "Becoming a parent",
+//     "Being a parent",
+//     "Being a carer",
+//     "Education",
+//     "Childcare",
+//     "Sleep",
+//     "SEND",
+//     "Mind, body and soul",
+//     "Charities",
+//   ];
+
+//   const refArray = topicArray.map((_,index) => index+1);
+//   console.log(refArray); //or put into an object??
+
+
+//   const topicId = req.params.userId; //update to pull each id as a different topic, so filters on topic
+//   const sql = `SELECT * FROM village.threads where topic = 'Being a parent'`
+//   database.query(sql, (error, results) => {
+//     if (error) {
+//       console.log(error);
+//       return res.status(500).json({ message: 'An error occurred', error: error.message });
+//     }
+//     if (results.length === 0) {
+//       return res.status(404).json({ message: 'Topic not found' });
+//     }
+//     res.status(200).json(results);
+//   });
+// });
+
+
+app.get('/api/topics/', async (req, res) => {
+  // Define the array of topics
   const topicArray = [
     "Becoming a parent",
     "Being a parent",
@@ -161,23 +194,44 @@ app.get('/api/topics/', (req, res) => {
     "Charities",
   ];
 
-  const refArray = topicArray.map((_,index) => index+1);
-  console.log(refArray); //or put into an object??
+  // Create a reference array mapping topic names to IDs
+  const refArray = topicArray.map((topic, index) => ({ id: index + 1, topic }));
+  console.log(refArray); // For debugging, prints the topic references
 
+  // Extract topic ID from query parameters
+  const topicId = parseInt(req.query.topicId); // Assuming you pass topic ID as a query parameter
+  
+  // Validate the topicId
+  if (isNaN(topicId) || topicId < 1 || topicId > topicArray.length) {
+    return res.status(400).json({ message: 'Invalid topic ID' });
+  }
 
-  const topicId = req.params.userId; //update to pull each id as a different topic, so filters on topic
-  const sql = `SELECT * FROM village.threads where topic = 'Being a parent'`
-  database.query(sql, (error, results) => {
-    if (error) {
-      console.log(error);
-      return res.status(500).json({ message: 'An error occurred', error: error.message });
-    }
+  // Get the topic name based on the topicId
+  const topicName = topicArray[topicId - 1];
+  
+  // Define the SQL query using the topicName
+  const sql = 'SELECT * FROM threads WHERE topic = ?';
+
+  try {
+    // Execute the query with the topicName parameter
+    const [results] = await database.query(sql, [topicName]);
+
+    // Check if results are found
     if (results.length === 0) {
-      return res.status(404).json({ message: 'Topic not found' });
+      return res.status(404).json({ message: 'No threads found for this topic' });
     }
+
+    // Return the results as JSON
     res.status(200).json(results);
-  });
+  } catch (error) {
+    // Handle any errors that occur during the query
+    console.error('Database query error:', error);
+    res.status(500).json({ message: 'An error occurred', error: error.message });
+  }
 });
+
+
+
 
 
 module.exports = database;

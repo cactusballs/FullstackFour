@@ -2,10 +2,12 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+//import TopicsDropdown from "./components/forum/DropdownMenu/Dropdown/TopicsDropdown";
 
-// import TopicsDropdown from "./components/forum/DropdownMenu/Dropdown/TopicsDropdown";
-// import ForumMain from "./components/forum/ForumMain";
 import ForumTopicThreads from "./components/forum/ForumTopicThreads";
+import ForumMain from "./components/forum/ForumMain";
+
+
 
 // import ForumTopicThreads from './components/forum/ForumTopicThreads';
 
@@ -55,8 +57,10 @@ function App() {
   return (
     <div>
       <div>
-        {/* <TopicsDropdown/> */}
-        <ForumTopicThreads/>
+        <ForumMain/>
+        <ForumTopicThreads/> 
+        
+        {/*I've put both here for now so can look at one below the other*/}
       </div>
     </div>
   );
