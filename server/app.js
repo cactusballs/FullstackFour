@@ -8,7 +8,7 @@ require('dotenv').config({ path: '../.env' });
 app.use(cors());
 app.use(express.json());
 
-// connecting to the DB
+// connecting to the DB via pool
 const database = sql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -17,16 +17,16 @@ const database = sql.createPool({
   port: process.env.DB_PORT,
 });
 
-// checking we're connected to the DataBase 
-// database.connect((error) => {
-//  if(error){
-//   console.error('Error connecting to the database:', error.stack);
-//   return;
-//  }
-//  console.log('Connected to the database.');
-// });
+
+// creating and connecting to the port 
+const port = process.env.SERVER_PORT || 3000; ;
+app.listen(port, () => {
+  console.log(`server is running on http://localhost:${port}`);
+});
 
 
+
+//checking connection and error-logging if not working
 app.get("/check", async (req, res) => {
   try {
     const connect = await database.getConnection();
@@ -47,6 +47,7 @@ app.get("/check", async (req, res) => {
 app.get(`/`, (req, res) => {
   res.status(200).send('Welcome to your Village!')});
 
+
 // getting all villagers
 app.get('/villagers', (req, res) => {
   const userList = 'SELECT * FROM villagers ORDER BY villager_id ASC'
@@ -63,73 +64,74 @@ app.get('/villagers', (req, res) => {
 // getting thread 1
 //not a final idea for coding but shows how the tables come together to generate threads and posts.
 //final FE will need thread title at the top but this can't be shown as part of 'union' query.
-app.get('/thread1', (req, res) => {
-  const thread1 = 'SELECT thread_id, user_name, content, sent_at, \'thread\' AS level '+
-'FROM threads UNION SELECT thread_id, user_name, content, sent_at, \'post\' AS level '+
-'FROM posts_to_threads ORDER BY sent_at;'
-  database.query(thread1, (error, results) => {
-    if (error) {
-      return res.status(500).json({ message: 'An error has occurred', error: error.message });
-    }
-    res.status(200).json(results);
-  });
-})
 
-// displaying all threads in forum main - need to change but it works!
-app.get('/threads', (req, res) => {
-  const sql = 'SELECT * FROM threads';
-  database.query(sql, (error, results) => {
-    if (error) {
-      return res.status(500).json({ message: 'An error has occurred', error: error.message });
-    }
+app.get('/thread1', async (req, res) => {
+  const thread1 = 'SELECT thread_id, user_name, content, sent_at, \'thread\' AS level '+
+  'FROM threads UNION SELECT thread_id, user_name, content, sent_at, \'post\' AS level '+
+  'FROM posts_to_threads ORDER BY sent_at;'
+
+  try {
+    const [results] = await database.query(thread1);
     res.status(200).json(results);
-  });
+  } catch (error) {
+    res.status(500).json({ message: 'An error has occurred', error: error.message });
+  }
 });
 
+
+// displaying all threads in forum main - need to change but it works!
+app.get('/threads', async (req, res) => {
+  const sql = 'SELECT * FROM threads';
+
+  try {
+    const [results] = await database.query(sql);
+    res.status(200).json(results);
+  } catch (error) {
+    res.status(500).json({ message: 'An error has occurred', error: error.message });
+  }
+});
+
+
 // Route to create a new forum topic
-app.post('/api/forum', (req, res) => {
+app.post('/api/forum', async (req, res) => {
   const { title, content, user_name, topic, carers_tag, expecting_parents_tag, new_parents_tag, single_parents_tag, LGBTQIA_plus_parents_tag } = req.body;
   const sql = `
     INSERT INTO threads (thread_title, content, user_name, topic, carers_tag, expecting_parents_tag, new_parents_tag, single_parents_tag, LGBTQIA_plus_parents_tag)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
   const values = [title, content, user_name, topic, carers_tag, expecting_parents_tag, new_parents_tag, single_parents_tag, LGBTQIA_plus_parents_tag];
-  database.query(sql, values, (error, results) => {
-    if (error) {
-      return res.status(500).json({ message: 'An error occurred', error: error.message });
-    }
-    res.status(201).json({ message: 'Topic created successfully' });
-  });
+
+  try {
+    await database.query(sql, values);
+    res.status(201).json({ message: 'Thread created successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'An error occurred', error: error.message });
+  }
 });
 
+
+
+
 // Route to fetch user data
-app.get('/api/user/:userId', (req, res) => {
+app.get('/api/user/:userId', async (req, res) => {
   const userId = req.params.userId;
   const sql = 'SELECT * FROM villagers WHERE villager_id = ?';
-  database.query(sql, [userId], (error, results) => {
-    if (error) {
-      return res.status(500).json({ message: 'An error occurred', error: error.message });
-    }
+
+  try {
+    const [results] = await database.query(sql, [userId]);
     if (results.length === 0) {
       return res.status(404).json({ message: 'User not found' });
     }
     res.status(200).json(results[0]);
-  });
-});
-
-// creating and connecting to the port 
-const port = process.env.SERVER_PORT || 3000; ;
-app.listen(port, () => {
-  console.log(`server is running on http://localhost:${port}`);
+  } catch (error) {
+    res.status(500).json({ message: 'An error occurred', error: error.message });
+  }
 });
 
 
-//for troubleshooting connection to db
-// console.log(process.env.DB_HOST);
-// console.log(process.env.DB_USER);
-// console.log(process.env.DB_PASSWORD);
-// console.log(process.env.DB_NAME);
-// console.log(process.env.PORT);
+
+
+
 
 
 
