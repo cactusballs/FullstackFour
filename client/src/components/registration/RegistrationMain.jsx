@@ -4,6 +4,7 @@ import './RegistrationMain.css';
 const RegistrationMain = () => {
     return (
         <div className="container">
+            <h3 className="title_registration">Registration</h3>
             <div className="left">
             </div>
             <div className="right">
@@ -41,6 +42,7 @@ const RegistrationMain = () => {
                         <input type="text" id="postcode" name="postcode" />
                     </div>
                     <button type="submit">Sign Up</button>
+                    <p>Already have an account? Log in</p>
                 </form>
             </div>
         </div>
