@@ -1,3 +1,5 @@
+DropdownMenu/
+
 # Logs
 logs
 *.log
@@ -131,4 +133,7 @@ dist
 .pnp.*
 
 
+# React Component Preview
+previewConfig.json
 .DS_Store
+

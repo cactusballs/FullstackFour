@@ -28,6 +28,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #D4D9D1; /*have changed this so we can view it while we work - it kept showing in dark mode */
 }
 
 h1 {
