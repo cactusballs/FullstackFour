@@ -1,4 +1,4 @@
-/* Responsive styles */
+/* Media enquiry - Responsive design? */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
@@ -8,10 +8,4 @@
         width: 100%;
         height: 50%;
     }
-
-    .left img {
-        height: auto;
-        width: 100%;
-    }
 }
-
