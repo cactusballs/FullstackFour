@@ -6,7 +6,7 @@ import "./App.css";
 
 import ForumTopicThreads from "./components/forum/ForumTopicThreads";
 import ForumMain from "./components/forum/ForumMain";
-
+import RegistrationMain from "./components/registration/RegistrationMain";
 
 
 // import ForumTopicThreads from './components/forum/ForumTopicThreads';
@@ -57,9 +57,9 @@ function App() {
   return (
     <div>
       <div>
-        <ForumMain/>
-        <ForumTopicThreads/> 
-        
+        {/* <ForumMain/>
+        <ForumTopicThreads/>  */}
+        <RegistrationMain/>
         {/*I've put both here for now so can look at one below the other*/}
       </div>
     </div>
