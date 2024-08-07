@@ -68,6 +68,14 @@ CREATE TABLE IF NOT EXISTS group_messages (
     FOREIGN KEY (sender_id) REFERENCES villagers(villager_id) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS broadcast_messages (
+	broadcast_message_id INT AUTO_INCREMENT PRIMARY KEY,
+    villager_id INT,
+    message_content VARCHAR(150),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (villager_id) REFERENCES villagers(villager_id)
+);
+
 INSERT INTO villagers (first_name, last_name, user_name, birthday, email, villager_address, villager_postcode, villager_location, password)
 VALUES
 ('Cat', 'Conquest', 'CC', '1980-05-15', 'cat.c@example.com', '123 Elm Street', 'N1 0AA', 'North London', 'password123'),
@@ -80,3 +88,11 @@ VALUES
 ('Sarah', 'Jane','SJ', '1978-04-17', 'sarah.j@example.com', '222 Willow Drive', 'E5 5HH', 'East London', 'password505'),
 ('Daniel', 'Malik','DM', '1995-09-09', 'daniel.m@example.com', '333 Spruce Path', 'N7 7II', 'North London', 'password606'),
 ('Laura', 'Spencer','LS', '1982-06-19', 'laura.s@example.com', '444 Redwood Terrace', 'S4 4JJ', 'South London', 'password707');
+
+-- times (created_at) stated to test things out
+INSERT INTO broadcast_messages (villager_id, message_content, created_at)
+VALUES 
+(2, "hi guys, i'm new here and this is my first broadcast message!", default),
+(1, "I've just been told I'm with triplets and wanted to share my joy with you all!", default),
+(3, "hello world", "2024-08-01 19:09:39"),
+(4, "We've got good weather today in North London. How's everyone else?", "2024-07-30 16:09:39");
