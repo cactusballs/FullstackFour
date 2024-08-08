@@ -1,37 +1,58 @@
-/* Container for the entire carousel */
-.carouselContainer {
-    max-width: 800px;
-    /* Adjust based on your design */
-    margin: 0 auto;
-    /* Center the carousel */
-    border-radius: 10px;
-    /* Rounded corners */
-    overflow: hidden;
-    /* Hide overflow to maintain rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* Optional shadow for a lift effect */
-}
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=League+Spartan:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
-/* Style for images */
-.carouselImage {
+/* Container for the carousel */
+.carousel .slider-wrapper {
+    background-color: #f0f1e8;
     border-radius: 10px;
-    /* Rounded corners for images */
-    width: 100%;
-    /* Ensure images take full width of the container */
-    height: auto;
-    /* Maintain aspect ratio */
-}
-
-/* Style for carousel legend (caption) */
-.legend {
-    text-align: center;
-    /* Center text */
-    font-size: 1.2rem;
-    /* Adjust font size */
-    color: #333;
-    /* Dark color for contrast */
-    background-color: rgba(255, 255, 255, 0.8);
-    /* Semi-transparent background for better readability */
     padding: 10px;
-    /* Space around text */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Individual slide images */
+.carousel .slide img {
+    border-radius: 10px;
+    border: 4px solid #485f39;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+/* Caption below each image */
+.carousel .legend {
+    background-color: #485f39;
+    border-radius: 0 0 10px 10px;
+    padding: 10px;
+    color: white;
+    font-size: 18px;
+    font-family: "League Spartan", sans-serif;
+    text-align: center;
+    margin: 0;
+}
+
+/* Navigation buttons (next/prev) */
+.carousel .control-arrow {
+    background-color: #7e3400;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.carousel .control-arrow:hover {
+    background-color: #485f39;
+    opacity: 1;
+}
+
+/* Indicators (dots) */
+.carousel .control-dots .dot {
+    background-color: #7e3400;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 4px;
+    opacity: 0.6;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
 }
