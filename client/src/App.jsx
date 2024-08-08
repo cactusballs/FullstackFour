@@ -12,22 +12,11 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/forum" element={<Forum />} />
+          <Route path="/forum" element={<ForumMain />} />
           {/* Add more routes here if needed */}
         </Routes>
       </div>
     </Router>
   );
 }
-
-function Forum() {
-  return (
-    <div>
-      <ForumMain />
-      <ForumTopicThreads />
-      {/* I've put both here for now so can look at one below the other */}
-    </div>
-  );
-}
-
 export default App;

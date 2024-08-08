@@ -1,7 +1,6 @@
 // creating the server 
 const express = require('express');
 const app = express();
-const sql = require('mysql2/promise'); //possibly don't need import here anymore? as db.js handles
 const cors = require('cors');
 require('dotenv').config({ path: '../.env' });
 const database = require("./database");
@@ -20,7 +19,7 @@ app.use("/api/topics", topicRouter);
 
 
 // creating and connecting to the port 
-const port = process.env.SERVER_PORT || 3000; ;
+const port = process.env.SERVER_PORT || 3000; 
 app.listen(port, () => {
   console.log(`server is running on http://localhost:${port}`);
 });
@@ -46,11 +45,6 @@ app.get("/check", async (req, res) => {
 // creating route end point
 app.get(`/`, (req, res) => {
   res.status(200).send('Welcome to your Village!')});
-
-
-
-
-
 
 // getting all villagers
 app.get('/villagers', async (req, res) => {
@@ -125,7 +119,4 @@ app.get('/api/user/:userId', async (req, res) => {
 
 
 
-
-
-
-module.exports = database;
+module.exports = app;
