@@ -1,37 +1,38 @@
 /* Set up the container to be a flexbox */
 .login-container {
-  display: flex;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 50% 50%;
+  width: 100vw;
   height: 100vh;
-}
+  overflow-x: hidden;
+  margin: 0;
+  background-color: #e1d6cb; /* Background color as a placeholder */
 
+}
 /* Styling for the image section */
 .login-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #e1d6cb; /* Background color as a placeholder */
+  overflow: hidden;
+  grid-column: 1;
+    
 }
 
 .login-image img {
-  max-width: 100%;
-  height: auto;
+  height: 100vh;
 }
 
 /* Styling for the form section */
 .login-form {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background-color: #e1d6cb;
-  padding: 2rem;
+  padding: 1%;
+  grid-column: 2;
+  margin-top: 25vh;
+ 
 }
 
 .logo img {
   max-width: 100px;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 form {
