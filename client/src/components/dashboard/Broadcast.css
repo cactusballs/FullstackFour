@@ -12,7 +12,7 @@
   justify-content: space-between;
   align-items: center;
   margin: 0px 30px;
-  padding: 12px 0px;
+  padding: 10px 0px;
   background-color: #485f39;
   border-radius: 10px;
   color: white;
@@ -22,8 +22,8 @@
 }
 
 .dashboard-card-content {
-  min-height: 200px;
-  min-width: 380px;
+  height: 200px;
+  width: 380px;
   background-color: #f0f1e8;
   color: black;
 }
@@ -40,10 +40,13 @@
 
 .broadcast-item {
   margin-bottom: 16px;
+  padding: 16px;
 }
 
 .broadcast-author {
   color: #7e3400;
+  margin: 0px 0 10px 100px;
+  text-align: left;
 }
 
 .broadcast-content {
@@ -62,4 +65,8 @@
   background-color: #d3d3d3;
   transition: 0.3s ease-out;
   color: #485f39;
+}
+
+#loudspeaker-right {
+  transform: rotate(180deg);
 }
