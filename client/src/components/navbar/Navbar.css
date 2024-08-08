@@ -1,1 +1,43 @@
 /* TODO: add styles for navbar   */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+
+.navbar-center{
+  justify-content: flex-end;
+}
+
+
+.navbar-center .nav-links {
+  list-style-type: none;
+  display: flex;
+  margin-right: 4vw;
+  padding: 0;
+}
+
+.navbar-center .nav-links li {
+  margin-right: 1vw;
+}
+
+.navbar-center .nav-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.navbar-right .user-icon {
+  color: #fff;
+  text-decoration: none;
+  
+}
+
