@@ -104,7 +104,6 @@ app.get('/api/user/:userId', async (req, res) => {
   }
 });
 
-
 // Login Route
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
@@ -112,14 +111,14 @@ app.post('/login', async (req, res) => {
   try {
     const [results] = await database.query('SELECT * FROM villagers WHERE email = ?', [email]);
     if (results.length === 0) {
-      return res.status(401).json({ message: 'Invalid email or password 🙁' });
+      return res.status(401).json({ message: 'Invalid email' });
     }
 
     const user = results[0];
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
-      console.log(password, user.password)
-      return res.status(401).json({ message: 'Invalid email or password 😭🥲' });
+      console.log(password, user.password);
+      return res.status(401).json({ message: 'Invalid password' });
     }
 
     // Generate JWT
@@ -127,8 +126,9 @@ app.post('/login', async (req, res) => {
 
     res.status(200).json({ token, user: { id: user.villager_id, email: user.email, user_name: user.user_name } });
   } catch (error) {
-    res.status(500).json({ message: 'An error occurred', error: error.message });
+    res.status(500).json({ message: 'An error occurred when trying to login', error: error.message });
   }
 });
+
 
 module.exports = database;
