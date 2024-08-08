@@ -5,6 +5,7 @@ import "./App.css";
 import ForumTopicThreads from "./components/forum/ForumTopicThreads";
 import ForumMain from "./components/forum/ForumMain";
 import Login from "./components/login/Login";  // Import the Login component
+import RegistrationMain from "./components/registration/RegistrationMain";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/forum" element={<ForumMain />} />
+          <Route path="/signup" element={<RegistrationMain />} />
           {/* Add more routes here if needed */}
         </Routes>
       </div>
