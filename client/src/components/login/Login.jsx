@@ -10,10 +10,10 @@ const Login = () => {
         <img src={illustration} alt="Village Illustration" />
       </div>
       <div className="login-form">
+        <form>
         <div className="logo">
           <img src={logo} alt="Village Logo" />
         </div>
-        <form>
           <div className="input-group">
             <label htmlFor="email">Email</label>
             <input type="email" id="email" name="email" required />
@@ -23,8 +23,9 @@ const Login = () => {
             <input type="password" id="password" name="password" required />
           </div>
           <button type="submit">Log In</button>
+          <p>Don't have an account? <a href="/signup">Sign up</a></p>
         </form>
-        <p>Don't have an account? <a href="/signup">Sign up</a></p>
+      
       </div>
     </div>
   );
