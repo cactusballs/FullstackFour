@@ -3,8 +3,8 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import BroadcastMessages from "./components/dashboard/Broadcast.jsx";
-import ImageCarousel from './components/ImageCarousel/ImageCarousel.jsx';
-import './components/ImageCarousel/ImageCarousel.css';
+import ImageCarousel from './components/dashboard/ImageCarousel/ImageCarousel.jsx';
+import './components/dashboard/ImageCarousel/ImageCarousel.css';
 
 function App() {
   return (
