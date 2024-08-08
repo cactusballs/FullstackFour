@@ -3,17 +3,17 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import BroadcastMessages from "./components/dashboard/Broadcast.jsx";
-import ImageCarousel from './components/dashboard/ImageCarousel/ImageCarousel.jsx';
-import './components/dashboard/ImageCarousel/ImageCarousel.css';
+import ImageCarousel from "./components/dashboard/ImageCarousel.jsx";
+import "./components/dashboard/ImageCarousel.css";
 
 function App() {
   return (
     <>
       <BroadcastMessages />
-      <ImageCarousel /> {/* Use ImageCarousel component with correct capitalization */}
+      <ImageCarousel />
+      {/* Use ImageCarousel component with correct capitalization */}
     </>
   );
 }
 
 export default App;
-
