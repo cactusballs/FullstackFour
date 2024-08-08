@@ -21,9 +21,3 @@ Running frontend / client:
 ##Client setup
 - run `npm install`
 - run `npm run dev`
-
-
-
-## Project Directory Tree
-
-![Project Directory Tree](images/project_directory_tree.png)
