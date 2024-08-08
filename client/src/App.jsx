@@ -4,12 +4,14 @@ import "./App.css";
 
 import ForumTopicThreads from "./components/forum/ForumTopicThreads";
 import ForumMain from "./components/forum/ForumMain";
+import Login from "./components/login/Login";  // Import the Login component
 
 function App() {
   return (
     <Router>
       <div>
         <Routes>
+          <Route path="/" element={<Login />} />
           <Route path="/forum" element={<Forum />} />
           {/* Add more routes here if needed */}
         </Routes>
