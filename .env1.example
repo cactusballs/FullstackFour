@@ -1,0 +1,5 @@
+DB_HOST=localhost          # The hostname or IP address of the database server.
+DB_USER=root        # The username used to connect to the database.
+DB_PASSWORD=Swinford.35    # The password used to connect to the database.
+DB_NAME=mydatabase         # The name of the database you are connecting to.
+PORT=3000                 # The port number the database server is listening on.
