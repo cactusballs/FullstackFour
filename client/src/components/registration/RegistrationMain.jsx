@@ -1,5 +1,6 @@
 import React from 'react';
 import './RegistrationMain.css';
+import logo from '../../assets/images/village-logo.png';
 
 const RegistrationMain = () => {
     return (
@@ -8,6 +9,9 @@ const RegistrationMain = () => {
             <div className="left">
             </div>
             <div className="right">
+                <div className="logo">
+                    <img src={logo} alt="Village Logo" />
+                </div>
                 <form>
                     <div>
                         <label htmlFor="first_name">First Name</label>
@@ -35,14 +39,14 @@ const RegistrationMain = () => {
                     </div>
                     <div>
                         <label htmlFor="address">Address</label>
-                        <input type="text" id="address" name="address" placeholder="Street name and number"/>
+                        <input type="text" id="address" name="address" placeholder="Street name and number" />
                     </div>
                     <div>
                         <label htmlFor="postcode">Postcode</label>
                         <input type="text" id="postcode" name="postcode" />
                     </div>
                     <button type="submit">Sign Up</button>
-                    <p>Already have an account? Log in</p>
+                    <p>Already have an account? <a href="./login">Log in!</a></p>
                 </form>
             </div>
         </div>

@@ -12,7 +12,7 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/forum" element={<ForumMain />} />
           <Route path="/signup" element={<RegistrationMain />} />
           {/* Add more routes here if needed */}
