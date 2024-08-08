@@ -1,7 +1,6 @@
 //connect to village database
 const sql = require('mysql2/promise');
 
-
  //connect via pool using credentials stored in .env
 const database = sql.createPool({
     host: process.env.DB_HOST,
@@ -10,7 +9,6 @@ const database = sql.createPool({
     database: process.env.DB_NAME,
     port: process.env.DB_PORT,
   });
-  
   
   // Export the database 
   module.exports = database;  

@@ -16,16 +16,11 @@ app.use("/threads", threadRouter);
 const topicRouter = require("./routes/topics");
 app.use("/api/topics", topicRouter);
 
-
-
-
 // creating and connecting to the port 
 const port = process.env.SERVER_PORT || 3000; ;
 app.listen(port, () => {
   console.log(`server is running on http://localhost:${port}`);
 });
-
-
 
 //checking connection and error-logging if not working
 app.get("/check", async (req, res) => {
@@ -42,15 +37,9 @@ app.get("/check", async (req, res) => {
   }
 });
 
-
 // creating route end point
 app.get(`/`, (req, res) => {
   res.status(200).send('Welcome to your Village!')});
-
-
-
-
-
 
 // getting all villagers
 app.get('/villagers', async (req, res) => {
@@ -62,9 +51,6 @@ app.get('/villagers', async (req, res) => {
     res.status(500).json({ message: 'An error has occurred', error: error.message });
   }
 });
-
-
-
 
 // getting thread 1
 //not a final idea for coding but shows how the tables come together to generate threads and posts.
@@ -83,10 +69,6 @@ app.get('/thread1', async (req, res) => {
   }
 });
 
-
-
-
-
 // Route to create a new forum topic
 app.post('/api/forum', async (req, res) => {
   const { title, content, user_name, topic, carers_tag, expecting_parents_tag, new_parents_tag, single_parents_tag, LGBTQIA_plus_parents_tag } = req.body;
@@ -104,9 +86,6 @@ app.post('/api/forum', async (req, res) => {
   }
 });
 
-
-
-
 // Route to fetch user data
 app.get('/api/user/:userId', async (req, res) => {
   const userId = req.params.userId;
@@ -122,10 +101,5 @@ app.get('/api/user/:userId', async (req, res) => {
     res.status(500).json({ message: 'An error occurred', error: error.message });
   }
 });
-
-
-
-
-
 
 module.exports = database;
