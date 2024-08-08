@@ -36,7 +36,7 @@ const ForumMain = () => {
         ) : (
           <ul className="TownHallPosts">
             {threads.map(thread => (
-              <li key={thread.thread_id}>{thread.thread_title}</li>
+              <li key={thread.thread_id}>{thread.topic}</li>
             ))}
           </ul>
         )}
