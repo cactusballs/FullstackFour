@@ -1,0 +1,24 @@
+button  {
+  background-color: white; 
+  color:  #F0F1E8;
+  padding: 0.6em 1.2em;
+  border: none;
+  cursor: pointer;
+  gap: 0.5rem;
+  margin-top: 3vh;
+  transition: background-color 0.3s;
+  font-family: inherit;  
+}
+
+button:hover {
+  background-color: #0F5C3C; 
+}
+
+  /* Colours from figma (11) #000000 black #FFFFFF white
+  #485F39 forest green
+  #7E3400 brown 
+  #F0F1E8 #D0D2B7 #D9D9D9 various shades of white? 
+  #A4B387 light green
+  #0F5C3C dark green
+  #F5F5F5 a white?
+  #FF9900 orange*/
