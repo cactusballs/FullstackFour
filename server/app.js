@@ -5,6 +5,8 @@ const sql = require('mysql2/promise'); //possibly don't need import here anymore
 const cors = require('cors');
 require('dotenv').config({ path: '../.env' });
 const database = require("./database");
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 app.use(cors());
 app.use(express.json());
@@ -97,6 +99,33 @@ app.get('/api/user/:userId', async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
     res.status(200).json(results[0]);
+  } catch (error) {
+    res.status(500).json({ message: 'An error occurred', error: error.message });
+  }
+});
+
+
+// Login Route
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const [results] = await database.query('SELECT * FROM villagers WHERE email = ?', [email]);
+    if (results.length === 0) {
+      return res.status(401).json({ message: 'Invalid email or password 🙁' });
+    }
+
+    const user = results[0];
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) {
+      console.log(password, user.password)
+      return res.status(401).json({ message: 'Invalid email or password 😭🥲' });
+    }
+
+    // Generate JWT
+    const token = jwt.sign({ id: user.villager_id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+    res.status(200).json({ token, user: { id: user.villager_id, email: user.email, user_name: user.user_name } });
   } catch (error) {
     res.status(500).json({ message: 'An error occurred', error: error.message });
   }
