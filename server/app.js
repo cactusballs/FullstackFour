@@ -125,7 +125,42 @@ app.get('/api/user/:userId', async (req, res) => {
 
 
 
+// Route for user authentication
 
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
 
+  const query = 'SELECT * FROM villagers WHERE email = ?';
+  db.execute(query, [email], (err, results) => {
+    if (err) {
+      console.error('Database query error:', err);
+      res.status(500).json({ msg: 'Internal server error' });
+      return;
+    }
+
+    if (results.length === 0) {
+      res.status(401).json({ msg: 'Invalid email or password' });
+      return;
+    }
+
+    const user = results[0];
+
+    bcrypt.compare(password, user.password, (err, isMatch) => {
+      if (err) {
+        console.error('Error comparing passwords:', err);
+        res.status(500).json({ msg: 'Internal server error' });
+        return;
+      }
+
+      if (!isMatch) {
+        res.status(401).json({ msg: 'Invalid email or password' });
+        return;
+      }
+
+      // User authenticated successfully
+      res.json({ msg: 'Login successful', user: { id: user.villager_id, email: user.email } });
+    });
+  });
+});
 
 module.exports = database;
