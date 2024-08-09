@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { CaretLeftBold } from "../icons/CaretLeft.jsx";
 import { CaretRightBold } from "../icons/CaretRight.jsx";
 import { SpeakerLowDuotone } from "../icons/Loudspeaker.jsx";
+import BroadcastModal from "./Modal.jsx";
+import ForumButton from "../forum/ForumButton.jsx";
 
 function BroadcastMessages() {
   const [messages, setMessages] = useState([]);
@@ -39,8 +41,6 @@ function BroadcastMessages() {
     }
   };
 
-  const postMessage = () => {};
-
   const emptyCarousel = <p>Currently no new broadcast messages</p>;
 
   // calling endpoints from frontend
@@ -67,22 +67,6 @@ function BroadcastMessages() {
     fetchMessages();
   }, []);
 
-  async function postData() {
-    try {
-      const response = await fetch("http://localhost:3000/broadcastmessages", {
-        method: "POST",
-        body: JSON.stringify({ key: "value" }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const json = await response.json();
-      console.log(json);
-    } catch (err) {
-      console.err("Error:", err);
-    }
-  }
-
   return (
     <>
       <div className="dashboard-card">
@@ -104,9 +88,7 @@ function BroadcastMessages() {
               <CaretRightBold />
             </button>
           </div>
-          <button className="create-message" onClick={postMessage}>
-            Create
-          </button>
+          <BroadcastModal />
         </div>
       </div>
     </>

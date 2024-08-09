@@ -2,6 +2,7 @@
 
 .dashboard-card {
   background-color: #485f39;
+  width: 390px;
   border-radius: 10px;
   margin: 0;
   padding: 0;
@@ -23,7 +24,7 @@
 
 .dashboard-card-content {
   height: 200px;
-  width: 380px;
+  width: 390px;
   background-color: #f0f1e8;
   color: black;
 }
