@@ -1,24 +1,56 @@
-.titleContainer{
+.threadContainer {
+  background-color: #abb3ab;
+  color: #233115;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
-  font-weight: bold;
+  flex-direction: column;
 }
 
 
-.container-2{
-    display: flex; 
-     justify-content: space-between;
-     text-align: left;
+h3{
+    background-color: #0F5C3C; 
+    color: #F0F1E8;
+    margin: 0;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
 
-.postItem{
-    text-align: left;
+.threadTitle{
+font-weight: bold;
 }
 
 
-
-.postInfo{
-    color: darkcyan;
+.mainQuestion{
     font-style: italic;
-    font-size: smaller;
+    margin: -2px;
+}
+
+.threadStart{
+    background-color: #FFF; 
+    color: #233115;
+    border: 1px solid #ddd;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 8px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.postItem {
+  text-align: left;
+}
+
+.postInfo {
+  color: darkcyan;
+  font-style: italic;
+  font-size: smaller;
 }

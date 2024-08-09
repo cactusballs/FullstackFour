@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./SingleThread.css";
 
-
-const SingleThread = ({id}) => {
+const SingleThread = ({ id }) => {
   const [threads, setThreads] = useState([]);
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
@@ -47,28 +46,25 @@ const SingleThread = ({id}) => {
 
   let threadsArr = threads[0];
 
-
   return (
-    <>
-      <div className="titleContainer">
-        {threads.length > 0 ? (
-          <>
-            <div>
-              <p>{threadsArr.thread_title}</p>
-              <p> user: {threadsArr.user_name}</p>
-            </div>
-
-            <div className="container-2">
-              <p>{threadsArr.content}</p>
-              <p> {new Date(threadsArr.sent_at).toLocaleString()}</p>
-
-              <p>{posts.content}</p>
-            </div>
-          </>
-        ) : (
-          <p>Loading conversation</p>
-        )}
-      </div>
+    <div className="threadContainer">
+       { console.log("Current thread ID:", id)}
+      {threads.length > 0 ? (
+        <>
+         
+            <h3>Join the conversation</h3>
+            <div className="threadStart">
+            <p className="threadTitle">{threadsArr.thread_title}</p>
+            <p className="mainQuestion">{threadsArr.content}</p>
+            <p className="postInfo">
+              {threadsArr.user_name} @ {new Date(threadsArr.sent_at).toLocaleString()}
+            </p>
+          </div>
+          
+        </>
+      ) : (
+        <p>Loading thread</p>
+      )}
 
       {posts.length > 0 ? (
         posts.map((post) => (
@@ -82,7 +78,7 @@ const SingleThread = ({id}) => {
       ) : (
         <p>No posts found for this thread.</p>
       )}
-    </>
+    </div>
   );
 };
 
