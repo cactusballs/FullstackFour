@@ -36,7 +36,12 @@ const Registration = () => {
                     </div>
                     <div>
                         <label htmlFor="location">Location</label>
-                        <input type="text" id="location" name="location" required />
+                        <select id="location" name="location">
+                            <option value="north">North London</option>
+                            <option value="south">South London</option>
+                            <option value="west">West London</option>
+                            <option value="east">East London</option>
+                        </select>
                     </div>
                     <div>
                         <label htmlFor="password">Password</label>
