@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './Registration.css';
+import logo from '../../assets/images/village-logo.png';
 
 const Registration = () => {
     return (
         <div className="signup-container">
             <div className="signup-form">
+                <div className="logo">
+                    <img src={logo} alt="Village Logo" />
+                </div>
                 <form>
                     <div>
                         <label htmlFor="first_name">First Name</label>
