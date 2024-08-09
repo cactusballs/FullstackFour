@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS villagers (
 CREATE TABLE IF NOT EXISTS broadcast_messages (
 	broadcast_message_id INT AUTO_INCREMENT PRIMARY KEY,
     villager_id INT,
-    message_content VARCHAR(150),
+    message_content VARCHAR(120),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (villager_id) REFERENCES villagers(villager_id)
 );
