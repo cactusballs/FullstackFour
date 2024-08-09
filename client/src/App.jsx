@@ -6,6 +6,7 @@ import "./components/dashboard/ImageCarousel.css";
 import ForumTopicThreads from "./components/forum/ForumTopicThreads";
 import ForumMain from "./components/forum/ForumMain";
 import Login from "./components/login/Login"; // Import the Login component
+import SingleThread from "./components/forum/SingleThread.jsx";
 //import TopicsDropdown from "./components/forum/DropdownMenu/Dropdown/TopicsDropdown";
 
 function App() {
@@ -28,6 +29,7 @@ function Forum() {
     <div>
       <ForumMain />
       <ForumTopicThreads />
+      <SingleThread/>
       {/* I've put both here for now so can look at one below the other */}
     </div>
   );
