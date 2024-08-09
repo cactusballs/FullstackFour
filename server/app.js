@@ -91,7 +91,7 @@ app.get('/thread1', async (req, res) => {
 app.post('/api/forum', async (req, res) => {
   const { title, content, user_name, topic, carers_tag, expecting_parents_tag, new_parents_tag, single_parents_tag, LGBTQIA_plus_parents_tag } = req.body;
   const sql = `
-    INSERT INTO threads (thread_title, content, user_name, topic, carers_tag, expecting_parents_tag, new_parents_tag, single_parents_tag, LGBTQIA_plus_parents_tag)
+    INSERT INTO threads (thread_title, content, topic, carers_tag, expecting_parents_tag, new_parents_tag, single_parents_tag, LGBTQIA_plus_parents_tag)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
   const values = [title, content, user_name, topic, carers_tag, expecting_parents_tag, new_parents_tag, single_parents_tag, LGBTQIA_plus_parents_tag];
