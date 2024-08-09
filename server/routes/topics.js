@@ -7,13 +7,9 @@ const database = require("../database");
 //   res.status(200).send("Welcome to your topics!");
 // });
 
-
 //ALL ENDPOINTS HERE PRECEDED BY /API/TOPICS 
 
-
 // defining API endpoints for each topic forum using query parameters
-
-
 
 topicRouter.get('/', async (req, res) => {
     // Define the array of topics
@@ -62,7 +58,5 @@ topicRouter.get('/', async (req, res) => {
       res.status(500).json({ message: 'Error', error: error.message });
     }
   });
-
-
 
 module.exports = topicRouter;

@@ -3,12 +3,7 @@ const threadRouter = express.Router();
 const database = require("../database");
 
 
-
-
 //ALL ENDPOINTS HERE PRECEDED BY /THREADS e.g. /THREADS/THREAD1:
-
-
-
 
 //displaying all threads in forum main page: i.e. starting conversation post for each
 threadRouter.get("/", async (req, res) => {
@@ -23,9 +18,6 @@ threadRouter.get("/", async (req, res) => {
       .json({ message: "An error has occurred", error: error.message });
   }
 });
-
-
-
 
 //update to take parameter so can return a thread + posts
 threadRouter.get("/thread1", async (req, res) => {
@@ -43,11 +35,5 @@ threadRouter.get("/thread1", async (req, res) => {
         .json({ message: "An error has occurred", error: error.message });
     }
   });
-  
-
-
-
-
-
 
 module.exports = threadRouter;
