@@ -13,18 +13,25 @@
   justify-content: space-between;
   align-items: center;
   margin: 0px 30px;
-  padding: 10px 0px;
+  padding: 0px 0px;
+  height: 78px;
   background-color: #485f39;
   border-radius: 10px;
   color: white;
   text-align: center;
-  font-size: 24px;
+  font-size: 22px;
   font-family: "League Spartan";
 }
 
+.dashboard-card-title {
+  padding: 20px;
+}
+
 .dashboard-card-content {
+  display: flex;
   height: 200px;
   width: 390px;
+  padding: 26px 0px 0px 0px;
   background-color: #f0f1e8;
   color: black;
 }
@@ -32,8 +39,9 @@
 .dashboard-card-footer {
   background-color: #485f39;
   display: flex;
-  margin: 0;
-  padding: 10px 20px;
+  align-items: center;
+  height: 62px;
+  padding: 0px 14px;
   border-radius: 10px;
   color: white;
   justify-content: space-between;
@@ -41,20 +49,37 @@
 
 .broadcast-item {
   margin-bottom: 16px;
-  padding: 16px;
 }
 
 .broadcast-author {
   color: #7e3400;
-  margin: 0px 0 10px 100px;
+  margin: 0px 0 10px 30px;
   text-align: left;
+}
+
+.profile-image {
+  width: 60px;
+  height: 60px;
+  margin-left: 30px;
+  margin-top: 6px;
+  border-radius: 10px;
+  border: 0.5px solid black;
 }
 
 .broadcast-content {
   font-family: "Verdana";
 }
 
+.broadcast-message,
+#empty-broadcast-message {
+  text-align: left;
+  margin-left: 30px;
+  margin-right: 24px;
+  font-size: 14px;
+}
+
 .broadcast-arrows {
+  display: flex;
   margin-top: 5px;
 }
 
@@ -70,4 +95,19 @@
 
 #loudspeaker-right {
   transform: rotate(180deg);
+}
+
+.broadcast-footer {
+  background-color: #485f39;
+  display: flex;
+}
+
+.broadcast-arrow {
+  background-color: #485f39;
+  color: white;
+}
+
+.broadcast-buttons:hover {
+  background-color: #f0f1e8;
+  transition: 0.3s ease-in;
 }

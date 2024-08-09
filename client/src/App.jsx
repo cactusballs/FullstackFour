@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
+import Card from "./components/dashboard/Card.jsx";
 import BroadcastMessages from "./components/dashboard/Broadcast.jsx";
 import ImageCarousel from "./components/dashboard/ImageCarousel.jsx";
 // import "./components/dashboard/ImageCarousel.css";
@@ -36,6 +37,7 @@ function Forum() {
 function Dashboard() {
   return (
     <>
+      <Card />
       <BroadcastMessages />
       <ImageCarousel />
       {/* Use ImageCarousel component with correct capitalization */}

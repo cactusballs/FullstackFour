@@ -16,7 +16,6 @@ import {
 } from "@chakra-ui/react";
 
 import ForumButton from "../forum/ForumButton.jsx";
-
 import { useState } from "react";
 
 function BroadcastModal() {
@@ -34,7 +33,7 @@ function BroadcastModal() {
     try {
       const response = await fetch("http://localhost:3000/broadcastmessages", {
         method: "POST",
-        body: JSON.stringify({ key: "message" }),
+        body: JSON.stringify({ message_content: message }),
         headers: {
           "Content-Type": "application/json",
         },
@@ -48,13 +47,19 @@ function BroadcastModal() {
     } catch (err) {
       console.err("Error:", err);
     }
-
-    handleSubmit(e);
   }
 
   return (
     <>
-      <Button onClick={onOpen} onSubmit={handleSubmit}>
+      <Button
+        onClick={onOpen}
+        onSubmit={handleSubmit}
+        w="100px"
+        p="10px 20px"
+        fontSize="14px"
+        bg="#F4F5EC"
+        color="black"
+      >
         Create
       </Button>
 
@@ -113,7 +118,6 @@ function BroadcastModal() {
               className="broadcast-button"
             ></ForumButton>
             <ForumButton
-              type="submit"
               buttonContent="Submit"
               onClick={handleSubmit}
               className="broadcast-button"

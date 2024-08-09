@@ -41,7 +41,9 @@ function BroadcastMessages() {
     }
   };
 
-  const emptyCarousel = <p>Currently no new broadcast messages</p>;
+  const emptyCarousel = (
+    <p id="empty-broadcast-message">Currently no new broadcast messages</p>
+  );
 
   // calling endpoints from frontend
   useEffect(() => {
@@ -72,19 +74,32 @@ function BroadcastMessages() {
       <div className="dashboard-card">
         <div className="dashboard-card-header">
           <SpeakerLowDuotone />
-          <p className="dashboard-card-header">Broadcast</p>
+          <p>Broadcast</p>
           <SpeakerLowDuotone id="loudspeaker-right" />
         </div>
         <div className="dashboard-card-content">
+          <img
+            src="../src/assets/images/default-user-icon.png"
+            className="profile-image"
+          ></img>
           {/* if there are no messages, display displayCarousel message else display current index */}
           {!messages.length ? emptyCarousel : displayMessage}
         </div>
         <div className="dashboard-card-footer">
           <div className="broadcast-arrows">
-            <button onClick={previousMessage}>
+            {/* 
+            not working due to icon not being defined */}
+            {/* <ForumButton
+              onClick={previousMessage}
+              className="broadcast-button"
+              icon={<CaretLeftBold />}
+            >
+              {icon}
+            </ForumButton> */}
+            <button onClick={previousMessage} className="broadcast-arrow">
               <CaretLeftBold />
             </button>
-            <button onClick={nextMessage}>
+            <button onClick={nextMessage} className="broadcast-arrow">
               <CaretRightBold />
             </button>
           </div>
