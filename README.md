@@ -9,6 +9,7 @@
 
 ## Server setup
 - copy of .env.example save as '.env' and update with personal details
+- `cd server`
 - run `npm install`
 
 Running server:
@@ -16,6 +17,7 @@ Running server:
 
 
 ## Client setup
+- `cd client`
 - run `npm install`
 
 Running frontend / client:
