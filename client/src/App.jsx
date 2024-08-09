@@ -29,8 +29,8 @@ function Forum() {
     <div>
       <ForumMain />
       <ForumTopicThreads />
-      <SingleThread/>
-      {/* I've put both here for now so can look at one below the other */}
+      <SingleThread  id={2} />
+      {/* update thread id to navigate between threads*/}
     </div>
   );
 }

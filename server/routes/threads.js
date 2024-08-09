@@ -24,8 +24,6 @@ threadRouter.get("/threadheader", async (req, res) => {
   const { thread_id } = req.query;
   const queryParam = parseInt(thread_id);
 
-  
-
   if (!thread_id || typeof queryParam != "number") {
     return res.status(400).send({
       message:
@@ -42,7 +40,6 @@ threadRouter.get("/threadheader", async (req, res) => {
       return res.status(400).send({ message: "no thread titles with this id" });
     }
     res.status(200).json(threadResults);
-    
   } catch (error) {
     res.status(500).json({ message: "Error", error: error.message });
   }
@@ -70,7 +67,6 @@ threadRouter.get("/threadheader/posts", async (req, res) => {
       return res.status(400).send({ message: "no posts with this id" });
     }
     res.status(200).json(postResults);
-    
   } catch (error) {
     res.status(500).json({ message: "Error", error: error.message });
   }
