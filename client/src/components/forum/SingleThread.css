@@ -1,0 +1,23 @@
+.titleContainer{
+  display: flex;
+  font-weight: bold;
+}
+
+
+.container-2{
+    display: flex; 
+     justify-content: space-between;
+     text-align: left;
+}
+
+
+.postItem{
+    text-align: left;
+}
+
+
+
+.postInfo{
+    color: darkcyan;
+    font-style: italic;
+}
