@@ -6,6 +6,7 @@ import "./components/dashboard/ImageCarousel.css";
 import ForumTopicThreads from "./components/forum/ForumTopicThreads";
 import ForumMain from "./components/forum/ForumMain";
 import Login from "./components/login/Login"; // Import the Login component
+import Registration from "./components/registration/Registration"; 
 //import TopicsDropdown from "./components/forum/DropdownMenu/Dropdown/TopicsDropdown";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/forum" element={<Forum />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/signup" element={<Registration />} />
           {/* Add more routes here if needed */}
         </Routes>
       </div>
