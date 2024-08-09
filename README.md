@@ -4,20 +4,20 @@
 (rough notes)
 
 - git clone from repo
+- run .sql file in MySql
 
 
-##Server setup
+## Server setup
 - copy of .env.example save as '.env' and update with personal details
 - run `npm install`
-
 
 Running server:
 - run `npm start` in the console
 
 
+## Client setup
+- run `npm install`
+
 Running frontend / client:
 - `npm run dev` in the console (Vite used for Client)
 
-##Client setup
-- run `npm install`
-- run `npm run dev`
