@@ -197,4 +197,23 @@ app.post("/broadcastmessages", async (req, res) => {
   }
 });
 
+// dashboards - get top 7 recent forum posts
+app.get("/recentPosts", async (req, res) => {
+  const recentPosts = `SELECT 
+    village.posts_to_threads.content,
+    village.posts_to_threads.sent_at
+FROM
+    village.posts_to_threads
+ORDER BY sent_at DESC
+LIMIT 7;`;
+
+  try {
+    const [results] = await database.query(recentPosts);
+    res.status(200).json(results);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ status: "Failed to retrieve recent forum posts" });
+  }
+});
+
 module.exports = database;
