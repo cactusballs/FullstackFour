@@ -219,3 +219,29 @@ LIMIT 7;`;
 });
 
 module.exports = database;
+
+// dashboards - polling - get poll title
+app.get("/pollInfo/:pollId", async (req, res) => {
+  const pollId = req.params.pollId;
+  const sqlPollMain = "SELECT * FROM poll WHERE id = ?";
+  const sqlPollOptions = "SELECT poll_options.label from poll_options WHERE poll_id = ?"
+
+  try {
+    const [pollMainResults] = await database.query(sqlPollMain, [pollId]);
+    if (pollMainResults.length === 0) {
+      return res.status(404).json({ message: "Poll not found" });
+    }
+
+    const [pollOptionsResults] = await database.query(sqlPollOptions, [pollId]);
+    if (pollOptionsResults.length === 0) {
+      return res.status(404).json({ message: "Poll options not found" });
+    }
+
+    res.status(200).json({
+      poll: pollMainResults[0],
+      options: pollOptionsResults
+    });
+  } catch (error) {
+    res.status(500).json({ message: "An error occurred", error: error.message });
+  }
+});
