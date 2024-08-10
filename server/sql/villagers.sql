@@ -278,3 +278,36 @@ CREATE TABLE IF NOT EXISTS poll (
 	FOREIGN KEY (poll_options_id)
         REFERENCES poll_options (id)
 );
+
+-- populate users table
+
+INSERT INTO poll
+(title, created_at)
+VALUES
+("are you seeing this?", CURRENT_TIMESTAMP()),
+("do you live in London?", CURRENT_TIMESTAMP())
+;
+
+INSERT INTO poll_options
+(poll_id, label)
+VALUES
+(1, "Yes"),
+(1, "No"),
+(2, "Yes"),
+(2, "No"),
+(2, "Close by")
+;
+
+INSERT INTO poll_votes
+(poll_id, poll_options_id, created_at)
+VALUES
+(1, 1, CURRENT_TIMESTAMP()),
+(1, 1, CURRENT_TIMESTAMP()),
+(1, 1, CURRENT_TIMESTAMP()),
+(1, 1, CURRENT_TIMESTAMP()),
+(1, 1, CURRENT_TIMESTAMP()),
+(1, 1, CURRENT_TIMESTAMP()),
+(1, 2, CURRENT_TIMESTAMP()),
+(2, 3, CURRENT_TIMESTAMP()),
+(2, 4, CURRENT_TIMESTAMP())
+;
