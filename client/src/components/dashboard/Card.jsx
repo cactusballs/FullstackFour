@@ -1,17 +1,19 @@
 import "./Card.css";
 import React from "react";
 
+// style may need correcting
 const Card = ({
   cardTitle,
   cardIcon,
   cardLink,
   cardContent,
+  cardList,
   handleClick,
   buttonText,
-  style = { height },
+  style = {},
 }) => {
   return (
-    <div className="card">
+    <div className="card" style={style}>
       {/* card header- some cards don't have links (optional to use) */}
       <div className="card-header">
         <span className="card-icon">{cardIcon}</span>
@@ -20,9 +22,10 @@ const Card = ({
           {cardLink.text}
         </a>
       </div>
-      {/* card content- may need tweaking to allow lists as well as p tags*/}
+      {/* card content- may need tweaking to render list */}
       <div className="card-content">
         <p>{cardContent}</p>
+        <ul className="card-list">{cardList}</ul>
       </div>
       {/* footer is optional (when there's no button at the bottom of card) e.g., event cards */}
       {/* footer is only rendered when you supply a button prop */}
