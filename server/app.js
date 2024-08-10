@@ -201,7 +201,9 @@ app.post("/broadcastmessages", async (req, res) => {
 app.get("/recentPosts", async (req, res) => {
   const recentPosts = `SELECT 
     village.posts_to_threads.content,
-    village.posts_to_threads.sent_at
+    village.posts_to_threads.sent_at,
+    village.posts_to_threads.thread_id,
+    village.posts_to_threads.post_id
 FROM
     village.posts_to_threads
 ORDER BY sent_at DESC
