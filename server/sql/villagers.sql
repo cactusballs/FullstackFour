@@ -247,3 +247,34 @@ VALUES (1,'LJ','Lottie is a cool name!'),(1,'FA','Fatima is a cool name!'),
 (30, 'CB', 'Our midwife was fantastic in guiding us through our birth plan.'),
 (30, 'LJ', 'Dont be afraid to speak up about your needs. Its your birth experience.');
 
+-- db schema for  polling feature
+-- -- poll: main poll information (id + question)
+-- -- poll_options: references poll.id through poll_id and contains each option per poll
+-- -- poll_votes: records an entry each time a user submits a response to a poll, references both the poll.id and poll_options.id through poll_id and poll_options_id
+
+-- creating tables
+
+CREATE TABLE IF NOT EXISTS poll (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP NOT NULL
+);
+  
+  CREATE TABLE IF NOT EXISTS poll_options (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	poll_id INT NOT NULL,
+    label VARCHAR(50) NOT NULL,
+    FOREIGN KEY (poll_id)
+        REFERENCES poll (id)
+);
+
+ CREATE TABLE IF NOT EXISTS poll_votes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    poll_id INT NOT NULL,
+    poll_options_id INT NOT NULL,
+	created_at TIMESTAMP NOT NULL,
+	FOREIGN KEY (poll_id)
+        REFERENCES poll (id),
+	FOREIGN KEY (poll_options_id)
+        REFERENCES poll_options (id)
+);
