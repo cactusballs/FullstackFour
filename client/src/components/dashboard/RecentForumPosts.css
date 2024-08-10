@@ -1,0 +1,37 @@
+.RecentForumPosts-card {
+    background-color: #485f39;
+    border-radius: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+.RecentForumPosts-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 30px;
+    padding: 10px 0px;
+    background-color: #485f39;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    font-family: "League Spartan";
+}
+
+.RecentForumPosts-card-content {
+    height: 200px;
+    width: 380px;
+    background-color: #f0f1e8;
+    color: black;
+}
+
+.RecentForumPosts-card-footer {
+    background-color: #485f39;
+    display: flex;
+    margin: 0;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    justify-content: space-between;
+}
