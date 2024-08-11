@@ -9,6 +9,7 @@ import Login from "./components/login/Login"; // Import the Login component
 import SingleThread from "./components/forum/SingleThread.jsx";
 import Footer from "./components/footer/Footer.jsx";
 import Body from "./components/body/Body.jsx";
+import Registration from "./components/registration/Registration.jsx";
 //import TopicsDropdown from "./components/forum/DropdownMenu/Dropdown/TopicsDropdown";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/forum" element={<Forum />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/footer" element={<FooterPage />} />
+          <Route path="/signup" element={<Registration />} />
           {/* Add more routes here if needed */}
         </Routes>
       </div>
