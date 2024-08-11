@@ -10,6 +10,8 @@ import Login from "./components/login/Login"; // Import the Login component
 import SingleThread from "./components/forum/SingleThread.jsx";
 import Footer from "./components/footer/Footer.jsx";
 import Body from "./components/body/Body.jsx";
+import Example from "./components/dashboard/Modal.jsx";
+import LocalEvents from "./components/dashboard/LocalEvents.jsx";
 //import TopicsDropdown from "./components/forum/DropdownMenu/Dropdown/TopicsDropdown";
 
 function App() {
@@ -33,7 +35,7 @@ function Forum() {
     <div>
       <ForumMain />
       <ForumTopicThreads />
-      <SingleThread  id={3} />
+      <SingleThread id={3} />
       {/* update thread id to navigate between conversations*/}
     </div>
   );
@@ -45,17 +47,18 @@ function Dashboard() {
       <Card />
       <BroadcastMessages />
       <ImageCarousel />
+      <Example />
+      <LocalEvents />
       {/* Use ImageCarousel component with correct capitalization */}
     </>
   );
 }
 
-
 function FooterPage() {
   return (
     <>
-      <Body/>
-      <Footer/>
+      <Body />
+      <Footer />
     </>
   );
 }

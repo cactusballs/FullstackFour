@@ -1,7 +1,7 @@
 /* card footer button needs styling */
 
 .card {
-  background-color: #485f39;
+  background-color: #f0f1e8;
   width: 390px;
   border-radius: 10px;
   margin: 0;
@@ -9,22 +9,20 @@
 }
 
 .card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0px 30px;
-  padding: 0px 0px;
-  height: 78px;
   background-color: #485f39;
+  display: flex;
+  align-items: center;
+  height: 78px;
   border-radius: 10px;
   color: white;
-  text-align: center;
+  text-align: left;
   font-size: 22px;
   font-family: "League Spartan";
 }
 
 .card-title {
-  padding: 20px;
+  margin-left: 26px;
+  margin-top: 12px;
 }
 
 .card-content {
@@ -32,7 +30,7 @@
   height: 200px;
   width: 390px;
   padding: 26px 0px 0px 0px;
-  background-color: #f0f1e8;
+  background-color: hsl(67, 24%, 93%);
   color: black;
 }
 
@@ -45,4 +43,13 @@
   border-radius: 10px;
   color: white;
   justify-content: space-between;
+}
+
+.footer-button {
+  padding: "8px 16px";
+  background-color: "#F4F5EC";
+  color: "black";
+  font-family: "Verdana";
+  font-size: "14px";
+  border-radius: "8px";
 }

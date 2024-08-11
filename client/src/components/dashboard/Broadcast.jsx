@@ -1,10 +1,11 @@
 import "./Broadcast.css";
 import React from "react";
 import { useState, useEffect } from "react";
+// import Card from "Card.jsx";
 import { CaretLeftBold } from "../icons/CaretLeft.jsx";
 import { CaretRightBold } from "../icons/CaretRight.jsx";
 import { SpeakerLowDuotone } from "../icons/Loudspeaker.jsx";
-import BroadcastModal from "./Modal.jsx";
+import MessageModal from "./Modal.jsx";
 import ForumButton from "../forum/ForumButton.jsx";
 
 function BroadcastMessages() {
@@ -69,6 +70,15 @@ function BroadcastMessages() {
     fetchMessages();
   }, []);
 
+  // <Card leftIcon={<SpeakerLowDuotone/>}
+  //   title="Broadcast"
+  //   rightIcon={<SpeakerLowDuotone id="loudspeaker-right"/>}
+  //   content={}
+  //   buttonText="Create"
+  //   >
+
+  //   </Card>
+
   return (
     <>
       <div className="dashboard-card">
@@ -103,7 +113,7 @@ function BroadcastMessages() {
               <CaretRightBold />
             </button>
           </div>
-          <BroadcastModal />
+          <MessageModal />
         </div>
       </div>
     </>
