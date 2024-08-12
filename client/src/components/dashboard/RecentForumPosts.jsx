@@ -7,8 +7,9 @@ const RecentForumPosts = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch('http://localhost:3001/recentPosts');
+                const response = await fetch('http://localhost:3000/recentPosts');
                 const data = await response.json();
+                console.log(data);
                 setPosts(data);
             } catch (error) {
                 console.error('Error fetching recent posts:', error);
@@ -27,10 +28,9 @@ const RecentForumPosts = () => {
                 <ul>
                     {posts.length > 0 ? (
                         posts.map((post) => (
-                            <li key={post.id}>
-                                <h3>{post.title}</h3>
-                                <p>{post.excerpt}</p>
-                                <small>Posted by {post.author} on {new Date(post.date).toLocaleDateString()}</small>
+                            <li key={post.post_id}>
+                                <p>{post.content}</p>
+                                <small>Posted on {new Date(post.sent_at).toLocaleDateString()}</small>
                             </li>
                         ))
                     ) : (
@@ -39,10 +39,10 @@ const RecentForumPosts = () => {
                 </ul>
             </div>
             <div className="RecentForumPosts-card-footer">
-                {/* Add any footer content if needed */}
             </div>
         </div>
     );
 };
 
 export default RecentForumPosts;
+
