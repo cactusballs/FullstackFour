@@ -18,7 +18,7 @@
     color: white;
     text-align: center;
     font-size: 24px;
-    font-family: "League Spartan", sans-serif;
+    font-family: "League Spartan"
 }
 
 .RecentForumPosts-card-content {
@@ -27,6 +27,7 @@
     background-color: #f0f1e8;
     color: black;
 }
+
 
 .RecentForumPosts-card-footer {
     background-color: #485f39;
