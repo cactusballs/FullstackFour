@@ -2,7 +2,7 @@ import React from "react";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
-// not working... console mentioning ref
+// not working... console mentioning ref, look into react-bootstrap docs and it mentions onToggle?
 
 const InfoTooltip = ({
   children,

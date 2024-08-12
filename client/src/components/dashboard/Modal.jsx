@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import Information from "../icons/Info.jsx";
+// import Information from "../icons/Info.jsx";
+import { LuInfo } from "react-icons/lu";
 import "./Modal.css";
 // import InfoTooltip from "./Tooltip.jsx";
 
@@ -61,7 +62,20 @@ function MessageModal() {
             >
               <div id="subheading-icon">
                 <Form.Label>Message:</Form.Label>
-                <Information style={{ cursor: "pointer", color: "green" }} />
+                <LuInfo
+                  style={{
+                    cursor: "pointer",
+                    color: "green",
+                    fontSize: "20px",
+                  }}
+                />
+                {/* <Information
+                  style={{
+                    cursor: "pointer",
+                    color: "green",
+                    fontSize: "20px",
+                  }}
+                /> */}
               </div>
               <Form.Control
                 as="textarea"

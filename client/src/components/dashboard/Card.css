@@ -8,6 +8,10 @@
   padding: 0;
 }
 
+svg {
+  font-size: 30px;
+}
+
 .card-header {
   background-color: #485f39;
   display: flex;
@@ -27,11 +31,10 @@
 
 .card-content {
   display: flex;
-  height: 200px;
   width: 390px;
-  padding: 26px 0px 0px 0px;
   background-color: hsl(67, 24%, 93%);
   color: black;
+  padding: 30px;
 }
 
 .card-footer {

@@ -1,12 +1,12 @@
 import "./Broadcast.css";
 import React from "react";
 import { useState, useEffect } from "react";
-// import Card from "Card.jsx";
-import { CaretLeftBold } from "../icons/CaretLeft.jsx";
-import { CaretRightBold } from "../icons/CaretRight.jsx";
-import { SpeakerLowDuotone } from "../icons/Loudspeaker.jsx";
+import { PiSpeakerHighLight } from "react-icons/pi";
+import { FaChevronLeft } from "react-icons/fa6";
+import { FaChevronRight } from "react-icons/fa6";
 import MessageModal from "./Modal.jsx";
-import ForumButton from "../forum/ForumButton.jsx";
+// import ForumButton from "../forum/ForumButton.jsx";
+// import Card from "Card.jsx";
 
 function BroadcastMessages() {
   const [messages, setMessages] = useState([]);
@@ -83,9 +83,9 @@ function BroadcastMessages() {
     <>
       <div className="dashboard-card">
         <div className="dashboard-card-header">
-          <SpeakerLowDuotone />
+          <PiSpeakerHighLight />
           <p>Broadcast</p>
-          <SpeakerLowDuotone id="loudspeaker-right" />
+          <PiSpeakerHighLight id="loudspeaker-right" />
         </div>
         <div className="dashboard-card-content">
           <img
@@ -107,10 +107,12 @@ function BroadcastMessages() {
               {icon}
             </ForumButton> */}
             <button onClick={previousMessage} className="broadcast-arrow">
-              <CaretLeftBold />
+              {/* <CaretLeftBold /> */}
+              <FaChevronLeft />
             </button>
             <button onClick={nextMessage} className="broadcast-arrow">
-              <CaretRightBold />
+              {/* <CaretRightBold /> */}
+              <FaChevronRight />
             </button>
           </div>
           <MessageModal />

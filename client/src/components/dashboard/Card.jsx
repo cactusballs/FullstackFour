@@ -8,7 +8,7 @@ const Card = ({
   rightIcon,
   link,
   linkText,
-  children,
+  content,
   footer,
   footerButton,
 }) => {
@@ -26,9 +26,9 @@ const Card = ({
           {linkText}
         </a>
       </div>
-      {/* card content- may need tweaking to render list */}
-      <div className="card-children">
-        {children || "No content at the moment"}
+      {/* card content- will display default message when there's no 'content', else it'll will render anything under content */}
+      <div className="card-content">
+        {content || "No content at the moment"}
       </div>
       {/* footer is optional (when there's no button at the bottom of card) e.g., event cards */}
       {/* footer is only rendered when you supply a button prop */}

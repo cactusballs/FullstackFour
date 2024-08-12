@@ -47,7 +47,6 @@ function Dashboard() {
       <Card />
       <BroadcastMessages />
       <ImageCarousel />
-      <Example />
       <LocalEvents />
       {/* Use ImageCarousel component with correct capitalization */}
     </>
