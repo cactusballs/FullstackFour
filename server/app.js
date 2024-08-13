@@ -189,7 +189,7 @@ app.get("/broadcastmessages", async (req, res) => {
     res.status(200).json(results);
   } catch (error) {
     console.log(error);
-    res.status(400).json({ status: "Failed to retrieve messages" });
+    res.status(400).json({ message: "Failed to retrieve messages" });
   }
 });
 
@@ -198,7 +198,7 @@ app.post("/broadcastmessages", async (req, res) => {
   const { id, message_content } = req.body;
 
   if (!message_content) {
-    res.status(400).json({ status: "Values cannot be blank" });
+    res.status(400).json({ message: "Values cannot be blank" });
   }
 
   try {
@@ -206,9 +206,9 @@ app.post("/broadcastmessages", async (req, res) => {
       "INSERT INTO broadcast_messages (villager_id, message_content) VALUES (?, ?)",
       [id, message_content]
     );
-    res.status(201).json({ status: "Message posted", data: req.body });
+    res.status(201).json({ message: "Message posted", data: req.body });
   } catch (err) {
-    res.status(400).json({ status: "Unable to post message" });
+    res.status(400).json({ message: "Unable to post message" });
   }
 });
 
