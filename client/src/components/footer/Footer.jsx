@@ -49,7 +49,7 @@ const Footer = () => {
             </a>
           </div>
           <div className="footerLinksDiv">
-            <h4>Partners</h4>
+            <h4>blah-blah</h4>
             <a href="/partners">
               <p>blah-blah-blah</p>
             </a>
