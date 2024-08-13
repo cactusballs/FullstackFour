@@ -21,3 +21,4 @@ Running server:
 Running frontend / client:
 - `npm run dev` in the console (Vite used for Client)
 
+# Village -  Group Project

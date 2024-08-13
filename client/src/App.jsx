@@ -4,6 +4,7 @@ import BroadcastMessages from "./components/dashboard/Broadcast.jsx";
 import ImageCarousel from "./components/dashboard/ImageCarousel.jsx";
 import "./components/dashboard/ImageCarousel.css";
 import ForumTopicThreads from "./components/forum/ForumTopicThreads";
+import RecentForumPosts from "./components/dashboard/RecentForumPosts";
 import ForumMain from "./components/forum/ForumMain";
 import Login from "./components/login/Login"; // Import the Login component
 import SingleThread from "./components/forum/SingleThread.jsx";
@@ -34,7 +35,7 @@ function Forum() {
     <div>
       <ForumMain />
       <ForumTopicThreads />
-      <SingleThread  id={3} />
+      <SingleThread id={3} />
       {/* update thread id to navigate between conversations*/}
     </div>
   );
@@ -44,6 +45,7 @@ function Dashboard() {
   return (
     <>
       <BroadcastMessages />
+      <RecentForumPosts />
       <ImageCarousel />
       {/* Use ImageCarousel component with correct capitalization */}
     </>
@@ -54,8 +56,8 @@ function Dashboard() {
 function FooterPage() {
   return (
     <>
-      <Body/>
-      <Footer/>
+      <Body />
+      <Footer />
     </>
   );
 }
