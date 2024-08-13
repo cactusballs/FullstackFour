@@ -23,8 +23,12 @@
   font-family: "League Spartan";
 }
 
-.dashboard-card-title {
-  padding: 20px;
+.broadcast-icon {
+  font-size: 30px;
+}
+
+.dashboard-card-header h4 {
+  margin: 0;
 }
 
 .dashboard-card-content {
@@ -80,7 +84,7 @@
 
 .broadcast-arrows {
   display: flex;
-  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .create-message {
@@ -105,6 +109,8 @@
 .broadcast-arrow {
   background-color: #485f39;
   color: white;
+  padding: 8px;
+  font-size: 24px;
 }
 
 .broadcast-buttons:hover {

@@ -21,7 +21,10 @@ function LocalEvents() {
     <Card
       leftIcon={<TbLocation />}
       title="Events in your area"
-      footerButton="View All"
+      link=""
+      linkText="View All"
+      // just for show- testing + styling footerButton
+      footerButton="view"
     >
       {/* <ul>
         <li>Hi</li>

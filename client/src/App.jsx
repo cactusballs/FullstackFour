@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Card from "./components/dashboard/Card.jsx";
 import BroadcastMessages from "./components/dashboard/Broadcast.jsx";
 import ImageCarousel from "./components/dashboard/ImageCarousel.jsx";
 // import "./components/dashboard/ImageCarousel.css";
@@ -11,7 +10,6 @@ import SingleThread from "./components/forum/SingleThread.jsx";
 import Footer from "./components/footer/Footer.jsx";
 import Body from "./components/body/Body.jsx";
 import Registration from "./components/registration/Registration.jsx";
-import Example from "./components/dashboard/Modal.jsx";
 import LocalEvents from "./components/dashboard/LocalEvents.jsx";
 //import TopicsDropdown from "./components/forum/DropdownMenu/Dropdown/TopicsDropdown";
 
@@ -46,7 +44,6 @@ function Forum() {
 function Dashboard() {
   return (
     <>
-      <Card />
       <BroadcastMessages />
       <ImageCarousel />
       <LocalEvents />

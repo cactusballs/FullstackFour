@@ -27,9 +27,22 @@
   align-items: center;
 }
 
+/* have to use media query to modify width of textarea (mobile) */
 textarea.form-control {
   width: 450px;
   margin: 0px 8px;
   font-size: 13px;
   font-family: "Verdana";
+}
+
+/* styles for modal info button- when hovering shows a tooltip */
+.modal-button {
+  width: 46px;
+  height: 46px;
+  padding: 8px;
+  color: green;
+}
+
+.modal-button svg {
+  color: green;
 }

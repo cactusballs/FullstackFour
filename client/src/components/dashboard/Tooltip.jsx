@@ -1,24 +1,32 @@
 import React from "react";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import { LuInfo } from "react-icons/lu";
+import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
 
-// not working... console mentioning ref, look into react-bootstrap docs and it mentions onToggle?
+// designed for broadcast's modal (info)
 
-const InfoTooltip = ({
-  children,
-  tooltipText,
-  placement = "right",
-  delay = { show: 250, hide: 400 },
-}) => {
-  const renderTooltip = (props) => {
-    <Tooltip id="infoTooltip" {...props}>
-      {tooltipText}
-    </Tooltip>;
-  };
-
+const InfoTooltip = () => {
   return (
-    <OverlayTrigger placement={placement} delay={delay} overlay={renderTooltip}>
-      {children}
+    <OverlayTrigger
+      placement="right"
+      delay={{ show: 250, hide: 400 }}
+      overlay={
+        <Tooltip id="tooltip-info">
+          Your message will be broadcasted to all villagers for the next 24
+          hours and can't be deleted/edited once you submit it.
+        </Tooltip>
+      }
+    >
+      {({ ref, ...triggerHandler }) => (
+        <Button variant="light" {...triggerHandler} className="modal-button">
+          <Image ref={ref} roundedCircle src="" />
+          <span>
+            <LuInfo />
+          </span>
+        </Button>
+      )}
     </OverlayTrigger>
   );
 };

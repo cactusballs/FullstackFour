@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-// import Information from "../icons/Info.jsx";
 import { LuInfo } from "react-icons/lu";
+import InfoTooltip from "./Tooltip.jsx";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import "./Modal.css";
-// import InfoTooltip from "./Tooltip.jsx";
 
 function MessageModal() {
   const [show, setShow] = useState(false);
@@ -46,10 +47,11 @@ function MessageModal() {
 
   return (
     <>
-      <Button variant="light" onClick={handleShow}>
+      {/* button to click on and open modal/pop-up */}
+      <Button onClick={handleShow} className="footer-button">
         Create
       </Button>
-
+      {/* modal content */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Broadcast your message to all</Modal.Title>
@@ -62,20 +64,15 @@ function MessageModal() {
             >
               <div id="subheading-icon">
                 <Form.Label>Message:</Form.Label>
-                <LuInfo
-                  style={{
-                    cursor: "pointer",
-                    color: "green",
-                    fontSize: "20px",
-                  }}
-                />
-                {/* <Information
-                  style={{
-                    cursor: "pointer",
-                    color: "green",
-                    fontSize: "20px",
-                  }}
-                /> */}
+                <InfoTooltip tooltipText="Your message will be seen by all villagers for the next 24 hours once submitted">
+                  <LuInfo
+                    style={{
+                      cursor: "pointer",
+                      color: "green",
+                      fontSize: "20px",
+                    }}
+                  />
+                </InfoTooltip>
               </div>
               <Form.Control
                 as="textarea"

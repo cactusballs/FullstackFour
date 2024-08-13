@@ -6,7 +6,7 @@ import { FaChevronLeft } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa6";
 import MessageModal from "./Modal.jsx";
 // import ForumButton from "../forum/ForumButton.jsx";
-// import Card from "Card.jsx";
+import Card from "./Card.jsx";
 
 function BroadcastMessages() {
   const [messages, setMessages] = useState([]);
@@ -70,24 +70,19 @@ function BroadcastMessages() {
     fetchMessages();
   }, []);
 
-  // <Card leftIcon={<SpeakerLowDuotone/>}
-  //   title="Broadcast"
-  //   rightIcon={<SpeakerLowDuotone id="loudspeaker-right"/>}
-  //   content={}
-  //   buttonText="Create"
-  //   >
-
-  //   </Card>
-
   return (
     <>
       <div className="dashboard-card">
         <div className="dashboard-card-header">
-          <PiSpeakerHighLight />
-          <p>Broadcast</p>
-          <PiSpeakerHighLight id="loudspeaker-right" />
+          <PiSpeakerHighLight className="broadcast-icon" />
+          <h4>Broadcast</h4>
+          <PiSpeakerHighLight
+            className="broadcast-icon"
+            id="loudspeaker-right"
+          />
         </div>
         <div className="dashboard-card-content">
+          {/* need to work on - show image when there are messages, hide when there's no messages */}
           <img
             src="../src/assets/images/default-user-icon.png"
             className="profile-image"
@@ -97,21 +92,10 @@ function BroadcastMessages() {
         </div>
         <div className="dashboard-card-footer">
           <div className="broadcast-arrows">
-            {/* 
-            not working due to icon not being defined */}
-            {/* <ForumButton
-              onClick={previousMessage}
-              className="broadcast-button"
-              icon={<CaretLeftBold />}
-            >
-              {icon}
-            </ForumButton> */}
             <button onClick={previousMessage} className="broadcast-arrow">
-              {/* <CaretLeftBold /> */}
               <FaChevronLeft />
             </button>
             <button onClick={nextMessage} className="broadcast-arrow">
-              {/* <CaretRightBold /> */}
               <FaChevronRight />
             </button>
           </div>
