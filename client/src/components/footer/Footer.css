@@ -92,4 +92,11 @@ hr{
     width: 100%;
 }
 
+.sb_footer-copyright p{
+    font-size: 13px;
+    line-height: 15px;
+    color: whitesmoke;
+    font-weight: 600;
+}
+
 /* media queries */
