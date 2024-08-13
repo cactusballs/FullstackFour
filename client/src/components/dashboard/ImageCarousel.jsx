@@ -5,17 +5,26 @@ import './ImageCarousel.css';
 
 const ImageCarousel = () => {
     const images = [
-        'https://via.placeholder.com/600x400.png?text=Image+1',
-        'https://via.placeholder.com/600x400.png?text=Image+2',
-        'https://via.placeholder.com/600x400.png?text=Image+3',
+        {
+            src: 'https://images.unsplash.com/photo-1506918092809-0ba639cd1385?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            description: 'Visit the most popular pumpkin patches in London...',
+        },
+        {
+            src: 'https://images.unsplash.com/photo-1532499016263-f2c3e89de9cd?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            description: 'Find the best baking classes in North London.',
+        },
+        {
+            src: 'https://images.unsplash.com/photo-1470608756445-2c9906b0680f?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            description: '20 beautiful parks to visit this autumn...',
+        },
     ];
 
     return (
         <Carousel autoPlay={false} showThumbs={false}>
-            {images.map((src, index) => (
+            {images.map((image, index) => (
                 <div key={index}>
-                    <img src={src} alt={`Slide ${index}`} />
-                    <p className="legend">{`Slide ${index}`}</p>
+                    <img src={image.src} alt={`Slide ${index}`} />
+                    <p className="legend">{image.description}</p>
                 </div>
             ))}
         </Carousel>
@@ -23,4 +32,5 @@ const ImageCarousel = () => {
 };
 
 export default ImageCarousel;
+
 
