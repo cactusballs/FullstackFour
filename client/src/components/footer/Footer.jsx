@@ -9,85 +9,97 @@ import linkedIn from "../../assets/images/socials/linkedin.png";
 const Footer = () => {
   return (
     <div className="footer">
-      <div className="footerSectionPadding">
-      
-      
-      <div className="imagesBlock">
-        <div className="logo">
-          <img src={logo} alt="Village Logo" />
-        </div>
-
-        <div className="socialMedia">
-          <p>
-            <img src={facebook} alt="" />
-          </p>
-          <p>
-            <img src={twitter} alt="" />
-          </p>
-          <p>
-            <img src={linkedIn} alt="" />
-          </p>
-          <p>
-            <img src={instagram} alt="" />
-          </p>
-        </div>
-
-        </div>
-
-        <div className="footerLinks">
-
-          <div className="footerLinksDiv">
-            <h4>Our mission:</h4>
-            
-              <p>It takes a village. We are Village.</p>
-          
-            <a href="/resource">
-              <p>TV</p>
-            </a>
-            <a href="/resource">
-              <p>Testimonials</p>
-            </a>
-          </div>
-          <div className="footerLinksDiv">
-            <h4>blah-blah</h4>
-            <a href="/partners">
-              <p>blah-blah-blah</p>
-            </a>
-          </div>
-          <div className="footerLinksDiv">
-            <a href="/contact">
-              <p>Contact</p>
-            </a>
-
-            <a href="/career">
-              <p>Career</p>
-            </a>
-
-            <a href="/about">
-              <p>About</p>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <hr></hr>
-      <div className="footerBelow">
-        <div className="footerCopyright">
-          <a href="https://github.com/cactusballs/FullstackFour">
-            <p>@{new Date().getFullYear()} FullStackFour.</p>
-          </a>
-        </div>
-        <div className="footerBelowLinks">
-          <a href="/terms">
-            <div>
-              <p>Terms and conditions</p>
+      <div className="sb_footer section_padding">
+        <div className="sb_footer-links">
+          <div className="images">
+            <div className="logo">
+              <img src={logo} alt="Village Logo" />
+              <p className="slogan">"It takes a village. We are Village.</p>
             </div>
-          </a>
-          <a href="/cookies">
-            <div>
-              <p>Cookie declaration</p>
+
+            <div className="socialMedia">
+              <div className="socialmedia">
+                <p>
+                  <img src={facebook} alt="facebook logo" />
+                </p>
+                <p>
+                  <img src={twitter} alt="twitter logo" />
+                </p>
+                <p>
+                  <img src={linkedIn} alt="linkedin logo" />
+                </p>
+                <p>
+                  <img src={instagram} alt="instagram logo" />
+                </p>
+              </div>
             </div>
-          </a>
+          </div>
+
+          <div className="sb_footer-links-div">
+            <h4>About Us</h4>
+            <a href="/meet-the-team">
+              <p>Meet the Team</p>
+            </a>
+            <a href="/healthplan">
+              <p>Health Plan</p>
+            </a>
+            <a href="/employee">
+              <p>Employee</p>
+            </a>
+          </div>
+       
+          <div className="sb_footer-links-div">
+            <h4>Partners</h4>
+            <a href="/employee">
+              <p>Employee</p>
+            </a>
+            <a href="/employee">
+              <p>Employee</p>
+            </a>
+            <a href="/employee">
+              <p>Employee</p>
+            </a>
+          </div>
+          <div className="sb_footer-links-div">
+            <h4>Mental Health Resources</h4>
+            <a href="https://www.mind.org.uk/">
+              <p>Mind</p>
+            </a>
+            <a href="https://www.youngminds.org.uk/parent/">
+              <p>Young Minds</p>
+            </a>
+            <a href="https://www.samaritans.org/how-we-can-help/contact-samaritan/">
+              <p>Samaritans</p>
+            </a>
+          </div>
+        </div>
+
+        <hr></hr>
+
+        <div className="sb_footer-below">
+          <div className="sb_footer-copyright">
+            <a href="https://github.com/cactusballs/FullstackFour">
+              <p>@{new Date().getFullYear()} FullstackFour.</p>
+            </a>
+
+            <div className="sb_footer-below-links">
+              <a href="/terms">
+                <div>
+                  <p>Terms and Conditions</p>
+                </div>
+              </a>
+              <a href="/terms">
+                <div>
+                  <p>Terms and Conditions</p>
+                </div>
+              </a>
+              <a href="/cookies">
+                <div>
+                  <p>Cookies</p>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
