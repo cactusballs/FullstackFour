@@ -8,9 +8,10 @@ const Registration = () => {
   const [first_name, setFirst_name] = useState("");
   const [last_name, setLast_name] = useState("");
   const [user_name, setUser_name] = useState("");
-  const [birthday, setBrithday] = useState("");
+  const [birthday, setBirthday] = useState("");
   const [email, setEmail] = useState("");
   const [villager_address, setVillager_address] = useState("");
+  const [villager_postcode, setVillager_postcode] = useState("");
   const [villager_location, setVillager_location] = useState("");
   const [password, setPassword] = useState("");
   const [repeat_password, setRepeat_password] = useState("");
@@ -29,6 +30,7 @@ const Registration = () => {
               id="first_name"
               name="first_name"
               value={first_name}
+              onChange={(e) => setFirst_name(e.target.value)}
               required
             />
           </div>
@@ -39,6 +41,7 @@ const Registration = () => {
               id="last_name"
               name="last_name"
               value={last_name}
+              onChange={(e) => setLast_name(e.target.value)}
               required
             />
           </div>
@@ -49,6 +52,7 @@ const Registration = () => {
               id="user_name"
               name="user_name"
               value={user_name}
+              onChange={(e) => setUser_name(e.target.value)}
               required
             />
           </div>
@@ -58,7 +62,8 @@ const Registration = () => {
               type="date"
               id="birthday"
               name="birthday"
-              value={birhtday}
+              value={birthday}
+              onChange={(e) => setBirthday(e.target.value)}
               required
             />
           </div>
@@ -69,33 +74,39 @@ const Registration = () => {
               id="email"
               name="email"
               value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
           <div>
-            <label htmlFor="address">Address</label>
+            <label htmlFor="villager_address">Address</label>
             <input
               type="text"
-              id="address"
-              name="address"
+              id="villager_address"
+              name="villager_address"
               placeholder="Street name and number"
-              value={address}
+              value={villager_address}
+              onChange={(e) => setVillager_address(e.target.value)}
               required
             />
           </div>
           <div>
-            <label htmlFor="postcode">Postcode</label>
+            <label htmlFor="villager_postcode">Postcode</label>
             <input
               type="text"
-              id="postcode"
-              name="postcode"
-              value={postcode}
+              id="villager_postcode"
+              name="villager_postcode"
+              value={villager_postcode}
+              onChange={(e) => setVillager_postcode(e.target.value)}
               required
             />
           </div>
           <div>
-            <label htmlFor="location">Location</label>
-            <select id="location" name="location">
+            <label htmlFor="villager_location">Location</label>
+            <select 
+                id="villager_location" name="villager_location" value={villager_location}
+                onChange={(e) => setVillager_location(e.target.value)}
+                required>
               <option value="North London">North London</option>
               <option value="South London">South London</option>
               <option value="West London">West London</option>
@@ -108,7 +119,8 @@ const Registration = () => {
               type="password"
               id="password"
               name="password"
-              value={postcode}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
@@ -118,7 +130,8 @@ const Registration = () => {
               type="password"
               id="repeat_password"
               name="repeat_password"
-              value={postcode}
+              value={repeat_password}
+              onChange={(e) => setRepeat_password(e.target.value)}
               required
             />
           </div>
