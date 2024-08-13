@@ -9,15 +9,14 @@ import linkedIn from "../../assets/images/socials/linkedin.png";
 const Footer = () => {
   return (
     <div className="footer">
-      <div className="sb_footer section_padding">
-        <div className="sb_footer-links">
+      <div className="footer section_padding">
+        <div className="footer-links">
           <div className="images">
             <div className="logo">
               <img src={logo} alt="Village Logo" />
-              <p className="slogan">"It takes a village. We are Village.</p>
             </div>
 
-            <div className="socialMedia">
+            <div className="socials-container">
               <div className="socialmedia">
                 <p>
                   <img src={facebook} alt="facebook logo" />
@@ -35,32 +34,29 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="sb_footer-links-div">
+          <div className="footer-links-div">
+            <h4>
+              {" "}
+              <p className="slogan">"It takes a village. We are Village."</p>
+            </h4>
+
+            <p>Address line 1, Address line 2, Address line 3.</p>
+          </div>
+
+          <div className="footer-links-div">
             <h4>About Us</h4>
             <a href="/meet-the-team">
               <p>Meet the Team</p>
             </a>
-            <a href="/healthplan">
-              <p>Health Plan</p>
+            <a href="/sitemap">
+              <p>Sitemap</p>
             </a>
-            <a href="/employee">
-              <p>Employee</p>
-            </a>
-          </div>
-       
-          <div className="sb_footer-links-div">
-            <h4>Partners</h4>
-            <a href="/employee">
-              <p>Employee</p>
-            </a>
-            <a href="/employee">
-              <p>Employee</p>
-            </a>
-            <a href="/employee">
-              <p>Employee</p>
+            <a href="/contact">
+              <p>Contact Us</p>
             </a>
           </div>
-          <div className="sb_footer-links-div">
+
+          <div className="footer-links-div">
             <h4>Mental Health Resources</h4>
             <a href="https://www.mind.org.uk/">
               <p>Mind</p>
@@ -76,29 +72,23 @@ const Footer = () => {
 
         <hr></hr>
 
-        <div className="sb_footer-below">
-          <div className="sb_footer-copyright">
+        <div className="footer-below">
+          <div className="footer-copyright">
             <a href="https://github.com/cactusballs/FullstackFour">
               <p>@{new Date().getFullYear()} FullstackFour.</p>
             </a>
-
-            <div className="sb_footer-below-links">
-              <a href="/terms">
-                <div>
-                  <p>Terms and Conditions</p>
-                </div>
-              </a>
-              <a href="/terms">
-                <div>
-                  <p>Terms and Conditions</p>
-                </div>
-              </a>
-              <a href="/cookies">
-                <div>
-                  <p>Cookies</p>
-                </div>
-              </a>
-            </div>
+          </div>
+          <div className="footer-below-links">
+            <a href="/terms">
+              <div>
+                <p>Terms and Conditions</p>
+              </div>
+            </a>
+            <a href="/cookies">
+              <div>
+                <p>Cookies</p>
+              </div>
+            </a>
           </div>
         </div>
       </div>
