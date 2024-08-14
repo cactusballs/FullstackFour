@@ -61,7 +61,7 @@
   justify-content: flex-end;
 }
 
-.footer-button {
+.card-footer-button {
   /* padding: "8px 16px"; */
   color: "black";
   font-family: "Verdana";
@@ -73,7 +73,7 @@
   color: black;
 }
 
-.footer-button:hover {
+.card-footer-button:hover {
   background-color: black;
   color: white;
   transition: 0.3s ease-out;

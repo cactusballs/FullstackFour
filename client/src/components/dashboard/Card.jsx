@@ -9,8 +9,8 @@ const Card = ({
   link,
   linkText,
   content,
-  footer,
-  footerButton,
+  cardFooter,
+  cardFooterButton,
 }) => {
   return (
     <div className="card">
@@ -32,14 +32,14 @@ const Card = ({
       </div>
       {/* footer is optional (when there's no button at the bottom of card) e.g., event cards */}
       {/* footer is only rendered when you supply a button prop */}
-      {(footer || footerButton) && (
+      {(cardFooter || cardFooterButton) && (
         <div
           className="card-footer"
           style={{ backgroundColor: "#485f39", color: "white" }}
         >
-          {footer && <div>{footer}</div>}
-          {footerButton && (
-            <button className="footer-button">{footerButton}</button>
+          {cardFooter && <div>{cardFooter}</div>}
+          {cardFooterButton && (
+            <button className="card-footer-button">{cardFooterButton}</button>
           )}
         </div>
       )}
