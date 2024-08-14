@@ -9,13 +9,15 @@ import linkedIn from "../../assets/images/socials/linkedin.png";
 const Footer = () => {
   return (
     <div className="footer">
-      <div className="footer section_padding">
+      <div className="footer section-padding">
         <div className="footer-links">
+          {/* images container */}
           <div className="images">
             <div className="logo">
               <img src={logo} alt="Village Logo" />
             </div>
 
+            {/* socials icons in images container */}
             <div className="socials-container">
               <div className="socialmedia">
                 <p>
@@ -34,15 +36,18 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="footer-links-div">
+          {/* slogan and address container: info div */}
+          <div className="footer-info-div">
             <h4>
-              {" "}
               <p className="slogan">"It takes a village. We are Village."</p>
             </h4>
 
-            <p>Address line 1, Address line 2, Address line 3.</p>
+            <p className="address">
+              Address line 1, Address line 2, Address line 3.
+            </p>
           </div>
 
+          {/* all contact us type links and info */}
           <div className="footer-links-div">
             <h4>About Us</h4>
             <a href="/meet-the-team">
@@ -51,11 +56,12 @@ const Footer = () => {
             <a href="/sitemap">
               <p>Sitemap</p>
             </a>
-            <a href="/contact">
+            <a href="mailto:john@example.com">
               <p>Contact Us</p>
             </a>
           </div>
 
+          {/* links to mental health resources container */}
           <div className="footer-links-div">
             <h4>Mental Health Resources</h4>
             <a href="https://www.mind.org.uk/">
@@ -70,6 +76,7 @@ const Footer = () => {
           </div>
         </div>
 
+{/* line break with horizonal line: below this copyright, etc. */}
         <hr></hr>
 
         <div className="footer-below">
