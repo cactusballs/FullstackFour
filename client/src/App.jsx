@@ -35,7 +35,7 @@ function Forum() {
     <div>
       <ForumMain />
       <ForumTopicThreads />
-      <SingleThread id={3} />
+      <SingleThread id={5} />
       <Footer/>
       {/* update thread id to navigate between conversations*/}
     </div>

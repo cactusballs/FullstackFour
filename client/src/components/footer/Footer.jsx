@@ -76,7 +76,7 @@ const Footer = () => {
           </div>
         </div>
 
-{/* line break with horizonal line: below this copyright, etc. */}
+        {/* line break with horizonal line: below this copyright, etc. */}
         <hr></hr>
 
         <div className="footer-below">

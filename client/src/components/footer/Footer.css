@@ -1,5 +1,5 @@
 .section-padding {
-  padding: 3rem 3rem;
+  padding: 2rem 2rem;
 }
 
 .footer {
@@ -37,7 +37,6 @@
 }
 
 
-
 .images {
   display: flex;
   flex-direction: column;
@@ -45,7 +44,6 @@
 
 .socialmedia {
   display: flex;
-  flex-direction: row;
   justify-content: center;
 }
 
@@ -62,13 +60,13 @@
 }
 
 
-.footer-links-div h4 {
+.footer-links-div h4, .footer-info-div h4 {
   font-size: 14px;
   line-height: 17px;
   margin-bottom: 0.9rem;
 }
 
-.footer-links-div p {
+.footer-links-div p, .footer-info-div p  {
   font-size: 12px;
   line-height: 13px;
   margin: 0.5rem 0;
@@ -76,32 +74,17 @@
   color: #485f39;
 }
 
-
-.footer-info-div h4 {
-  font-size: 14px;
-  line-height: 17px;
-  margin-bottom: 0.9rem;
-}
-
-.footer-info-div p {
-  font-size: 12px;
-  line-height: 13px;
-  margin: 0.5rem 0;
-  cursor: pointer;
-  color: #485f39;
-}
 
 .footer-below {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   margin-top: 0.2rem;
 }
 
 .footer-below-links {
   display: flex;
-  flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .footer-below-links p {
@@ -130,7 +113,6 @@ hr {
 
 .footer-copyright {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
 }
 
