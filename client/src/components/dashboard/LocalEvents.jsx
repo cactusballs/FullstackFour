@@ -1,21 +1,19 @@
 import React from "react";
 import Card from "./Card.jsx";
 import { TbLocation } from "react-icons/tb";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
 function LocalEvents() {
-  const [events, setLocalEvents] = useState([]);
+  // const [events, setLocalEvents] = useState([]);
 
-  const fetchData = async () => {
-    // api token - authenticating API requests with query parameter authentication (get request)
-    const result = await fetch(
-      `https://www.eventbriteapi.com/v3/users/me/?token=XX5RROEGVYY3BTEOLHI5`
-    );
-    const json = await result.json();
-    setLocalEvents(json);
+  //  For events in your area component- fetch data that aligns with user’s location + tags(?) 
+  //  + family-friendly events - unable to do this for the time being
+  // spotlight events based on closest event venues to user's location (needs to remember user)
+  // token stored under auth header- Authorization: Bearer PERSONAL_OAUTH_TOKEN
+  // GET - venue, event category, organization
+  // docs - https://www.eventbrite.com/platform/docs/events
+  // https://www.eventbrite.com/platform/docs/changelog
   };
-
-  // list all events based on event venue and user's location
 
   return (
     <Card
