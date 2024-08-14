@@ -16,13 +16,31 @@ const Registration = () => {
   const [password, setPassword] = useState("");
   const [repeat_password, setRepeat_password] = useState("");
 
+  // Checking that password and repeat password match
+  const validatePassword = () => {
+    if (password !== repeat_password) {
+      return "Passwords don't match";
+    }
+    return null;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const passwordError = validatePassword();
+    if (passwordError) {
+      alert(passwordError);
+      return
+    }
+  }
+
   return (
     <div className="signup-container">
       <div className="signup-form">
         <div className="logo">
           <img src={logo} alt="Village Logo" />
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="first_name">First Name</label>
             <input
