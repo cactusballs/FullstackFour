@@ -30,9 +30,40 @@ const Registration = () => {
     const passwordError = validatePassword();
     if (passwordError) {
       alert(passwordError);
-      return
+      return;
     }
-  }
+
+    try {
+      const response = await fetch("http://localhost:3000/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          first_name,
+          last_name,
+          user_name,
+          birthday,
+          email,
+          villager_address,
+          villager_postcode,
+          villager_location,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        navigate("/");
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error("Error", error);
+      alert("An error occurred during signup.");
+    }
+  };
 
   return (
     <div className="signup-container">
@@ -41,27 +72,29 @@ const Registration = () => {
           <img src={logo} alt="Village Logo" />
         </div>
         <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="first_name">First Name</label>
-            <input
-              type="text"
-              id="first_name"
-              name="first_name"
-              value={first_name}
-              onChange={(e) => setFirst_name(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="last_name">Last Name</label>
-            <input
-              type="text"
-              id="last_name"
-              name="last_name"
-              value={last_name}
-              onChange={(e) => setLast_name(e.target.value)}
-              required
-            />
+          <div className="name_fields">
+            <div>
+              <label htmlFor="first_name">First Name</label>
+              <input
+                type="text"
+                id="first_name"
+                name="first_name"
+                value={first_name}
+                onChange={(e) => setFirst_name(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="last_name">Last Name</label>
+              <input
+                type="text"
+                id="last_name"
+                name="last_name"
+                value={last_name}
+                onChange={(e) => setLast_name(e.target.value)}
+                required
+              />
+            </div>
           </div>
           <div>
             <label htmlFor="user_name">Username</label>
@@ -121,10 +154,13 @@ const Registration = () => {
           </div>
           <div>
             <label htmlFor="villager_location">Location</label>
-            <select 
-                id="villager_location" name="villager_location" value={villager_location}
-                onChange={(e) => setVillager_location(e.target.value)}
-                required>
+            <select
+              id="villager_location"
+              name="villager_location"
+              value={villager_location}
+              onChange={(e) => setVillager_location(e.target.value)}
+              required
+            >
               <option value="North London">North London</option>
               <option value="South London">South London</option>
               <option value="West London">West London</option>
