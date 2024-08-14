@@ -69,6 +69,14 @@ CREATE TABLE IF NOT EXISTS villagers (
 --     FOREIGN KEY (sender_id) REFERENCES villagers(villager_id) ON DELETE CASCADE
 -- );
 
+CREATE TABLE IF NOT EXISTS broadcast_messages (
+	broadcast_message_id INT AUTO_INCREMENT PRIMARY KEY,
+    villager_id INT,
+    message_content VARCHAR(120),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (villager_id) REFERENCES villagers(villager_id)
+);
+
 INSERT INTO villagers (first_name, last_name, user_name, birthday, email, villager_address, villager_postcode, villager_location, password)
 VALUES
 ('Cat', 'Conquest', 'CC', '1980-05-15', 'cat.c@example.com', '123 Elm Street', 'N1 0AA', 'North London', 'password123'),
@@ -246,6 +254,13 @@ VALUES (1,'LJ','Lottie is a cool name!'),(1,'FA','Fatima is a cool name!'),
 (30, 'FA', 'We found the birth pool and a calm, quiet environment really helped during labour.'),
 (30, 'CB', 'Our midwife was fantastic in guiding us through our birth plan.'),
 (30, 'LJ', 'Dont be afraid to speak up about your needs. Its your birth experience.');
+
+INSERT INTO broadcast_messages (villager_id, message_content, created_at)
+VALUES 
+(2, "hi guys, i'm new here and this is my first broadcast message!", default),
+(1, "I've just been told I'm with triplets and wanted to share my joy with you all!", default),
+(3, "hello world", "2024-08-01 19:09:39"),
+(4, "We've got good weather today in North London. How's everyone else?", "2024-07-30 16:09:39");
 
 -- db schema for  polling feature
 -- -- poll: main poll information (id + question)

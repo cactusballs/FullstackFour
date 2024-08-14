@@ -1,0 +1,48 @@
+.modal-content {
+  /* doesn't work, something is overriding it */
+  /* background-color: #f4f5ec; */
+  box-shadow: 0 4 4 0 hsl(0, 0, 73, 1);
+}
+
+.modal-header {
+  color: #485f39;
+}
+
+.green-text {
+  color: #485f39;
+}
+
+.form-label {
+  margin-top: 0.5rem;
+  margin-left: 8px;
+  margin-bottom: 1.2rem;
+  text-align: left;
+  font-size: 14px;
+}
+
+#subheading-icon {
+  width: 460px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* have to use media query to modify width of textarea (mobile) */
+textarea.form-control {
+  width: 450px;
+  margin: 0px 8px;
+  font-size: 13px;
+  font-family: "Verdana";
+}
+
+/* styles for modal info button- when hovering shows a tooltip */
+.modal-button {
+  width: 46px;
+  height: 46px;
+  padding: 8px;
+  color: green;
+}
+
+.modal-button svg {
+  color: green;
+}
