@@ -262,3 +262,67 @@ VALUES
 (3, "hello world", "2024-08-01 19:09:39"),
 (4, "We've got good weather today in North London. How's everyone else?", "2024-07-30 16:09:39");
 
+-- db schema for  polling feature
+-- -- poll: main poll information (id + question)
+-- -- poll_options: references poll.id through poll_id and contains each option per poll
+-- -- poll_votes: records an entry each time a user submits a response to a poll, references both the poll.id and poll_options.id through poll_id and poll_options_id
+
+-- creating tables
+
+CREATE TABLE IF NOT EXISTS poll (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP NOT NULL
+);
+  
+  CREATE TABLE IF NOT EXISTS poll_options (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	poll_id INT NOT NULL,
+    label VARCHAR(50) NOT NULL,
+    FOREIGN KEY (poll_id)
+        REFERENCES poll (id)
+);
+
+ CREATE TABLE IF NOT EXISTS poll_votes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    poll_id INT NOT NULL,
+    poll_options_id INT NOT NULL,
+	created_at TIMESTAMP NOT NULL,
+	FOREIGN KEY (poll_id)
+        REFERENCES poll (id),
+	FOREIGN KEY (poll_options_id)
+        REFERENCES poll_options (id)
+);
+
+-- populate users table
+
+INSERT INTO poll
+(title, created_at)
+VALUES
+("are you seeing this?", CURRENT_TIMESTAMP()),
+("do you live in London?", CURRENT_TIMESTAMP())
+;
+
+INSERT INTO poll_options
+(poll_id, label)
+VALUES
+(1, "Yes"),
+(1, "No"),
+(2, "Yes"),
+(2, "No"),
+(2, "Close by")
+;
+
+INSERT INTO poll_votes
+(poll_id, poll_options_id, created_at)
+VALUES
+(1, 1, CURRENT_TIMESTAMP()),
+(1, 1, CURRENT_TIMESTAMP()),
+(1, 1, CURRENT_TIMESTAMP()),
+(1, 1, CURRENT_TIMESTAMP()),
+(1, 1, CURRENT_TIMESTAMP()),
+(1, 1, CURRENT_TIMESTAMP()),
+(1, 2, CURRENT_TIMESTAMP()),
+(2, 3, CURRENT_TIMESTAMP()),
+(2, 4, CURRENT_TIMESTAMP())
+;

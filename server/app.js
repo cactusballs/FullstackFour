@@ -212,4 +212,51 @@ app.post("/broadcastmessages", async (req, res) => {
   }
 });
 
+// dashboards - get top 7 recent forum posts
+app.get("/recentPosts", async (req, res) => {
+  const recentPosts = `SELECT 
+    village.posts_to_threads.content,
+    village.posts_to_threads.sent_at,
+    village.posts_to_threads.thread_id,
+    village.posts_to_threads.post_id
+FROM
+    village.posts_to_threads
+ORDER BY sent_at DESC
+LIMIT 7;`;
+
+  try {
+    const [results] = await database.query(recentPosts);
+    res.status(200).json(results);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ status: "Failed to retrieve recent forum posts" });
+  }
+});
+
 module.exports = database;
+
+// dashboards - polling - get poll title
+app.get("/pollInfo/:pollId", async (req, res) => {
+  const pollId = req.params.pollId;
+  const sqlPollMain = "SELECT * FROM poll WHERE id = ?";
+  const sqlPollOptions = "SELECT poll_options.label from poll_options WHERE poll_id = ?"
+
+  try {
+    const [pollMainResults] = await database.query(sqlPollMain, [pollId]);
+    if (pollMainResults.length === 0) {
+      return res.status(404).json({ message: "Poll not found" });
+    }
+
+    const [pollOptionsResults] = await database.query(sqlPollOptions, [pollId]);
+    if (pollOptionsResults.length === 0) {
+      return res.status(404).json({ message: "Poll options not found" });
+    }
+
+    res.status(200).json({
+      poll: pollMainResults[0],
+      options: pollOptionsResults
+    });
+  } catch (error) {
+    res.status(500).json({ message: "An error occurred", error: error.message });
+  }
+});
