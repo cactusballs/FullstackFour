@@ -55,7 +55,7 @@ const Registration = () => {
       const data = await response.json();
 
       if (response.ok) {
-        navigate("/");
+        navigate("/login");
       } else {
         alert(data.message);
       }
@@ -161,6 +161,7 @@ const Registration = () => {
               onChange={(e) => setVillager_location(e.target.value)}
               required
             >
+              <option value="">Select your location</option>
               <option value="North London">North London</option>
               <option value="South London">South London</option>
               <option value="West London">West London</option>

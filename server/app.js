@@ -258,7 +258,7 @@ app.post('/signup', async (req, res) => {
     const values = [first_name, last_name, user_name, birthday, email, villager_address, villager_postcode, villager_location, hashedPassword];
     const result = await database.query(sql, values);
 
-    res.status(201).json({ message: 'User registered successfully', userId });
+    res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
     console.error('Error occurred when registering:', error);
     res.status(500).json({ message: 'An error occurred during registration', error: error.message });
