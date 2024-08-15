@@ -5,7 +5,6 @@ import ForumButton from './ForumButton';
 // import axios from 'axios';
 // import { useNavigate } from 'react-router-dom';
 
-
 //up dated 'N's to 0 and 'Y's to 1
 const ForumSubmission = () => {
   const [title, setTitle] = useState('');
