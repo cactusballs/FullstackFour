@@ -5,16 +5,17 @@ import ForumButton from './ForumButton';
 // import axios from 'axios';
 // import { useNavigate } from 'react-router-dom';
 
+//up dated 'N's to 0 and 'Y's to 1
 const ForumSubmission = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [topic, setTopic] = useState('');
   const [tags, setTags] = useState({
-    carers_tag: 'N',
-    expecting_parents_tag: 'N',
-    new_parents_tag: 'N',
-    single_parents_tag: 'N',
-    LGBTQIA_plus_parents_tag: 'N',
+    carers_tag: 0,
+    expecting_parents_tag: 0,
+    new_parents_tag: 0,
+    single_parents_tag: 0,
+    LGBTQIA_plus_parents_tag: 0,
   });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -24,7 +25,7 @@ const ForumSubmission = () => {
   const user_name = 'PlaceholderTillLinkLoginUserInfo';
 
   const handleTagChange = (tag) => {
-    setTags({ ...tags, [tag]: tags[tag] === 'N' ? 'Y' : 'N' });
+    setTags({ ...tags, [tag]: tags[tag] === 0 ? 1 : 0 });
   };
 
   const handleSubmit = async (e) => {
@@ -115,7 +116,7 @@ const ForumSubmission = () => {
               <label key={tag}>
                 <input
                   type="checkbox"
-                  checked={tags[tag] === 'Y'}
+                  checked={tags[tag] === 1}
                   onChange={() => handleTagChange(tag)}
                 />
                 {tag.replace(/_/g, ' ')}
