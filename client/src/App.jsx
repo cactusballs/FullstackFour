@@ -13,6 +13,7 @@ import Body from "./components/body/Body.jsx";
 import Registration from "./components/registration/Registration.jsx";
 import LocalEvents from "./components/dashboard/LocalEvents.jsx";
 //import TopicsDropdown from "./components/forum/DropdownMenu/Dropdown/TopicsDropdown";
+import EventsForm from "./components/events/EventForm.jsx";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/footer" element={<FooterPage />} />
           <Route path="/signup" element={<Registration />} />
+          <Route path="/events" element={<Events />} />
           {/* Add more routes here if needed */}
         </Routes>
       </div>
@@ -37,7 +39,7 @@ function Forum() {
       <ForumMain />
       <ForumTopicThreads />
       <SingleThread id={5} />
-      <Footer/>
+      <Footer />
       {/* update thread id to navigate between conversations*/}
     </div>
   );
@@ -51,6 +53,14 @@ function Dashboard() {
       <ImageCarousel />
       <LocalEvents />
       {/* Use ImageCarousel component with correct capitalization */}
+    </>
+  );
+}
+
+function Events() {
+  return (
+    <>
+      <EventsForm />
     </>
   );
 }

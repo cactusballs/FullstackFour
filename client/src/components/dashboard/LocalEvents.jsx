@@ -12,23 +12,22 @@ function LocalEvents() {
   // GET - venue, event category, organization
   // docs - https://www.eventbrite.com/platform/docs/events
   // https://www.eventbrite.com/platform/docs/changelog
-}
-
-return (
-  <Card
-    leftIcon={<TbLocation />}
-    title="Events in your area"
-    link=""
-    linkText="View All"
-    // just for show- testing + styling footerButton
-    footerButton="view"
-  >
-    {/* <ul>
+  return (
+    <Card
+      leftIcon={<TbLocation />}
+      title="Events in your area"
+      link=""
+      linkText="View All"
+      // just for show- testing + styling footerButton
+      footerButton="view"
+    >
+      {/* <ul>
         <li>Hi</li>
         <li>There</li>
         <li>Children</li>
       </ul> */}
-  </Card>
-);
+    </Card>
+  );
+}
 
 export default LocalEvents;
