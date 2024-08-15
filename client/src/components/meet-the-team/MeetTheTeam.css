@@ -1,0 +1,19 @@
+.topContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.container{
+    display: flex;
+
+}
+
+
+.portraits{
+    width: 100%;
+}
+
+
+.communityImg{
+    width: 400px;
+}
