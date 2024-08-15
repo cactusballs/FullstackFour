@@ -27,7 +27,7 @@ function EventsForm() {
           <Form.Label>Location</Form.Label>
           <Form.Select aria-label="location">
             <option>London </option>
-            <option value="1">Current Location</option>
+            <option value="1">Use my current location</option>
             <option value="2">Central London</option>
             <option value="3">North London</option>
             <option value="4">South London</option>

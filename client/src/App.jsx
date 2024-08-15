@@ -14,6 +14,7 @@ import Registration from "./components/registration/Registration.jsx";
 import LocalEvents from "./components/dashboard/LocalEvents.jsx";
 //import TopicsDropdown from "./components/forum/DropdownMenu/Dropdown/TopicsDropdown";
 import EventsForm from "./components/events/EventForm.jsx";
+import Dashboard from "./components/dashboard/Dashboard.jsx";
 
 function App() {
   return (
@@ -45,17 +46,17 @@ function Forum() {
   );
 }
 
-function Dashboard() {
-  return (
-    <>
-      <BroadcastMessages />
-      <RecentForumPosts />
-      <ImageCarousel />
-      <LocalEvents />
-      {/* Use ImageCarousel component with correct capitalization */}
-    </>
-  );
-}
+// function Dashboard() {
+//   return (
+//     <>
+//       <BroadcastMessages />
+//       <RecentForumPosts />
+//       <ImageCarousel />
+//       <LocalEvents />
+//       {/* Use ImageCarousel component with correct capitalization */}
+//     </>
+//   );
+// }
 
 function Events() {
   return (
