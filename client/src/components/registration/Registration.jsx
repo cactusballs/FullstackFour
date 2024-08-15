@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Registration.css";
 import logo from "../../assets/images/village-logo.png";
@@ -15,21 +15,47 @@ const Registration = () => {
   const [villager_location, setVillager_location] = useState("");
   const [password, setPassword] = useState("");
   const [repeat_password, setRepeat_password] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [nameError, setNameError] = useState("");
 
-  // Checking that password and repeat password match
+  // Checking that password and repeat password match and password security with Regex
   const validatePassword = () => {
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
+
     if (password !== repeat_password) {
-      return "Passwords don't match";
+      setPasswordError("Passwords don't match, please write them again");
+      return false;
+    } else if (!passwordRegex.test(password)) {
+      setPasswordError(
+        "Password must be 8 characters long and include 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character"
+      );
+      return false;
     }
-    return null;
+
+    setPasswordError("");
+    return true;
+  };
+
+  // Checking that first name and last name have minimum two letters
+  const validateName = () => {
+    if (first_name.length < 2 || last_name.length < 2) {
+      setNameError(
+        "Please enter a first name and surname with at least two letters"
+      );
+      return false;
+    }
+    setNameError("");
+    return true;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const passwordError = validatePassword();
-    if (passwordError) {
-      alert(passwordError);
+    const isPasswordValid = validatePassword();
+    const isNameValid = validateName();
+
+    if (!isPasswordValid || !isNameValid) {
       return;
     }
 
@@ -96,6 +122,9 @@ const Registration = () => {
               />
             </div>
           </div>
+          {nameError && (
+            <div style={{ color: "red", marginBottom: "6px" }}>{nameError}</div>
+          )}
           <div>
             <label htmlFor="user_name">Username</label>
             <input
@@ -190,6 +219,11 @@ const Registration = () => {
               required
             />
           </div>
+          {passwordError && (
+            <div style={{ color: "red", marginBottom: "6px" }}>
+              {passwordError}
+            </div>
+          )}
           <button type="submit">Sign Up</button>
           <p>
             Already have an account? <a href="./login">Log in!</a>
