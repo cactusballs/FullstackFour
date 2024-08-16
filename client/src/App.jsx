@@ -13,7 +13,7 @@ import Body from "./components/body/Body.jsx";
 import Registration from "./components/registration/Registration.jsx";
 import LocalEvents from "./components/dashboard/LocalEvents.jsx";
 //import TopicsDropdown from "./components/forum/DropdownMenu/Dropdown/TopicsDropdown";
-import EventsForm from "./components/events/EventForm.jsx";
+import Events from "./components/events/Events.jsx";
 import Dashboard from "./components/dashboard/Dashboard.jsx";
 
 function App() {
@@ -57,14 +57,6 @@ function Forum() {
 //     </>
 //   );
 // }
-
-function Events() {
-  return (
-    <>
-      <EventsForm />
-    </>
-  );
-}
 
 function FooterPage() {
   return (
