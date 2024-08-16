@@ -28,7 +28,7 @@ const Registration = () => {
       return false;
     } else if (!passwordRegex.test(password)) {
       setPasswordError(
-        "Password must be at least 8 characters long and include 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character"
+        "Password must be at least 8 characters long and include 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character (@$!%*?&#)"
       );
       return false;
     }
@@ -81,7 +81,7 @@ const Registration = () => {
       const data = await response.json();
 
       if (response.ok) {
-        navigate("/login");
+        navigate("/");
       } else {
         alert(data.message);
       }
