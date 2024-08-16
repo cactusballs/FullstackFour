@@ -1,11 +1,21 @@
+
+h1{
+    margin-top: 75px;
+}
+
+h2{
+    margin-bottom: 60px;
+}
+
+
 .topContainer{
     display: flex;
     flex-direction: row;
 }
 
-.container{
+.bios-container{
     display: flex;
-
+    filter: grayscale(1);
 }
 
 
