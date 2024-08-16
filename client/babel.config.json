@@ -1,0 +1,4 @@
+// babel configuration file, wasn't set up with the app it seems
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}

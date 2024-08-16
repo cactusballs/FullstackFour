@@ -13,7 +13,6 @@ function LocalEvents() {
   // docs - https://www.eventbrite.com/platform/docs/events
   // https://www.eventbrite.com/platform/docs/changelog
 
-
 return (
   <Card
     leftIcon={<TbLocation />}
@@ -30,6 +29,6 @@ return (
       </ul> */}
   </Card>
 );
-}
+    }
 
 export default LocalEvents;

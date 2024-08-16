@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ForumMain.css';
 import ForumSubmission from './ForumSubmissionForm.jsx';
-
+// import Navbar from '../NavBar/Navbar';
 
 const ForumMain = () => {
   // trying to connect to the DB
@@ -24,7 +24,9 @@ const ForumMain = () => {
   }, []);
 
   return (
+   
     <div className="AllForums">
+        < Navbar />
       <div className='header'>
         <h2>Welcome to the Village Town Hall</h2>
         <p>...explore threads by topic or start your own!</p>
