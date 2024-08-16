@@ -22,7 +22,7 @@ Running frontend / client:
 - `npm run dev` in the console (Vite used for Client)
 
 
-## Testing registration and and login with hashing:
+## Testing registration and login with hashing:
 
 1) You can create a new user on the Registration Page, please write down the password to remember it. Once you have successfully registered, you can check that the password has been hashed before being saved on the database. For this purpose, you can run in MySQLWorkbench the following commands to check the last registration record: 
 `USE village;`
