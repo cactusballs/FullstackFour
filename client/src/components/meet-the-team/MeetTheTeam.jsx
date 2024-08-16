@@ -29,7 +29,7 @@ const villageTeam = [
     fullName: "Chloe",
     portraitLink: chloeImg,
     autobiography:
-      "Chloe is Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "Chloe is a former primary school teacher and a mum to a one-year-old. She has recently swapped her focus from planning lessons to planning apps! Having spent many months trying to find her flow in motherhood, she’s excited to begin her journey of reminding people that it takes a village to raise a child and that they’re not alone."
   },
   {
     fullName: "Fatima",
