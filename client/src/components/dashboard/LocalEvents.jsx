@@ -12,7 +12,6 @@ function LocalEvents() {
   // GET - venue, event category, organization
   // docs - https://www.eventbrite.com/platform/docs/events
   // https://www.eventbrite.com/platform/docs/changelog
-}
 
 return (
   <Card
@@ -30,5 +29,6 @@ return (
       </ul> */}
   </Card>
 );
+    }
 
 export default LocalEvents;
