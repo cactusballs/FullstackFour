@@ -1,23 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./EventsForm.css";
 
 function EventsForm() {
-  // search keywords
-  // location (dropdown menu option: Choose my current location with geolocation API from React)
-  // location radius
-  // From date....
-  // to date
-  // search button
+  const [searchQuery, setSearchQuery] = useState("");
+  const [events, setEvents] = useState([]);
+
+  const performEventsSearch = async (e) => {
+    const result = await fetch(`/events/${keyword}`);
+    const json = await result.json();
+  };
+
   return (
     <Form className="events-form">
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Search keywords</Form.Label>
-        <Form.Control type="keywords" placeholder="" />
-        {/* <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text> */}
+        <Form.Control
+          type="keywords"
+          placeholder=""
+          value={searchQuery}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+            console.log(e.target.value);
+          }}
+        />
       </Form.Group>
 
       {/* select menu - location - options: current location, North London, South London, West London, East London, Central London */}
@@ -46,7 +53,11 @@ function EventsForm() {
         </Form.Select>
       </Form.Group>
 
-      <Button variant="outline-dark" type="submit">
+      <Button
+        variant="outline-dark"
+        type="submit"
+        onClick={performEventsSearch}
+      >
         Search
       </Button>
     </Form>
