@@ -17,6 +17,7 @@ const Registration = () => {
   const [repeat_password, setRepeat_password] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   // Checking that password and repeat password match and password security with Regex
   const validatePassword = () => {
@@ -83,7 +84,7 @@ const Registration = () => {
       if (response.ok) {
         navigate("/");
       } else {
-        alert(data.message);
+        setEmailError(data.message);
       }
     } catch (error) {
       console.error("Error", error);
@@ -154,10 +155,16 @@ const Registration = () => {
               id="email"
               name="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value); 
+                setEmailError("");
+              }}
               required
             />
           </div>
+          {emailError && (
+            <div style={{ color: "red", marginBottom: "6px"}}>{emailError}</div>
+          )}
           <div>
             <label htmlFor="villager_address">Address</label>
             <input

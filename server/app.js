@@ -266,6 +266,12 @@ app.post('/signup', async (req, res) => {
   const { first_name, last_name, user_name, birthday, email, villager_address, villager_postcode, villager_location, password } = req.body;
 
   try {
+    // Checking if the email is already registered in the database
+    const [existingEmail] = await database.query('SELECT * FROM villagers WHERE email = ?', [email]);
+    if (existingEmail.length > 0) {
+      return res.status(400).json({ message: 'This email is already registered, please log in' });
+    }
+
     // Hashing the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
