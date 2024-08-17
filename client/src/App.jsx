@@ -20,6 +20,7 @@ function App() {
     <Router>
       <div>
         <Routes>
+          
           <Route path="/" element={<Login />} />
           <Route path="/forum" element={<Forum />} />
           <Route path="/threads/:topic" element={<ForumTopicThreads />} />

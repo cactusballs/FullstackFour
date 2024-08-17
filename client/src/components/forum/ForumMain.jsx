@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './ForumMain.css';
 import ForumSubmission from './ForumSubmissionForm.jsx';
-// import Navbar from '../NavBar/Navbar';
+import NavbarComp from '../navbar/Navbar.jsx';
+
 
 const ForumMain = () => {
   // trying to connect to the DB
@@ -23,10 +24,11 @@ const ForumMain = () => {
       });
   }, []);
 
+
   return (
    
     <div className="AllForums">
-        < Navbar />
+        < NavbarComp />
       <div className='header'>
         <h2>Welcome to the Village Town Hall</h2>
         <p>...explore threads by topic or start your own!</p>
@@ -37,8 +39,9 @@ const ForumMain = () => {
           <p>{error}</p>
         ) : (
           <ul className="TownHallPosts">
+           
             {threads.map(thread => (
-              <li key={thread.thread_id}>{thread.thread_title}</li>
+              <li key={thread.thread_id}>{thread.topic}</li>
             ))}
           </ul>
         )}
@@ -46,7 +49,6 @@ const ForumMain = () => {
       <div className='TopPicks'>
         <h3>Start a thread...</h3>
         <ForumSubmission />
-      
       </div>
     </div>
   );
