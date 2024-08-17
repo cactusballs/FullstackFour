@@ -233,13 +233,12 @@ LIMIT 7;`;
   }
 });
 
-module.exports = database;
-
 // dashboards - polling - get poll title
 app.get("/pollInfo/:pollId", async (req, res) => {
   const pollId = req.params.pollId;
   const sqlPollMain = "SELECT * FROM poll WHERE id = ?";
-  const sqlPollOptions = "SELECT poll_options.label from poll_options WHERE poll_id = ?"
+  const sqlPollOptions =
+    "SELECT poll_options.label from poll_options WHERE poll_id = ?";
 
   try {
     const [pollMainResults] = await database.query(sqlPollMain, [pollId]);
@@ -254,9 +253,70 @@ app.get("/pollInfo/:pollId", async (req, res) => {
 
     res.status(200).json({
       poll: pollMainResults[0],
-      options: pollOptionsResults
+      options: pollOptionsResults,
     });
   } catch (error) {
-    res.status(500).json({ message: "An error occurred", error: error.message });
+    res
+      .status(500)
+      .json({ message: "An error occurred", error: error.message });
   }
 });
+
+// events
+
+const apiKey = process.env.TICKETMASTER_API_KEY;
+
+// const url = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=family&city=London&apikey=${apiKey}`;
+
+const baseUrl = "https://app.ticketmaster.com/discovery/v2/";
+
+const apiClient = async (baseUrl, path, queryParams) => {
+  const url = new URL(`${baseUrl}${path}`);
+
+  if (queryParams) {
+    // pass query params as an object and convert to ?, & , string ... apikey should be at the end
+    url.search = new URLSearchParams(queryParams).toString();
+  }
+
+  // using fetch (without node-fetch) & parse url as string
+  const response = await fetch(url.toString(), { method: "GET" });
+  console.log("url", url.toString());
+  // checking response headers to see if it has content type = application/json
+  const isResponseJson = response.headers
+    .get("Content-Type")
+    .includes("application/json");
+
+  // if the response = json, execute the await response.json(), else make response = text
+  const result = isResponseJson ? await response.json() : await response.text();
+
+  return result;
+};
+
+app.get("/events", async (req, res) => {
+  const keyword = req.query.keyword;
+
+  try {
+    const result = await apiClient(baseUrl, "/events.json", {
+      // params - doesn't display events with postalCode + radius... look into geoPoint
+      keyword,
+      classificationName: "family",
+      city: "london",
+      // keyword: "Dungeon",
+      // latlong: "51.513561,-0.137706",
+      // radius: 10,
+      size: 20,
+      apikey: apiKey,
+    });
+
+    // find _embedded within result, then find events within _embedded - to only get events from result and not links + pages
+    // default to empty array if no events found instead of undefined
+    const events = result?.["_embedded"]?.events || [];
+
+    return res.status(200).json(result);
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({ message: "Failed to retrieve events", err });
+  }
+});
+
+module.exports = database;
