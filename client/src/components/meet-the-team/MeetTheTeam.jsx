@@ -17,7 +17,7 @@ const villageTeam = [
     fullName: "Cat",
     portraitLink: catImg,
     autobiography:
-      "Cat has just returned from turning her life upside down to begin a new chapter: she used to live in Edinburgh, Scotland and worked as an actuary. These days she's swapped excel for VS code and is retraining as a software developer. Having moved around a lot the past two years, she believes a key antidote to loneliness is community.",
+      "Cat has just returned from turning her life upside down to begin a new chapter: she used to live in Edinburgh and worked as an actuary. These days she's swapped excel for VS code and is retraining as a developer. Having moved around a lot the past two years, she believes a key antidote to loneliness is community. She is passionate about Village's mission of connecting like-minded parents and carers.",
   },
   {
     fullName: "Cynthia",
@@ -41,8 +41,7 @@ const villageTeam = [
     fullName: "Lottie",
     portraitLink: lottieImg,
     autobiography:
-      "Lottie is Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  },
+      "Lottie is a born and bred Londoner who, before coming to web development and Village, built belonging by facilitating third sector events. Having grown up in a huge family filled with aunts, uncles, and cousins—some related by blood but most by choice—she understands the importance of community and that family looks different to everyone."},
   {
     fullName: "Maria",
     portraitLink: mariaImg,
