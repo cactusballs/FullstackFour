@@ -1,5 +1,5 @@
 import EventsForm from "./EventsForm.jsx";
-import EventsCard from "./EventCard.jsx";
+import EventCard from "./EventCard.jsx";
 
 function Events() {
   return (
