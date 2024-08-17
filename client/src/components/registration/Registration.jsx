@@ -18,6 +18,7 @@ const Registration = () => {
   const [passwordError, setPasswordError] = useState("");
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [userError, setUserError] = useState("");
 
   // Checking that password and repeat password match and password security with Regex
   const validatePassword = () => {
@@ -84,7 +85,11 @@ const Registration = () => {
       if (response.ok) {
         navigate("/");
       } else {
-        setEmailError(data.message);
+        if (data.error === "email") {
+          setEmailError(data.message);
+        } else if (data.error === "user_name") {
+          setUserError(data.message);
+        }
       }
     } catch (error) {
       console.error("Error", error);
@@ -107,7 +112,10 @@ const Registration = () => {
                 id="first_name"
                 name="first_name"
                 value={first_name}
-                onChange={(e) => setFirst_name(e.target.value)}
+                onChange={(e) => {
+                  setFirst_name(e.target.value);
+                  setNameError("");
+                }}
                 required
               />
             </div>
@@ -118,7 +126,10 @@ const Registration = () => {
                 id="last_name"
                 name="last_name"
                 value={last_name}
-                onChange={(e) => setLast_name(e.target.value)}
+                onChange={(e) => {
+                  setLast_name(e.target.value);
+                  setNameError("");
+                }}
                 required
               />
             </div>
@@ -133,10 +144,16 @@ const Registration = () => {
               id="user_name"
               name="user_name"
               value={user_name}
-              onChange={(e) => setUser_name(e.target.value)}
+              onChange={(e) => {
+                setUser_name(e.target.value);
+                setUserError("");
+              }}
               required
             />
           </div>
+          {userError && (
+            <div style={{ color: "red", marginBottom: "6px" }}>{userError}</div>
+          )}
           <div>
             <label htmlFor="birthday">Birthday</label>
             <input
@@ -156,14 +173,16 @@ const Registration = () => {
               name="email"
               value={email}
               onChange={(e) => {
-                setEmail(e.target.value); 
+                setEmail(e.target.value);
                 setEmailError("");
               }}
               required
             />
           </div>
           {emailError && (
-            <div style={{ color: "red", marginBottom: "6px"}}>{emailError}</div>
+            <div style={{ color: "red", marginBottom: "6px" }}>
+              {emailError}
+            </div>
           )}
           <div>
             <label htmlFor="villager_address">Address</label>
