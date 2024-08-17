@@ -320,3 +320,48 @@ app.get("/events", async (req, res) => {
 });
 
 module.exports = database;
+
+// Registration Route
+app.post("/signup", async (req, res) => {
+  const {
+    first_name,
+    last_name,
+    user_name,
+    birthday,
+    email,
+    villager_address,
+    villager_postcode,
+    villager_location,
+    password,
+  } = req.body;
+
+  try {
+    // Hashing the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const sql =
+      "INSERT INTO villagers (first_name, last_name, user_name, birthday, email, villager_address, villager_postcode, villager_location, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    const values = [
+      first_name,
+      last_name,
+      user_name,
+      birthday,
+      email,
+      villager_address,
+      villager_postcode,
+      villager_location,
+      hashedPassword,
+    ];
+    const result = await database.query(sql, values);
+
+    res.status(201).json({ message: "User registered successfully" });
+  } catch (error) {
+    console.error("Error occurred when registering:", error);
+    res
+      .status(500)
+      .json({
+        message: "An error occurred during registration",
+        error: error.message,
+      });
+  }
+});

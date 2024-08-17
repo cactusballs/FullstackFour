@@ -79,16 +79,16 @@ CREATE TABLE IF NOT EXISTS broadcast_messages (
 
 INSERT INTO villagers (first_name, last_name, user_name, birthday, email, villager_address, villager_postcode, villager_location, password)
 VALUES
-('Cat', 'Conquest', 'CC', '1980-05-15', 'cat.c@example.com', '123 Elm Street', 'N1 0AA', 'North London', 'password123'),
-('Hai Anh', 'Nguyen', 'HAC', '1985-03-22', 'anh.n@example.com', '456 Oak Avenue', 'S2 3BB', 'South London', 'password456'),
-('Lottie', 'Judge','LJ', '1990-11-30', 'lottie.j@example.com', '789 Pine Road', 'W4 5CC', 'West London', 'password789'),
-('Maria', 'Amparo','MA', '1975-08-10', 'maria.a@example.com', '321 Maple Lane', 'E6 7DD', 'East London', 'password101'),
-('Chloe', 'Beijnen','CB', '1988-12-05', 'chloe.b@example.com', '654 Birch Blvd', 'N8 9EE', 'North London', 'password202'),
-('Cynthia', 'Brennan','CYB', '1992-07-14', 'cynthia.b@example.com', '987 Cedar Court', 'S1 1FF', 'South London', 'password303'),
-('Fatima', 'Abdullahi','FA', '1983-01-25', 'fatima.a@example.com', '111 Aspen Way', 'W3 3GG', 'West London', 'password404'),
-('Sarah', 'Jane','SJ', '1978-04-17', 'sarah.j@example.com', '222 Willow Drive', 'E5 5HH', 'East London', 'password505'),
-('Daniel', 'Malik','DM', '1995-09-09', 'daniel.m@example.com', '333 Spruce Path', 'N7 7II', 'North London', 'password606'),
-('Laura', 'Spencer','LS', '1982-06-19', 'laura.s@example.com', '444 Redwood Terrace', 'S4 4JJ', 'South London', 'password707');
+('Cat', 'Conquest', 'CC', '1980-05-15', 'cat.c@example.com', '123 Elm Street', 'N1 0AA', 'North London', '$2b$10$Vq2Evzsf5bxMxFN9ORIL4eExG/P79fN0u3p53TEIXx5RfXuJKxkoC'),
+('Hai Anh', 'Nguyen', 'HAC', '1985-03-22', 'anh.n@example.com', '456 Oak Avenue', 'S2 3BB', 'South London', '$2b$10$kKkxlaMDQU6kSHF65yVpXu6SNdJ.Uy48.IPiSEDB1O3zR798/cvUC'),
+('Lottie', 'Judge','LJ', '1990-11-30', 'lottie.j@example.com', '789 Pine Road', 'W4 5CC', 'West London', '$2b$10$NCa4khQG6ebAGtT3p8T16Ooind2QgcS/5x3NjiLf6KDLmZ5g7s.iO'),
+('Maria', 'Amparo','MA', '1975-08-10', 'maria.a@example.com', '321 Maple Lane', 'E6 7DD', 'East London', '$2b$10$ZXWgn4epMdT.YBOv.iHpbOfnKKAuiFBvtx1Vgk4cffZl/l2I2a/46'),
+('Chloe', 'Beijnen','CB', '1988-12-05', 'chloe.b@example.com', '654 Birch Blvd', 'N8 9EE', 'North London', '$2b$10$t6BvAK/qTMRXoctIpgfjHuAlgraSrD9bT4znnolaY4I4lJMjhVKTC'),
+('Cynthia', 'Brennan','CYB', '1992-07-14', 'cynthia.b@example.com', '987 Cedar Court', 'S1 1FF', 'South London', '$2b$10$bLBPFpVe7OknjbMXPepLJueOclL7WO5riII7wX8ul5Z7JSJ3jvwMy'),
+('Fatima', 'Abdullahi','FA', '1983-01-25', 'fatima.a@example.com', '111 Aspen Way', 'W3 3GG', 'West London', '$2b$10$glAAHk1vFij7hvtHIHpel.MHuIjXAbV6ZyIgemh.fQVuWnuLc8aGy'),
+('Sarah', 'Jane','SJ', '1978-04-17', 'sarah.j@example.com', '222 Willow Drive', 'E5 5HH', 'East London', '$2b$10$KI6adnvLGe4P0ukZtTFawuZ3LjnhAFR5ngi4J7CUoiA9xufE0gE8K'),
+('Daniel', 'Malik','DM', '1995-09-09', 'daniel.m@example.com', '333 Spruce Path', 'N7 7II', 'North London', '$2b$10$XJ9vhNEfyjanecM0EdLgq.JevwaOh5YAVITHFLHPm5OBOkx6NGXDy'),
+('Laura', 'Spencer','LS', '1982-06-19', 'laura.s@example.com', '444 Redwood Terrace', 'S4 4JJ', 'South London', '$2b$10$Fzc5yc/Bl/uziCvg29bG3ePDL43HZW/V5JtPNw/3vS5H7N8WTLWqa');
 
 
 -- db schema for forums: 

@@ -24,7 +24,7 @@ const Login = () => {
       if (response.ok) {
         // Save the token (use cookies for better security)
         localStorage.setItem('token', data.token);
-        navigate('/forum');
+        navigate('/dashboard');
       } else {
         alert(data.message);
       }
