@@ -38,6 +38,7 @@ const Card = ({
         <div
           className="card-footer"
           style={{ backgroundColor: "#485f39", color: "white" }}
+          data-testid="card-test-3"
         >
           {cardFooter && <div>{cardFooter}</div>}
           {cardFooterButton && (
