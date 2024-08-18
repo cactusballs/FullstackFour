@@ -72,7 +72,7 @@ function BroadcastMessages() {
 
   return (
     <>
-      <div className="dashboard-card">
+      <div className="dashboard-card" data-testid="broadcast-test">
         <div className="dashboard-card-header">
           <PiSpeakerHighLight className="broadcast-icon" />
           <h4>Broadcast</h4>

@@ -319,8 +319,6 @@ app.get("/events", async (req, res) => {
   }
 });
 
-module.exports = database;
-
 // Registration Route
 app.post("/signup", async (req, res) => {
   const {
@@ -357,11 +355,11 @@ app.post("/signup", async (req, res) => {
     res.status(201).json({ message: "User registered successfully" });
   } catch (error) {
     console.error("Error occurred when registering:", error);
-    res
-      .status(500)
-      .json({
-        message: "An error occurred during registration",
-        error: error.message,
-      });
+    res.status(500).json({
+      message: "An error occurred during registration",
+      error: error.message,
+    });
   }
 });
+
+module.exports = database;
