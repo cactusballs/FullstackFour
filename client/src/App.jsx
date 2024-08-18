@@ -21,7 +21,7 @@ function App() {
     <Router>
       <div>
         <Routes>
-          
+
           <Route path="/" element={<Login />} />
           <Route path="/forum" element={<Forum />} />
           <Route path="/threads/:topic" element={<ForumTopicThreads />} />
@@ -41,7 +41,7 @@ function Forum() {
       <ForumMain />
       <ForumTopicThreads />
       <SingleThread id={5} />
-      <Footer/>
+      <Footer />
       {/* update thread id to navigate between conversations*/}
     </div>
   );
@@ -52,7 +52,7 @@ function Dashboard() {
     <>
       <BroadcastMessages />
       <RecentForumPosts />
-      <Poll />
+      <Poll pollId={2} />
       <ImageCarousel />
       <LocalEvents />
       {/* Use ImageCarousel component with correct capitalization */}
