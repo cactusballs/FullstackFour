@@ -15,3 +15,11 @@ test("should render card title", () => {
   expect(titleElement).toBeInTheDocument();
   expect(titleElement).toHaveTextContent("testing");
 });
+
+test("should show default message when there's no card content", () => {
+  const content = "";
+  render(<Card content={content} />);
+  const contentElement = screen.getByText("No content at the moment");
+  expect(contentElement).toBeInTheDocument();
+  expect(contentElement).toHaveTextContent("No content at the moment");
+});
