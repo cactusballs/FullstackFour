@@ -72,4 +72,22 @@ threadRouter.get("/threadheader/posts", async (req, res) => {
   }
 });
 
+// Get threads by topic for ForumTopicThreads
+threadRouter.get('/:topic', async (req, res) => {
+  const { topic } = req.params;
+
+  try {
+    const sqlThreadPosts = "SELECT * FROM threads WHERE topic = ?";
+    const [results] = await database.query(sqlThreadPosts, [topic]);
+
+    if (results.length === 0) {
+      return res.status(400).send({ message: 'No threads found for this topic' });
+    }
+
+    res.status(200).json(results);
+  } catch (error) {
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
 module.exports = threadRouter;
