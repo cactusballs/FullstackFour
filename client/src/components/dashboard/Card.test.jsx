@@ -17,7 +17,7 @@ test("should render card title", () => {
 });
 
 test("should show default message when there's no card content", () => {
-  const content = "";
+  const content = ""; //when adding a string here, it will fail the test
   render(<Card content={content} />);
   const contentElement = screen.getByText("No content at the moment");
   expect(contentElement).toBeInTheDocument();

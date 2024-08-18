@@ -28,8 +28,11 @@ import BroadcastMessages from "./Broadcast.jsx";
 
 test("shows previous message when left arrow is clicked", () => {});
 
+// this test doesn't work as intended - it passes but when i add an item on array, it shows the default message still
 test("shows default message when there's no messages", () => {
-  render(<BroadcastMessages messages={[]} />);
+  const messagesArr = [];
+  render(<BroadcastMessages messages={messagesArr} />);
   const message = screen.getByText(/Currently no new broadcast messages/i);
   expect(message).toBeInTheDocument();
+  expect(message).toHaveTextContent("Currently no new broadcast messages");
 });
