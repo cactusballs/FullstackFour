@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './ForumMain.css';
 import ForumSubmission from './ForumSubmissionForm.jsx';
-
+import NavbarComp from '../navbar/Navbar.jsx';
+import { Link } from 'react-router-dom';
 
 const ForumMain = () => {
-  // trying to connect to the DB
+  //  trying to connect to the DB
   const [threads, setThreads] = useState([]);
   const [error, setError] = useState(null);
 
@@ -16,7 +17,17 @@ const ForumMain = () => {
         }
         return response.json();
       })
-      .then(data => setThreads(data))
+      .then(data => {
+        // just bringing back one topic to create the menu as links
+        const uniqueTopics = new Map();
+        data.forEach(thread => {
+          if (!uniqueTopics.has(thread.topic)) {
+            uniqueTopics.set(thread.topic, thread);
+          }
+        });
+
+        setThreads(Array.from(uniqueTopics.values()));
+      })
       .catch(error => {
         console.error('Error fetching threads:', error);
         setError('Failed to fetch threads');
@@ -25,6 +36,7 @@ const ForumMain = () => {
 
   return (
     <div className="AllForums">
+      <NavbarComp />
       <div className='header'>
         <h2>Welcome to the Village Town Hall</h2>
         <p>...explore threads by topic or start your own!</p>
@@ -35,8 +47,12 @@ const ForumMain = () => {
           <p>{error}</p>
         ) : (
           <ul className="TownHallPosts">
-            {threads.map(thread => (
-              <li key={thread.thread_id}>{thread.thread_title}</li>
+            {threads.map((thread, index) => (
+              <li key={thread.topic}>
+                <Link to={`/threads/${encodeURIComponent(thread.topic)}`}>
+                  {thread.topic}
+                </Link>
+              </li>
             ))}
           </ul>
         )}
@@ -44,7 +60,6 @@ const ForumMain = () => {
       <div className='TopPicks'>
         <h3>Start a thread...</h3>
         <ForumSubmission />
-      
       </div>
     </div>
   );
