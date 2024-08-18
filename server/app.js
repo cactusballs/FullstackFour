@@ -245,3 +245,4 @@ app.get("/pollInfo/:pollId", async (req, res) => {
     res.status(500).json({ message: "An error occurred", error: error.message });
   }
 });
+
