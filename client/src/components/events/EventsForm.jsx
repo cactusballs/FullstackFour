@@ -4,16 +4,26 @@ import Form from "react-bootstrap/Form";
 import "./EventsForm.css";
 
 function EventsForm() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [keywordsQuery, setKeywordsQuery] = useState("");
+  const [locationQuery, setLocationQuery] = useState("");
+
   const [events, setEvents] = useState([]);
 
-  const performEventsSearch = async (e) => {
-    const result = await fetch(`/events/${keyword}`);
-    const json = await result.json();
+  const handleSearch = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(`/events/${keyword}`);
+      setSearchQuery(response.data);
+    } catch (err) {
+      console.log("Error: ", err);
+    }
+    // const result = await fetch(`/events/${keyword}`);
+    // const json = await result.json();
   };
 
   return (
-    <Form className="events-form">
+    <Form className="events-form" onSubmit={handleSearch}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Search keywords</Form.Label>
         <Form.Control
@@ -34,11 +44,10 @@ function EventsForm() {
         <Form.Select aria-label="location">
           <option>London </option>
           <option value="1">Use my current location</option>
-          <option value="2">Central London</option>
-          <option value="3">North London</option>
-          <option value="4">South London</option>
+          <option value="2">North London</option>
+          <option value="3">South London</option>
+          <option value="4">West London</option>
           <option value="5">East London</option>
-          <option value="6">West London</option>
         </Form.Select>
       </Form.Group>
 

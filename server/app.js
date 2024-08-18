@@ -6,6 +6,7 @@ require("dotenv").config({ path: "../.env" });
 const database = require("./database");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+import apiClient from "./services/Ticketmaster.service.js";
 
 app.use(cors());
 app.use(express.json());
@@ -261,36 +262,6 @@ app.get("/pollInfo/:pollId", async (req, res) => {
       .json({ message: "An error occurred", error: error.message });
   }
 });
-
-// events
-
-const apiKey = process.env.TICKETMASTER_API_KEY;
-
-// const url = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=family&city=London&apikey=${apiKey}`;
-
-const baseUrl = "https://app.ticketmaster.com/discovery/v2/";
-
-const apiClient = async (baseUrl, path, queryParams) => {
-  const url = new URL(`${baseUrl}${path}`);
-
-  if (queryParams) {
-    // pass query params as an object and convert to ?, & , string ... apikey should be at the end
-    url.search = new URLSearchParams(queryParams).toString();
-  }
-
-  // using fetch (without node-fetch) & parse url as string
-  const response = await fetch(url.toString(), { method: "GET" });
-  console.log("url", url.toString());
-  // checking response headers to see if it has content type = application/json
-  const isResponseJson = response.headers
-    .get("Content-Type")
-    .includes("application/json");
-
-  // if the response = json, execute the await response.json(), else make response = text
-  const result = isResponseJson ? await response.json() : await response.text();
-
-  return result;
-};
 
 app.get("/events", async (req, res) => {
   const keyword = req.query.keyword;
