@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "./Card";
-import "./Poll.css"
+import "./Poll.css";
+import { BsChatLeftHeart } from "react-icons/bs";
 
 const Poll = ({ pollId }) => {
     const [poll, setPoll] = useState(null);
-    const [options, setOptions] = useState([]); // Initialize as an empty array
+    const [options, setOptions] = useState([]);
     const [selectedOption, setSelectedOption] = useState(null);
     const [error, setError] = useState(null);
     const [message, setMessage] = useState(null);
@@ -15,7 +16,7 @@ const Poll = ({ pollId }) => {
             try {
                 const response = await axios.get(`http://localhost:3000/pollInfo/${pollId}`);
                 setPoll(response.data.poll);
-                setOptions(response.data.options || [])
+                setOptions(response.data.options || []);
             } catch (err) {
                 setError("Failed to fetch poll data");
             }
@@ -62,7 +63,7 @@ const Poll = ({ pollId }) => {
         }
 
         return options.map((option) => (
-            <div key={option.id || option.label}>
+            <div key={option.id || option.label} className="poll-option">
                 <input
                     type="radio"
                     id={option.id || option.label}
@@ -82,13 +83,18 @@ const Poll = ({ pollId }) => {
 
     return (
         <Card
-            title={poll ? poll.title : "Loading..."}
+            title={
+                <div className="poll-title">
+                    <BsChatLeftHeart className="poll-title-icon" />
+                    {poll ? poll.title : "Loading..."}
+                </div>
+            }
             content={
-                <>
-                    {error && <div style={{ color: "red" }}>{error}</div>}
-                    {message && <div style={{ color: "green" }}>{message}</div>}
+                <div className="poll-content">
+                    {error && <div className="poll-error">{error}</div>}
+                    {message && <div className="poll-message">{message}</div>}
                     {renderOptions()}
-                </>
+                </div>
             }
             cardFooterButton={!options[0]?.percentage ? "Vote" : null}
             cardFooter={
