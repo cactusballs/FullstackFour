@@ -69,18 +69,26 @@ CREATE TABLE IF NOT EXISTS villagers (
 --     FOREIGN KEY (sender_id) REFERENCES villagers(villager_id) ON DELETE CASCADE
 -- );
 
+CREATE TABLE IF NOT EXISTS broadcast_messages (
+	broadcast_message_id INT AUTO_INCREMENT PRIMARY KEY,
+    villager_id INT,
+    message_content VARCHAR(120),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (villager_id) REFERENCES villagers(villager_id)
+);
+
 INSERT INTO villagers (first_name, last_name, user_name, birthday, email, villager_address, villager_postcode, villager_location, password)
 VALUES
-('Cat', 'Conquest', 'CC', '1980-05-15', 'cat.c@example.com', '123 Elm Street', 'N1 0AA', 'North London', 'password123'),
-('Hai Anh', 'Nguyen', 'HAC', '1985-03-22', 'anh.n@example.com', '456 Oak Avenue', 'S2 3BB', 'South London', 'password456'),
-('Lottie', 'Judge','LJ', '1990-11-30', 'lottie.j@example.com', '789 Pine Road', 'W4 5CC', 'West London', 'password789'),
-('Maria', 'Amparo','MA', '1975-08-10', 'maria.a@example.com', '321 Maple Lane', 'E6 7DD', 'East London', 'password101'),
-('Chloe', 'Beijnen','CB', '1988-12-05', 'chloe.b@example.com', '654 Birch Blvd', 'N8 9EE', 'North London', 'password202'),
-('Cynthia', 'Brennan','CYB', '1992-07-14', 'cynthia.b@example.com', '987 Cedar Court', 'S1 1FF', 'South London', 'password303'),
-('Fatima', 'Abdullahi','FA', '1983-01-25', 'fatima.a@example.com', '111 Aspen Way', 'W3 3GG', 'West London', 'password404'),
-('Sarah', 'Jane','SJ', '1978-04-17', 'sarah.j@example.com', '222 Willow Drive', 'E5 5HH', 'East London', 'password505'),
-('Daniel', 'Malik','DM', '1995-09-09', 'daniel.m@example.com', '333 Spruce Path', 'N7 7II', 'North London', 'password606'),
-('Laura', 'Spencer','LS', '1982-06-19', 'laura.s@example.com', '444 Redwood Terrace', 'S4 4JJ', 'South London', 'password707');
+('Cat', 'Conquest', 'CC', '1980-05-15', 'cat.c@example.com', '123 Elm Street', 'N1 0AA', 'North London', '$2b$10$Vq2Evzsf5bxMxFN9ORIL4eExG/P79fN0u3p53TEIXx5RfXuJKxkoC'),
+('Hai Anh', 'Nguyen', 'HAC', '1985-03-22', 'anh.n@example.com', '456 Oak Avenue', 'S2 3BB', 'South London', '$2b$10$kKkxlaMDQU6kSHF65yVpXu6SNdJ.Uy48.IPiSEDB1O3zR798/cvUC'),
+('Lottie', 'Judge','LJ', '1990-11-30', 'lottie.j@example.com', '789 Pine Road', 'W4 5CC', 'West London', '$2b$10$NCa4khQG6ebAGtT3p8T16Ooind2QgcS/5x3NjiLf6KDLmZ5g7s.iO'),
+('Maria', 'Amparo','MA', '1975-08-10', 'maria.a@example.com', '321 Maple Lane', 'E6 7DD', 'East London', '$2b$10$ZXWgn4epMdT.YBOv.iHpbOfnKKAuiFBvtx1Vgk4cffZl/l2I2a/46'),
+('Chloe', 'Beijnen','CB', '1988-12-05', 'chloe.b@example.com', '654 Birch Blvd', 'N8 9EE', 'North London', '$2b$10$t6BvAK/qTMRXoctIpgfjHuAlgraSrD9bT4znnolaY4I4lJMjhVKTC'),
+('Cynthia', 'Brennan','CYB', '1992-07-14', 'cynthia.b@example.com', '987 Cedar Court', 'S1 1FF', 'South London', '$2b$10$bLBPFpVe7OknjbMXPepLJueOclL7WO5riII7wX8ul5Z7JSJ3jvwMy'),
+('Fatima', 'Abdullahi','FA', '1983-01-25', 'fatima.a@example.com', '111 Aspen Way', 'W3 3GG', 'West London', '$2b$10$glAAHk1vFij7hvtHIHpel.MHuIjXAbV6ZyIgemh.fQVuWnuLc8aGy'),
+('Sarah', 'Jane','SJ', '1978-04-17', 'sarah.j@example.com', '222 Willow Drive', 'E5 5HH', 'East London', '$2b$10$KI6adnvLGe4P0ukZtTFawuZ3LjnhAFR5ngi4J7CUoiA9xufE0gE8K'),
+('Daniel', 'Malik','DM', '1995-09-09', 'daniel.m@example.com', '333 Spruce Path', 'N7 7II', 'North London', '$2b$10$XJ9vhNEfyjanecM0EdLgq.JevwaOh5YAVITHFLHPm5OBOkx6NGXDy'),
+('Laura', 'Spencer','LS', '1982-06-19', 'laura.s@example.com', '444 Redwood Terrace', 'S4 4JJ', 'South London', '$2b$10$Fzc5yc/Bl/uziCvg29bG3ePDL43HZW/V5JtPNw/3vS5H7N8WTLWqa');
 
 
 -- db schema for forums: 
@@ -101,11 +109,11 @@ CREATE TABLE IF NOT EXISTS threads (
     -- tags for themes (will sit with a Y/N). only ask this for the ORIGINAL question/forum post (i.e. thread) 
     -- and then following replies inherit the tags from the original comment
     -- can have as many tags as wanted, will be checkbox on front-end.
-    carers_tag VARCHAR(1),
-    expecting_parents_tag VARCHAR(1),
-    new_parents_tag VARCHAR(1),
-    single_parents_tag VARCHAR(1),
-    LGBTQIA_plus_parents_tag VARCHAR(1),
+    carers_tag BOOLEAN,
+    expecting_parents_tag BOOLEAN,
+    new_parents_tag BOOLEAN,
+    single_parents_tag BOOLEAN,
+    LGBTQIA_plus_parents_tag BOOLEAN,
     FOREIGN KEY (user_name) REFERENCES villagers(user_name) ON DELETE CASCADE
 );
 
@@ -120,59 +128,59 @@ CREATE TABLE IF NOT EXISTS posts_to_threads (
     FOREIGN KEY (thread_id) REFERENCES threads(thread_id) ON DELETE CASCADE
 );
 
-
+-- For tags: boolean = stored as TINYINT(1). true = 1 , 0 =false . NO  QUOTES
 INSERT INTO threads (thread_title, user_name, content, topic, carers_tag, expecting_parents_tag, new_parents_tag, single_parents_tag, LGBTQIA_plus_parents_tag)
-VALUES ('HELP! 38 weeks and  still no name', 'CC', 'please help me name my child I cannot decide :(((( I am a single mom but am very indecisive','Becoming a parent','N','Y','N','Y','N'),
-('Need advice on baby sleep schedules', 'FA', 'My baby is 3 months old and I can’t get them to sleep through the night. Any tips?', 'Sleep', 'N', 'N', 'Y', 'N', 'N'),
-('Balancing work, chores and being present as a parent', 'LJ', 'How do you all manage to balance work and being a parent? Im struggling a lot with this.', 'Being a parent', 'N', 'Y', 'N', 'N', 'N'),
-('Dealing with postpartum depression', 'LS', 'Im really struggling with postpartum depression. Any support groups or advice would be appreciated.', 'Mind, body and soul', 'N', 'N', 'Y', 'N', 'N'),
-('Suggestions for fun family activities', 'DM', 'Looking for suggestions on fun activities to do with my kids this weekend. Any ideas?', 'Mind, body and soul', 'N', 'N', 'Y', 'N', 'Y'),
-('Single Mum friends!', 'SJ', 'Any single Mums in Penge looking for community?', 'Being a parent', 'N', 'N', 'N', 'Y', 'N'),
-('Support for LGBTQIA+ parents', 'DM', 'Looking to connect with other LGBTQIA+ parents for support and advice.', 'Mind, body and soul', 'N', 'N', 'N', 'N', 'Y'),
-('Autism assessment', 'FA', 'Can anyone recommend some good blogs for people who have come out the otherside of autism assessments? It feels never ending and would love some light at the end of the tunnel!', 'SEND', 'Y', 'N', 'N', 'N', 'N'),
-('Preparing for the Baby Shower', 'CC', 'How did you plan your baby shower? Any tips?', 'Becoming a parent', '0', '1', '0', '0', '1'),
-('Balancing Social Life and Parenthood', 'HAC', 'I struggle with balancing me time and being a new parent. Any advice?', 'Being a parent', '0', '0', '1', '1', '0'),
-('Navigating SEND with Teenagers', 'LJ', 'Anyone else have teenagers with SEND? Lets share our experiences.', 'SEND', '1', '0', '0', '0', '0'),
-('Choosing the Right Nursery', 'MA', 'What factors did you consider when choosing a nursery?', 'Childcare', '0', '1', '0', '0', '0'),
-('Tips for Better Sleep', 'CB', 'My baby isn’t sleeping through the night. What worked for you?', 'Sleep', '0', '0', '1', '0', '0'),
-('Supporting Elderly Parents', 'CYB', 'How do you manage being a parent and a carer?',  'Being a carer', '1', '0', '0', '0', '0'),
-('Mindfulness for Parents', 'FA', 'What mindfulness practices help you stay calm?',  'Mind, body and soul', '0', '0', '1', '0', '1'),
-('Finding Support as a Single Parent', 'SJ', 'Any single parents here? How do you manage everything?',  'Being a parent', '0', '0', '1', '1', '0'),
-('Finding the Best Childcare in My Area', 'DM', 'What resources did you use to find good childcare?',  'Childcare', '0', '1', '0', '0', '0'),
-('Exercise Routines After Childbirth', 'LS', 'How did you get back into exercise after having a baby?', 'Mind, body and soul', '0', '1', '1', '0', '0'),
+VALUES ('HELP! 38 weeks and  still no name', 'CC', 'please help me name my child I cannot decide :(((( I am a single mom but am very indecisive','Becoming a parent',0,1,0,1,0),
+('Need advice on baby sleep schedules', 'FA', 'My baby is 3 months old and I can’t get them to sleep through the night. Any tips?', 'Sleep', 0, 0, 1, 0, 0),
+('Balancing work, chores and being present as a parent', 'LJ', 'How do you all manage to balance work and being a parent? Im struggling a lot with this.', 'Being a parent', 0, 0, 0, 0, 0),
+('Dealing with postpartum depression', 'LS', 'Im really struggling with postpartum depression. Any support groups or advice would be appreciated.', 'Mind, body and soul', 0, 0, 0, 0, 0),
+('Suggestions for fun family activities', 'DM', 'Looking for suggestions on fun activities to do with my kids this weekend. Any ideas?', 'Mind, body and soul', 0, 0, 1, 0, 1),
+('Single Mum friends!', 'SJ', 'Any single Mums in Penge looking for community?', 'Being a parent', 0, 0, 0, 1, 0),
+('Support for LGBTQIA+ parents', 'DM', 'Looking to connect with other LGBTQIA+ parents for support and advice.', 'Mind, body and soul', 0, 0, 0, 0, 1),
+('Autism assessment', 'FA', 'Can anyone recommend some good blogs for people who have come out the otherside of autism assessments? It feels never ending and would love some light at the end of the tunnel!', 'SEND', 1, 0, 0, 0, 0),
+('Preparing for the Baby Shower', 'CC', 'How did you plan your baby shower? Any tips?', 'Becoming a parent', 0, 1, 0, 0, 1),
+('Balancing Social Life and Parenthood', 'HAC', 'I struggle with balancing me time and being a new parent. Any advice?', 'Being a parent', 0, 0, 1, 1, 0),
+('Navigating SEND with Teenagers', 'LJ', 'Anyone else have teenagers with SEND? Lets share our experiences.', 'SEND', 1, 0, 0, 0, 0),
+('Choosing the Right Nursery', 'MA', 'What factors did you consider when choosing a nursery?', 'Childcare', 0, 1, 0, 0, 0),
+('Tips for Better Sleep', 'CB', 'My baby isn’t sleeping through the night. What worked for you?', 'Sleep', 0, 0, 1, 0, 0),
+('Supporting Elderly Parents', 'CYB', 'How do you manage being a parent and a carer?',  'Being a carer', 1, 0, 0, 0, 0),
+('Mindfulness for Parents', 'FA', 'What mindfulness practices help you stay calm?',  'Mind, body and soul', 0, 0, 1, 0, 1),
+('Finding Support as a Single Parent', 'SJ', 'Any single parents here? How do you manage everything?',  'Being a parent', 0, 0, 1, 1, 0),
+('Finding the Best Childcare in My Area', 'DM', 'What resources did you use to find good childcare?',  'Childcare', 0, 1, 0, 0, 0),
+('Exercise Routines After Childbirth', 'LS', 'How did you get back into exercise after having a baby?', 'Mind, body and soul', 0, 1, 1, 0, 0),
 
-('Dealing with Colic', 'CC', 'How did you cope with colic? My baby cries constantly.',  'Sleep', '0', '0', '1', '0', '0'),
-('Parenting a Child with Autism', 'HAC', 'How do you navigate birthday parties etc with your children? My kid is coming up to the age they can go to parties alone but am worried they might not cope without us there!',  'SEND', '1', '0', '0', '0', '0'),
-('Education Options for SEND', 'LJ', 'What education options are available for SEND children in Golders Green?', 'SEND', '1', '0', '0', '0', '0'),
-('Charities Supporting New Parents', 'MA', 'Are there any charities that support new parents?',  'Charities', '0', '1', '0', '0', '1'),
-('Finding the Right School', 'CB', 'What should I look for in a school for my child?',  'Education', '0', '0', '1', '0', '0'),
-('Postpartum Mental Health', 'CYB', 'How did you cope with mental health challenges after childbirth?',  'Mind, body and soul', '0', '1', '1', '0', '0'),
-('Handling Multiple Children as a Single Parent', 'FA', 'How do you manage when you have more than one child and no partner?',  'Being a parent', '0', '0', '1', '1', '0'),
-('LGBTQIA+ Friendly Childcare', 'SJ', 'Any recommendations for LGBTQIA+ friendly childcare?',  'Childcare', '0', '0', '0', '0', '1'),
-('Best Charities for Childrens Education', 'DM', 'Which charities support childrens education the best?', 'Charities', '0', '1', '0', '0', '0'),
-('Choosing the Best Preschool', 'LS', 'How did you decide on a preschool? What were your priorities?',  'Education', '0', '0', '1', '0', '0'),
-('Supporting LGBTQIA+ Teens', 'HAC', 'How do you support LGBTQIA+ teens as a parent?',  'Being a parent', '0', '0', '1', '0', '1'),
-('Charities for mobility equipment', 'LJ', 'does anyone know of any charites in London that help with the running cost of motorised wheel chairs?', 'Charities', '1', '0', '0', '0', '0'),
-('Handling Sleep Regression', 'MA', 'My toddler is going through sleep regression. Any advice?',  'Sleep', '0', '0', '1', '0', '0'),
-('Choosing the Right Education Path', 'CB', 'How did you choose between public and private schooling?',  'Education', '0', '0', '1', '0', '0'),
-('Finding SEND Support Groups', 'CYB', 'Are there any good SEND support groups in your area?', 'SEND', '1', '0', '0', '0', '0'),
-('Getting Back to Work After Maternity Leave', 'FA', 'How did you transition back to work after maternity leave?',  'Becoming a parent', '0', '1', '0', '0', '1'),
-('Creating a Sleep Routine', 'SJ', 'What kind of sleep routine works for your baby?',  'Sleep', '0', '0', '1', '0', '0'),
-('Charity Events for Families', 'DM', 'Do you know of any charity events that are family-friendly?',  'Charities', '0', '1', '0', '0', '0'),
-('Supporting a Partner with Mental Health Issues', 'LS', 'How do you support a partner who is struggling mentally?',  'Mind, body and soul', '0', '0', '1', '0', '0'),
-('Co-Parenting After Divorce', 'CC', 'How do you manage co-parenting with an ex-partner?',  'Being a parent', '0', '0', '1', '1', '0'),
-('Finding Resources for Expecting Parents', 'HAC', 'What resources helped you most as an expecting parent?',  'Becoming a parent', '0', '1', '0', '0', '1'),
-('Setting Up a College Fund', 'LJ', 'When did you start saving for your childs college fund?',  'Education', '0', '0', '1', '0', '0'),
-('Carers and Burnout', 'MA', 'How do you avoid burnout when caring for both kids and elderly parents?',  'Being a carer', '1', '0', '0', '0', '0'),
-('Mindful Parenting Practices', 'CB', 'What are your favorite mindful parenting practices?',  'Mind, body and soul', '0', '1', '1', '0', '0'),
-('LGBTQIA+ Parent Meetups', 'CYB', 'Are there any LGBTQIA+ parent meetups in your area?', 'Being a parent', '0', '0', '1', '0', '1'),
-('Packing hsptl bag', 'FA', 'What do you wish you had packed in your hsptl bag?',  'Becoming a parent', '0', '1', '0', '0', '1'),
-('Managing Sleep Deprivation', 'SJ', 'How do you cope with sleep deprivation as a new parent?',  'Sleep', '0', '0', '1', '0', '0'),
-('Looking for Advice on Foster Care', 'SJ', 'My partner and I are considering fostering. What should we know before starting?', 'Being a carer', '1', '0', '0', '0', '1'),
-('Grandparenting and Raising Grandkids', 'CC', 'I’m raising my grandkids full-time. Any tips from other grandparents? Does anyone want to create a social club? I live in Hampstead ',  'Being a carer', '1', '0', '0', '1', '0'),
-('Managing School', 'MA', 'As a grandparent caring for school-aged kids, how do you manage homework and activities? I also get concerned I will not be able to keep up with them forever, should I put them in lots of clubs?',  'Being a carer', '1', '0', '0', '1', '0'),
-('Best All-Inclusive Hotels for Familie in Spain', 'CB', 'We’re planning a family vacation. What are the best all-inclusive hotels you recommend in Spain?', 'Being a parent', '0', '0', '1', '0', '0'),
-('My Child is the Bully – Need Help', 'DM', 'I’ve just found out my child is bullying others at school. How do I address this?',  'Being a parent', '0', '0', '1', '0', '0');
+('Dealing with Colic', 'CC', 'How did you cope with colic? My baby cries constantly.',  'Sleep', 0, 0, 1, 0, 0),
+('Parenting a Child with Autism', 'HAC', 'How do you navigate birthday parties etc with your children? My kid is coming up to the age they can go to parties alone but am worried they might not cope without us there!',  'SEND', 1, 0, 0, 0, 0),
+('Education Options for SEND', 'LJ', 'What education options are available for SEND children in Golders Green?', 'SEND', 1, 0, 0, 0, 0),
+('Charities Supporting New Parents', 'MA', 'Are there any charities that support new parents?',  'Charities', 0, 1, 0, 0, 1),
+('Finding the Right School', 'CB', 'What should I look for in a school for my child?',  'Education', 0, 0, 1, 0, 0),
+('Postpartum Mental Health', 'CYB', 'How did you cope with mental health challenges after childbirth?',  'Mind, body and soul', 0, 1, 1, 0, 0),
+('Handling Multiple Children as a Single Parent', 'FA', 'How do you manage when you have more than one child and no partner?',  'Being a parent', 0, 0, 1, 1, 0),
+('LGBTQIA+ Friendly Childcare', 'SJ', 'Any recommendations for LGBTQIA+ friendly childcare?',  'Childcare', 0,0,0,0,1),
+('Best Charities for Childrens Education', 'DM', 'Which charities support childrens education the best?', 'Charities', 0,1,0,0,0),
+('Choosing the Best Preschool', 'LS', 'How did you decide on a preschool? What were your priorities?',  'Education', 0,0,1,0,0),
+('Supporting LGBTQIA+ Teens', 'HAC', 'How do you support LGBTQIA+ teens as a parent?',  'Being a parent', 0,0,1,0,1),
+('Charities for mobility equipment', 'LJ', 'does anyone know of any charites in London that help with the running cost of motorised wheel chairs?', 'Charities', 1, 0, 0, 0, 0),
+('Handling Sleep Regression', 'MA', 'My toddler is going through sleep regression. Any advice?',  'Sleep', 0, 0, 1, 0, 0),
+('Choosing the Right Education Path', 'CB', 'How did you choose between public and private schooling?',  'Education', 0, 0, 1, 0, 0),
+('Finding SEND Support Groups', 'CYB', 'Are there any good SEND support groups in your area?', 'SEND', 1, 0, 0, 0, 0),
+('Getting Back to Work After Maternity Leave', 'FA', 'How did you transition back to work after maternity leave?',  'Becoming a parent', 0, 1, 0, 0, 1),
+('Creating a Sleep Routine', 'SJ', 'What kind of sleep routine works for your baby?',  'Sleep', 0, 0, 1, 0, 0),
+('Charity Events for Families', 'DM', 'Do you know of any charity events that are family-friendly?',  'Charities', 0, 1, 0, 0, 0),
+('Supporting a Partner with Mental Health Issues', 'LS', 'How do you support a partner who is struggling mentally?',  'Mind, body and soul', 0, 0, 1, 0, 0),
+('Co-Parenting After Divorce', 'CC', 'How do you manage co-parenting with an ex-partner?',  'Being a parent', 0, 0, 1, 1, 0),
+('Finding Resources for Expecting Parents', 'HAC', 'What resources helped you most as an expecting parent?',  'Becoming a parent', 0, 1, 0, 0, 1),
+('Setting Up a College Fund', 'LJ', 'When did you start saving for your childs college fund?',  'Education', 0, 0, 1, 0, 0),
+('Carers and Burnout', 'MA', 'How do you avoid burnout when caring for both kids and elderly parents?',  'Being a carer', 1,0,0,0,0),
+('Mindful Parenting Practices', 'CB', 'What are your favorite mindful parenting practices?',  'Mind, body and soul', 0,1,1,0,0),
+('LGBTQIA+ Parent Meetups', 'CYB', 'Are there any LGBTQIA+ parent meetups in your area?', 'Being a parent', 0,0,1,0,1),
+('Packing hsptl bag', 'FA', 'What do you wish you had packed in your hsptl bag?',  'Becoming a parent', 0,1,0,0,1),
+('Managing Sleep Deprivation', 'SJ', 'How do you cope with sleep deprivation as a new parent?',  'Sleep', 0,0,1,0,0),
+('Looking for Advice on Foster Care', 'SJ', 'My partner and I are considering fostering. What should we know before starting?', 'Being a carer', 1,0,0,0,1),
+('Grandparenting and Raising Grandkids', 'CC', 'I’m raising my grandkids full-time. Any tips from other grandparents? Does anyone want to create a social club? I live in Hampstead ',  'Being a carer', 1,0,0,1,0),
+('Managing School', 'MA', 'As a grandparent caring for school-aged kids, how do you manage homework and activities? I also get concerned I will not be able to keep up with them forever, should I put them in lots of clubs?',  'Being a carer', 1,0,0,1,0),
+('Best All-Inclusive Hotels for Familie in Spain', 'CB', 'We’re planning a family vacation. What are the best all-inclusive hotels you recommend in Spain?', 'Being a parent', 0, 0, 1, 0, 0),
+('My Child is the Bully – Need Help', 'DM', 'I’ve just found out my child is bullying others at school. How do I address this?',  'Being a parent', 0, 0, 1, 0, 0);
 
 INSERT INTO posts_to_threads (thread_id, user_name, content)
 VALUES (1,'LJ','Lottie is a cool name!'),(1,'FA','Fatima is a cool name!'),
@@ -246,6 +254,13 @@ VALUES (1,'LJ','Lottie is a cool name!'),(1,'FA','Fatima is a cool name!'),
 (30, 'FA', 'We found the birth pool and a calm, quiet environment really helped during labour.'),
 (30, 'CB', 'Our midwife was fantastic in guiding us through our birth plan.'),
 (30, 'LJ', 'Dont be afraid to speak up about your needs. Its your birth experience.');
+
+INSERT INTO broadcast_messages (villager_id, message_content, created_at)
+VALUES 
+(2, "hi guys, i'm new here and this is my first broadcast message!", default),
+(1, "I've just been told I'm with triplets and wanted to share my joy with you all!", default),
+(3, "hello world", "2024-08-01 19:09:39"),
+(4, "We've got good weather today in North London. How's everyone else?", "2024-07-30 16:09:39");
 
 -- db schema for  polling feature
 -- -- poll: main poll information (id + question)

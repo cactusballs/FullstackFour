@@ -1,0 +1,22 @@
+/* Alligning first name and last name in the same line */
+.name_fields {
+    display: flex;
+    gap: 25px; 
+  }
+  
+  .name_fields div {
+    flex: 1;
+  }
+ 
+  .name_fields input {
+    width: 100%
+  }
+  
+  button {
+    width: 100px;
+    height: 40px
+  }
+
+  .logo {
+    margin-bottom: 45px;
+  }

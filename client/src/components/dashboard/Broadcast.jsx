@@ -1,9 +1,12 @@
 import "./Broadcast.css";
 import React from "react";
 import { useState, useEffect } from "react";
-import { CaretLeftBold } from "../icons/CaretLeft.jsx";
-import { CaretRightBold } from "../icons/CaretRight.jsx";
-import { SpeakerLowDuotone } from "../icons/Loudspeaker.jsx";
+import { PiSpeakerHighLight } from "react-icons/pi";
+import { FaChevronLeft } from "react-icons/fa6";
+import { FaChevronRight } from "react-icons/fa6";
+import MessageModal from "./Modal.jsx";
+// import ForumButton from "../forum/ForumButton.jsx";
+import Card from "./Card.jsx";
 
 function BroadcastMessages() {
   const [messages, setMessages] = useState([]);
@@ -39,9 +42,9 @@ function BroadcastMessages() {
     }
   };
 
-  const postMessage = () => {};
-
-  const emptyCarousel = <p>Currently no new broadcast messages</p>;
+  const emptyCarousel = (
+    <p id="empty-broadcast-message">Currently no new broadcast messages</p>
+  );
 
   // calling endpoints from frontend
   useEffect(() => {
@@ -67,46 +70,36 @@ function BroadcastMessages() {
     fetchMessages();
   }, []);
 
-  async function postData() {
-    try {
-      const response = await fetch("http://localhost:3000/broadcastmessages", {
-        method: "POST",
-        body: JSON.stringify({ key: "value" }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const json = await response.json();
-      console.log(json);
-    } catch (err) {
-      console.err("Error:", err);
-    }
-  }
-
   return (
     <>
       <div className="dashboard-card">
         <div className="dashboard-card-header">
-          <SpeakerLowDuotone />
-          <p className="dashboard-card-header">Broadcast</p>
-          <SpeakerLowDuotone id="loudspeaker-right" />
+          <PiSpeakerHighLight className="broadcast-icon" />
+          <h4>Broadcast</h4>
+          <PiSpeakerHighLight
+            className="broadcast-icon"
+            id="loudspeaker-right"
+          />
         </div>
         <div className="dashboard-card-content">
+          {/* need to work on - show image when there are messages, hide when there's no messages */}
+          <img
+            src="../src/assets/images/default-user-icon.png"
+            className="profile-image"
+          ></img>
           {/* if there are no messages, display displayCarousel message else display current index */}
           {!messages.length ? emptyCarousel : displayMessage}
         </div>
         <div className="dashboard-card-footer">
           <div className="broadcast-arrows">
-            <button onClick={previousMessage}>
-              <CaretLeftBold />
+            <button onClick={previousMessage} className="broadcast-arrow">
+              <FaChevronLeft />
             </button>
-            <button onClick={nextMessage}>
-              <CaretRightBold />
+            <button onClick={nextMessage} className="broadcast-arrow">
+              <FaChevronRight />
             </button>
           </div>
-          <button className="create-message" onClick={postMessage}>
-            Create
-          </button>
+          <MessageModal />
         </div>
       </div>
     </>
