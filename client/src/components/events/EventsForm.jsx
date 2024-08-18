@@ -5,7 +5,6 @@ import "./EventsForm.css";
 
 function EventsForm() {
   const [keywordsQuery, setKeywordsQuery] = useState("");
-  const [locationQuery, setLocationQuery] = useState("");
 
   const [events, setEvents] = useState([]);
 

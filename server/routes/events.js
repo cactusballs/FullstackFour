@@ -1,8 +1,8 @@
 import apiClient from "./services/Ticketmaster.service.js";
-// look into Router?
 
 app.get("/events", async (req, res) => {
   const keyword = req.query.keyword;
+  // try to add more queries
 
   try {
     const result = await apiClient(baseUrl, "/events.json", {

@@ -35,4 +35,4 @@ const apiClient = async (baseUrl, path, queryParams) => {
 //call external API with filters to build a query/modify request to external API, fetch data from external API using modified query
 // process and return filtered data once receiving data from external API, return it to frontend.
 
-modules.export = apiClient;
+module.exports = apiClient;
