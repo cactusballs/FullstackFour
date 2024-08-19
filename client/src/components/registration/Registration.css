@@ -1,22 +1,63 @@
-/* Alligning first name and last name in the same line */
-.name_fields {
-    display: flex;
-    gap: 25px; 
-  }
-  
-  .name_fields div {
-    flex: 1;
-  }
- 
-  .name_fields input {
-    width: 100%
-  }
-  
-  button {
-    width: 100px;
-    height: 40px
-  }
+/* Basic style, removing default */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-size: 16px;
+}
 
-  .logo {
-    margin-bottom: 45px;
-  }
+.container-fluid {
+  height: 100%;
+  background-color:#F4F5EC;
+}
+
+/* Content full-screen */
+.row {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.img-fluid {
+  display: flex;
+  align-items: flex-start;
+  height: 100vh; 
+  overflow: hidden; 
+}
+
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: flex-start; 
+  height: 100%; 
+  width: 100%; 
+  padding: 5px;
+  overflow-y: auto; 
+  box-sizing: border-box; 
+  background-color: #F4F5EC;
+}
+
+.logo {
+  padding-top: 10px;
+  padding-bottom: 100px;
+}
+
+input {
+  padding: 5px; 
+}
+
+/* Aligning first name and last name in the same line */
+.name_fields {
+  display: flex;
+  gap: 25px; 
+  padding-bottom: 10px;
+}
+
+.name_fields div {
+  flex: 1;
+}
+
+.name_fields input {
+  width: 100%;
+}
