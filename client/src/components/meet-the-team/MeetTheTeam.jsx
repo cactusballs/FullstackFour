@@ -11,6 +11,7 @@ import anhImg from "../../assets/images/portraits/anh.png";
 import communityImg from "../../assets/images/portraits/daniel-funes-fuentes-TyLw3IQALMs-unsplash.jpg";
 import "./MeetTheTeam.css";
 import fatimaImg from "../../assets/images/portraits/fatima.png";
+import { Parallax } from "react-scroll-parallax";
 
 const villageTeam = [
   {
@@ -75,12 +76,14 @@ const MeetTheTeam = () => {
       </Container>
 
       <div className="topContainer">
-        <Container>
-          <Row noGutters>
-            <Col lg={9}>
+        <Container className="container">
+
+          {/* <Row> */}
+        
+            <Col lg={8} className="cards-col">
               {villageTeam.map((person, index) => (
                 <Card key={index} className="card">
-                  <Row noGutters>
+                  <Row>
                     <Col md={4}>
                       <Card.Img
                         variant="left"
@@ -101,11 +104,12 @@ const MeetTheTeam = () => {
                 </Card>
               ))}
             </Col>
+          
 
-            <Col lg={3}>
+            <Col lg={4} className="img-col">
               <img src={communityImg} className="communityImg" />
             </Col>
-          </Row>
+          {/* </Row> */}
         </Container>
       </div>
     </div>

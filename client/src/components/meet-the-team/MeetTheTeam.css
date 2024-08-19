@@ -3,11 +3,12 @@ body {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 4rem;
+  margin-bottom: 1rem;
 }
 
 h2 {
-  margin-top: 0.5rem;
+  margin-top: 0.8rem;
   font-size: 2.3rem;
 }
 
@@ -21,9 +22,26 @@ h2 {
   padding: 0;
 }
 
-.bios-container {
+
+.container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+
+/* .bios-container {
   display: flex;
   padding: 0;
+} */
+
+.cards-col{
+  /* height: 200vh; */
+}
+
+
+.img-col{
+  flex: 1;
 }
 
 .portraits {
@@ -37,9 +55,9 @@ h2 {
 .communityImg {
   display: block;
   max-height: 300px;
-  width: 100%;
   height: auto;
-  padding: 0;
+  /* position: sticky; */
+  /* padding: 0; */
 }
 
 .card {
@@ -48,7 +66,7 @@ h2 {
   text-align: left;
   margin-bottom: 1rem;
   display: flex;
-  align-items: flex-start;
+ 
   padding: 0;
   width: 95%;
 }
