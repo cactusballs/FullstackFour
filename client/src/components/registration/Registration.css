@@ -61,3 +61,23 @@ input {
 .name_fields input {
   width: 100%;
 }
+
+.button_signup {
+  width: 100px;
+  height: 36px;
+  border-radius: 4px; 
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  font-size: 16px; 
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-left: auto; 
+  margin-right: auto; 
+  color: white; 
+  background-color: #0F5C3C; 
+}
+
+.button_signup:hover {
+  background-color: #2b9469; 
+}
