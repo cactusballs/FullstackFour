@@ -30,18 +30,17 @@ h2 {
 
 
 
-/* .bios-container {
-  display: flex;
-  padding: 0;
-} */
-
+/* hide up some of the bios to allow parallax-esque scroll */
 .cards-col{
-  /* height: 200vh; */
+  height: 100vh;
+  overflow: scroll;
+  
 }
 
 
 .img-col{
-  flex: 1;
+  position: sticky;
+  overflow-y: auto;
 }
 
 .portraits {
@@ -56,8 +55,6 @@ h2 {
   display: block;
   max-height: 300px;
   height: auto;
-  /* position: sticky; */
-  /* padding: 0; */
 }
 
 .card {
