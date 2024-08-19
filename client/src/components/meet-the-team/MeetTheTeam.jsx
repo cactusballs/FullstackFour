@@ -2,7 +2,6 @@ import React from "react";
 //import Button from 'react-bootstrap/Button';
 import { Card, Row, Container, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import placeholderimg from "../../assets/images/portraits/PLACEHOLDER-PORTRAIT.svg";
 import catImg from "../../assets/images/portraits/cat.png";
 import cynthiaImg from "../../assets/images/portraits/cynthia.png";
 import lottieImg from "../../assets/images/portraits/lottie.png";
@@ -14,8 +13,6 @@ import "./MeetTheTeam.css";
 import fatimaImg from "../../assets/images/portraits/fatima.png";
 
 const villageTeam = [
-
-
   {
     fullName: "Anh",
     portraitLink: anhImg,
@@ -33,9 +30,9 @@ const villageTeam = [
     fullName: "Chloe",
     portraitLink: chloeImg,
     autobiography:
-      "Chloe is a former primary school teacher and a mum to a one-year-old. She has recently swapped her focus from planning lessons to planning apps! Having spent many months trying to find her flow in motherhood, she’s excited to begin her journey of reminding people that it takes a village to raise a child and that they’re not alone."
+      "Chloe is a former primary school teacher and a mum to a one-year-old. She has recently swapped her focus from planning lessons to planning apps! Having spent many months trying to find her flow in motherhood, she’s excited to begin her journey of reminding people that it takes a village to raise a child and that they’re not alone.",
   },
-  
+
   {
     fullName: "Cynthia",
     portraitLink: cynthiaImg,
@@ -53,14 +50,14 @@ const villageTeam = [
     fullName: "Lottie",
     portraitLink: lottieImg,
     autobiography:
-      "Lottie is a born and bred Londoner who, before coming to web development and Village, built belonging by facilitating third sector events. Having grown up in a huge family filled with aunts, uncles, and cousins—some related by blood but most by choice—she understands the importance of community and that family looks different to everyone."},
+      "Lottie is a born and bred Londoner who, before coming to web development and Village, built belonging by facilitating third sector events. Having grown up in a huge family filled with aunts, uncles, and cousins—some related by blood but most by choice—she understands the importance of community and that family looks different to everyone.",
+  },
   {
     fullName: "Maria",
     portraitLink: mariaImg,
     autobiography:
-      "Maria is Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "With a background in multimedia, Maria Amparo has developed her skills across various creative fields before expanding her focus to technology. Currently enhancing her skills as a full-stack developer, she is passionate about crafting innovative solutions that make a meaningful impact on people’s lives. Understanding the importance of connection with others to thrive, she is excited about building a community for parents to connect, share experiences, exchange knowledge, and support one another.",
   },
-
 ];
 
 const MeetTheTeam = () => {
@@ -82,11 +79,8 @@ const MeetTheTeam = () => {
           <Row noGutters>
             <Col lg={9}>
               {villageTeam.map((person, index) => (
-                <Card key={index} 
-                
-                className="card">
+                <Card key={index} className="card">
                   <Row noGutters>
-
                     <Col md={4}>
                       <Card.Img
                         variant="left"
@@ -95,15 +89,14 @@ const MeetTheTeam = () => {
                       />
                     </Col>
 
-
                     <Col md={8}>
                       <Card.Body>
-                        <Card.Title className="card-title">{person.fullName}</Card.Title>
+                        <Card.Title className="card-title">
+                          {person.fullName}
+                        </Card.Title>
                         <Card.Text>{person.autobiography}</Card.Text>
                       </Card.Body>
                     </Col>
-
-
                   </Row>
                 </Card>
               ))}
@@ -114,8 +107,6 @@ const MeetTheTeam = () => {
             </Col>
           </Row>
         </Container>
-
-        
       </div>
     </div>
   );
