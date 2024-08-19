@@ -5,15 +5,14 @@ import "./EventsForm.css";
 
 function EventsForm() {
   const [keywordsQuery, setKeywordsQuery] = useState("");
-
-  const [events, setEvents] = useState([]);
+  //const [events, setEvents] = useState([]);
 
   const handleSearch = async (e) => {
     e.preventDefault();
 
     try {
       const response = await fetch(`/events/${keyword}`);
-      setSearchQuery(response.data);
+      setKeywordsQuery(response.data);
     } catch (err) {
       console.log("Error: ", err);
     }
@@ -28,9 +27,9 @@ function EventsForm() {
         <Form.Control
           type="keywords"
           placeholder=""
-          value={searchQuery}
+          value={keywordsQuery}
           onChange={(e) => {
-            setSearchQuery(e.target.value);
+            setKeywordsQuery(e.target.value);
             console.log(e.target.value);
           }}
         />
@@ -61,11 +60,7 @@ function EventsForm() {
         </Form.Select>
       </Form.Group>
 
-      <Button
-        variant="outline-dark"
-        type="submit"
-        onClick={performEventsSearch}
-      >
+      <Button variant="outline-dark" type="submit" onClick={handleSearch}>
         Search
       </Button>
     </Form>

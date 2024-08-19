@@ -6,7 +6,7 @@ import { FaChevronLeft } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa6";
 import MessageModal from "./Modal.jsx";
 // import ForumButton from "../forum/ForumButton.jsx";
-import Card from "./Card.jsx";
+// import Card from "./Card.jsx";
 
 function BroadcastMessages() {
   const [messages, setMessages] = useState([]);

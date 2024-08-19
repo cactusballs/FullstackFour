@@ -6,9 +6,8 @@ const apiKey = process.env.TICKETMASTER_API_KEY;
 
 // const url = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=family&city=London&apikey=${apiKey}`;
 
-const baseUrl = "https://app.ticketmaster.com/discovery/v2/";
-
 const apiClient = async (baseUrl, path, queryParams) => {
+  const baseUrl = "https://app.ticketmaster.com/discovery/v2/";
   const url = new URL(`${baseUrl}${path}`);
 
   if (queryParams) {

@@ -17,6 +17,9 @@ app.use("/threads", threadRouter);
 const topicRouter = require("./routes/topics");
 app.use("/api/topics", topicRouter);
 
+const eventsRouter = require("./routes/events");
+app.use("/events", eventsRouter);
+
 // creating and connecting to the port
 const port = process.env.SERVER_PORT || 3000;
 
