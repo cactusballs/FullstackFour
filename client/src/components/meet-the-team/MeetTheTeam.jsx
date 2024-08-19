@@ -11,31 +11,43 @@ import chloeImg from "../../assets/images/portraits/chloe.png";
 import anhImg from "../../assets/images/portraits/anh.png";
 import communityImg from "../../assets/images/portraits/daniel-funes-fuentes-TyLw3IQALMs-unsplash.jpg";
 import "./MeetTheTeam.css";
+import fatimaImg from "../../assets/images/portraits/fatima.png";
 
 const villageTeam = [
+
+
+  {
+    fullName: "Anh",
+    portraitLink: anhImg,
+    autobiography:
+      "Anh is a former learning support assistant who has helped young pupils with special educational needs to progress in school by collaborating with their parents and teachers to develop new learning plans, helping to unlock the pupil’s potential and facilitate a smoother transition to secondary. Having observed the challenges parents face in supporting their children at her previous work, she is determined to build a strong community through Village - where parents no longer face their challenges alone.",
+  },
   {
     fullName: "Cat",
     portraitLink: catImg,
     autobiography:
       "Cat has just returned from turning her life upside down to begin a new chapter: she used to live in Edinburgh and worked as an actuary. These days she's swapped excel for VS code and is retraining as a developer. Having moved around a lot the past two years, she believes a key antidote to loneliness is community. She is passionate about Village's mission of connecting like-minded parents and carers.",
   },
-  {
-    fullName: "Cynthia",
-    portraitLink: cynthiaImg,
-    autobiography:
-      "Cynthia is a former data engineer originally from Brazil and a mom to a one-year-old baby. Having experienced the isolation of living in a foreign country, she understands the challenges of parenting without a support network. This inspired her to help others in similar situations by building a community where we can share experiences, find comfort, and foster meaningful connections.",
-  },
+
   {
     fullName: "Chloe",
     portraitLink: chloeImg,
     autobiography:
       "Chloe is a former primary school teacher and a mum to a one-year-old. She has recently swapped her focus from planning lessons to planning apps! Having spent many months trying to find her flow in motherhood, she’s excited to begin her journey of reminding people that it takes a village to raise a child and that they’re not alone."
   },
+  
+  {
+    fullName: "Cynthia",
+    portraitLink: cynthiaImg,
+    autobiography:
+      "Cynthia is a former data engineer originally from Brazil and a mom to a one-year-old baby. Having experienced the isolation of living in a foreign country, she understands the challenges of parenting without a support network. This inspired her to help others in similar situations by building a community where we can share experiences, find comfort, and foster meaningful connections.",
+  },
+
   {
     fullName: "Fatima",
-    portraitLink: placeholderimg,
+    portraitLink: fatimaImg,
     autobiography:
-      "Fatima is Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "Fatima is a recent STEM graduate and as someone who is passionate about coding and has a lot of siblings, sees the importance of parents being able to connect and seek support and community because it really does take a village!",
   },
   {
     fullName: "Lottie",
@@ -48,12 +60,7 @@ const villageTeam = [
     autobiography:
       "Maria is Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   },
-  {
-    fullName: "Anh",
-    portraitLink: anhImg,
-    autobiography:
-      "Anh is Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  },
+
 ];
 
 const MeetTheTeam = () => {
