@@ -105,7 +105,7 @@ const MeetTheTeam = () => {
           </Col>
 
           <Col lg={4} className="img-col">
-            <img src={communityImg} className="communityImg" />
+            <img src={communityImg} className="communityImg" alt="Two people planting flowers"/>
           </Col>
         </Container>
       </div>

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import "./SingleThread.css";
 import NavbarComp from "../navbar/Navbar";
 import Footer from "../footer/Footer";
+import BackButton from "./BackButton";
 
 const SingleThread = () => {
   const { id } = useParams();
@@ -87,6 +88,7 @@ const SingleThread = () => {
           <p>No posts found for this thread.</p>
         )}
       </div>
+      <BackButton/>
       <Footer />
     </>
   );

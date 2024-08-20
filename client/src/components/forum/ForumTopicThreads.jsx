@@ -4,6 +4,7 @@ import "./ForumTopicThreads.css";
 import DropdownButton from "./DropdownButton";
 import NavbarComp from "../navbar/Navbar";
 import Footer from "../footer/Footer";
+import BackButton from "./BackButton";
 
 const ForumTopicThreads = () => {
   // trying to connect to the DB
@@ -40,6 +41,7 @@ const ForumTopicThreads = () => {
       <div className="TownHall">
         <h3>
           All posts for {topic}
+          
           <DropdownButton />
         </h3>
 
@@ -61,6 +63,7 @@ const ForumTopicThreads = () => {
       </div>
      
     </div>
+    <BackButton/>
      <Footer/>
      </>
   );
