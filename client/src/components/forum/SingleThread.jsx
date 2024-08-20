@@ -5,7 +5,7 @@ import NavbarComp from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 
 const SingleThread = () => {
-  const {id} = useParams();
+  const { id } = useParams();
   const [threads, setThreads] = useState([]);
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
@@ -52,43 +52,43 @@ const SingleThread = () => {
 
   return (
     <>
-    <div className="threadContainer">
-      <NavbarComp/>
-       { console.log("Current thread ID:", id)}
-      {threads.length > 0 ? (
-        <>
-         {/* post initial thread information */}
+      <div className="threadContainer">
+        <NavbarComp />
+        {console.log("Current thread ID:", id)}
+        {threads.length > 0 ? (
+          <>
+            {/* post initial thread information */}
             <h3>Join the conversation</h3>
             <div className="threadStart">
-            <p className="threadTitle">{threadsArr.thread_title}</p>
-            <p className="mainQuestion">{threadsArr.content}</p>
-            <p className="postInfo">
-              {threadsArr.user_name} @ {new Date(threadsArr.sent_at).toLocaleString()}
-            </p>
-          </div>
-          
-        </>
-      ) : (
-        <p>Loading thread</p>
-      )}
+              <p className="threadTitle">{threadsArr.thread_title}</p>
+              <p className="mainQuestion">{threadsArr.content}</p>
+              <p className="postInfo">
+                {threadsArr.user_name} @{" "}
+                {new Date(threadsArr.sent_at).toLocaleString()}
+              </p>
+            </div>
+          </>
+        ) : (
+          <p>Loading thread</p>
+        )}
 
-{/* post reply/replies to question */}
-      {posts.length > 0 ? (
-        posts.map((post) => (
-          <div key={post.post_id} className="postItem">
-            <p>{post.content}</p>
-            <p className="postInfo">
-              Reply from {post.user_name} @ {new Date(post.sent_at).toLocaleString()}
-            </p>
-          </div>
-        ))
-      ) : (
-        <p>No posts found for this thread.</p>
-      )}
-     
-    </div>
-     <Footer/>
-     </>
+        {/* post reply/replies to question */}
+        {posts.length > 0 ? (
+          posts.map((post) => (
+            <div key={post.post_id} className="postItem">
+              <p>{post.content}</p>
+              <p className="postInfo">
+                Reply from {post.user_name} @{" "}
+                {new Date(post.sent_at).toLocaleString()}
+              </p>
+            </div>
+          ))
+        ) : (
+          <p>No posts found for this thread.</p>
+        )}
+      </div>
+      <Footer />
+    </>
   );
 };
 
