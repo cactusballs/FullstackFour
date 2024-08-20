@@ -6,35 +6,39 @@ import LocalEvents from "./LocalEvents";
 import ImageCarousel from "./ImageCarousel";
 import RecentForumPosts from "./RecentForumPosts";
 import BroadcastMessages from "./Broadcast";
+import NavbarComp from "../navbar/Navbar.jsx";
 
 function Dashboard() {
   return (
-    <Container>
-      <Row>
-        <Col>
-          <LocalEvents />
-        </Col>
-        <Col xs={6}>
-          <ImageCarousel />
-        </Col>
-        <Col>
-          <RecentForumPosts />
-        </Col>
-      </Row>
+    <div className="dashboard-page">
+      <NavbarComp />
+      <Container>
+        <Row>
+          <Col>
+            <LocalEvents />
+          </Col>
+          <Col xs={6}>
+            <ImageCarousel />
+          </Col>
+          <Col>
+            <RecentForumPosts />
+          </Col>
+        </Row>
 
-      <Row>
-        <Col>
-          <LocalEvents />
-        </Col>
-        <Col xs={5}>
-          {/* should be poll here */}
-          <BroadcastMessages />
-        </Col>
-        <Col>
-          <BroadcastMessages />
-        </Col>
-      </Row>
-    </Container>
+        <Row>
+          <Col>
+            <LocalEvents />
+          </Col>
+          <Col xs={5}>
+            {/* should be poll here */}
+            <BroadcastMessages />
+          </Col>
+          <Col>
+            <BroadcastMessages />
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }
 

@@ -1,3 +1,40 @@
+/* body {
+  background-color: #d0d2b7;
+  margin: 0;
+  padding: 0;
+} */
+
 .event-card {
   background-color: #f0f1e8;
+  max-width: 310px;
+  max-height: 510px;
+}
+
+/* #event-image {
+
+} */
+
+#event-name {
+  margin: 0;
+  padding: 0;
+  font-family: "Verdana";
+  font-weight: 550;
+  margin-bottom: 8px;
+}
+.event-venue {
+  color: brown;
+}
+
+.event-note {
+  font-style: italic;
+  font-size: 14px;
+  font-weight: 300;
+}
+.event-link {
+  color: black;
+  margin: 0;
+}
+
+.event-link:hover {
+  color: grey;
 }

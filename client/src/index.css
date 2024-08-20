@@ -1,4 +1,4 @@
-:root {
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -25,9 +25,9 @@ body {
   display: flex;
   background-color: #d0d2b7;
   /* background-color: #e1d6cb;  */
-  /*have changed this so we can view it while we work - it kept showing in dark mode */
-  overflow-x: hidden;
-}
+/*have changed this so we can view it while we work - it kept showing in dark mode */
+/* overflow-x: hidden;
+} */
 
 h1 {
   font-size: 3.2em;

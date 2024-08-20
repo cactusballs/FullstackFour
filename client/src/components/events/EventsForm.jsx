@@ -25,7 +25,7 @@ function EventsForm() {
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Search keywords</Form.Label>
         <Form.Control
-          type="keywords"
+          type="text"
           placeholder=""
           value={keywordsQuery}
           onChange={(e) => {
@@ -58,6 +58,17 @@ function EventsForm() {
           <option value="2">Two</option>
           <option value="3">Three</option>
         </Form.Select>
+      </Form.Group>
+
+      <Form.Group className="mb-3" id="event-dates">
+        <Form.Group className="mb-3" id="label-date-block">
+          <Form.Label>From</Form.Label>
+          <Form.Control type="date" id="from-date" />
+        </Form.Group>
+        <Form.Group className="mb-3" id="label-date-block">
+          <Form.Label>To</Form.Label>
+          <Form.Control type="date" id="to-date" />
+        </Form.Group>
       </Form.Group>
 
       <Button variant="outline-dark" type="submit" onClick={handleSearch}>

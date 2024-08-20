@@ -31,7 +31,7 @@ function EventCard() {
 
   // need to incorporate dynamic array items onto bootstrap card
   return (
-    <Row xs={1} md={3} className="g-4">
+    <Row xs={1} md={4} className="g-4">
       {events.map((event) => {
         const startDate = dayjs(event.sales?.public?.startDateTime).format(
           "D MMM YYYY h:mm A"
@@ -39,25 +39,35 @@ function EventCard() {
         const endDate = dayjs(event.sales?.public?.endDateTime).format(
           "D MMM YYYY h:mm A"
         );
-
         return (
           <Col key={event.id}>
             <Card className="event-card">
               {/* optional chain ?. (gets url property if images[0] exist) makes sure it doesn't break when there's no image */}
-              <Card.Img variant="top" src={event.images?.[0]?.url} />
+              <Card.Img
+                id="event-image"
+                variant="top"
+                src={event.images?.[0]?.url}
+              />
               <Card.Body>
-                <Card.Title>{event.name}</Card.Title>
-                <Card.Text>
-                  {event._embedded?.venues?.[0]?.name}
+                <Card.Title id="event-name">{event.name}</Card.Title>
+                <Card.Text className="event-venue">
+                  {event._embedded?.venues?.[0]?.name},{" "}
                   {event._embedded?.venues[0]?.postalCode}
+                </Card.Text>
+                <Card.Text className="event-note">
+                  {event?.pleaseNote}
                 </Card.Text>
               </Card.Body>
               <ListGroup className="list-group-flush">
-                <ListGroup.Item>{startDate}</ListGroup.Item>
+                <ListGroup.Item>
+                  {startDate} - {endDate}
+                </ListGroup.Item>
                 <ListGroup.Item>{endDate}</ListGroup.Item>
               </ListGroup>
               <Card.Body>
-                <Card.Link href={event.url}>Book Tickets</Card.Link>
+                <Card.Link className="event-link" href={event.url}>
+                  Book Tickets
+                </Card.Link>
               </Card.Body>
             </Card>
           </Col>
