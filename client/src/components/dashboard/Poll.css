@@ -1,0 +1,20 @@
+.poll-title {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center the title text */
+    position: relative;
+    font-size: 22px;
+    font-family: "League Spartan", sans-serif;
+    color: white;
+    background-color: #485f39;
+}
+
+.poll-title-icon {
+    position: absolute;
+    left: 10px;
+    /* Adjust the spacing from the left edge */
+    font-size: 24px;
+    color: white;
+}
