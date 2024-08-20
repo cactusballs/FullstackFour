@@ -5,6 +5,7 @@ import logo from "../../assets/images/village-logo.png";
 import Footer from "../footer/Footer.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import signupImage from "../../assets/images/signup_pic.jpg";
+import { Link } from "react-router-dom";
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const Registration = () => {
       return false;
     } else if (!passwordRegex.test(password)) {
       setPasswordError(
-        "Password must be at least 8 characters long and include 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character (@$!%*?&#)"
+        "Password must have min. 8 characters, 1 uppercase and 1 lowercase letters, 1 number and 1 special character (@$!%*?&#)"
       );
       return false;
     }
@@ -46,7 +47,7 @@ const Registration = () => {
   const validateName = () => {
     if (first_name.length < 2 || last_name.length < 2) {
       setNameError(
-        "Please enter a first name and surname with at least two letters"
+        "Please enter a first name and last name with at least two letters"
       );
       return false;
     }
@@ -102,7 +103,7 @@ const Registration = () => {
 
   return (
     <div className="container-fluid">
-      <div className="row vh-100">
+      <div className="row">
         <div className="col-md-6 d-none d-md-block">
           <img
             src={signupImage}
@@ -113,11 +114,11 @@ const Registration = () => {
         </div>
         <div className="col-md-6 d-flex align-items-center justify-content-center">
           <div className="signup-container">
-            <div className="logo mb-4">
+            <div className="logo">
               <img src={logo} alt="Village Logo" />
             </div>
             <form onSubmit={handleSubmit}>
-              <div className="name_fields">
+              <div className="name-fields">
                 <div>
                   <label htmlFor="first_name">First Name</label>
                   <input
@@ -147,12 +148,8 @@ const Registration = () => {
                   />
                 </div>
               </div>
-              {nameError && (
-                <div style={{ color: "red", marginBottom: "6px" }}>
-                  {nameError}
-                </div>
-              )}
-              <div>
+              {nameError && <div className="error-message">{nameError}</div>}
+              <div className="form-field">
                 <label htmlFor="user_name">Username</label>
                 <input
                   type="text"
@@ -166,12 +163,8 @@ const Registration = () => {
                   required
                 />
               </div>
-              {userError && (
-                <div style={{ color: "red", marginBottom: "6px" }}>
-                  {userError}
-                </div>
-              )}
-              <div>
+              {userError && <div className="error-message">{userError}</div>}
+              <div className="form-field">
                 <label htmlFor="birthday">Birthday</label>
                 <input
                   type="date"
@@ -182,7 +175,7 @@ const Registration = () => {
                   required
                 />
               </div>
-              <div>
+              <div className="form-field">
                 <label htmlFor="email">Email</label>
                 <input
                   type="email"
@@ -196,12 +189,8 @@ const Registration = () => {
                   required
                 />
               </div>
-              {emailError && (
-                <div style={{ color: "red", marginBottom: "6px" }}>
-                  {emailError}
-                </div>
-              )}
-              <div>
+              {emailError && <div className="error-message">{emailError}</div>}
+              <div className="form-field">
                 <label htmlFor="villager_address">Address</label>
                 <input
                   type="text"
@@ -213,7 +202,7 @@ const Registration = () => {
                   required
                 />
               </div>
-              <div>
+              <div className="form-field">
                 <label htmlFor="villager_postcode">Postcode</label>
                 <input
                   type="text"
@@ -224,7 +213,7 @@ const Registration = () => {
                   required
                 />
               </div>
-              <div>
+              <div className="form-field">
                 <label htmlFor="villager_location">Location</label>
                 <select
                   id="villager_location"
@@ -240,7 +229,7 @@ const Registration = () => {
                   <option value="East London">East London</option>
                 </select>
               </div>
-              <div>
+              <div className="form-field">
                 <label htmlFor="password">Password</label>
                 <input
                   type="password"
@@ -251,7 +240,7 @@ const Registration = () => {
                   required
                 />
               </div>
-              <div>
+              <div className="form-field">
                 <label htmlFor="repeat_password">Repeat Password</label>
                 <input
                   type="password"
@@ -263,15 +252,14 @@ const Registration = () => {
                 />
               </div>
               {passwordError && (
-                <div style={{ color: "red", marginBottom: "6px" }}>
-                  {passwordError}
-                </div>
+                <div className="error-message">{passwordError}</div>
               )}
-              <button className="button_signup" type="submit">
+              <button className="button-signup" type="submit">
                 Sign Up
               </button>
               <p>
-                Already have an account? <a href="./login">Log in!</a>
+                Already have an account?
+                <Link to="/"> Log In!</Link>
               </p>
             </form>
           </div>
