@@ -202,6 +202,7 @@ app.post("/broadcastmessages", async (req, res) => {
 
   if (!message_content) {
     res.status(400).json({ message: "Values cannot be blank" });
+    return;
   }
 
   try {

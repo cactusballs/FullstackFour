@@ -15,35 +15,39 @@ function MessageModal() {
   const handleShow = () => setShow(true);
 
   // for post request
-  // const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("");
 
-  //   post doesn't work yet - look into state management
-  //   const handleMessageChange = (e) => {
-  //     let message = e.target.message;
-  //     setMessage(message);
-  //   };
+  const handleMessageChange = (e) => {
+    let message = e.target.value;
+    console.log(message);
+    setMessage(message);
+  };
 
-  //   async function handleSubmit(e) {
-  //     e.preventDefault();
+  async function handleSubmit(e) {
+    e.preventDefault();
 
-  //     try {
-  //       const response = await fetch("http://localhost:3000/broadcastmessages", {
-  //         method: "POST",
-  //         body: JSON.stringify({ message_content: message }),
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       });
+    try {
+      const response = await fetch("http://localhost:3000/broadcastmessages", {
+        method: "POST",
+        // need to get user id from centralised storage - hard-coded user's id in
+        body: JSON.stringify({ id: 6, message_content: message }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-  //       if (!response.ok) {
-  //         throw new Error(`Response status: ${response.status}`);
-  //       }
-  //       const result = await response.json();
-  //       console.log(result);
-  //     } catch (err) {
-  //       console.err("Error:", err);
-  //     }
-  //   }
+      if (!response.ok) {
+        console.error(response);
+        throw new Error(`Response status: ${response.status}`);
+      }
+      const result = await response.json();
+      console.log(result);
+
+      // close modal and alert user message has been submitted when clicking submit
+    } catch (err) {
+      console.log("Error:", err);
+    }
+  }
 
   return (
     <>
@@ -76,6 +80,7 @@ function MessageModal() {
               </div>
               <Form.Control
                 as="textarea"
+                onInput={handleMessageChange}
                 rows={3}
                 placeholder="Type your message here..."
                 autoFocus
@@ -84,7 +89,7 @@ function MessageModal() {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="outline-success" onClick={handleClose}>
+          <Button variant="outline-success" onClick={handleSubmit}>
             Submit
           </Button>
           <Button

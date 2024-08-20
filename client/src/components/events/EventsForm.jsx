@@ -11,13 +11,12 @@ function EventsForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch(`/events/${keyword}`);
-      setKeywordsQuery(response.data);
+      const response = await fetch(`http://localhost:3000/events`);
+      const json = await response.json();
+      return json;
     } catch (err) {
       console.log("Error: ", err);
     }
-    // const result = await fetch(`/events/${keyword}`);
-    // const json = await result.json();
   };
 
   return (
@@ -54,9 +53,9 @@ function EventsForm() {
         <Form.Label>Location radius</Form.Label>
         <Form.Select aria-label="location-radius">
           <option>From ...</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option value="1">Within 1 mile</option>
+          <option value="2">Within 3 miles</option>
+          <option value="3">Within 5 miles</option>
         </Form.Select>
       </Form.Group>
 

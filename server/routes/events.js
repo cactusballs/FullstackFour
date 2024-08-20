@@ -35,15 +35,17 @@ eventsRouter.get("/", async (req, res) => {
   try {
     const result = await apiClient(baseUrl, "/events.json", {
       // params - doesn't display events with postalCode + radius... look into geoPoint
-      keyword,
+      ...(keyword ? { keyword } : {}),
       classificationName: "family",
-      city: "london",
+      city: "London",
       // keyword: "Dungeon",
       // latlong: "51.513561,-0.137706",
       // radius: 10,
-      size: 20,
+      size: 32,
+
       apikey: apiKey,
     });
+    // /events.json?apikey=ECEWuRCTSc4UARJjE5uBzyYMoPusSHmv&size=100&city=London&classificationName=-Theatre
 
     // find _embedded within result, then find events within _embedded - to only get events from result and not links + pages
     // default to empty array if no events found instead of undefined
