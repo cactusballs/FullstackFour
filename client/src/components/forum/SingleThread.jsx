@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./SingleThread.css";
+import NavbarComp from "../navbar/Navbar";
+import Footer from "../footer/Footer";
 
 const SingleThread = () => {
   const {id} = useParams();
@@ -49,7 +51,9 @@ const SingleThread = () => {
   let threadsArr = threads[0];
 
   return (
+    <>
     <div className="threadContainer">
+      <NavbarComp/>
        { console.log("Current thread ID:", id)}
       {threads.length > 0 ? (
         <>
@@ -80,7 +84,10 @@ const SingleThread = () => {
       ) : (
         <p>No posts found for this thread.</p>
       )}
+     
     </div>
+     <Footer/>
+     </>
   );
 };
 

@@ -33,17 +33,13 @@ function App() {
             element={
               <>
                 <MeetTheTeam />
-                <Footer />
+                
               </>
             }
           />
           {/* Add more routes here if needed */}
           <Route path="/conversation/:id" element={
-            <>
-            <NavbarComp/>
-            <SingleThread id={1} />
-            <Footer/>
-            </>
+            <SingleThread/>
             } />
         </Routes>
       </div>
@@ -55,8 +51,8 @@ function Forum() {
   return (
     <div>
       <ForumMain />
-      <ForumTopicThreads />
-      <SingleThread id={5} />
+      {/* <ForumTopicThreads />
+      <SingleThread id={5} /> */}
       <Footer />
       {/* update thread id to navigate between conversations*/}
     </div>

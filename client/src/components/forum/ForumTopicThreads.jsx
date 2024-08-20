@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./ForumTopicThreads.css";
 import DropdownButton from "./DropdownButton";
-import SingleThread from "./SingleThread";
+import NavbarComp from "../navbar/Navbar";
+import Footer from "../footer/Footer";
 
 const ForumTopicThreads = () => {
   // trying to connect to the DB
@@ -29,7 +30,9 @@ const ForumTopicThreads = () => {
   }, [topic]);
 
   return (
+    <>
     <div className="AllForums">
+      <NavbarComp/>
       <div className="header">
         <h2>{topic}</h2>
         <p>...explore threads by topic or start your own!</p>
@@ -56,7 +59,10 @@ const ForumTopicThreads = () => {
           </ul>
         )}
       </div>
+     
     </div>
+     <Footer/>
+     </>
   );
 };
 
