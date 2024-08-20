@@ -77,7 +77,7 @@ const SingleThread = () => {
           <div key={post.post_id} className="postItem">
             <p>{post.content}</p>
             <p className="postInfo">
-              User: {post.user_name} @ {new Date(post.sent_at).toLocaleString()}
+              Reply from {post.user_name} @ {new Date(post.sent_at).toLocaleString()}
             </p>
           </div>
         ))

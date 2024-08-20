@@ -7,6 +7,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  margin: 3rem;
 }
 
 
@@ -37,7 +38,7 @@ font-weight: bold;
     border: 1px solid #ddd;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    padding: 8px 20px;
+    padding: 13px 25px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -47,6 +48,7 @@ font-weight: bold;
 
 .postItem {
   text-align: left;
+  margin-top: 1.5rem;
 }
 
 .postInfo {
