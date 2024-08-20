@@ -1,11 +1,12 @@
 .AllForums {
   padding: 20px;
-  display: grid;
+  display: flex;
   width: 100%;
-  grid-template-columns: 50vw 40vw;
+  /* grid-template-columns: 50vw 40vw; */
   gap: 20px;
   align-items: start;
   overflow: hidden;
+  margin-top: 2rem;
 }
 
 /* the title */

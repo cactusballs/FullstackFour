@@ -2,18 +2,24 @@
   .AllForums {
     font-family: 'League Spartan';
     padding: 20px;
-    display: grid;
+    display: flex;
     width: 100%;
-    /* grid-template-columns: 50vw 30vw; */
-    gap: 20px;
     align-items: start;
+    justify-items: center;
     overflow: hidden;
+    box-sizing: border-box;
+    margin-bottom: 2rem;
+    margin-top: 7rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto; 
   }
   
   /* the title */
   .header {
     text-align: left;
-    margin-bottom: 20px;
+    margin-top: 50px;
+    margin-bottom: 5px;
     color: #233115;
   }
   /* the two cards */
@@ -26,6 +32,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex; 
     flex-direction: column; 
+    margin-top: -30px;
   }
   /* styling for the headers of the two cards */
   .TownHall h3, h3 {
@@ -38,17 +45,6 @@
     border-top-right-radius: 8px;
   }
   
-  /* height and column of each card */
-  
-  /* .TownHall {
-    grid-column: 1 / 2;
-  }
-  
-  
-  .TopPicks {
-    grid-column: 2 / 3;
-   
-  } */
   
   .TownHallPosts {
     list-style: none;

@@ -35,8 +35,10 @@ const ForumMain = () => {
   }, []);
 
   return (
+    <>
+     <NavbarComp/>
     <div className="AllForums">
-      <NavbarComp />
+     
       <div className='header'>
         <h2>Welcome to the Village Town Hall</h2>
         <p>...explore threads by topic or start your own!</p>
@@ -62,6 +64,7 @@ const ForumMain = () => {
         <ForumSubmission />
       </div>
     </div>
+    </>
   );
 }
 

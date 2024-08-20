@@ -2,7 +2,7 @@
   /* commenting out styles thats affecting the image on login/homepage */
   /* max-width: 1280px; */
   margin: 0 auto;
-  /* width: 100%; */ /*needs to be uncommented to allow footer to span across entire viewport - but makes sign up page go to left!!*/
+   width: 100%;  /*needs to be uncommented to allow footer to span across entire viewport - but makes sign up page go to left!!*/
   /* padding: 2rem; */
   text-align: center;
 }
