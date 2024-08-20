@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './ForumTopicThreads.css';
+import DropdownButton from './DropdownButton';
 
 const ForumTopicThreads = () => {
   // trying to connect to the DB
@@ -30,9 +31,13 @@ const ForumTopicThreads = () => {
       <div className='header'>
         <h2>{topic}</h2>
         <p>...explore threads by topic or start your own!</p>
+        
       </div>
       <div className='TownHall'>
-        <h3>All posts for {topic}</h3>
+        <h3>All posts for {topic}
+        <DropdownButton/>
+        </h3>
+        
         {error ? (
           <p>{error}</p>
         ) : (
