@@ -19,6 +19,7 @@ const ForumTopicThreads = () => {
       })
       .then(data => {
         setThreads(data);
+        console.log(data);
       })
       .catch(error => {
         console.error('Error fetching threads:', error);

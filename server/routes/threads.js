@@ -85,6 +85,7 @@ threadRouter.get('/:topic', async (req, res) => {
     }
 
     res.status(200).json(results);
+    console.log(results);
   } catch (error) {
     res.status(500).json({ message: 'Internal Server Error' });
   }
