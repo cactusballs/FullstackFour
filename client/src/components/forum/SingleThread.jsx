@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import "./SingleThread.css";
 
-const SingleThread = ({ id }) => {
+const SingleThread = () => {
+  const {id} = useParams();
   const [threads, setThreads] = useState([]);
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
@@ -25,7 +27,7 @@ const SingleThread = ({ id }) => {
       });
   }, [id]);
 
-  //get post responses
+  //get posts (responses) to thread
   useEffect(() => {
     fetch(`http://localhost:3000/threads/threadheader/posts?thread_id=${id}`)
       .then((response) => {
