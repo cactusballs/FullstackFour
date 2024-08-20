@@ -3,6 +3,8 @@
     font-family: 'League Spartan';
     padding: 20px;
     display: flex;
+    flex-direction: column;
+    align-items: stretch;
     width: 100%;
     align-items: start;
     justify-items: center;

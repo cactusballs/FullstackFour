@@ -7,6 +7,7 @@
   align-items: start;
   overflow: hidden;
   margin-top: 2rem;
+  align-items: stretch;
 }
 
 /* the title */
