@@ -9,7 +9,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-
 }
 
 a {
@@ -28,7 +27,6 @@ body {
   /* background-color: #e1d6cb;  */
   /*have changed this so we can view it while we work - it kept showing in dark mode */
   overflow-x: hidden;
-  justify-content: space-evenly;
 }
 
 h1 {
