@@ -266,6 +266,18 @@ app.post('/signup', async (req, res) => {
   const { first_name, last_name, user_name, birthday, email, villager_address, villager_postcode, villager_location, password } = req.body;
 
   try {
+    // Checking if the email is already registered in the database
+    const [existingEmail] = await database.query('SELECT * FROM villagers WHERE email = ?', [email]);
+    if (existingEmail.length > 0) {
+      return res.status(400).json({ error: 'email', message: 'This email is already registered, please log in' });
+    }
+
+    // Checking if the username is already in the database
+    const [existingUser] = await database.query('SELECT * FROM villagers WHERE user_name = ?', [user_name]);
+    if (existingUser.length > 0) {
+      return res.status(409).json({ error: 'user_name', message: 'This username is already taken, please choose a different one' });
+    }
+
     // Hashing the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
