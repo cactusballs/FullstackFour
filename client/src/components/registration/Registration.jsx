@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Registration.css";
 import logo from "../../assets/images/village-logo.png";
+import Footer from "../footer/Footer.jsx";
+import "bootstrap/dist/css/bootstrap.min.css";
+import signupImage from "../../assets/images/signup_pic.jpg";
+import { Link } from "react-router-dom";
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -17,6 +21,8 @@ const Registration = () => {
   const [repeat_password, setRepeat_password] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [userError, setUserError] = useState("");
 
   // Checking that password and repeat password match and password security with Regex
   const validatePassword = () => {
@@ -28,7 +34,7 @@ const Registration = () => {
       return false;
     } else if (!passwordRegex.test(password)) {
       setPasswordError(
-        "Password must be at least 8 characters long and include 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character (@$!%*?&#)"
+        "Password must have min. 8 characters, 1 uppercase and 1 lowercase letters, 1 number and 1 special character (@$!%*?&#)"
       );
       return false;
     }
@@ -41,7 +47,7 @@ const Registration = () => {
   const validateName = () => {
     if (first_name.length < 2 || last_name.length < 2) {
       setNameError(
-        "Please enter a first name and surname with at least two letters"
+        "Please enter a first name and last name with at least two letters"
       );
       return false;
     }
@@ -83,7 +89,11 @@ const Registration = () => {
       if (response.ok) {
         navigate("/");
       } else {
-        alert(data.message);
+        if (data.error === "email") {
+          setEmailError(data.message);
+        } else if (data.error === "user_name") {
+          setUserError(data.message);
+        }
       }
     } catch (error) {
       console.error("Error", error);
@@ -92,143 +102,171 @@ const Registration = () => {
   };
 
   return (
-    <div className="signup-container">
-      <div className="signup-form">
-        <div className="logo">
-          <img src={logo} alt="Village Logo" />
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-md-6 d-none d-md-block">
+          <img
+            src={signupImage}
+            alt="A woman and a kid on the street"
+            className="img-fluid h-100 w-100"
+            style={{ objectFit: "cover" }}
+          />
         </div>
-        <form onSubmit={handleSubmit}>
-          <div className="name_fields">
-            <div>
-              <label htmlFor="first_name">First Name</label>
-              <input
-                type="text"
-                id="first_name"
-                name="first_name"
-                value={first_name}
-                onChange={(e) => setFirst_name(e.target.value)}
-                required
-              />
+        <div className="col-md-6 d-flex align-items-center justify-content-center">
+          <div className="signup-container">
+            <div className="logo">
+              <img src={logo} alt="Village Logo" />
             </div>
-            <div>
-              <label htmlFor="last_name">Last Name</label>
-              <input
-                type="text"
-                id="last_name"
-                name="last_name"
-                value={last_name}
-                onChange={(e) => setLast_name(e.target.value)}
-                required
-              />
-            </div>
+            <form onSubmit={handleSubmit}>
+              <div className="name-fields">
+                <div>
+                  <label htmlFor="first_name">First Name</label>
+                  <input
+                    type="text"
+                    id="first_name"
+                    name="first_name"
+                    value={first_name}
+                    onChange={(e) => {
+                      setFirst_name(e.target.value);
+                      setNameError("");
+                    }}
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="last_name">Last Name</label>
+                  <input
+                    type="text"
+                    id="last_name"
+                    name="last_name"
+                    value={last_name}
+                    onChange={(e) => {
+                      setLast_name(e.target.value);
+                      setNameError("");
+                    }}
+                    required
+                  />
+                </div>
+              </div>
+              {nameError && <div className="error-message">{nameError}</div>}
+              <div className="form-field">
+                <label htmlFor="user_name">Username</label>
+                <input
+                  type="text"
+                  id="user_name"
+                  name="user_name"
+                  value={user_name}
+                  onChange={(e) => {
+                    setUser_name(e.target.value);
+                    setUserError("");
+                  }}
+                  required
+                />
+              </div>
+              {userError && <div className="error-message">{userError}</div>}
+              <div className="form-field">
+                <label htmlFor="birthday">Birthday</label>
+                <input
+                  type="date"
+                  id="birthday"
+                  name="birthday"
+                  value={birthday}
+                  onChange={(e) => setBirthday(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-field">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setEmailError("");
+                  }}
+                  required
+                />
+              </div>
+              {emailError && <div className="error-message">{emailError}</div>}
+              <div className="form-field">
+                <label htmlFor="villager_address">Address</label>
+                <input
+                  type="text"
+                  id="villager_address"
+                  name="villager_address"
+                  placeholder="Street name and number"
+                  value={villager_address}
+                  onChange={(e) => setVillager_address(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-field">
+                <label htmlFor="villager_postcode">Postcode</label>
+                <input
+                  type="text"
+                  id="villager_postcode"
+                  name="villager_postcode"
+                  value={villager_postcode}
+                  onChange={(e) => setVillager_postcode(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-field">
+                <label htmlFor="villager_location">Location</label>
+                <select
+                  id="villager_location"
+                  name="villager_location"
+                  value={villager_location}
+                  onChange={(e) => setVillager_location(e.target.value)}
+                  required
+                >
+                  <option value="">Select your location</option>
+                  <option value="North London">North London</option>
+                  <option value="South London">South London</option>
+                  <option value="West London">West London</option>
+                  <option value="East London">East London</option>
+                </select>
+              </div>
+              <div className="form-field">
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-field">
+                <label htmlFor="repeat_password">Repeat Password</label>
+                <input
+                  type="password"
+                  id="repeat_password"
+                  name="repeat_password"
+                  value={repeat_password}
+                  onChange={(e) => setRepeat_password(e.target.value)}
+                  required
+                />
+              </div>
+              {passwordError && (
+                <div className="error-message">{passwordError}</div>
+              )}
+              <button className="button-signup" type="submit">
+                Sign Up
+              </button>
+              <p>
+                Already have an account?
+                <Link to="/"> Log In!</Link>
+              </p>
+            </form>
           </div>
-          {nameError && (
-            <div style={{ color: "red", marginBottom: "6px" }}>{nameError}</div>
-          )}
-          <div>
-            <label htmlFor="user_name">Username</label>
-            <input
-              type="text"
-              id="user_name"
-              name="user_name"
-              value={user_name}
-              onChange={(e) => setUser_name(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="birthday">Birthday</label>
-            <input
-              type="date"
-              id="birthday"
-              name="birthday"
-              value={birthday}
-              onChange={(e) => setBirthday(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="villager_address">Address</label>
-            <input
-              type="text"
-              id="villager_address"
-              name="villager_address"
-              placeholder="Street name and number"
-              value={villager_address}
-              onChange={(e) => setVillager_address(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="villager_postcode">Postcode</label>
-            <input
-              type="text"
-              id="villager_postcode"
-              name="villager_postcode"
-              value={villager_postcode}
-              onChange={(e) => setVillager_postcode(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="villager_location">Location</label>
-            <select
-              id="villager_location"
-              name="villager_location"
-              value={villager_location}
-              onChange={(e) => setVillager_location(e.target.value)}
-              required
-            >
-              <option value="">Select your location</option>
-              <option value="North London">North London</option>
-              <option value="South London">South London</option>
-              <option value="West London">West London</option>
-              <option value="East London">East London</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="repeat_password">Repeat Password</label>
-            <input
-              type="password"
-              id="repeat_password"
-              name="repeat_password"
-              value={repeat_password}
-              onChange={(e) => setRepeat_password(e.target.value)}
-              required
-            />
-          </div>
-          {passwordError && (
-            <div style={{ color: "red", marginBottom: "6px" }}>
-              {passwordError}
-            </div>
-          )}
-          <button type="submit">Sign Up</button>
-          <p>
-            Already have an account? <a href="./login">Log in!</a>
-          </p>
-        </form>
+        </div>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
