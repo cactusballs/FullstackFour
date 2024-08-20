@@ -57,7 +57,7 @@ const SingleThread = () => {
        { console.log("Current thread ID:", id)}
       {threads.length > 0 ? (
         <>
-         
+         {/* post initial thread information */}
             <h3>Join the conversation</h3>
             <div className="threadStart">
             <p className="threadTitle">{threadsArr.thread_title}</p>
@@ -72,6 +72,7 @@ const SingleThread = () => {
         <p>Loading thread</p>
       )}
 
+{/* post reply/replies to question */}
       {posts.length > 0 ? (
         posts.map((post) => (
           <div key={post.post_id} className="postItem">
