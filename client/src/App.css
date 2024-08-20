@@ -1,9 +1,12 @@
 #root {
   /* commenting out styles thats affecting the image on login/homepage */
   /* max-width: 1280px; */
-  margin: 0 auto;
+  margin: 0 auto !important;
+  width: 100%;
   /* padding: 2rem; */
   text-align: center;
+  /* padding: 0; */
+  /* box-sizing: border-box; */
 }
 
 .logo {
