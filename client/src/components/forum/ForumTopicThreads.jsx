@@ -11,9 +11,7 @@ const ForumTopicThreads = () => {
   const { topic } = useParams();
   const [threads, setThreads] = useState([]);
   const [error, setError] = useState(null);
-  const [ parentTag, setParentTag] = useState('');
-
-  
+  const [parentTag, setParentTag] = useState("");
 
   //effect to fetch all threads under a certain topic
   //console.log(topic);
@@ -33,82 +31,88 @@ const ForumTopicThreads = () => {
         console.error("Error fetching threads:", error);
         setError("Failed to fetch threads");
       });
-  }, [topic]);
-
+  }, [parentTag, topic]);
 
   //effect to fetch all threads with a tag, within a topic
   //console.log(topic, parentTag);
   useEffect(() => {
-    if(parentTag){
-    fetch(`http://localhost:3000/threads/${encodeURIComponent(topic)}/${encodeURIComponent(parentTag)}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setThreads(data);
-        //console.log(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching threads with this tag:", error);
-        setError("Failed to fetch threads by tag");
-      });
+    if (parentTag) {
+      fetch(
+        `http://localhost:3000/threads/${encodeURIComponent(
+          topic
+        )}/${encodeURIComponent(parentTag)}`
+      )
+        .then((response) => {
+          if (response.status === 404) {
+            return response.json().then((data) => {
+              setError(data.message);
+              setThreads([]);
+            });
+          }
+
+          if (!response.ok) {
+            setError("there has been an error");
+            //throw new Error("Network response was not ok");
+           
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setThreads(data);
+          setError(null);
+          //console.log(data);
+        })
+        .catch((error) => {
+          console.error("Error fetching threads with this tag:", error);
+          setError("Failed to fetch threads by tag");
+        });
     }
   }, [parentTag, topic]);
 
-
-
-
-
-
-
-
   //handle select function to navigate between tags
   const handleSelect = (tag) => {
-      console.log(tag);
-    //const parentTag = event.target.value;
-    console.log(tag, parentTag);
+    console.log(tag);
+    const parentTag = tag;
     setParentTag(tag);
-  }
+    console.log(threads);
+  };
 
   return (
     <>
-    <div className="AllForums">
-      <NavbarComp/>
-      <div className="header">
-        <h2>{topic}</h2>
-        <p>...explore threads by topic or start your own!</p>
-      </div>
-      <div className="TownHall">
-        <h3>
-          All posts for {topic}
-          
-          <DropdownButton onSelect={handleSelect}/>
-        </h3>
+      <div className="AllForums">
+        <NavbarComp />
+        <div className="header">
+          <h2>{topic}</h2>
+          <p>...explore threads by topic or start your own!</p>
+        </div>
+        <div className="TownHall">
+          <h3>
+            All posts for {topic}
+            <DropdownButton onSelect={handleSelect} />
+          </h3>
 
-        {error ? (
-          <p>{error}</p>
-        ) : (
-          <ul className="TownHallPosts">
-            {threads.map((thread) => (
-              <li key={thread.thread_id}>
-                <Link to={"/conversation/" + thread.thread_id}>
-                  {thread.thread_title}
-                </Link>
-
-                {/* element={<SingleThread id={thread.thread_id} />} */}
-              </li>
-            ))}
-          </ul>
-        )}
+          {error ? (
+            <p>{error}</p>
+          ) : (
+            <ul className="TownHallPosts">
+              {Array.isArray(threads) && threads.length >0 ? (
+                threads.map((thread) => (
+                  <li key={thread.thread_id}>
+                    <Link to={`/conversation/${thread.thread_id}`}>
+                      {thread.thread_title}
+                    </Link>
+                  </li>
+                ))
+              ) : (
+                <p>No posts for this tag under this topic.</p>
+              )}
+            </ul>
+          )}
+        </div>
       </div>
-     
-    </div>
-    <BackButton/>
-     <Footer/>
-     </>
+      <BackButton />
+      <Footer />
+    </>
   );
 };
 
