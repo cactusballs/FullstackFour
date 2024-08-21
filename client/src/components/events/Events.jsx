@@ -2,6 +2,7 @@ import EventsForm from "./EventsForm.jsx";
 import EventCard from "./EventCard.jsx";
 import "./Events.css";
 import NavbarComp from "../navbar/Navbar.jsx";
+import Footer from "../footer/Footer.jsx";
 
 function Events() {
   return (
@@ -14,6 +15,7 @@ function Events() {
         </div>
         <EventCard />
       </div>
+      <Footer />
     </div>
   );
 }
