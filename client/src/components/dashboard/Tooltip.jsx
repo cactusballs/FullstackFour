@@ -13,7 +13,7 @@ const InfoTooltip = () => {
       placement="right"
       delay={{ show: 250, hide: 400 }}
       overlay={
-        <Tooltip id="tooltip-info">
+        <Tooltip id="tooltip-info" data-testid="tooltip-test">
           Your message will be broadcasted to all villagers for the next 24
           hours and can't be deleted/edited once submitted
         </Tooltip>

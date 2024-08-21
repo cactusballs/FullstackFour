@@ -4,8 +4,6 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { LuInfo } from "react-icons/lu";
 import InfoTooltip from "./Tooltip.jsx";
-// import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-// import Tooltip from "react-bootstrap/Tooltip";
 import "./Modal.css";
 
 function MessageModal() {
@@ -44,6 +42,8 @@ function MessageModal() {
       console.log(result);
 
       // close modal and alert user message has been submitted when clicking submit
+      handleClose();
+      alert("Success! Your message is now broadcasted");
     } catch (err) {
       console.log("Error:", err);
     }

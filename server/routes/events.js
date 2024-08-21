@@ -36,13 +36,12 @@ eventsRouter.get("/", async (req, res) => {
     const result = await apiClient(baseUrl, "/events.json", {
       // params - doesn't display events with postalCode + radius... look into geoPoint
       // if keyword is provided, add it to query - else default to empty object
-      // ...(keyword ? { keyword } : {}),
-      // classificationName: "Family",
+      ...(keyword ? { keyword } : {}),
+      // classificationName: "family",
       city: "London",
-      includeFamily: "yes",
-      // onsaleEndDateTime: "2024-12-25T12:30:00Z",
-      // endDateTime: "2024-12-25T12:30:00Z",
-      // keyword: "Dungeon",
+      // includeFamily: "yes",
+      startDateTime: "2024-08-31T12:30:00Z",
+      keyword: "children",
       // latlong: "51.513561,-0.137706",
       // radius: 10,
       size: 200,
