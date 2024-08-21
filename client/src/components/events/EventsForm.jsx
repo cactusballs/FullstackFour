@@ -55,6 +55,7 @@ function EventsForm() {
           <option value="1">Within 1 mile</option>
           <option value="2">Within 3 miles</option>
           <option value="3">Within 5 miles</option>
+          <option value="4">Within 10 miles</option>
         </Form.Select>
       </Form.Group>
 

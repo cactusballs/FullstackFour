@@ -10,9 +10,12 @@
   max-height: 510px;
 }
 
-/* #event-image {
-
-} */
+#event-image {
+  height: 186px;
+}
+#event-title-venue {
+  height: 130px;
+}
 
 #event-name {
   margin: 0;
@@ -54,5 +57,6 @@
 }
 
 .event-link:hover {
-  color: grey;
+  color: #d3d3d3;
+  text-decoration: underline;
 }

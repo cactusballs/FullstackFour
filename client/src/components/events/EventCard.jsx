@@ -56,7 +56,7 @@ function EventCard() {
                   variant="top"
                   src={event.images?.[0]?.url}
                 />
-                <Card.Body>
+                <Card.Body id="event-title-venue">
                   <Card.Title id="event-name">{event.name}</Card.Title>
                   <Card.Text className="event-venue">
                     {event._embedded?.venues?.[0]?.name},{" "}
