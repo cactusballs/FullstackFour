@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import BroadcastMessages from "./components/dashboard/Broadcast.jsx";
@@ -13,6 +13,8 @@ import Footer from "./components/footer/Footer.jsx";
 import Body from "./components/body/Body.jsx";
 import Registration from "./components/registration/Registration.jsx";
 import LocalEvents from "./components/dashboard/LocalEvents.jsx";
+import MeetTheTeam from "./components/meet-the-team/MeetTheTeam.jsx";
+import { ParallaxProvider } from "react-scroll-parallax";
 //import TopicsDropdown from "./components/forum/DropdownMenu/Dropdown/TopicsDropdown";
 import Events from "./components/events/Events.jsx";
 import Dashboard from "./components/dashboard/Dashboard.jsx";
@@ -22,7 +24,6 @@ function App() {
     <Router>
       <div>
         <Routes>
-          
           <Route path="/" element={<Login />} />
           <Route path="/forum" element={<Forum />} />
           <Route path="/threads/:topic" element={<ForumTopicThreads />} />
@@ -30,6 +31,17 @@ function App() {
           <Route path="/footer" element={<FooterPage />} />
           <Route path="/signup" element={<Registration />} />
           <Route path="/events" element={<Events />} />
+          <Route
+            path="/meet-the-team"
+            element={
+              <>
+                <ParallaxProvider>
+                  <MeetTheTeam />
+                </ParallaxProvider>
+                <Footer />
+              </>
+            }
+          />
           {/* Add more routes here if needed */}
         </Routes>
       </div>
