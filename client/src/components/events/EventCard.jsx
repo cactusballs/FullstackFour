@@ -6,6 +6,8 @@ import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
 import "./EventCard.css";
 import dayjs from "dayjs";
+import { LuCalendarDays } from "react-icons/lu";
+import { LuBanknote } from "react-icons/lu";
 
 function EventCard() {
   const [events, setEvents] = useState([]);
@@ -34,40 +36,16 @@ function EventCard() {
 
   const groupEventsByName = Map.groupBy(events, ({ name }) => name);
 
-  //   const before = [
-  //     { name: "Sky", id: 0 },
-  //     { name: "Dungeon", id: 1 },
-  //     { name: "Dungeon", id: 2 },
-  //     { name: "Dungeon", id: 3 },
-  //   ];
-
-  //   const after = {
-  //     Dungeon: [
-  //       { name: "Dungeon", id: 1 },
-  //       { name: "Dungeon", id: 2 },
-  //       { name: "Dungeon", id: 3 },
-  //     ],
-  //     Sky: [{ name: "Sky", id: 0 }],
-  //   };
-  //   const final = [
-  //     [
-  //       { name: "Dungeon", id: 1 },
-  //       { name: "Dungeon", id: 2 },
-  //       { name: "Dungeon", id: 3 },
-  //     ],
-  //     [{ name: "Sky", id: 0 }],
-  //   ];
-
   return (
     <Container>
       <Row md={4} className="g-4">
         {Array.from(groupEventsByName.values()).map((item) => {
           const event = item[0];
-          const startDate = dayjs(event.sales?.public?.startDateTime).format(
-            "D MMM YYYY h:mm A"
-          );
+          // const startDate = dayjs(event.sales?.public?.startDateTime).format(
+          //   "D MMM YYYY h:mm A"
+          // );
           const endDate = dayjs(event.sales?.public?.endDateTime).format(
-            "D MMM YYYY h:mm A"
+            "D MMM YYYY, h:mm A"
           );
           return (
             <Col key={event.id} md={3}>
@@ -85,16 +63,23 @@ function EventCard() {
                     {event._embedded?.venues[0]?.postalCode}
                   </Card.Text>
                   <Card.Text className="event-note">
-                    {event?.pleaseNote}
+                    {/* {event?.pleaseNote} */}
                   </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
                   <ListGroup.Item>
-                    {startDate} - {endDate}
+                    {/* {startDate} - {endDate} */}
+                    <LuCalendarDays className="event-icon" />
+                    {endDate}
                   </ListGroup.Item>
-                  <ListGroup.Item>{endDate}</ListGroup.Item>
+                  <ListGroup.Item id="event-price-flex">
+                    <LuBanknote className="event-icon" />
+                    {event.priceRanges?.[1]?.min === undefined
+                      ? "No prices available"
+                      : "Starting from £" + event.priceRanges?.[1]?.min}
+                  </ListGroup.Item>
                 </ListGroup>
-                <Card.Body>
+                <Card.Body id="card-footer">
                   <Card.Link className="event-link" href={event.url}>
                     Book Tickets
                   </Card.Link>

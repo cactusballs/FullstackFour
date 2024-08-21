@@ -20,8 +20,7 @@ body {
 
 /* root is affecting this style (index.css) */
 .events-headline-form {
-  margin-top: 30px;
-  margin-bottom: 70px;
+  margin: 30px 0px 70px 40px;
 }
 
 #events-headline {

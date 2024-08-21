@@ -29,6 +29,7 @@ function App() {
           <Route path="/forum" element={<Forum />} />
           <Route path="/threads/:topic" element={<ForumTopicThreads />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/events" element={<Events />} />
           <Route path="/footer" element={<FooterPage />} />
           <Route path="/signup" element={<Registration />} />
           <Route

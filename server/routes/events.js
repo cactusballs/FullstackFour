@@ -37,17 +37,17 @@ eventsRouter.get("/", async (req, res) => {
       // params - doesn't display events with postalCode + radius... look into geoPoint
       // if keyword is provided, add it to query - else default to empty object
       // ...(keyword ? { keyword } : {}),
-      classificationName: "Family",
+      // classificationName: "Family",
       city: "London",
-      endDateTime: "2024-12-25T12:30:00Z",
+      includeFamily: "yes",
+      // onsaleEndDateTime: "2024-12-25T12:30:00Z",
+      // endDateTime: "2024-12-25T12:30:00Z",
       // keyword: "Dungeon",
       // latlong: "51.513561,-0.137706",
       // radius: 10,
-      size: 32,
-
+      size: 200,
       apikey: apiKey,
     });
-    // /events.json?apikey=ECEWuRCTSc4UARJjE5uBzyYMoPusSHmv&size=100&city=London&classificationName=-Theatre
 
     // find _embedded within result, then find events within _embedded - to only get events from result and not links + pages
     // default to empty array if no events found instead of undefined

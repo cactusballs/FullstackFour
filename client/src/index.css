@@ -1,5 +1,5 @@
 :root {
-  font-family: 'League Spartan';
+  font-family: "League Spartan";
   line-height: 1.5;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.87);
@@ -24,10 +24,10 @@ body {
   margin: 0;
   display: flex;
   background-color: #d0d2b7;
-  /* background-color: #e1d6cb;  */
-/*have changed this so we can view it while we work - it kept showing in dark mode */
-/* overflow-x: hidden;
-} */
+  /* background-color: #e1d6cb;
+  have changed this so we can view it while we work - it kept showing in dark mode
+  overflow-x: hidden; */
+}
 
 /* h1 {
   font-size: 3.2em;
