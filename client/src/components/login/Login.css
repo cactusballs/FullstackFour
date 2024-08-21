@@ -54,8 +54,8 @@ form {
   border-radius: 4px;
 }
 
-button {
-  margin-top: 5rem;  /* Add margin on top of the button */
+.login-button {
+  margin-top: 14px;
   width: 100%;
   padding: 0.75rem;
   border: none;
