@@ -11,7 +11,12 @@ const ForumTopicThreads = () => {
   const { topic } = useParams();
   const [threads, setThreads] = useState([]);
   const [error, setError] = useState(null);
-  console.log(topic);
+  const [ parentTag, setParentTag] = useState('');
+
+  
+
+  //effect to fetch all threads under a certain topic
+  //console.log(topic);
   useEffect(() => {
     fetch(`http://localhost:3000/threads/${encodeURIComponent(topic)}`)
       .then((response) => {
@@ -30,6 +35,44 @@ const ForumTopicThreads = () => {
       });
   }, [topic]);
 
+
+  //effect to fetch all threads with a tag, within a topic
+  //console.log(topic, parentTag);
+  useEffect(() => {
+    if(parentTag){
+    fetch(`http://localhost:3000/threads/${encodeURIComponent(topic)}/${encodeURIComponent(parentTag)}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setThreads(data);
+        //console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching threads with this tag:", error);
+        setError("Failed to fetch threads by tag");
+      });
+    }
+  }, [parentTag, topic]);
+
+
+
+
+
+
+
+
+  //handle select function to navigate between tags
+  const handleSelect = (tag) => {
+      console.log(tag);
+    //const parentTag = event.target.value;
+    console.log(tag, parentTag);
+    setParentTag(tag);
+  }
+
   return (
     <>
     <div className="AllForums">
@@ -42,7 +85,7 @@ const ForumTopicThreads = () => {
         <h3>
           All posts for {topic}
           
-          <DropdownButton />
+          <DropdownButton onSelect={handleSelect}/>
         </h3>
 
         {error ? (
