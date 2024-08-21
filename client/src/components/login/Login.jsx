@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
-import 'bootstrap/dist/css/bootstrap.min.css';  // Import Bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from "../footer/Footer.jsx";
 import illustration from '../../assets/images/village-illustration.png';
 import logo from '../../assets/images/village-logo.png';
