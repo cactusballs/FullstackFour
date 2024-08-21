@@ -28,6 +28,7 @@ body {
   /* have changed this so we can view it while we work - it kept showing in dark mode */
   overflow-x: hidden;
 }
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -46,6 +47,7 @@ button {
 button:hover {
   border-color: #ff9603;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
