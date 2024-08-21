@@ -10,6 +10,8 @@ import anhImg from "../../assets/images/portraits/anh.png";
 import communityImg from "../../assets/images/portraits/daniel-funes-fuentes-TyLw3IQALMs-unsplash.jpg";
 import "./MeetTheTeam.css";
 import fatimaImg from "../../assets/images/portraits/fatima.png";
+import Footer from "../footer/Footer";
+import NavbarComp from "../navbar/Navbar";
 
 //object containing team information to insert into cards
 const villageTeam = [
@@ -63,6 +65,7 @@ const villageTeam = [
 const MeetTheTeam = () => {
   return (
     <div>
+      <NavbarComp/>
       <Container className="headers">
         <Col>
           <Row>
@@ -102,10 +105,11 @@ const MeetTheTeam = () => {
           </Col>
 
           <Col lg={4} className="img-col">
-            <img src={communityImg} className="communityImg" />
+            <img src={communityImg} className="communityImg" alt="Two people planting flowers"/>
           </Col>
         </Container>
       </div>
+      <Footer />
     </div>
   );
 };
