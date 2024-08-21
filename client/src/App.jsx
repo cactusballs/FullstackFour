@@ -14,6 +14,7 @@ import Body from "./components/body/Body.jsx";
 import Registration from "./components/registration/Registration.jsx";
 import LocalEvents from "./components/dashboard/LocalEvents.jsx";
 import MeetTheTeam from "./components/meet-the-team/MeetTheTeam.jsx";
+import NavbarComp from "./components/navbar/Navbar.jsx";
 // import { ParallaxProvider } from "react-scroll-parallax";
 //import TopicsDropdown from "./components/forum/DropdownMenu/Dropdown/TopicsDropdown";
 import Events from "./components/events/Events.jsx";
@@ -30,19 +31,16 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/footer" element={<FooterPage />} />
           <Route path="/signup" element={<Registration />} />
-          <Route path="/events" element={<Events />} />
-          {/* <Route
+          <Route
             path="/meet-the-team"
             element={
               <>
-                <ParallaxProvider>
-                  <MeetTheTeam />
-                </ParallaxProvider>
-                <Footer />
+                <MeetTheTeam />
               </>
             }
-          /> */}
+          />
           {/* Add more routes here if needed */}
+          <Route path="/conversation/:id" element={<SingleThread />} />
         </Routes>
       </div>
     </Router>
@@ -53,8 +51,8 @@ function Forum() {
   return (
     <div>
       <ForumMain />
-      <ForumTopicThreads />
-      <SingleThread id={5} />
+      {/* <ForumTopicThreads />
+      <SingleThread id={5} /> */}
       <Footer />
       {/* update thread id to navigate between conversations*/}
     </div>

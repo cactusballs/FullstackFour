@@ -19,7 +19,7 @@ function NavbarComp() {
             <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link>
             <Nav.Link as={Link} to="/forum">Forum</Nav.Link>
             <Nav.Link as={Link} to="/events">Events</Nav.Link>
-            <Nav.Link as={Link} to="/about-us">About Us</Nav.Link>
+            <Nav.Link as={Link} to="/meet-the-team">Meet the Team</Nav.Link>
           </Nav>
         </Navbar.Collapse>
         </Container>
