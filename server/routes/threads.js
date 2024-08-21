@@ -91,4 +91,39 @@ threadRouter.get('/:topic', async (req, res) => {
   }
 });
 
+
+//WIP!!!!!!!!
+// Get threads by topic AND TAG for ForumTopicThreads - for using with dropdown
+//http://localhost:3000/threads/:topic/:tag
+//e.g. http://localhost:3000/threads/SEND/carers
+threadRouter.get('/:topic/:tag', async (req, res) => {
+  const { topic, tag } = req.params;
+  const tagParam = `${tag}_tag`;
+
+  try {
+    const sqlThreadPostsWithTags = "SELECT * FROM threads WHERE topic = ? and "+tagParam+" = 1";
+    //SELECT * FROM threads where carers_tag =1 and topic = 'SEND';
+    const [results] = await database.query(sqlThreadPostsWithTags, [topic], [tagParam]);
+    console.log(tagParam);
+    /*tags are:
+    carers_tag ,
+    expecting_parents_tag,
+    new_parents_tag,
+    single_parents_tag,
+    LGBTQIA_plus_parents_tag
+*/
+//can't filter by tag on main page so don't need to worry about /all/[tag].
+//endpoint would need to be added for /alltopics if filtering on main page of forum
+
+    if (results.length === 0) {
+      return res.status(400).send({ message: 'No threads found' });
+    }
+
+    res.status(200).json(results);
+    //console.log(results);
+  } catch (error) {
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
 module.exports = threadRouter;
