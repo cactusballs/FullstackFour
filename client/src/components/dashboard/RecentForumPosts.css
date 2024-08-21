@@ -9,21 +9,17 @@
 
 .RecentForumPosts-card-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     margin: 0 30px;
     padding: 10px 0;
     background-color: #485f39;
     border-radius: 10px;
     color: white;
-    text-align: center;
-    font-size: 24px;
+    font-size: 14px;
     font-family: "League Spartan";
 }
 
 .RecentForumPosts-card-content {
-    height: 200px;
-    width: 1100px;
     background-color: #f0f1e8;
     color: black;
     overflow-y: auto;
@@ -41,14 +37,55 @@
     justify-content: space-between;
 }
 
-@media (max-width: 768px) {
-    .RecentForumPosts-card-content {
-        width: 100%;
-        height: auto;
-        overflow-y: auto;
-    }
+.RecentForumPosts-card-content ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
 
-    .RecentForumPosts-card-header {
-        font-size: 20px;
-    }
+.RecentForumPosts-card-content li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.RecentForumPosts-card-content li::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    color: #485f39;
+    font-weight: bold;
+}
+
+.forum-post-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forum-post-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.forum-post-date {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Alternate background colors for forum posts */
+.RecentForumPosts-card-content li:nth-child(odd) {
+    background-color: #D0D2B7;
+}
+
+.RecentForumPosts-card-content li:nth-child(even) {
+    background-color: #f485f39;
+}
+
+/* New container for list items */
+.forum-posts-container {
+    margin: 0;
+    padding: 0;
 }

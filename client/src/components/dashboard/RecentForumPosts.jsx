@@ -1,5 +1,6 @@
 import "./RecentForumPosts.css";
 import React, { useState, useEffect } from "react";
+import { TbMessages } from "react-icons/tb";
 
 const RecentForumPosts = () => {
     const [posts, setPosts] = useState([]);
@@ -22,21 +23,27 @@ const RecentForumPosts = () => {
     return (
         <div className="RecentForumPosts-card">
             <div className="RecentForumPosts-card-header">
-                <h2>Recent Forum Posts</h2>
+                <h2><TbMessages style={{ marginRight: '8px' }} /> Recent forum posts</h2>
             </div>
             <div className="RecentForumPosts-card-content">
-                <ul>
-                    {posts.length > 0 ? (
-                        posts.map((post) => (
-                            <li key={post.thread_id}>
-                                <p>{post.thread_title}</p>
-                                <small>Posted on {new Date(post.latest_post).toLocaleDateString()}</small>
-                            </li>
-                        ))
-                    ) : (
-                        <li>No recent posts available.</li>
-                    )}
-                </ul>
+                <div className="forum-posts-container">
+                    <ul>
+                        {posts.length > 0 ? (
+                            posts.map((post) => (
+                                <li key={post.thread_id}>
+                                    <div className="forum-post-content">
+                                        <p className="forum-post-title">{post.thread_title}</p>
+                                        <p className="forum-post-date">
+                                            Posted on {new Date(post.latest_post).toLocaleDateString()}
+                                        </p>
+                                    </div>
+                                </li>
+                            ))
+                        ) : (
+                            <li>No recent posts available.</li>
+                        )}
+                    </ul>
+                </div>
             </div>
             <div className="RecentForumPosts-card-footer">
             </div>
@@ -45,4 +52,3 @@ const RecentForumPosts = () => {
 };
 
 export default RecentForumPosts;
-
