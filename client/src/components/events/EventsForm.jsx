@@ -25,7 +25,6 @@ function EventsForm() {
         <Form.Label>Search keywords</Form.Label>
         <Form.Control
           type="text"
-          placeholder=""
           value={keywordsQuery}
           onChange={(e) => {
             setKeywordsQuery(e.target.value);
@@ -70,7 +69,12 @@ function EventsForm() {
         </Form.Group>
       </Form.Group>
 
-      <Button variant="outline-dark" type="submit" onClick={handleSearch}>
+      <Button
+        variant="ghost"
+        id="submit-event-form"
+        type="submit"
+        onClick={handleSearch}
+      >
         Search
       </Button>
     </Form>

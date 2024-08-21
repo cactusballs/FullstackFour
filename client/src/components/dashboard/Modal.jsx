@@ -4,8 +4,8 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { LuInfo } from "react-icons/lu";
 import InfoTooltip from "./Tooltip.jsx";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+// import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+// import Tooltip from "react-bootstrap/Tooltip";
 import "./Modal.css";
 
 function MessageModal() {

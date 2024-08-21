@@ -7,11 +7,8 @@ import ListGroup from "react-bootstrap/ListGroup";
 import "./EventCard.css";
 import dayjs from "dayjs";
 
-// look into react-router-dom
-
 function EventCard() {
   const [events, setEvents] = useState([]);
-  const [uniqueEvents, setUniqueEvents] = useState([]);
 
   useEffect(() => {
     // fetch data from the /events endpoint made on backend
