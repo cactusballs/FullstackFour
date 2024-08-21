@@ -1,0 +1,62 @@
+/* body {
+  background-color: #d0d2b7;
+  margin: 0;
+  padding: 0;
+} */
+
+.event-card {
+  background-color: #f0f1e8;
+  max-width: 310px;
+  max-height: 510px;
+}
+
+#event-image {
+  height: 186px;
+}
+#event-title-venue {
+  height: 130px;
+}
+
+#event-name {
+  margin: 0;
+  padding: 0;
+  font-family: "Verdana";
+  font-weight: 550;
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+.event-venue {
+  color: brown;
+}
+
+.event-icon {
+  margin-right: 16px;
+}
+
+.event-note {
+  font-style: italic;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+#event-price-flex {
+  display: flex;
+  align-items: center;
+}
+
+#card-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.event-link {
+  color: black;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+}
+
+.event-link:hover {
+  color: #d3d3d3;
+  text-decoration: underline;
+}

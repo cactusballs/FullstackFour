@@ -13,14 +13,16 @@ const Card = ({
   cardFooterButton,
 }) => {
   return (
-    <div className="card">
+    <div className="card" data-testid="card-test-1">
       {/* card header- some cards don't have links (optional to use) */}
       <div
         className="card-header"
         style={{ backgroundColor: "#485f39", color: "white" }}
       >
         <span className="card-icon">{leftIcon}</span>
-        <h4 className="card-title">{title}</h4>
+        <h4 className="card-title" data-testid="card-test-2">
+          {title}
+        </h4>
         <span className="card-icon">{rightIcon}</span>
         <a href={link} className="card-link">
           {linkText}
@@ -36,6 +38,7 @@ const Card = ({
         <div
           className="card-footer"
           style={{ backgroundColor: "#485f39", color: "white" }}
+          data-testid="card-test-3"
         >
           {cardFooter && <div>{cardFooter}</div>}
           {cardFooterButton && (

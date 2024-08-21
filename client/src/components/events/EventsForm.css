@@ -1,0 +1,17 @@
+.events-form {
+  text-align: left;
+  font-family: "Verdana";
+  max-width: 386px;
+}
+
+#event-dates {
+  display: flex;
+  width: 200px;
+  gap: 14px;
+}
+
+#submit-event-form {
+  background-color: rgb(68, 97, 4);
+  border: 0.8px #f9820a solid;
+  color: white;
+}
