@@ -86,11 +86,12 @@ const Poll = ({ pollId }) => {
             title={
                 <div className="poll-title">
                     <BsChatLeftHeart className="poll-title-icon" />
-                    {poll ? poll.title : "Loading..."}
+                    Village poll
                 </div>
             }
             content={
                 <div className="poll-content">
+                    {poll && <div className="poll-question">{poll.title}</div>}
                     {error && <div className="poll-error">{error}</div>}
                     {message && <div className="poll-message">{message}</div>}
                     {renderOptions()}

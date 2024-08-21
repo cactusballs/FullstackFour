@@ -1,20 +1,69 @@
 .poll-title {
-    position: absolute;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    /* Center the title text */
-    position: relative;
-    font-size: 22px;
-    font-family: "League Spartan", sans-serif;
-    color: white;
+    margin: 0px 30px;
+    padding: 0px 0px;
+    height: 78px;
     background-color: #485f39;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    font-size: 22px;
+    font-family: "League Spartan";
 }
 
 .poll-title-icon {
-    position: absolute;
-    left: 10px;
-    /* Adjust the spacing from the left edge */
-    font-size: 24px;
-    color: white;
+    margin-right: 50px;
+    font-size: 30px;
+    color: #FFFFFF;
+}
+
+.poll-content {
+    background-color: #F0F1E8;
+    padding: 80px;
+    border: 1px solid #485F39;
+}
+
+.poll-question {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #485F39;
+}
+
+.poll-option {
+    margin-bottom: 10px;
+
+}
+
+.poll-option input[type="radio"] {
+    margin-right: 5px;
+}
+
+.poll-content label {
+    font-weight: normal;
+    color: #485F39;
+    margin: 0;
+}
+
+.poll-error,
+.poll-message {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.card-footer-button {
+    background-color: #F4F5EC;
+    color: #000000;
+    border: 1px solid #485F39;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card-footer-button:hover {
+    background-color: #485F39;
+    color: #F4F5EC;
 }
