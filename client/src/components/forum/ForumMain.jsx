@@ -44,7 +44,7 @@ const ForumMain = () => {
         <p>...explore threads by topic or start your own!</p>
       </div>
       <div className='TownHall'>
-        <h3>All forums...</h3>
+        <h3>All forums by topic...</h3>
         {error ? (
           <p>{error}</p>
         ) : (
