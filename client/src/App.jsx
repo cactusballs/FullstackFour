@@ -15,7 +15,7 @@ import Registration from "./components/registration/Registration.jsx";
 import LocalEvents from "./components/dashboard/LocalEvents.jsx";
 import MeetTheTeam from "./components/meet-the-team/MeetTheTeam.jsx";
 import NavbarComp from "./components/navbar/Navbar.jsx";
-// import { ParallaxProvider } from "react-scroll-parallax";
+import { ParallaxProvider } from "react-scroll-parallax";
 //import TopicsDropdown from "./components/forum/DropdownMenu/Dropdown/TopicsDropdown";
 import Events from "./components/events/Events.jsx";
 import Dashboard from "./components/dashboard/Dashboard.jsx";
