@@ -9,7 +9,7 @@
   margin: 0;
   background-color: #e1d6cb; /* Background color as a placeholder */
 }
-/* Styling for the image section */
+
 .login-image {
   overflow: hidden;
   grid-column: 1;
@@ -66,7 +66,6 @@ form {
   font-size: 1rem;
   cursor: pointer;
 }
-
 
 button:hover {
   background-color: #45a049;
