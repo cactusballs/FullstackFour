@@ -62,7 +62,7 @@ const Footer = () => {
           </div>
 
           {/* links to mental health resources container */}
-          <div className="footer-links-div">
+          <div className="footer-links-div mental-health-container">
             <h4>Mental Health Resources</h4>
             <a href="https://www.mind.org.uk/">
               <p>Mind</p>
