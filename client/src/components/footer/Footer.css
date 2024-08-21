@@ -6,6 +6,8 @@
   background-color: white;
   display: flex;
   flex-direction: column;
+  font-family: 'League Spartan';
+  width: 100%;
 }
 
 .footer-links {
@@ -52,11 +54,11 @@
 }
 
 .logo {
-  margin-bottom: 0.7rem;
+  margin-bottom: 1rem;
 }
 
 .socials-container {
-  margin-top: -30px;
+  margin-top: 1.2rem;
 }
 
 
