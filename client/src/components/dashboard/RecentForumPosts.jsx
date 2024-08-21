@@ -28,9 +28,9 @@ const RecentForumPosts = () => {
                 <ul>
                     {posts.length > 0 ? (
                         posts.map((post) => (
-                            <li key={post.post_id}>
-                                <p>{post.content}</p>
-                                <small>Posted on {new Date(post.sent_at).toLocaleDateString()}</small>
+                            <li key={post.thread_id}>
+                                <p>{post.thread_title}</p>
+                                <small>Posted on {new Date(post.latest_post).toLocaleDateString()}</small>
                             </li>
                         ))
                     ) : (
