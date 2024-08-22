@@ -58,22 +58,28 @@ function EventsForm({ onFormSubmit }) {
         <Form.Group className="mb-3" id="label-date-block">
           <Form.Label>From</Form.Label>
           <Form.Control
-            type="date"
+            type="datetime-local"
             id="from-date"
             value={formData.startDateTime}
             onChange={(e) => {
-              setFormData({ ...formData, startDateTime: e.target.value });
+              setFormData({
+                ...formData,
+                startDateTime: e.target.value,
+              });
             }}
           />
         </Form.Group>
         <Form.Group className="mb-3" id="label-date-block">
           <Form.Label>To</Form.Label>
           <Form.Control
-            type="date"
+            type="datetime-local"
             id="to-date"
             value={formData.endDateTime}
             onChange={(e) => {
-              setFormData({ ...formData, endDateTime: e.target.value });
+              setFormData({
+                ...formData,
+                endDateTime: e.target.value,
+              });
             }}
           />
         </Form.Group>
