@@ -1,40 +1,43 @@
-import {render, screen, within, waitFor} from '@testing-library/react'
-import React from 'react'
-import '@testing-library/jest-dom'
+import { render, screen, within, waitFor } from '@testing-library/react';
+import React from 'react';
+import '@testing-library/jest-dom';
 import NavbarComp from './Navbar.jsx';
-import {BrowserRouter, MemoryRouter} from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-  
-const routes = ['Dashboard', 'Forum', 'Events', 'About Us']
+
+const routes = ['Dashboard', 'Forum', 'Events', 'Meet the Team'];
 
 describe('Navbar', () => {
   beforeEach(() => {
     render(
       <BrowserRouter>
-         <NavbarComp />
+        <NavbarComp />
       </BrowserRouter>
-       
-    )
-  })
+    );
+  });
 
   it('should render the Navbar and its links', async () => {
-    expect(await screen.findByText('Village')).toBeVisible()
+    expect(await screen.findByText('Village')).toBeVisible();
 
-    const navLinks = await screen.findAllByRole('link')
-    expect(navLinks.length).toBe(routes.length);
+    const navLinks = screen.getAllByRole('link');
+    // plus one for the log in page, can be replaced when we work on it 
+    expect(navLinks.length).toBe(routes.length + 1); 
 
-    routes.forEach(route => within(menuList).getByText(route))
-  })
+    const navContainer = screen.getByRole('navigation'); 
+    routes.forEach((route) => {
+      expect(within(navContainer).getByText(new RegExp(route, 'i'))).toBeInTheDocument();
+    });
+  });
 
   it.each(routes)('should navigate to route %s', async (route) => {
-    const link = async (name) => screen.findByRole('link', {name})
-    const activeRouteLink = await link(route)
+    const link = await screen.findByRole('link', { name: new RegExp(route, 'i') });
+    expect(link).toBeInTheDocument();
 
-    userEvent.click(activeRouteLink)
+    userEvent.click(link);
 
     await waitFor(() => {
-    expect(window.location.pathname).toEqual(`/${route.toLowerCase()}`)
- 
+      const expectedPath = `/${route.toLowerCase().replace(/\s+/g, '-')}`;
+      expect(window.location.pathname).toEqual(expectedPath);
+    });
   });
-});
 });
