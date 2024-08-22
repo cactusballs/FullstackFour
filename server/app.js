@@ -17,6 +17,9 @@ app.use("/threads", threadRouter);
 const topicRouter = require("./routes/topics");
 app.use("/api/topics", topicRouter);
 
+const eventsRouter = require("./routes/events");
+app.use("/events", eventsRouter);
+
 // creating and connecting to the port
 const port = process.env.SERVER_PORT || 3000;
 
@@ -199,6 +202,7 @@ app.post("/broadcastmessages", async (req, res) => {
 
   if (!message_content) {
     res.status(400).json({ message: "Values cannot be blank" });
+    return;
   }
 
   try {
@@ -230,13 +234,13 @@ LIMIT 7;`;
   }
 });
 
-module.exports = database;
 
 // dashboards - polling - get all poll contents
 app.get("/pollInfo/:pollId", async (req, res) => {
   const pollId = req.params.pollId;
   const sqlPollMain = "SELECT * FROM poll WHERE id = ?";
-  const sqlPollOptions = "SELECT poll_options.label from poll_options WHERE poll_id = ?"
+  const sqlPollOptions =
+    "SELECT poll_options.label from poll_options WHERE poll_id = ?";
 
   try {
     const [pollMainResults] = await database.query(sqlPollMain, [pollId]);
@@ -251,10 +255,12 @@ app.get("/pollInfo/:pollId", async (req, res) => {
 
     res.status(200).json({
       poll: pollMainResults[0],
-      options: pollOptionsResults
+      options: pollOptionsResults,
     });
   } catch (error) {
-    res.status(500).json({ message: "An error occurred", error: error.message });
+    res
+      .status(500)
+      .json({ message: "An error occurred", error: error.message });
   }
 });
 
@@ -304,8 +310,18 @@ app.get("/pollResults/:pollId", async (req, res) => {
 });
 
 // Registration Route
-app.post('/signup', async (req, res) => {
-  const { first_name, last_name, user_name, birthday, email, villager_address, villager_postcode, villager_location, password } = req.body;
+app.post("/signup", async (req, res) => {
+  const {
+    first_name,
+    last_name,
+    user_name,
+    birthday,
+    email,
+    villager_address,
+    villager_postcode,
+    villager_location,
+    password,
+  } = req.body;
 
   try {
     // Checking if the email is already registered in the database
@@ -323,13 +339,29 @@ app.post('/signup', async (req, res) => {
     // Hashing the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const sql = 'INSERT INTO villagers (first_name, last_name, user_name, birthday, email, villager_address, villager_postcode, villager_location, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
-    const values = [first_name, last_name, user_name, birthday, email, villager_address, villager_postcode, villager_location, hashedPassword];
+    const sql =
+      "INSERT INTO villagers (first_name, last_name, user_name, birthday, email, villager_address, villager_postcode, villager_location, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    const values = [
+      first_name,
+      last_name,
+      user_name,
+      birthday,
+      email,
+      villager_address,
+      villager_postcode,
+      villager_location,
+      hashedPassword,
+    ];
     const result = await database.query(sql, values);
 
-    res.status(201).json({ message: 'User registered successfully' });
+    res.status(201).json({ message: "User registered successfully" });
   } catch (error) {
-    console.error('Error occurred when registering:', error);
-    res.status(500).json({ message: 'An error occurred during registration', error: error.message });
+    console.error("Error occurred when registering:", error);
+    res.status(500).json({
+      message: "An error occurred during registration",
+      error: error.message,
+    });
   }
 });
+
+module.exports = database;

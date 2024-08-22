@@ -1,5 +1,5 @@
 :root {
-  font-family: 'League Spartan';
+  font-family: "League Spartan";
   line-height: 1.5;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.87);
@@ -24,8 +24,8 @@ body {
   margin: 0;
   display: flex;
   background-color: #d0d2b7;
-  /* background-color: #e1d6cb;  */
-  /*have changed this so we can view it while we work - it kept showing in dark mode */
+  background-color: #e1d6cb;
+  /* have changed this so we can view it while we work - it kept showing in dark mode */
   overflow-x: hidden;
 }
 
@@ -37,17 +37,17 @@ h1 {
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  /* padding: 0.6em 1.2em; */
+  padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  /* got rid of background-color (previously black buttons) */
   font-family: inherit;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #ff9603; /* changed to fit autumnal palette */
+  border-color: #ff9603;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
