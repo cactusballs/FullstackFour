@@ -14,7 +14,7 @@ h2 {
 
 /* spacing between navbar and headers and flexbox containers below*/
 .headers {
-  margin-top: 5rem;
+  margin-top: 7rem;
   margin-bottom: 5rem;
 }
 
@@ -58,7 +58,8 @@ h2 {
 }
 
 .card {
-  background-color: #d0d2b7;
+  background-color: #e1d6cb;
+  /* #d0d2b7; */
   border: 0pt;
   text-align: left;
   margin-bottom: 1rem;

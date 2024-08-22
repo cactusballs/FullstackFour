@@ -55,6 +55,7 @@
 .TownHallPosts {
   list-style: none;
   text-align: left;
+  margin-top: 1.2rem;
 }
 
 /* Media queries below (make cards go into one column two rows!) */
