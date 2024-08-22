@@ -8,6 +8,8 @@ function EventsForm({ onFormSubmit }) {
     keyword: "",
     startDateTime: "",
     endDateTime: "",
+    latlong: "",
+    radius: "",
   });
 
   const handleSearch = (e) => {
@@ -32,25 +34,34 @@ function EventsForm({ onFormSubmit }) {
       <Form.Group className="mb-3" controlId="formBasicPassword">
         {/* <Form.Control type="location" placeholder="" /> */}
         <Form.Label>Location</Form.Label>
-        <Form.Select aria-label="location">
+        <Form.Select
+          aria-label="location"
+          onChange={(e) => {
+            setFormData({ ...formData, latlong: e.target.value });
+          }}
+        >
           <option>London </option>
-          <option value="1">Use my current location</option>
-          <option value="2">North London</option>
-          <option value="3">South London</option>
-          <option value="4">West London</option>
-          <option value="5">East London</option>
+          <option value="51.5413,-0.1419">North London</option>
+          <option value="51.4456,-0.1557">South London</option>
+          <option value="51.5029,-0.0219">West London</option>
+          <option value="51.5302,-0.0219">East London</option>
         </Form.Select>
       </Form.Group>
 
       {/* select menu - location radius */}
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Label>Location radius</Form.Label>
-        <Form.Select aria-label="location-radius">
-          <option>From ...</option>
+        <Form.Select
+          aria-label="location-radius"
+          onChange={(e) => {
+            setFormData({ ...formData, radius: e.target.value });
+          }}
+        >
+          <option>Distance</option>
           <option value="1">Within 1 mile</option>
-          <option value="2">Within 3 miles</option>
-          <option value="3">Within 5 miles</option>
-          <option value="4">Within 10 miles</option>
+          <option value="3">Within 3 miles</option>
+          <option value="5">Within 5 miles</option>
+          <option value="10">Within 10 miles</option>
         </Form.Select>
       </Form.Group>
 
@@ -62,6 +73,7 @@ function EventsForm({ onFormSubmit }) {
             id="from-date"
             value={formData.startDateTime}
             onChange={(e) => {
+              console.log("fromDate", e);
               setFormData({
                 ...formData,
                 startDateTime: e.target.value,
@@ -76,6 +88,7 @@ function EventsForm({ onFormSubmit }) {
             id="to-date"
             value={formData.endDateTime}
             onChange={(e) => {
+              console.log("toDate", e);
               setFormData({
                 ...formData,
                 endDateTime: e.target.value,

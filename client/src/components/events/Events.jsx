@@ -5,6 +5,20 @@ import NavbarComp from "../navbar/Navbar.jsx";
 import Footer from "../footer/Footer.jsx";
 import { useState, useEffect } from "react";
 
+const cleanFormData = (formData) => {
+  const { keyword, startDateTime, endDateTime, latlong, radius } = formData;
+  // const formattedStartDate = new Date(startDateTime).toISOString();
+  // const formattedEndDate = new Date(endDateTime).toISOString();
+
+  return {
+    ...(keyword != "" ? { keyword } : {}),
+    ...(startDateTime != "" ? { startDateTime } : {}),
+    ...(endDateTime != "" ? { endDateTime } : {}),
+    ...(latlong != "" ? { latlong } : {}),
+    ...(radius != "" ? { radius } : {}),
+  };
+};
+
 function Events() {
   const [events, setEvents] = useState([]);
 
@@ -42,7 +56,7 @@ function Events() {
 
   // upon submitting form, fetch events again - replacing keyword 'children' with whatever user typed in form
   const handleFormSubmit = (formData) => {
-    fetchEvents(formData);
+    fetchEvents(cleanFormData(formData));
   };
 
   return (

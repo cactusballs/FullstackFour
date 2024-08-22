@@ -4,18 +4,17 @@ const eventsRouter = express.Router();
 
 const apiKey = process.env.TICKETMASTER_API_KEY;
 
-// const url = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=family&city=London&apikey=${apiKey}`;
-
 const apiClient = async (baseUrl, path, queryParams) => {
   const url = new URL(`${baseUrl}${path}`);
 
   if (queryParams) {
-    // pass query params as an object and convert to ?, & , string ... apikey should be at the end
-    url.search = new URLSearchParams(queryParams).toString();
+    url.search = new URLSearchParams(queryParams);
   }
 
   // using fetch (without node-fetch) & parse url as string
-  const response = await fetch(url.toString(), { method: "GET" });
+  const response = await fetch(url.toString(), {
+    method: "GET",
+  });
   console.log("url", url.toString());
   // checking response headers to see if it has content type = application/json
   const isResponseJson = response.headers
@@ -30,19 +29,22 @@ const apiClient = async (baseUrl, path, queryParams) => {
 
 eventsRouter.get("/", async (req, res) => {
   const keyword = req.query.keyword;
-
   const startDateTime = req.query.startDateTime;
   const endDateTime = req.query.endDateTime;
+  const latlong = req.query.latlong;
+  const radius = req.query.radius;
 
-  const baseUrl = "https://app.ticketmaster.com/discovery/v2/";
+  const baseUrl = "https://app.ticketmaster.com/discovery/v2";
 
   try {
     const result = await apiClient(baseUrl, "/events.json", {
-      // params - doesn't display events with postalCode + radius... look into geoPoint
       // if keyword/startDateTime/endDateTime is provided, add it to query - else default to empty object
+      // added "00Z" to fix time (seconds)
       ...(keyword ? { keyword } : {}),
-      ...(startDateTime ? { startDateTime } : {}),
-      ...(endDateTime ? { endDateTime } : {}),
+      ...(startDateTime ? { startDateTime: startDateTime + ":00Z" } : {}),
+      ...(endDateTime ? { endDateTime: endDateTime + ":00Z" } : {}),
+      ...(latlong ? { latlong } : {}),
+      ...(radius ? { radius } : {}),
       city: "London",
       // classificationName: "family",
       // includeFamily: "yes",
