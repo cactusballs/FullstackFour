@@ -58,7 +58,7 @@ const SingleThread = () => {
         {console.log("Current thread ID:", id)}
         {threads.length > 0 ? (
           <>
-            {/* post initial thread information */}
+            {/* post initial thread information = starting question */}
             <h3>Join the conversation</h3>
             <div className="threadStart">
               <p className="threadTitle">{threadsArr.thread_title}</p>
@@ -84,8 +84,8 @@ const SingleThread = () => {
               </p>
             </div>
           ))
-        ) : (
-          <p>No posts found for this thread.</p>
+        ) : (<div className="no-posts-yet">
+          <p>No replies to this thread yet :(</p></div>
         )}
       </div>
       <BackButton/>
