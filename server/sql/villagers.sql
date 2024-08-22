@@ -116,8 +116,10 @@ CREATE TABLE IF NOT EXISTS threads (
     LGBTQIA_plus_parents_tag BOOLEAN,
     FOREIGN KEY (user_name) REFERENCES villagers(user_name) ON DELETE CASCADE
 );
-
-
+-- just testing
+-- INSERT INTO threads (thread_title, user_name, content, topic, carers_tag, expecting_parents_tag, new_parents_tag, single_parents_tag, LGBTQIA_plus_parents_tag)
+-- VALUES ('Test Thread', 'FA', 'This is some test content.', 'Sleep', 1, 0, 1, 0, 1);
+--
 CREATE TABLE IF NOT EXISTS posts_to_threads (
     post_id INT AUTO_INCREMENT PRIMARY KEY,
     thread_id INT,

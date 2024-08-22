@@ -1,3 +1,147 @@
+import React, { useState } from 'react';
+
+function ForumSubmissionForm() {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [topic, setTopic] = useState('');
+  const [carersTag, setCarersTag] = useState(false);
+  const [expectingParentsTag, setExpectingParentsTag] = useState(false);
+  const [newParentsTag, setNewParentsTag] = useState(false);
+  const [singleParentsTag, setSingleParentsTag] = useState(false);
+  const [lgbtqiaPlusParentsTag, setLgbtqiaPlusParentsTag] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const postData = {
+      title,
+      description: content, // Ensure `description` matches your backend
+      topic,
+      carers_tag: carersTag,
+      expecting_parents_tag: expectingParentsTag,
+      new_parents_tag: newParentsTag,
+      single_parents_tag: singleParentsTag,
+      LGBTQIA_plus_parents_tag: lgbtqiaPlusParentsTag,
+    };
+
+    try {
+      const response = await fetch('/api/forum', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(postData),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        setSuccessMessage('Post created successfully!');
+        // Clear form fields
+        setTitle('');
+        setContent('');
+        setTopic('');
+        setCarersTag(false);
+        setExpectingParentsTag(false);
+        setNewParentsTag(false);
+        setSingleParentsTag(false);
+        setLgbtqiaPlusParentsTag(false);
+      } else {
+        setErrorMessage('Failed to create post.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setErrorMessage('An error occurred while submitting the form.');
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Title</label>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <label>Content</label>
+        <textarea
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <label>Topic</label>
+        <input
+          type="text"
+          value={topic}
+          onChange={(e) => setTopic(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            checked={carersTag}
+            onChange={(e) => setCarersTag(e.target.checked)}
+          />
+          Carers Tag
+        </label>
+      </div>
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            checked={expectingParentsTag}
+            onChange={(e) => setExpectingParentsTag(e.target.checked)}
+          />
+          Expecting Parents Tag
+        </label>
+      </div>
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            checked={newParentsTag}
+            onChange={(e) => setNewParentsTag(e.target.checked)}
+          />
+          New Parents Tag
+        </label>
+      </div>
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            checked={singleParentsTag}
+            onChange={(e) => setSingleParentsTag(e.target.checked)}
+          />
+          Single Parents Tag
+        </label>
+      </div>
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            checked={lgbtqiaPlusParentsTag}
+            onChange={(e) => setLgbtqiaPlusParentsTag(e.target.checked)}
+          />
+          LGBTQIA+ Parents Tag
+        </label>
+      </div>
+      <button type="submit">Submit</button>
+      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+    </form>
+  );
+}
+
+export default ForumSubmissionForm;
+
+/*
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom/client'
 import './ForumSubmissionForm.css'
@@ -64,7 +208,7 @@ const ForumSubmission = () => {
     <div className="container">
       {/* <div className="header">
         <h1>Create a New Forum Topic</h1>
-      </div> */}
+      </div> */ /*}
       <form onSubmit={handleSubmit} className="form">
         <div className="title">
           <label>Title</label>
@@ -134,4 +278,4 @@ const ForumSubmission = () => {
   );
 };
 
-export default ForumSubmission;
+export default ForumSubmission;*/

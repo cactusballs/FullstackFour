@@ -12,3 +12,5 @@ const database = sql.createPool({
   
   // Export the database 
   module.exports = database;  
+
+  
