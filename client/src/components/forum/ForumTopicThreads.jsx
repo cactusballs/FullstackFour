@@ -5,7 +5,7 @@ import DropdownButton from "./DropdownButton";
 import NavbarComp from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import BackButton from "./BackButton";
-import ResetButton from "./ResetButton";
+
 
 const ForumTopicThreads = () => {
   // trying to connect to the DB
@@ -15,9 +15,8 @@ const ForumTopicThreads = () => {
   const [parentTag, setParentTag] = useState("");
 
   //effect to fetch all threads under a certain topic
-  //console.log(topic);
+
   useEffect(() => {
-    //setThreads([]);
     setError(null);
     fetch(`http://localhost:3000/threads/${encodeURIComponent(topic)}`)
       .then((response) => {
@@ -102,7 +101,7 @@ const ForumTopicThreads = () => {
             All posts for {topic}
             <div className="buttons-div">
             <DropdownButton onSelect={handleSelect} />
-            <ResetButton/>
+
             </div>
           </h3>
 
@@ -133,10 +132,3 @@ const ForumTopicThreads = () => {
 };
 
 export default ForumTopicThreads;
-
-/*
-to do:
-- handle when no threads returned, show message on screen
-- requests that aren't updating on frontend?
-- commenting and code tidy
-*/
