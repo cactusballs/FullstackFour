@@ -5,37 +5,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from "../footer/Footer.jsx";
 import illustration from '../../assets/images/village-illustration.png';
 import logo from '../../assets/images/village-logo.png';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../store/UserSlice.jsx';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    
-    try {
-      const response = await fetch('http://localhost:3000/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        // Save the token (use cookies for better security)
-        localStorage.setItem('token', data.token);
-        navigate('/dashboard');
-      } else {
-        alert(data.message);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred during login.');
-    }
+    let userCredentials={
+      email, password
+    };
+    dispatch(loginUser({ userCredentials, navigate }));
   };
-
+    
   return (
     <div className="container-fluid">
       <div className="row">
