@@ -212,16 +212,13 @@ app.post("/broadcastmessages", async (req, res) => {
   }
 });
 
-// dashboards - get top 7 recent forum posts
+// dashboards - get top 7 unique threads ordered by most recent forum posts
 app.get("/recentPosts", async (req, res) => {
-  const recentPosts = `SELECT 
-    village.posts_to_threads.content,
-    village.posts_to_threads.sent_at,
-    village.posts_to_threads.thread_id,
-    village.posts_to_threads.post_id
-FROM
-    village.posts_to_threads
-ORDER BY sent_at DESC
+  const recentPosts = `SELECT DISTINCT threads.thread_id, threads.thread_title, MAX(posts_to_threads.sent_at) as latest_post
+FROM threads
+LEFT JOIN posts_to_threads ON posts_to_threads.thread_id = threads.thread_id
+GROUP BY threads.thread_id, threads.thread_title
+ORDER BY latest_post DESC
 LIMIT 7;`;
 
   try {
