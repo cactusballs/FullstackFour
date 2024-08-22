@@ -14,7 +14,6 @@ function DropdownButton({ onSelect }) {
   ];
 
   const dropdownTextUpdate = (type) => {
-    //console.log(type);
     onSelect(type.tag);
     setDropdownText(type.type);
   };

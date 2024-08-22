@@ -70,10 +70,9 @@ const ForumTopicThreads = () => {
     }
   }, [parentTag, topic]);
 
-  //handleSelect function to navigate between tags
+  //handleSelect function to navigate between tags: changes dropdown text
   const handleSelect = (tag) => {
     setError(null);
-    const parentTag = tag;
     setParentTag(tag);
   };
 
