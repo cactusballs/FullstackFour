@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import BroadcastMessages from "./components/dashboard/Broadcast.jsx";
-import ImageCarousel from "./components/dashboard/ImageCarousel.jsx";
+// import BroadcastMessages from "./components/dashboard/Broadcast.jsx";
+// import ImageCarousel from "./components/dashboard/ImageCarousel.jsx";
 // import "./components/dashboard/ImageCarousel.css";
 import ForumTopicThreads from "./components/forum/ForumTopicThreads";
 import RecentForumPosts from "./components/dashboard/RecentForumPosts";
@@ -12,9 +12,9 @@ import SingleThread from "./components/forum/SingleThread.jsx";
 import Footer from "./components/footer/Footer.jsx";
 import Body from "./components/body/Body.jsx";
 import Registration from "./components/registration/Registration.jsx";
-import LocalEvents from "./components/dashboard/LocalEvents.jsx";
+// import LocalEvents from "./components/dashboard/LocalEvents.jsx";
 import MeetTheTeam from "./components/meet-the-team/MeetTheTeam.jsx";
-import NavbarComp from "./components/navbar/Navbar.jsx";
+// import NavbarComp from "./components/navbar/Navbar.jsx";
 import { ParallaxProvider } from "react-scroll-parallax";
 //import TopicsDropdown from "./components/forum/DropdownMenu/Dropdown/TopicsDropdown";
 import Events from "./components/events/Events.jsx";
@@ -59,18 +59,6 @@ function Forum() {
     </div>
   );
 }
-
-// function Dashboard() {
-//   return (
-//     <>
-//       <BroadcastMessages />
-//       <RecentForumPosts />
-//       <ImageCarousel />
-//       <LocalEvents />
-//       {/* Use ImageCarousel component with correct capitalization */}
-//     </>
-//   );
-// }
 
 function FooterPage() {
   return (

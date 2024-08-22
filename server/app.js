@@ -178,7 +178,7 @@ app.post("/login", async (req, res) => {
   }
 });
 
-// getting messages
+// dashboard - broadcast (get)
 app.get("/broadcastmessages", async (req, res) => {
   const query = `SELECT v.user_name, b.message_content 
   FROM broadcast_messages b 
@@ -196,7 +196,7 @@ app.get("/broadcastmessages", async (req, res) => {
   }
 });
 
-// users create + post messages
+// dashboard - broadcast (post)
 app.post("/broadcastmessages", async (req, res) => {
   const { id, message_content } = req.body;
 
@@ -282,15 +282,28 @@ app.post("/signup", async (req, res) => {
 
   try {
     // Checking if the email is already registered in the database
-    const [existingEmail] = await database.query('SELECT * FROM villagers WHERE email = ?', [email]);
+    const [existingEmail] = await database.query(
+      "SELECT * FROM villagers WHERE email = ?",
+      [email]
+    );
     if (existingEmail.length > 0) {
-      return res.status(400).json({ error: 'email', message: 'This email is already registered, please log in' });
+      return res.status(400).json({
+        error: "email",
+        message: "This email is already registered, please log in",
+      });
     }
 
     // Checking if the username is already in the database
-    const [existingUser] = await database.query('SELECT * FROM villagers WHERE user_name = ?', [user_name]);
+    const [existingUser] = await database.query(
+      "SELECT * FROM villagers WHERE user_name = ?",
+      [user_name]
+    );
     if (existingUser.length > 0) {
-      return res.status(409).json({ error: 'user_name', message: 'This username is already taken, please choose a different one' });
+      return res.status(409).json({
+        error: "user_name",
+        message:
+          "This username is already taken, please choose a different one",
+      });
     }
 
     // Hashing the password

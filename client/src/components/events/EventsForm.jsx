@@ -4,7 +4,11 @@ import Form from "react-bootstrap/Form";
 import "./EventsForm.css";
 
 function EventsForm({ onFormSubmit }) {
-  const [formData, setFormData] = useState({ keyword: "" });
+  const [formData, setFormData] = useState(
+    { keyword: "" },
+    { startDateTime: "" },
+    { endDateTime: "" }
+  );
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -53,11 +57,25 @@ function EventsForm({ onFormSubmit }) {
       <Form.Group className="mb-3" id="event-dates">
         <Form.Group className="mb-3" id="label-date-block">
           <Form.Label>From</Form.Label>
-          <Form.Control type="date" id="from-date" />
+          <Form.Control
+            type="date"
+            id="from-date"
+            value={formData.startDateTime}
+            onChange={(e) => {
+              setFormData({ ...formData, startDateTime: e.target.value });
+            }}
+          />
         </Form.Group>
         <Form.Group className="mb-3" id="label-date-block">
           <Form.Label>To</Form.Label>
-          <Form.Control type="date" id="to-date" />
+          <Form.Control
+            type="date"
+            id="to-date"
+            value={formData.endDateTime}
+            onChange={(e) => {
+              setFormData({ ...formData, endDateTime: e.target.value });
+            }}
+          />
         </Form.Group>
       </Form.Group>
 

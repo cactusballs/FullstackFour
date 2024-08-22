@@ -30,13 +30,19 @@ const apiClient = async (baseUrl, path, queryParams) => {
 
 eventsRouter.get("/", async (req, res) => {
   const keyword = req.query.keyword;
+
+  const startDateTime = req.query.startDateTime;
+  const endDateTime = req.query.endDateTime;
+
   const baseUrl = "https://app.ticketmaster.com/discovery/v2/";
 
   try {
     const result = await apiClient(baseUrl, "/events.json", {
       // params - doesn't display events with postalCode + radius... look into geoPoint
-      // if keyword is provided, add it to query - else default to empty object
+      // if keyword/startDateTime/endDateTime is provided, add it to query - else default to empty object
       ...(keyword ? { keyword } : {}),
+      ...(startDateTime ? { startDateTime } : {}),
+      ...(endDateTime ? { endDateTime } : {}),
       city: "London",
       // classificationName: "family",
       // includeFamily: "yes",
