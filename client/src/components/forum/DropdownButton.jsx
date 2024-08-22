@@ -1,26 +1,34 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import "./DropdownButton.css";
+import { useState } from "react";
 
-const parentTypes = [
-  { type: "All", link: "/placeholder" },
-  { type: "Carers", link: "/placeholder" },
-  { type: "Expecting parents", link: "/placeholder" },
-  { type: "New parents", link: "/placeholder" },
-  { type: "Single parents", link: "/placeholder" },
-  { type: "LGBTQIA+ parents", link: "/placeholder" },
-];
+function DropdownButton({ onSelect }) {
+  const [dropdownText, setDropdownText] = useState("Filter by parent type");
 
-function DropdownButton() {
+  const parentTypes = [
+    { type: "Carers", tag: "carers" },
+    { type: "Expecting parents", tag: "expecting_parents" },
+    { type: "New parents", tag: "new_parents" },
+    { type: "Single parents", tag: "single_parents" },
+    { type: "LGBTQIA+ parents", tag: "LGBTQIA_plus_parents" },
+  ];
+
+  const dropdownTextUpdate = (type) => {
+    onSelect(type.tag);
+    setDropdownText(type.type);
+  };
+
   return (
     <Dropdown>
       <Dropdown.Toggle className="dropdown-button">
-        Filter by parent type
+        {dropdownText}
       </Dropdown.Toggle>
       <Dropdown.Menu>
         {parentTypes.map((type, index) => (
-        <Dropdown.Item key={index} href={type.link}>
-          {type.type}
-        </Dropdown.Item>))}
+          <Dropdown.Item key={index} onClick={() => dropdownTextUpdate(type)}>
+            {type.type}
+          </Dropdown.Item>
+        ))}
       </Dropdown.Menu>
     </Dropdown>
   );

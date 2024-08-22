@@ -49,20 +49,21 @@ const Footer = () => {
 
           {/* all contact us type links and info */}
           <div className="footer-links-div">
-            <h4>About Us</h4>
+            <h4>Important Links</h4>
+            <a href="/">
+              <p>Login page</p>
+            </a>
             <a href="/meet-the-team">
               <p>Meet the Team</p>
             </a>
-            <a href="/sitemap">
-              <p>Sitemap</p>
-            </a>
+           
             <a href="mailto:john@example.com">
               <p>Contact Us</p>
             </a>
           </div>
 
           {/* links to mental health resources container */}
-          <div className="footer-links-div">
+          <div className="footer-links-div mental-health-container">
             <h4>Mental Health Resources</h4>
             <a href="https://www.mind.org.uk/">
               <p>Mind</p>
