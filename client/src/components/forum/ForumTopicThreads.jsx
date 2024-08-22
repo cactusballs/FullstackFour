@@ -6,16 +6,13 @@ import NavbarComp from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import BackButton from "./BackButton";
 
-
 const ForumTopicThreads = () => {
-  // trying to connect to the DB
   const { topic } = useParams();
   const [threads, setThreads] = useState([]);
   const [error, setError] = useState(null);
   const [parentTag, setParentTag] = useState("");
 
   //effect to fetch all threads under a certain topic
-
   useEffect(() => {
     setError(null);
     fetch(`http://localhost:3000/threads/${encodeURIComponent(topic)}`)
@@ -27,16 +24,14 @@ const ForumTopicThreads = () => {
       })
       .then((data) => {
         setThreads(data);
-        //console.log(data);
       })
       .catch((error) => {
         console.error("Error fetching threads:", error);
         setError("Failed to fetch threads");
       });
-  }, [topic]);
+  }, [topic]); //only re-render if topic changes, had issues if parentTag changed too.
 
-  //effect to fetch all threads with a tag, within a topic
-  //console.log(topic, parentTag);
+  //effect to fetch all threads with a tag, within a topic e.g. carer tag under SEND
   useEffect(() => {
     setThreads([]);
     setError(null);
@@ -48,6 +43,7 @@ const ForumTopicThreads = () => {
       )
         .then((response) => {
           if (response.status === 404) {
+            // 404 handling for if no threads exist with that tag/topic combination
             return response.json().then((data) => {
               setError(data.message);
               console.log(data.message);
@@ -65,8 +61,6 @@ const ForumTopicThreads = () => {
         .then((data) => {
           setThreads(data);
           setError(null);
-          //console.log(Object.keys(threads).length, threads);
-          //console.log(data);
         })
         .catch((error) => {
           console.error("Error fetching threads with this tag:", error);
@@ -76,16 +70,11 @@ const ForumTopicThreads = () => {
     }
   }, [parentTag, topic]);
 
-  //handle select function to navigate between tags
+  //handleSelect function to navigate between tags
   const handleSelect = (tag) => {
-  //setThreads([]);
-  setError(null);
+    setError(null);
     const parentTag = tag;
     setParentTag(tag);
-    //console.log(threads);
-    
-    //console.log("tag: ",tag);
-    console.log("parent tag: ", parentTag);
   };
 
   return (
@@ -100,11 +89,10 @@ const ForumTopicThreads = () => {
           <h3>
             All posts for {topic}
             <div className="buttons-div">
-            <DropdownButton onSelect={handleSelect} />
-
+              <DropdownButton onSelect={handleSelect} />
             </div>
           </h3>
-
+          {/* error handling in rendering */}
           {error ? (
             <p>{error}</p>
           ) : (
@@ -119,7 +107,6 @@ const ForumTopicThreads = () => {
                 ))
               ) : (
                 <p>Sorry! No posts (yet) for this tag under {topic}.</p>
-                
               )}
             </ul>
           )}
