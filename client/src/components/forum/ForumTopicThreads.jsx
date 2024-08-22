@@ -52,7 +52,7 @@ const ForumTopicThreads = () => {
               setError(data.message);
               console.log(data.message);
               setThreads(data.message);
-              //setThreads([]);
+              setThreads([]);
             });
           }
 
@@ -65,13 +65,13 @@ const ForumTopicThreads = () => {
         .then((data) => {
           setThreads(data);
           setError(null);
-          console.log(Object.keys(threads).length, threads);
+          //console.log(Object.keys(threads).length, threads);
           //console.log(data);
         })
         .catch((error) => {
           console.error("Error fetching threads with this tag:", error);
           setError("Failed to fetch threads by tag");
-          setThreads([]);
+          setThreads(data.message);
         });
     }
   }, [parentTag, topic]);
@@ -82,7 +82,7 @@ const ForumTopicThreads = () => {
   setError(null);
     const parentTag = tag;
     setParentTag(tag);
-    console.log(threads);
+    //console.log(threads);
     
     //console.log("tag: ",tag);
     console.log("parent tag: ", parentTag);
