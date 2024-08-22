@@ -8,6 +8,7 @@
 
 
 ## Server setup
+- Navigate into the server folder 
 - copy of .env.example save as '.env' and update with personal details
 - run `npm install`
 
@@ -19,6 +20,7 @@ Running server:
 - run `npm install`
 
 Running frontend / client:
+- Navigate into the client folder
 - `npm run dev` in the console (Vite used for Client)
 
 Testing / client: 
