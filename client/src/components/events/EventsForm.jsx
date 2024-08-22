@@ -4,11 +4,11 @@ import Form from "react-bootstrap/Form";
 import "./EventsForm.css";
 
 function EventsForm({ onFormSubmit }) {
-  const [formData, setFormData] = useState(
-    { keyword: "" },
-    { startDateTime: "" },
-    { endDateTime: "" }
-  );
+  const [formData, setFormData] = useState({
+    keyword: "",
+    startDateTime: "",
+    endDateTime: "",
+  });
 
   const handleSearch = (e) => {
     e.preventDefault();
