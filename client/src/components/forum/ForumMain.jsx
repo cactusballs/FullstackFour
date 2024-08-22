@@ -121,7 +121,8 @@ const ForumMain = () => {
       <div className='TopPicks'>
         <h3>Start a thread...</h3>
         
-        <ForumSubmissionForm onNewThread={handleNewThread} />
+    
+        <ForumSubmissionForm onSubmit={handleSubmit} />
           <ul>
             {threads.map(thread => (
               <li key={thread.thread_id}>
