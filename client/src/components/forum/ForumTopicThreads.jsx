@@ -16,6 +16,8 @@ const ForumTopicThreads = () => {
   //effect to fetch all threads under a certain topic
   //console.log(topic);
   useEffect(() => {
+    //setThreads([]);
+    setError(null);
     fetch(`http://localhost:3000/threads/${encodeURIComponent(topic)}`)
       .then((response) => {
         if (!response.ok) {
@@ -31,11 +33,13 @@ const ForumTopicThreads = () => {
         console.error("Error fetching threads:", error);
         setError("Failed to fetch threads");
       });
-  }, [parentTag, topic]);
+  }, [topic]);
 
   //effect to fetch all threads with a tag, within a topic
   //console.log(topic, parentTag);
   useEffect(() => {
+    setThreads([]);
+    setError(null);
     if (parentTag) {
       fetch(
         `http://localhost:3000/threads/${encodeURIComponent(
@@ -46,35 +50,41 @@ const ForumTopicThreads = () => {
           if (response.status === 404) {
             return response.json().then((data) => {
               setError(data.message);
-              setThreads([]);
+              console.log(data.message);
+              setThreads(data.message);
+              //setThreads([]);
             });
           }
 
           if (!response.ok) {
             setError("there has been an error");
-            //throw new Error("Network response was not ok");
+            throw new Error("Network response was not ok");
           }
           return response.json();
         })
         .then((data) => {
           setThreads(data);
           setError(null);
+          console.log(Object.keys(threads).length, threads);
           //console.log(data);
         })
         .catch((error) => {
           console.error("Error fetching threads with this tag:", error);
           setError("Failed to fetch threads by tag");
+          setThreads([]);
         });
     }
   }, [parentTag, topic]);
 
   //handle select function to navigate between tags
   const handleSelect = (tag) => {
-   
+  //setThreads([]);
+  setError(null);
     const parentTag = tag;
     setParentTag(tag);
     console.log(threads);
-    console.log("tag: ",tag);
+    
+    //console.log("tag: ",tag);
     console.log("parent tag: ", parentTag);
   };
 
@@ -106,6 +116,7 @@ const ForumTopicThreads = () => {
                 ))
               ) : (
                 <p>Sorry! No posts (yet) for this tag under {topic}.</p>
+                
               )}
             </ul>
           )}
@@ -122,6 +133,6 @@ export default ForumTopicThreads;
 /*
 to do:
 - handle when no threads returned, show message on screen
-- change what shows on dropdown to it still shows on there as selected
+- requests that aren't updating on frontend?
 - commenting and code tidy
 */
