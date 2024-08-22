@@ -21,6 +21,9 @@ Running server:
 Running frontend / client:
 - `npm run dev` in the console (Vite used for Client)
 
+Testing / client: 
+- `npm test` in the console
+
 
 ## Testing registration and login with hashing:
 
@@ -28,7 +31,8 @@ Running frontend / client:
 `USE village;`
 `SELECT* FROM villagers;`
 
-2) You can later test how the hashing process works on the Login Page by using the same user details (email and password) you provided in the registration form. Alternatively you could use one of these already existing users' details in the database:
+3) You can later test how the hashing process works on the Login Page by using the same user details (email and password) you provided in the registration form. Alternatively you could use one of these already existing users' details in the database:
 	- 1) email: chloe.b@example.com, password: MyPassw0!
 	- 2) email: lottie.j@example.com, password: Abcdef1@
+
 
