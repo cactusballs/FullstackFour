@@ -44,6 +44,7 @@ eventsRouter.get("/", async (req, res) => {
       // latlong: "51.513561,-0.137706",
       // radius: 10,
       size: 200,
+      sort: "date,asc",
       apikey: apiKey,
     });
 

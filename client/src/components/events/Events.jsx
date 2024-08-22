@@ -37,7 +37,7 @@ function Events() {
 
   // loads child-friendly events in the beginning
   useEffect(() => {
-    fetchEvents({ keyword: "kid" });
+    fetchEvents({ keyword: "children" });
   }, []);
 
   // upon submitting form, fetch events again - replacing keyword 'children' with whatever user typed in form
