@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function ForumSubmissionForm() {
+function ForumSubmissionForm({ onNewThread }) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [topic, setTopic] = useState('');

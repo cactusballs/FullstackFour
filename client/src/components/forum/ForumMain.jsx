@@ -63,7 +63,7 @@ import ForumSubmissionForm from './ForumSubmissionForm.jsx';
 import NavbarComp from '../navbar/Navbar.jsx';
 import { Link } from 'react-router-dom';
 
-const ForumMain = () => {
+const ForumMain = ({handleSubmit}) => {
   //  trying to connect to the DB
   const [threads, setThreads] = useState([]);
   const [error, setError] = useState(null);
