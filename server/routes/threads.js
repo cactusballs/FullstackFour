@@ -64,7 +64,7 @@ threadRouter.get("/threadheader/posts", async (req, res) => {
 
     const [postResults] = await database.query(sqlThreadPosts, queryParam);
     if (postResults.length === 0) {
-      return res.status(400).send({ message: "no posts with this id" });
+      return res.status(404).send({ message: "no posts with this id" });
     }
     res.status(200).json(postResults);
   } catch (error) {
@@ -81,11 +81,46 @@ threadRouter.get('/:topic', async (req, res) => {
     const [results] = await database.query(sqlThreadPosts, [topic]);
 
     if (results.length === 0) {
-      return res.status(400).send({ message: 'No threads found for this topic' });
+      return res.status(404).send({ message: 'No threads found for this topic' });
     }
 
     res.status(200).json(results);
-    console.log(results);
+    //console.log(results);
+  } catch (error) {
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+
+//WIP!!!!!!!!
+// Get threads by topic AND TAG for ForumTopicThreads - for using with dropdown
+//http://localhost:3000/threads/:topic/:tag
+//e.g. http://localhost:3000/threads/SEND/carers
+threadRouter.get('/:topic/:tag', async (req, res) => {
+  const { topic, tag } = req.params;
+  const tagParam = `${tag}_tag`;
+
+  try {
+    const sqlThreadPostsWithTags = "SELECT * FROM threads WHERE topic = ? and "+tagParam+" = 1";
+    //SELECT * FROM threads where carers_tag =1 and topic = 'SEND';
+    const [results] = await database.query(sqlThreadPostsWithTags, [topic], [tagParam]);
+    console.log(tagParam);
+    /*tags are:
+    carers_tag ,
+    expecting_parents_tag,
+    new_parents_tag,
+    single_parents_tag,
+    LGBTQIA_plus_parents_tag
+*/
+//can't filter by tag on main page so don't need to worry about /all/[tag].
+//endpoint would need to be added for /alltopics if filtering on main page of forum
+
+    if (results.length === 0) {
+      return res.status(404).send({ message: 'No threads found with this tag' });
+    }
+
+    res.status(200).json(results);
+    //console.log(results);
   } catch (error) {
     res.status(500).json({ message: 'Internal Server Error' });
   }
