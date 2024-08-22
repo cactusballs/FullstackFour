@@ -84,8 +84,8 @@ const SingleThread = () => {
               </p>
             </div>
           ))
-        ) : (
-          <p>No posts found for this thread.</p>
+        ) : (<div className="no-posts-yet">
+          <p>No replies to this thread yet :(</p></div>
         )}
       </div>
       <BackButton/>
