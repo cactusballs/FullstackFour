@@ -122,7 +122,7 @@ const ForumMain = () => {
         <h3>Start a thread...</h3>
         
     
-        <ForumSubmissionForm onSubmit={handleSubmit} />
+        <ForumSubmissionForm onSubmit={handleSubmit} threads={threads} />
           <ul>
             {threads.map(thread => (
               <li key={thread.thread_id}>
