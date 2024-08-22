@@ -53,7 +53,6 @@ const ForumTopicThreads = () => {
           if (!response.ok) {
             setError("there has been an error");
             //throw new Error("Network response was not ok");
-           
           }
           return response.json();
         })
@@ -71,10 +70,12 @@ const ForumTopicThreads = () => {
 
   //handle select function to navigate between tags
   const handleSelect = (tag) => {
-    console.log(tag);
+   
     const parentTag = tag;
     setParentTag(tag);
     console.log(threads);
+    console.log("tag: ",tag);
+    console.log("parent tag: ", parentTag);
   };
 
   return (
@@ -95,7 +96,7 @@ const ForumTopicThreads = () => {
             <p>{error}</p>
           ) : (
             <ul className="TownHallPosts">
-              {Array.isArray(threads) && threads.length >0 ? (
+              {Array.isArray(threads) && threads.length > 0 ? (
                 threads.map((thread) => (
                   <li key={thread.thread_id}>
                     <Link to={`/conversation/${thread.thread_id}`}>
@@ -104,7 +105,7 @@ const ForumTopicThreads = () => {
                   </li>
                 ))
               ) : (
-                <p>No posts for this tag under this topic.</p>
+                <p>Sorry! No posts (yet) for this tag under {topic}.</p>
               )}
             </ul>
           )}
@@ -117,3 +118,10 @@ const ForumTopicThreads = () => {
 };
 
 export default ForumTopicThreads;
+
+/*
+to do:
+- handle when no threads returned, show message on screen
+- change what shows on dropdown to it still shows on there as selected
+- commenting and code tidy
+*/

@@ -49,13 +49,14 @@ const Footer = () => {
 
           {/* all contact us type links and info */}
           <div className="footer-links-div">
-            <h4>About Us</h4>
+            <h4>Important Links</h4>
+            <a href="/">
+              <p>Login page</p>
+            </a>
             <a href="/meet-the-team">
               <p>Meet the Team</p>
             </a>
-            <a href="/sitemap">
-              <p>Sitemap</p>
-            </a>
+           
             <a href="mailto:john@example.com">
               <p>Contact Us</p>
             </a>

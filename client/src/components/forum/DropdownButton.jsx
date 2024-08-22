@@ -1,12 +1,14 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import "./DropdownButton.css";
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 function DropdownButton({ onSelect }) {
   // const location = useLocation();
   // const url = location.pathname;
   // console.log(url);
 
+  const [dropdownText, setDropdownText] = useState("Filter by parent type");
 
   const parentTypes = [
     { type: "Carers", tag: "carers" },
@@ -17,17 +19,22 @@ function DropdownButton({ onSelect }) {
     { type: "All posts for this topic", tag: "" },
   ];
 
+  const dropdownTextUpdate = (type) => {
+    console.log(type);
+    onSelect(type.tag);
+    setDropdownText(type.type);
+  };
+
   return (
     <Dropdown>
       <Dropdown.Toggle className="dropdown-button">
-        Filter by parent type
+        {dropdownText}
       </Dropdown.Toggle>
       <Dropdown.Menu>
         {parentTypes.map((type, index) => (
           <Dropdown.Item
             key={index}
-            onClick={() => onSelect(type.tag)}
-
+            onClick={() => dropdownTextUpdate(type)}
             // href={type.link}
           >
             {type.type}
