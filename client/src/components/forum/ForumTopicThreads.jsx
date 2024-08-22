@@ -5,6 +5,7 @@ import DropdownButton from "./DropdownButton";
 import NavbarComp from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import BackButton from "./BackButton";
+import ResetButton from "./ResetButton";
 
 const ForumTopicThreads = () => {
   // trying to connect to the DB
@@ -99,7 +100,10 @@ const ForumTopicThreads = () => {
         <div className="TownHall">
           <h3>
             All posts for {topic}
+            <div className="buttons-div">
             <DropdownButton onSelect={handleSelect} />
+            <ResetButton/>
+            </div>
           </h3>
 
           {error ? (
