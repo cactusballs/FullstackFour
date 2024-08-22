@@ -3,20 +3,12 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./EventsForm.css";
 
-function EventsForm() {
-  const [keywordsQuery, setKeywordsQuery] = useState("");
-  //const [events, setEvents] = useState([]);
+function EventsForm({ onFormSubmit }) {
+  const [formData, setFormData] = useState({ keyword: "" });
 
-  const handleSearch = async (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
-
-    try {
-      const response = await fetch(`http://localhost:3000/events`);
-      const json = await response.json();
-      return json;
-    } catch (err) {
-      console.log("Error: ", err);
-    }
+    onFormSubmit(formData);
   };
 
   return (
@@ -25,10 +17,9 @@ function EventsForm() {
         <Form.Label>Search keywords</Form.Label>
         <Form.Control
           type="text"
-          value={keywordsQuery}
+          value={formData.keyword}
           onChange={(e) => {
-            setKeywordsQuery(e.target.value);
-            console.log(e.target.value);
+            setFormData({ ...formData, keyword: e.target.value });
           }}
         />
       </Form.Group>

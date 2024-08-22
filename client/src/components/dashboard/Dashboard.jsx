@@ -43,16 +43,3 @@ function Dashboard() {
 }
 
 export default Dashboard;
-
-// function Dashboard() {
-//   return (
-//     <>
-//       <LocalEvents />
-//       <ImageCarousel />
-//       <RecentForumPosts />
-//       <Broadcast />
-//     </>
-//   );
-// }
-
-// export default Dashboard;

@@ -10,5 +10,6 @@ describe("modal tooltip", () => {
   });
   test("hover over icon to show tooltip", () => {
     const tooltipElement = screen.getByTestId("tooltip-test");
+    const hoverIcon = screen.getByTestId("");
   });
 });
