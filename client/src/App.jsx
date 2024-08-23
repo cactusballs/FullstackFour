@@ -5,7 +5,8 @@ import BroadcastMessages from "./components/dashboard/Broadcast.jsx";
 import ImageCarousel from "./components/dashboard/ImageCarousel.jsx";
 // import "./components/dashboard/ImageCarousel.css";
 import ForumTopicThreads from "./components/forum/ForumTopicThreads";
-import RecentForumPosts from "./components/dashboard/RecentForumPosts"; import Poll from "./components/dashboard/Poll";
+import RecentForumPosts from "./components/dashboard/RecentForumPosts";
+import Poll from "./components/dashboard/Poll";
 import ForumMain from "./components/forum/ForumMain";
 import Login from "./components/login/Login"; // Import the Login component
 import SingleThread from "./components/forum/SingleThread.jsx";
