@@ -16,25 +16,23 @@ function Dashboard() {
       <NavbarComp />
       <Container>
         <Row>
-          <Col>
+          <Col sm={12} md={3}>
             <EventsSpotlight />
           </Col>
-          <Col xs={6}>
+          <Col sm={12} md={6}>
             <ImageCarousel />
           </Col>
-          <Col>
+          <Col sm={12} md={3}>
             <RecentForumPosts />
           </Col>
-        </Row>
 
-        <Row>
-          <Col>
+          <Col sm={12} md={3}>
             <OnSaleEvents />
           </Col>
-          <Col xs={5}>
+          <Col sm={12} md={6}>
             <BroadcastMessages />
           </Col>
-          <Col>
+          <Col sm={12} md={3}>
             <Poll pollId={2} />
           </Col>
         </Row>
