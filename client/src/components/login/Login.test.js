@@ -26,4 +26,9 @@ test("Logging in with correct credentials", async () => {
             json: () => Promise.resolve({ token: 'mockToken' })
         })
     );
+
+    // Filling out the form
+    fireEvent.change(screen.getByLabelText(/Email/i), { target: { value: 'test@example.com' } });
+    fireEvent.change(screen.getByLabelText(/Password/i), { target: { value: 'password123' } });
+
 });
