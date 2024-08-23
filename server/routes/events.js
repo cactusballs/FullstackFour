@@ -23,7 +23,7 @@ const apiClient = async (baseUrl, path, queryParams) => {
 
   // if the response = json, execute the await response.json(), else make response = text
   const result = isResponseJson ? await response.json() : await response.text();
-
+  console.log("apiResponse:", result);
   return result;
 };
 
@@ -34,7 +34,7 @@ eventsRouter.get("/", async (req, res) => {
   const latlong = req.query.latlong;
   const radius = req.query.radius;
   const sort = req.query.sort;
-  const size = req.query.size;
+  // const size = req.query.size;
 
   const baseUrl = "https://app.ticketmaster.com/discovery/v2";
 
@@ -47,15 +47,14 @@ eventsRouter.get("/", async (req, res) => {
       ...(endDateTime ? { endDateTime: endDateTime + ":00Z" } : {}),
       ...(latlong ? { latlong } : {}),
       ...(radius ? { radius } : {}),
-      ...(sort ? { sort } : "date,asc"),
-      ...(size ? { size } : 200),
+      ...(sort ? { sort } : { sort: "date,asc" }),
       city: "London",
       // classificationName: "family",
       // includeFamily: "yes",
       // startDateTime: "2024-08-31T12:30:00Z",
       // latlong: "51.513561,-0.137706",
       // radius: 10,
-      // size: 200,
+      size: 200,
       // sort: "date,asc",
       apikey: apiKey,
     });

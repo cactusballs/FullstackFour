@@ -54,7 +54,7 @@ function EventCard({ events }) {
                   </ListGroup.Item>
                 </ListGroup>
                 <Card.Body id="card-footer">
-                  <Card.Link className="event-link" href={event.url}>
+                  <Card.Link id="event-link" href={event.url}>
                     Book Tickets
                   </Card.Link>
                 </Card.Body>

@@ -4,7 +4,6 @@ import "./Events.css";
 import NavbarComp from "../navbar/Navbar.jsx";
 import Footer from "../footer/Footer.jsx";
 import { useState, useEffect } from "react";
-import "../../assets/images/events-img.png";
 
 const cleanFormData = (formData) => {
   const { keyword, startDateTime, endDateTime, latlong, radius } = formData;
@@ -41,7 +40,6 @@ function Events() {
       }
 
       const result = await response.json();
-
       setEvents(result);
     } catch (err) {
       console.log("Error: ", err);

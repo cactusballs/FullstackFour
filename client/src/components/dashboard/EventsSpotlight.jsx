@@ -5,6 +5,9 @@ import { LuSparkle } from "react-icons/lu";
 function EventsSpotlight() {
   const [relevantEvents, setRelevantEvents] = useState([]);
 
+  const groupEventsByName = Map.groupBy(relevantEvents, ({ name }) => name);
+  const groupedEventsAsArray = [...groupEventsByName.values()];
+
   const fetchRelevantEvents = async (params) => {
     try {
       const url = new URL("http://localhost:3000/events");
@@ -22,7 +25,6 @@ function EventsSpotlight() {
       }
 
       const result = await response.json();
-
       setRelevantEvents(result);
     } catch (err) {
       console.log("Error: ", err);
@@ -32,31 +34,34 @@ function EventsSpotlight() {
   useEffect(() => {
     fetchRelevantEvents({
       keyword: "children",
-      city: "London",
-      sort: "relevance,asc",
-      size: "5",
+      sort: "relevance,desc",
     });
   }, []);
-
+  const listOfEvents = (
+    <>
+      <ul>
+        {groupedEventsAsArray?.slice(0, 5)?.map((item) => {
+          const event = item[0];
+          return (
+            <li key={event.id}>
+              <p>
+                {event.name},{event._embedded?.venues[0]?.postalCode}
+              </p>
+              <a href={event.url}>See More</a>
+            </li>
+          );
+        })}
+      </ul>
+    </>
+  );
   return (
     <Card
       leftIcon={<LuSparkle />}
       title="Events Spotlight"
       link=""
       linkText="View All"
-    >
-      <ul>
-        {relevantEvents.map((relevantEvent) => {
-          <li key={relevantEvent.id}>
-            <p>
-              {relevantEvent._embedded?.venues?.[0]?.name},
-              {relevantEvent._embedded?.venues[0]?.postalCode}
-            </p>
-            <a href={relevantEvent.url}>See More</a>
-          </li>;
-        })}
-      </ul>
-    </Card>
+      content={listOfEvents}
+    ></Card>
   );
 }
 

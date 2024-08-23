@@ -54,7 +54,7 @@ function LocalEvents() {
       link=""
       linkText="View All"
     >
-      {/* 
+      {/*
       // wrap event link in a button, map each event item
       <ul>
         <li>{event.startDateTime}, {event.name}, {event.link}</li>
