@@ -1,7 +1,6 @@
 import "./Card.css";
 import React from "react";
 
-// style may need correcting
 const Card = ({
   title,
   leftIcon,

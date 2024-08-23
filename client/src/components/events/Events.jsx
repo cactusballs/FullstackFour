@@ -4,11 +4,10 @@ import "./Events.css";
 import NavbarComp from "../navbar/Navbar.jsx";
 import Footer from "../footer/Footer.jsx";
 import { useState, useEffect } from "react";
+import "../../assets/images/events-img.png";
 
 const cleanFormData = (formData) => {
   const { keyword, startDateTime, endDateTime, latlong, radius } = formData;
-  // const formattedStartDate = new Date(startDateTime).toISOString();
-  // const formattedEndDate = new Date(endDateTime).toISOString();
 
   return {
     ...(keyword != "" ? { keyword } : {}),
@@ -62,10 +61,17 @@ function Events() {
   return (
     <div className="events-page">
       <NavbarComp />
+      <h4 id="events-headline">find an event</h4>
       <div className="events-container">
         <div className="events-headline-form">
-          <h4 id="events-headline">find an event</h4>
-          <EventsForm onFormSubmit={handleFormSubmit} />
+          <div id="events-form-image">
+            <EventsForm onFormSubmit={handleFormSubmit} />
+            <img
+              src="../../src/assets/images/event-father-child.png"
+              alt="kid hitting pinata in a party"
+              id="events-image"
+            ></img>
+          </div>
         </div>
         <EventCard events={groupedEventsAsArray} />
       </div>

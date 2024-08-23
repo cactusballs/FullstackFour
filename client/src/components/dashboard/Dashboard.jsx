@@ -7,6 +7,7 @@ import ImageCarousel from "./ImageCarousel";
 import RecentForumPosts from "./RecentForumPosts";
 import BroadcastMessages from "./Broadcast";
 import NavbarComp from "../navbar/Navbar.jsx";
+import EventsSpotlight from "./EventsSpotlight.jsx";
 
 function Dashboard() {
   return (
@@ -15,7 +16,7 @@ function Dashboard() {
       <Container>
         <Row>
           <Col>
-            <LocalEvents />
+            <EventsSpotlight />
           </Col>
           <Col xs={6}>
             <ImageCarousel />
