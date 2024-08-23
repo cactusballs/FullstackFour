@@ -29,7 +29,6 @@ function EventsSpotlight() {
     }
   };
 
-  //  translate user's postcode to latlong coordinates?
   useEffect(() => {
     fetchRelevantEvents({
       keyword: "children",
@@ -42,7 +41,7 @@ function EventsSpotlight() {
   return (
     <Card
       leftIcon={<LuSparkle />}
-      title="Events in your area"
+      title="Events Spotlight"
       link=""
       linkText="View All"
     >

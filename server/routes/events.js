@@ -33,6 +33,8 @@ eventsRouter.get("/", async (req, res) => {
   const endDateTime = req.query.endDateTime;
   const latlong = req.query.latlong;
   const radius = req.query.radius;
+  const sort = req.query.sort;
+  const size = req.query.size;
 
   const baseUrl = "https://app.ticketmaster.com/discovery/v2";
 
@@ -45,14 +47,16 @@ eventsRouter.get("/", async (req, res) => {
       ...(endDateTime ? { endDateTime: endDateTime + ":00Z" } : {}),
       ...(latlong ? { latlong } : {}),
       ...(radius ? { radius } : {}),
+      ...(sort ? { sort } : "date,asc"),
+      ...(size ? { size } : 200),
       city: "London",
       // classificationName: "family",
       // includeFamily: "yes",
       // startDateTime: "2024-08-31T12:30:00Z",
       // latlong: "51.513561,-0.137706",
       // radius: 10,
-      size: 200,
-      sort: "date,asc",
+      // size: 200,
+      // sort: "date,asc",
       apikey: apiKey,
     });
 

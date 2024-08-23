@@ -50,7 +50,7 @@ function LocalEvents() {
   return (
     <Card
       leftIcon={<TbLocation />}
-      title="Events in your area"
+      title="Local Events"
       link=""
       linkText="View All"
     >
