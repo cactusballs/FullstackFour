@@ -3,7 +3,6 @@ import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import axios from 'axios';
 import Poll from './Poll';
-import Card from './Card';
 import { BsChatLeftHeart } from 'react-icons/bs';
 
 jest.mock('axios');
