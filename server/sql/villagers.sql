@@ -299,8 +299,8 @@ CREATE TABLE IF NOT EXISTS poll (
 INSERT INTO poll
 (title, created_at)
 VALUES
-("are you seeing this?", CURRENT_TIMESTAMP()),
-("do you live in London?", CURRENT_TIMESTAMP())
+("Are you seeing this?", CURRENT_TIMESTAMP()),
+("Do you live in London?", CURRENT_TIMESTAMP())
 ;
 
 INSERT INTO poll_options
