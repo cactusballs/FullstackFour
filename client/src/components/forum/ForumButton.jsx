@@ -14,7 +14,7 @@ const ForumButton = ({
 }) => {
   /* onclick will take in the function for each button, buttonContent will replace the default below and className will add any specific styling, rest makes space for any extra info added after */
   return (
-    <button onClick={onClick}>
+    <button onClick={onClick} aria-placeholder="Submit">
       {/* submit */}
       {icon}
       {buttonContent}
