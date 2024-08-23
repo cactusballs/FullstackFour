@@ -2,7 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import LocalEvents from "./LocalEvents";
+import OnSaleEvents from "./OnSaleEvents.jsx";
 import ImageCarousel from "./ImageCarousel";
 import RecentForumPosts from "./RecentForumPosts";
 import BroadcastMessages from "./Broadcast";
@@ -29,10 +29,9 @@ function Dashboard() {
 
         <Row>
           <Col>
-            <LocalEvents />
+            <OnSaleEvents />
           </Col>
           <Col xs={5}>
-            {/* should be poll here */}
             <BroadcastMessages />
           </Col>
           <Col>
