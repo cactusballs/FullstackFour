@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from "../footer/Footer.jsx";
 import illustration from '../../assets/images/village-illustration.png';
 import logo from '../../assets/images/village-logo.png';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../store/UserSlice.jsx';
 
 const Login = () => {
@@ -13,6 +13,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const error = useSelector((state) => state.user.error);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,6 +57,7 @@ const Login = () => {
                   required
                 />
               </div>
+              {error && <p className="error-message">{error}</p>}
               <button className="login-button" type="submit">Log In</button>
               <p>
                 Don't have an account? <a href="/signup">Sign up</a>

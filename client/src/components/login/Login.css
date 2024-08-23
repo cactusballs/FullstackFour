@@ -78,3 +78,8 @@ p {
 p a {
   color: #4caf50;
 }
+
+.error-message {
+  color: red;
+  font-size: 15px;
+}
