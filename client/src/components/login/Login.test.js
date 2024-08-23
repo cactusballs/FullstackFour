@@ -33,4 +33,7 @@ test("Logging in with correct credentials", async () => {
 
     // Submitting the form
     fireEvent.click(screen.getByRole('button', { name: /Log In/i }));
+
+    // Wait for navigation
+    await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
 });
