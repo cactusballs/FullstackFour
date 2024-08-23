@@ -36,4 +36,7 @@ test("Logging in with correct credentials", async () => {
 
     // Wait for navigation
     await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
+
+    // Check if the token is set in localStorage
+    expect(localStorage.getItem('token')).toEqual('mockToken');
 });
