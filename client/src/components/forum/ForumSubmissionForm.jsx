@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+/*import React, { useState } from 'react';
 
 function ForumSubmissionForm({ onNewThread }) {
   const [title, setTitle] = useState('');
@@ -139,37 +140,30 @@ function ForumSubmissionForm({ onNewThread }) {
   );
 }
 
-export default ForumSubmissionForm;
+export default ForumSubmissionForm;*/
 
-/*
-import React, { useEffect, useState } from 'react'
-import ReactDOM from 'react-dom/client'
-import './ForumSubmissionForm.css'
-import ForumButton from './ForumButton';
-// import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import './ForumSubmissionForm.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-//up dated 'N's to 0 and 'Y's to 1
-const ForumSubmission = () => {
+const ForumSubmissionForm = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [topic, setTopic] = useState('');
   const [tags, setTags] = useState({
-    carers_tag: 0,
-    expecting_parents_tag: 0,
-    new_parents_tag: 0,
-    single_parents_tag: 0,
-    LGBTQIA_plus_parents_tag: 0,
+    carers_tag: false,
+    expecting_parents_tag: false,
+    new_parents_tag: false,
+    single_parents_tag: false,
+    LGBTQIA_plus_parents_tag: false,
   });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  // const navigate = useNavigate();
-
-  // Placeholder user data
-  const user_name = 'PlaceholderTillLinkLoginUserInfo';
+  const navigate = useNavigate();
 
   const handleTagChange = (tag) => {
-    setTags({ ...tags, [tag]: tags[tag] === 0 ? 1 : 0 });
+    setTags({ ...tags, [tag]: !tags[tag] });
   };
 
   const handleSubmit = async (e) => {
@@ -181,14 +175,13 @@ const ForumSubmission = () => {
 
     const newTopic = {
       title,
-      content,
-      user_name, // Use placeholder username
+      description: content, // Use 'description' as your backend expects
       topic,
       ...tags,
     };
 
     try {
-      const res = await axios.post('http://localhost:3000/api/forum', newTopic);
+      const res = await axios.post('http://localhost:3000/threads/create', newTopic);
       if (res.status === 201) {
         setSuccess('Sent to the village!');
         setTimeout(() => {
@@ -199,16 +192,12 @@ const ForumSubmission = () => {
       setError('An error occurred while creating the topic');
     }
   };
- //charactercount 100 more than reddit
-  const updateCharCount = (input) => {
-    document.getElementById('charCount').textContent = input.value.length;
-  };
 
   return (
     <div className="container">
-      {/* <div className="header">
+      <div className="header">
         <h1>Create a New Forum Topic</h1>
-      </div> */ /*}
+      </div>
       <form onSubmit={handleSubmit} className="form">
         <div className="title">
           <label>Title</label>
@@ -219,7 +208,6 @@ const ForumSubmission = () => {
             maxLength="400"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            onInput={(e) => updateCharCount(e.target)}
           />
           <div className="char-count">
             <span id="charCount">0</span>/400
@@ -256,11 +244,11 @@ const ForumSubmission = () => {
         <div className="tags mt-3">
           <label>Tags</label>
           <div className="mt-2 flex flex-wrap gap-2">
-            {['Carers', 'Expecting Parents', 'New Parents', 'Single Parents', 'LGBTQIA_plus_parents_tags'].map(tag => (
+            {Object.keys(tags).map((tag) => (
               <label key={tag}>
                 <input
                   type="checkbox"
-                  checked={tags[tag] === 1}
+                  checked={tags[tag]}
                   onChange={() => handleTagChange(tag)}
                 />
                 {tag.replace(/_/g, ' ')}
@@ -268,9 +256,7 @@ const ForumSubmission = () => {
             ))}
           </div>
         </div>
-        <ForumButton onClick={handleSubmit}>
-          Submit Thread
-        </ForumButton>
+        <button type="submit">Submit Thread</button>
         {error && <p className="error">{error}</p>}
         {success && <p className="success">{success}</p>}
       </form>
@@ -278,4 +264,4 @@ const ForumSubmission = () => {
   );
 };
 
-export default ForumSubmission;*/
+export default ForumSubmissionForm;

@@ -1,7 +1,8 @@
-/*import React, { useState, useEffect } from 'react';
-import './ForumMain.css'; // Assuming this is your existing CSS file
+import React, { useState, useEffect } from 'react';
+import './ForumMain.css'; 
 import ForumSubmissionForm from './ForumSubmissionForm.jsx';
 import NavbarComp from '../navbar/Navbar.jsx';
+import ThreadReply from './ThreadReply.jsx'; // Import the ThreadReply component
 import { Link } from 'react-router-dom';
 
 const ForumMain = () => {
@@ -25,6 +26,17 @@ const ForumMain = () => {
       });
   }, []);
 
+  const handleReplySubmit = (newReply) => {
+    // Update the threads state with the new reply
+    setThreads(prevThreads => {
+      return prevThreads.map(thread => 
+        thread.id === newReply.threadId 
+          ? { ...thread, replies: [...(thread.replies || []), newReply] }
+          : thread
+      );
+    });
+  };
+
   return (
     <>
       <NavbarComp />
@@ -40,6 +52,7 @@ const ForumMain = () => {
                   <Link to={`/threads/${encodeURIComponent(thread.topic)}`}>
                     {thread.topic}
                   </Link>
+                  <ThreadReply threadId={thread.id} onReplySubmit={handleReplySubmit} />
                 </li>
               ))}
             </ul>
@@ -54,9 +67,9 @@ const ForumMain = () => {
   );
 }
 
-export default ForumMain;*/
+export default ForumMain;
 
-
+/*
 import React, { useState, useEffect } from 'react';
 import './ForumMain.css';
 import ForumSubmissionForm from './ForumSubmissionForm.jsx';
@@ -129,7 +142,7 @@ const ForumMain = ({handleSubmit}) => {
                 <h2>{thread.title}</h2>
                 <p>{thread.description}</p>
                 <p><strong>Topic:</strong> {thread.topic}</p>
-                {/*add time too?? */}
+                {/*add time too?? *//*}
               </li>
             ))}
           </ul>
@@ -139,4 +152,4 @@ const ForumMain = ({handleSubmit}) => {
   );
 };
 
-export default ForumMain;
+export default ForumMain;*/

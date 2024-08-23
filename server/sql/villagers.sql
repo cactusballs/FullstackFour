@@ -1,3 +1,4 @@
+-- SQLBook: Code
 drop database if exists village;
 CREATE DATABASE village;
 USE village;
