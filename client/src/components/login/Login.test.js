@@ -14,3 +14,16 @@ test("Rendering login form and fields correctly", () => {
     expect(screen.getByText(/Don't have an account\?/i)).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /Sign up/i })).toBeInTheDocument();
 });
+
+
+test("Logging in with correct credentials", async () => {
+    render(<Login />, { wrapper: BrowserRouter });
+  
+    // Mocking fetch response for a successful login
+    global.fetch = jest.fn(() =>
+        Promise.resolve({
+            ok: true,
+            json: () => Promise.resolve({ token: 'mockToken' })
+        })
+    );
+});
