@@ -5,7 +5,6 @@
 
 - git clone from repo
 - run .sql file in MySql
-- run `npm install`
 
 
 ## Server setup
