@@ -5,7 +5,6 @@ import NavbarComp from '../navbar/Navbar.jsx';
 import { Link } from 'react-router-dom';
 
 const ForumMain = () => {
-  //  trying to connect to the DB
   const [threads, setThreads] = useState([]);
   const [error, setError] = useState(null);
 
@@ -44,7 +43,7 @@ const ForumMain = () => {
         <p>...explore threads by topic or start your own!</p>
       </div>
       <div className='TownHall'>
-        <h3>All forums...</h3>
+        <h3>All forums by topic...</h3>
         {error ? (
           <p>{error}</p>
         ) : (
