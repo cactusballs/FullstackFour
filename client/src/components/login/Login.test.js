@@ -31,4 +31,6 @@ test("Logging in with correct credentials", async () => {
     fireEvent.change(screen.getByLabelText(/Email/i), { target: { value: 'test@example.com' } });
     fireEvent.change(screen.getByLabelText(/Password/i), { target: { value: 'password123' } });
 
+    // Submitting the form
+    fireEvent.click(screen.getByRole('button', { name: /Log In/i }));
 });
