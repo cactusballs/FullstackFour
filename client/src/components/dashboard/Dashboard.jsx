@@ -8,6 +8,7 @@ import RecentForumPosts from "./RecentForumPosts";
 import BroadcastMessages from "./Broadcast";
 import NavbarComp from "../navbar/Navbar.jsx";
 import EventsSpotlight from "./EventsSpotlight.jsx";
+import Poll from "./Poll";
 
 function Dashboard() {
   return (
@@ -35,7 +36,7 @@ function Dashboard() {
             <BroadcastMessages />
           </Col>
           <Col>
-            <BroadcastMessages />
+            <Poll pollId={2} />
           </Col>
         </Row>
       </Container>

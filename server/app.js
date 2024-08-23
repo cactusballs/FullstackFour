@@ -216,16 +216,13 @@ app.post("/broadcastmessages", async (req, res) => {
   }
 });
 
-// dashboards - get top 7 recent forum posts
+// dashboards - get top 7 unique threads ordered by most recent forum posts
 app.get("/recentPosts", async (req, res) => {
-  const recentPosts = `SELECT 
-    village.posts_to_threads.content,
-    village.posts_to_threads.sent_at,
-    village.posts_to_threads.thread_id,
-    village.posts_to_threads.post_id
-FROM
-    village.posts_to_threads
-ORDER BY sent_at DESC
+  const recentPosts = `SELECT DISTINCT threads.thread_id, threads.thread_title, MAX(posts_to_threads.sent_at) as latest_post
+FROM threads
+LEFT JOIN posts_to_threads ON posts_to_threads.thread_id = threads.thread_id
+GROUP BY threads.thread_id, threads.thread_title
+ORDER BY latest_post DESC
 LIMIT 7;`;
 
   try {
@@ -237,7 +234,8 @@ LIMIT 7;`;
   }
 });
 
-// dashboards - polling - get poll title
+
+// dashboards - polling - get all poll contents
 app.get("/pollInfo/:pollId", async (req, res) => {
   const pollId = req.params.pollId;
   const sqlPollMain = "SELECT * FROM poll WHERE id = ?";
@@ -263,6 +261,51 @@ app.get("/pollInfo/:pollId", async (req, res) => {
     res
       .status(500)
       .json({ message: "An error occurred", error: error.message });
+  }
+});
+
+// dashboards - polling - submitting a vote
+app.post("/pollVote", async (req, res) => {
+  const { poll_id, poll_options_id } = req.body;
+
+  if (!poll_id, poll_options_id) {
+    res.status(400).json({ message: "Values cannot be blank" });
+  }
+
+  try {
+    await database.query(
+      "INSERT INTO poll_votes (poll_id, poll_options_id, created_at) VALUES (?, ?,CURRENT_TIMESTAMP())",
+      [poll_id, poll_options_id]
+    );
+    res.status(201).json({ message: "Vote successfully submitted", data: req.body });
+  } catch (err) {
+    res.status(400).json({ message: "Unable to submit vote, please try again" });
+  }
+});
+
+// dashboards - polling - get poll results
+app.get("/pollResults/:pollId", async (req, res) => {
+  const pollId = req.params.pollId;
+  const sqlPollTotalVotes = " SELECT COUNT(*) as totalVotes FROM poll_votes WHERE poll_votes.poll_id = ?";
+  const sqlPollOptionsVotes = "SELECT poll_options.id, poll_options.label, COUNT(poll_votes.poll_options_id), (COUNT(poll_votes.poll_options_id) * 100.0 / SUM(COUNT(poll_votes.poll_options_id)) OVER ()) AS percentage FROM poll_options LEFT JOIN poll_votes ON poll_options.id = poll_votes.poll_options_id WHERE poll_options.poll_id = ? GROUP BY poll_options.id, poll_options.label ORDER BY poll_options.id;"
+
+  try {
+    const [pollTotalVotes] = await database.query(sqlPollTotalVotes, [pollId]);
+    if (pollTotalVotes.length === 0) {
+      return res.status(404).json({ message: "Total votes not found" });
+    }
+
+    const [pollOptionsVotes] = await database.query(sqlPollOptionsVotes, [pollId]);
+    if (pollOptionsVotes.length === 0) {
+      return res.status(404).json({ message: "Distribution not found" });
+    }
+
+    res.status(200).json({
+      totalVotes: pollTotalVotes[0],
+      optionsVotes: pollOptionsVotes
+    });
+  } catch (error) {
+    res.status(500).json({ message: "An error occurred", error: error.message });
   }
 });
 

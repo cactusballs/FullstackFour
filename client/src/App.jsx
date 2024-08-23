@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import ForumTopicThreads from "./components/forum/ForumTopicThreads";
+import RecentForumPosts from "./components/dashboard/RecentForumPosts";
+import Poll from "./components/dashboard/Poll";
 import ForumMain from "./components/forum/ForumMain";
 import Login from "./components/login/Login"; // Import the Login component
 import SingleThread from "./components/forum/SingleThread.jsx";
@@ -21,7 +23,7 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/forum" element={<ForumMain />} />
+          <Route path="/forum" element={<Forum />} />
           <Route path="/threads/:topic" element={<ForumTopicThreads />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/events" element={<Events />} />
