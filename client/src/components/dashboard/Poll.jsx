@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Card from "./Card";
 import "./Poll.css";
 import { BsChatLeftHeart } from "react-icons/bs";
 
@@ -82,30 +81,35 @@ const Poll = ({ pollId }) => {
     };
 
     return (
-        <Card
-            title={
+        <div className="poll-card">
+            <div className="poll-header">
                 <div className="poll-title">
                     <BsChatLeftHeart className="poll-title-icon" />
                     Village poll
                 </div>
-            }
-            content={
-                <div className="poll-content">
-                    {poll && <div className="poll-question">{poll.title}</div>}
-                    {error && <div className="poll-error">{error}</div>}
-                    {message && <div className="poll-message">{message}</div>}
-                    {renderOptions()}
-                </div>
-            }
-            cardFooterButton={!options[0]?.percentage ? "Vote" : null}
-            cardFooter={
-                options[0]?.percentage &&
-                `Total Votes: ${options.reduce(
-                    (acc, option) => acc + option["COUNT(poll_votes.poll_options_id)"],
-                    0
-                )}`
-            }
-        />
+            </div>
+            <div className="poll-content">
+                {poll && <div className="poll-question">{poll.title}</div>}
+                {error && <div className="poll-error">{error}</div>}
+                {message && <div className="poll-message">{message}</div>}
+                {renderOptions()}
+            </div>
+            <div className="poll-footer">
+                {!options[0]?.percentage ? (
+                    <button className="poll-footer-button" onClick={handleVote}>
+                        Vote
+                    </button>
+                ) : (
+                    <div className="poll-footer-text">
+                        Total Votes:{" "}
+                        {options.reduce(
+                            (acc, option) => acc + option["COUNT(poll_votes.poll_options_id)"],
+                            0
+                        )}
+                    </div>
+                )}
+            </div>
+        </div>
     );
 };
 

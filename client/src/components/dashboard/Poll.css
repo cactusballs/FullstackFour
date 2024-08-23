@@ -1,10 +1,19 @@
-.Poll-card {
-    height: 400px;
-    width: 550px;
-    background-color: #485f39;
+.poll-card {
+    background-color: #f0f1e8;
+    width: 390px;
     border-radius: 10px;
-    margin: 0;
     padding: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.poll-header {
+    background-color: #485f39;
+    display: flex;
+    align-items: center;
+    height: 78px;
+    border-radius: 10px 10px 0 0;
+    color: white;
+    text-align: center;
 }
 
 .poll-title {
@@ -12,13 +21,13 @@
     justify-content: space-between;
     align-items: center;
     margin: 0px 30px;
-    padding: 0px 0px;
+    padding: 10px;
     height: 78px;
     background-color: #485f39;
     border-radius: 10px;
     color: white;
     text-align: center;
-    font-size: 22px;
+    font-size: 30px;
     font-family: "League Spartan";
 }
 
@@ -29,13 +38,15 @@
 }
 
 .poll-content {
-    background-color: #F0F1E8;
-    padding: 80px;
-    border: 1px solid #485F39;
+    padding: 30px;
+    background-color: hsl(67, 24%, 93%);
+    border-top: 1px solid #485f39;
+    border-bottom: 1px solid #485f39;
+    border-radius: 0 0 10px 10px;
 }
 
 .poll-question {
-    font-size: 14px;
+    font-size: 20px;
     font-weight: bold;
     margin-bottom: 20px;
     color: #485F39;
@@ -55,7 +66,7 @@
 
 .poll-content label {
     font-weight: normal;
-    color: #485F39;
+    color: #485f39;
     margin: 0px;
     text-align: center;
 }
@@ -64,19 +75,38 @@
 .poll-message {
     color: red;
     margin-bottom: 10px;
+    text-align: center;
 }
 
-.card-footer-button {
-    background-color: #F4F5EC;
+.poll-footer {
+    background-color: #485f39;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 62px;
+    padding: 0px 14px;
+    border-radius: 0 0 10px 10px;
+    color: white;
+}
+
+.poll-footer-button {
+    background-color: #f4f5ec;
     color: #000000;
-    border: 1px solid #485F39;
+    border: 1px solid #485f39;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-left: auto;
 }
 
-.card-footer-button:hover {
-    background-color: #485F39;
-    color: #F4F5EC;
+.poll-footer-button:hover {
+    background-color: #485f39;
+    color: #f4f5ec;
+}
+
+.poll-footer-text {
+    font-size: 16px;
+    color: #ffffff;
+    margin-right: auto;
 }
