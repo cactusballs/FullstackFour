@@ -124,8 +124,8 @@ const ForumSubmission = () => {
             ))}
           </div>
         </div>
-        <ForumButton onClick={handleSubmit}>
-          Submit Thread
+        <ForumButton onClick={handleSubmit} placeholder="Submit">
+          Submit
         </ForumButton>
         {error && <p className="error">{error}</p>}
         {success && <p className="success">{success}</p>}
