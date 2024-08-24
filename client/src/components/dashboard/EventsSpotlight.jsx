@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card.jsx";
 import { LuSparkle } from "react-icons/lu";
+import "./Dashboard.css";
 
 function EventsSpotlight() {
   const [relevantEvents, setRelevantEvents] = useState([]);
@@ -39,7 +40,7 @@ function EventsSpotlight() {
   }, []);
   const listOfEvents = (
     <>
-      <ul>
+      <ul id="spotlight-list">
         {groupedEventsAsArray?.slice(0, 5)?.map((item) => {
           const event = item[0];
           return (

@@ -40,7 +40,7 @@ eventsRouter.get("/", async (req, res) => {
 
   try {
     const result = await apiClient(baseUrl, "/events.json", {
-      // if keyword/startDateTime/endDateTime is provided, add it to query - else default to empty object
+      // if key value is provided, add it to query - else default to empty object
       // added "00Z" to fix time (seconds)
       ...(keyword ? { keyword } : {}),
       ...(startDateTime ? { startDateTime: startDateTime + ":00Z" } : {}),
@@ -50,13 +50,7 @@ eventsRouter.get("/", async (req, res) => {
       ...(sort ? { sort } : { sort: "date,asc" }),
       ...(classificationName ? { classificationName } : {}),
       city: "London",
-      // classificationName: "family",
-      // includeFamily: "yes",
-      // startDateTime: "2024-08-31T12:30:00Z",
-      // latlong: "51.513561,-0.137706",
-      // radius: 10,
       size: 200,
-      // sort: "date,asc",
       apikey: apiKey,
     });
 

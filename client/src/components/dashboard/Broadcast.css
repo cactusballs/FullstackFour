@@ -2,7 +2,7 @@
 
 .dashboard-card {
   background-color: #485f39;
-  width: 390px;
+  /* width: 390px; */
   border-radius: 10px;
   margin: 0;
   padding: 0;
@@ -34,7 +34,7 @@
 .dashboard-card-content {
   display: flex;
   height: 200px;
-  width: 390px;
+  /* width: 390px; */
   padding: 26px 0px 0px 0px;
   background-color: #f0f1e8;
   color: black;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card.jsx";
 import { LuTag } from "react-icons/lu";
-import "./OnSaleEvents.css";
+import "./Dashboard.css";
 
 function OnSaleEvents() {
   const [onSaleEvents, setOnSaleEvents] = useState([]);
@@ -48,7 +48,7 @@ function OnSaleEvents() {
           return (
             <li key={event.id} id="on-sale-events-item">
               <p>
-                <a href={event.url}>{event.name}</a>,
+                <a href={event.url}>{event.name}</a>,{" "}
                 {event._embedded?.venues[0]?.postalCode}
               </p>
             </li>
