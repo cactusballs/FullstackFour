@@ -20,7 +20,7 @@ test('renders ImageCarousel with correct images and descriptions', () => {
     expect(images[2]).toHaveAttribute('src', 'https://images.unsplash.com/photo-1470608756445-2c9906b0680f?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
 
 
-    expect(screen.getByText('Visit the most popular pumpkin patches in London...')).toBeInTheDocument();
-    expect(screen.getByText('Find the best baking classes in North London.')).toBeInTheDocument();
-    expect(screen.getByText('20 beautiful parks to visit this autumn...')).toBeInTheDocument();
+    expect(screen.getByText('Find the most popular pumpkin patches in London on our events page...')).toBeInTheDocument();
+    expect(screen.getByText('...or maybe search and explore for the best baking classes.')).toBeInTheDocument();
+    expect(screen.getByText('You soon will be discovering the best events in London!')).toBeInTheDocument();
 });
