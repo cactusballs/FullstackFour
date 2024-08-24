@@ -165,5 +165,42 @@ threadRouter.post('/create', async (req, res) => {
   }
 });
 
+// API endpoint to create a new reply
+threadRouter.post('/reply', async (req, res) => {
+  const { threadId, content, author } = req.body;
+
+
+  // Validate required fields
+  if (!threadId || !content || !author) {
+    return res.status(400).json({ message: 'Thread ID, content, and author are required' });
+  }
+
+
+  try {
+    const sqlInsert = `
+      INSERT INTO posts_to_threads (thread_id, user_name, content, sent_at)
+      VALUES (?, ?, ?, NOW())
+    `;
+    const values = [
+      threadId,
+      author,
+      content
+    ];
+
+
+    const [result] = await database.query(sqlInsert, values);
+
+
+    if (result.affectedRows > 0) {
+      res.status(201).json({ message: 'Reply created successfully!' });
+    } else {
+      res.status(500).json({ message: 'Failed to create reply' });
+    }
+  } catch (error) {
+    console.error('Error while creating reply:', error);
+    res.status(500).json({ message: 'Internal Server Error', error: error.message });
+  }
+});
+
 
 module.exports = threadRouter;
