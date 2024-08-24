@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS replies (
     thread_id INT NOT NULL,
     content TEXT NOT NULL,
     author VARCHAR(255) NOT NULL,
-    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (thread_id) REFERENCES threads(thread_id) ON DELETE CASCADE
 );
 
@@ -303,3 +303,4 @@ VALUES
 (2, 3, CURRENT_TIMESTAMP()),
 (2, 4, CURRENT_TIMESTAMP())
 ;
+SELECT * FROM threads WHERE thread_id = 52;
