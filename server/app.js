@@ -287,7 +287,7 @@ app.post("/pollVote", async (req, res) => {
 app.get("/pollResults/:pollId", async (req, res) => {
   const pollId = req.params.pollId;
   const sqlPollTotalVotes = " SELECT COUNT(*) as totalVotes FROM poll_votes WHERE poll_votes.poll_id = ?";
-  const sqlPollOptionsVotes = "SELECT poll_options.id, poll_options.label, COUNT(poll_votes.poll_options_id), (COUNT(poll_votes.poll_options_id) * 100.0 / SUM(COUNT(poll_votes.poll_options_id)) OVER ()) AS percentage FROM poll_options LEFT JOIN poll_votes ON poll_options.id = poll_votes.poll_options_id WHERE poll_options.poll_id = ? GROUP BY poll_options.id, poll_options.label ORDER BY poll_options.id;"
+  const sqlPollOptionsVotes = "SELECT poll_options.id, poll_options.label, COUNT(poll_votes.poll_options_id), ROUND((COUNT(poll_votes.poll_options_id) * 100.0 / SUM(COUNT(poll_votes.poll_options_id)) OVER ()), 0) AS percentage FROM poll_options LEFT JOIN poll_votes ON poll_options.id = poll_votes.poll_options_id WHERE poll_options.poll_id = ? GROUP BY poll_options.id, poll_options.label ORDER BY poll_options.id;"
 
   try {
     const [pollTotalVotes] = await database.query(sqlPollTotalVotes, [pollId]);
