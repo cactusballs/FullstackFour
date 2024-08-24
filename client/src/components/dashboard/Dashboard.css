@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+
+.page-container {
+  background-color: #d0d2b7;
+}
+
+.dashboard-page {
+  padding-top: 120px;
+  padding-bottom: 150px;
+  margin: 0 28px;
+}
+
+.dashboard-grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 500px;
+  grid-gap: 10px;
+}
+
+/* media queries */
+/* https://css-tricks.com/snippets/css/media-queries-for-standard-devices/ */
+
+/* OnSaleEvents.jsx,
+EventsSpotlight.jsx  */
+
+#on-sale-events-item,
+#spotlight-list {
+  list-style-type: none;
+}

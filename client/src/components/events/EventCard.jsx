@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -9,37 +9,11 @@ import dayjs from "dayjs";
 import { LuCalendarDays } from "react-icons/lu";
 import { LuBanknote } from "react-icons/lu";
 
-function EventCard() {
-  const [events, setEvents] = useState([]);
-
-  useEffect(() => {
-    // fetch data from the /events endpoint made on backend
-    const fetchEvents = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/events", {
-          method: "GET",
-        });
-
-        if (!response.ok) {
-          throw new Error(`Response status: ${response.status}`);
-        }
-
-        const result = await response.json();
-        // console.log(result);
-        setEvents(result);
-      } catch (err) {
-        console.log("Error: ", err);
-      }
-    };
-    fetchEvents();
-  }, []);
-
-  const groupEventsByName = Map.groupBy(events, ({ name }) => name);
-
+function EventCard({ events }) {
   return (
     <Container>
       <Row md={4} className="g-4">
-        {Array.from(groupEventsByName.values()).map((item) => {
+        {events.map((item) => {
           const event = item[0];
           // const startDate = dayjs(event.sales?.public?.startDateTime).format(
           //   "D MMM YYYY h:mm A"
@@ -80,7 +54,7 @@ function EventCard() {
                   </ListGroup.Item>
                 </ListGroup>
                 <Card.Body id="card-footer">
-                  <Card.Link className="event-link" href={event.url}>
+                  <Card.Link id="event-link" href={event.url}>
                     Book Tickets
                   </Card.Link>
                 </Card.Body>

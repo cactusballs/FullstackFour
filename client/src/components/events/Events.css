@@ -15,10 +15,9 @@ body {
 }
 
 .events-container {
-  margin: 0px 30px;
+  margin-bottom: 100px;
 }
 
-/* root is affecting this style (index.css) */
 .events-headline-form {
   margin: 30px 0px 90px 40px;
 }
@@ -27,4 +26,17 @@ body {
   font-family: "League Spartan";
   font-size: 70px;
   text-align: left;
+  margin-left: 80px;
+}
+
+#events-form-image {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 40px;
+}
+
+#events-image {
+  width: 600px;
+  transform: scaleX(-1);
 }

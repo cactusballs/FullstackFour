@@ -16,15 +16,6 @@ CREATE TABLE IF NOT EXISTS villagers (
     password VARCHAR(255) NOT NULL
 );
   
-  CREATE TABLE IF NOT EXISTS children (
-	child_id INT AUTO_INCREMENT PRIMARY KEY,
-	parent_id INT NOT NULL,
-	nick_name ENUM('Walnut', 'Pistachio', 'Cashew') NOT NULL,
-	birthday DATE NOT NULL,
-	FOREIGN KEY (parent_id) REFERENCES villagers(villager_id) ON DELETE CASCADE
-
-);
-
  CREATE TABLE IF NOT EXISTS events (
     event_id INT AUTO_INCREMENT PRIMARY KEY,
     event_name VARCHAR(50) NOT NULL,

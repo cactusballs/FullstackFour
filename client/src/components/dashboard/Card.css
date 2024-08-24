@@ -2,7 +2,7 @@
 
 .card {
   background-color: #f0f1e8;
-  width: 390px;
+  /* width: 390px; */
   border-radius: 10px;
   margin: 0;
   padding: 0;
@@ -43,10 +43,10 @@
 
 .card-content {
   display: flex;
-  width: 390px;
+  border-radius: 10px;
   background-color: hsl(67, 24%, 93%);
   color: black;
-  padding: 30px;
+  padding: 20px;
 }
 
 .card-footer {
@@ -57,7 +57,6 @@
   padding: 0px 14px;
   border-radius: 10px;
   color: white;
-  /* justify-content: space-between; */
   justify-content: flex-end;
 }
 
