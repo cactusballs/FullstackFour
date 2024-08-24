@@ -240,7 +240,7 @@ app.get("/pollInfo/:pollId", async (req, res) => {
   const pollId = req.params.pollId;
   const sqlPollMain = "SELECT * FROM poll WHERE id = ?";
   const sqlPollOptions =
-    "SELECT poll_options.label from poll_options WHERE poll_id = ?";
+    "SELECT poll_options.label, poll_options.id from poll_options WHERE poll_id = ?";
 
   try {
     const [pollMainResults] = await database.query(sqlPollMain, [pollId]);
