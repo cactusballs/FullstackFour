@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-// Login action
+// AsyncThunk for logging in user
 export const loginUser = createAsyncThunk(
   "user/loginUser",
   async ({ userCredentials, navigate }, { rejectWithValue }) => {
@@ -35,7 +35,7 @@ export const logoutUser = () => (dispatch) => {
     dispatch(userSlice.actions.logout());
 };
 
-// Slice for state management
+// Slice for user state management
 const userSlice = createSlice({
   name: "user",
   initialState: {
