@@ -12,11 +12,9 @@ import "./Dashboard.css";
 function Dashboard() {
   return (
     <div className="dashboard-page">
+      <NavbarComp />
       <div className="dashboard-grid">
         {/* <div className="dashboard-row"> */}
-        <div className="dashboard-item">
-          <NavbarComp />
-        </div>
         <div className="dashboard-item">
           <EventsSpotlight />
         </div>
@@ -26,8 +24,6 @@ function Dashboard() {
         <div className="dashboard-item">
           <RecentForumPosts />
         </div>
-      </div>
-      <div className="dashboard-row">
         <div className="dashboard-item">
           <OnSaleEvents />
         </div>
@@ -37,8 +33,11 @@ function Dashboard() {
         <div className="dashboard-item">
           <BroadcastMessages />
         </div>
-        {/* </div> */}
       </div>
+      {/* <div className="dashboard-row"> */}
+
+      {/* </div> */}
+      {/* </div> */}
 
       <Footer />
     </div>
