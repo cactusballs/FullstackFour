@@ -35,7 +35,8 @@ function OnSaleEvents() {
 
   useEffect(() => {
     fetchOnSaleEvents({
-      sort: "onSaleStartDate,asc",
+      // sort: "onSaleStartDate,asc",
+      sort: "date,desc",
       classificationName: "family",
     });
   }, []);
@@ -43,7 +44,7 @@ function OnSaleEvents() {
   const eventsOnSaleNow = (
     <>
       <ul>
-        {groupedEventsAsArray?.slice(0, 5)?.map((item) => {
+        {groupedEventsAsArray?.slice(0, 6)?.map((item) => {
           const event = item[0];
           return (
             <li key={event.id} id="on-sale-events-item">

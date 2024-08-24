@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+.page-container {
+  background-color: #d0d2b7;
+}
+
 .dashboard-page {
   padding-top: 120px;
   padding-bottom: 150px;
@@ -10,11 +14,10 @@
 
 .dashboard-grid {
   display: grid;
-  /* margin: 0px 20px; */
   width: 100%;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 500px;
-  grid-gap: 26px;
+  grid-gap: 10px;
 }
 
 /* media queries */

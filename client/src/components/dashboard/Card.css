@@ -43,11 +43,10 @@
 
 .card-content {
   display: flex;
-  /* width: 390px; */
   border-radius: 10px;
   background-color: hsl(67, 24%, 93%);
   color: black;
-  padding: 30px;
+  padding: 20px;
 }
 
 .card-footer {
@@ -58,7 +57,6 @@
   padding: 0px 14px;
   border-radius: 10px;
   color: white;
-  /* justify-content: space-between; */
   justify-content: flex-end;
 }
 

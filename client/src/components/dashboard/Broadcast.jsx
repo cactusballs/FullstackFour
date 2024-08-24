@@ -75,11 +75,11 @@ function BroadcastMessages() {
       <div className="dashboard-card" data-testid="broadcast-test">
         <div className="dashboard-card-header">
           <PiSpeakerHighLight className="broadcast-icon" />
-          <h4>Broadcast</h4>
-          <PiSpeakerHighLight
+          <h4 id="broadcast-title">Broadcast</h4>
+          {/* <PiSpeakerHighLight
             className="broadcast-icon"
             id="loudspeaker-right"
-          />
+          /> */}
         </div>
         <div className="dashboard-card-content">
           {/* need to work on - show image when there are messages, hide when there's no messages */}
