@@ -108,7 +108,7 @@
   padding-right: 10px;
 }
 
-/* Alternate background colours for forum posts */
+/* Alternating background colours for forum posts */
 .RecentForumPosts-card-content li:nth-child(odd) {
   background-color: #ffffff;
 }
