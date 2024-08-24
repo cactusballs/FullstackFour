@@ -23,7 +23,7 @@ const ForumSubmissionForm = () => {
       thread_title: threadTitle,
       content,
       topic,
-      user_name: 'FA', // Replace with actual user data if available
+      user_name: localStorage.getItem('user_name') || 'FA', // Replace with actual user data if available
       ...tags,
     };
 
@@ -32,7 +32,9 @@ const ForumSubmissionForm = () => {
       if (res.status === 201) {
         setSuccess('Thread created successfully!');
         setTimeout(() => {
-          setSuccess('');
+          // Redirect to the topic page to show the newly created thread
+          window.location.href = `/threads/${topic}`;
+         
           // Add any additional logic for successful submission
         }, 3000);
       }

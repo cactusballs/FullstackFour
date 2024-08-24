@@ -56,15 +56,15 @@ threadRouter.post('/create', async (req, res) => {
 // Get all threads under a specific topic
 threadRouter.get('/:topic', async (req, res) => {
   const { topic } = req.params;
-  
+
   try {
     const sql = 'SELECT * FROM threads WHERE topic = ?';
     const [results] = await database.query(sql, [topic]);
-    
+
     if (results.length === 0) {
       return res.status(404).json({ message: `No threads found for topic ${topic}` });
     }
-    
+
     res.status(200).json(results);
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error", error: error.message });
@@ -75,20 +75,20 @@ threadRouter.get('/:topic', async (req, res) => {
 threadRouter.get('/:topic/:tag', async (req, res) => {
   const { topic, tag } = req.params;
 
+  const tagColumn = `${tag}_tag`;  // This assumes that tag names match the column names
+
+  if (!['carers', 'expecting_parents', 'new_parents', 'single_parents', 'LGBTQIA_plus'].includes(tag)) {
+    return res.status(400).json({ message: 'Invalid tag' });
+  }
+
   try {
-    const sql = `
-      SELECT * FROM threads 
-      WHERE topic = ? 
-      AND (carers_tag = ? OR expecting_parents_tag = ? OR new_parents_tag = ? OR single_parents_tag = ? OR LGBTQIA_plus_parents_tag = ?)
-    `;
-    
-    const tagValue = true;
-    const [results] = await database.query(sql, [topic, tagValue, tagValue, tagValue, tagValue, tagValue]);
-    
+    const sql = `SELECT * FROM threads WHERE topic = ? AND ${tagColumn} = true`;
+    const [results] = await database.query(sql, [topic]);
+
     if (results.length === 0) {
       return res.status(404).json({ message: `No threads found for topic ${topic} with tag ${tag}` });
     }
-    
+
     res.status(200).json(results);
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error", error: error.message });
@@ -104,7 +104,30 @@ threadRouter.get('/threadheader', async (req, res) => {
   }
 
   try {
-    const sql = 'SELECT * FROM threads WHERE id = ?';
+    const sql = 'SELECT * FROM threads WHERE thread_id = ?';
+    const [results] = await database.query(sql, [thread_id]);
+
+    if (results.length === 0) {
+      return res.status(404).json({ message: `No thread found with ID ${thread_id}` });
+    }
+
+    res.status(200).json(results);
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error", error: error.message });
+  }
+});
+
+threadRouter.get('/threadheader', async (req, res) => {
+  const { thread_id } = req.query;
+
+  console.log('Thread ID:', thread_id);  // Add this line to log the thread ID
+
+  if (!thread_id) {
+    return res.status(400).json({ message: 'Thread ID is required' });
+  }
+
+  try {
+    const sql = 'SELECT * FROM threads WHERE thread_id = ?';
     const [results] = await database.query(sql, [thread_id]);
     
     if (results.length === 0) {
@@ -117,27 +140,6 @@ threadRouter.get('/threadheader', async (req, res) => {
   }
 });
 
-// Get all posts (replies) under a specific thread
-threadRouter.get('/threadheader/posts', async (req, res) => {
-  const { thread_id } = req.query;
-
-  if (!thread_id) {
-    return res.status(400).json({ message: 'Thread ID is required' });
-  }
-
-  try {
-    const sql = 'SELECT * FROM posts WHERE thread_id = ?';
-    const [results] = await database.query(sql, [thread_id]);
-    
-    if (results.length === 0) {
-      return res.status(404).json({ message: `No posts found for thread ID ${thread_id}` });
-    }
-    
-    res.status(200).json(results);
-  } catch (error) {
-    res.status(500).json({ message: "Internal Server Error", error: error.message });
-  }
-});
 
 // API endpoint to create a new reply
 threadRouter.post('/reply', async (req, res) => {
@@ -150,13 +152,13 @@ threadRouter.post('/reply', async (req, res) => {
 
   try {
     const sqlInsert = `
-      INSERT INTO replies (thread_id, content, author, timestamp)
+      INSERT INTO posts_to_threads (thread_id, user_name, content, sent_at)
       VALUES (?, ?, ?, NOW())
     `;
     const values = [
       threadId,
-      content,
-      author
+      author,
+      content
     ];
 
     const [result] = await database.query(sqlInsert, values);
@@ -173,4 +175,3 @@ threadRouter.post('/reply', async (req, res) => {
 });
 
 module.exports = threadRouter;
-
