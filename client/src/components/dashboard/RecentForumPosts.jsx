@@ -1,6 +1,7 @@
 import "./RecentForumPosts.css";
 import React, { useState, useEffect } from "react";
 import { TbMessages } from "react-icons/tb";
+import { Link } from 'react-router-dom';
 
 const RecentForumPosts = () => {
     const [posts, setPosts] = useState([]);
@@ -31,12 +32,14 @@ const RecentForumPosts = () => {
                         {posts.length > 0 ? (
                             posts.map((post) => (
                                 <li key={post.thread_id}>
-                                    <div className="forum-post-content">
-                                        <p className="forum-post-title">{post.thread_title}</p>
-                                        <p className="forum-post-date">
-                                            Posted on {new Date(post.latest_post).toLocaleDateString()}
-                                        </p>
-                                    </div>
+                                    <Link to={`/conversation/${post.thread_id}`} className="forum-post-link">
+                                        <div className="forum-post-content">
+                                            <p className="forum-post-title">{post.thread_title}</p>
+                                            <p className="forum-post-date">
+                                                Posted on {new Date(post.latest_post).toLocaleDateString()}
+                                            </p>
+                                        </div>
+                                    </Link>
                                 </li>
                             ))
                         ) : (

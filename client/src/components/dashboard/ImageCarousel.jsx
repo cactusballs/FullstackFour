@@ -7,15 +7,15 @@ const ImageCarousel = () => {
     const images = [
         {
             src: 'https://images.unsplash.com/photo-1506918092809-0ba639cd1385?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            description: 'Visit the most popular pumpkin patches in London...',
+            description: 'Find the most popular pumpkin patches in London on our events page...',
         },
         {
             src: 'https://images.unsplash.com/photo-1532499016263-f2c3e89de9cd?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            description: 'Find the best baking classes in North London.',
+            description: '...or maybe search and explore for the best baking classes.',
         },
         {
             src: 'https://images.unsplash.com/photo-1470608756445-2c9906b0680f?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            description: '20 beautiful parks to visit this autumn...',
+            description: 'You soon will be discovering the best events in London!',
         },
     ];
 
