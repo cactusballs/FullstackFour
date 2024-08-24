@@ -71,7 +71,6 @@
     text-align: center;
 }
 
-.poll-error,
 .poll-message {
     color: #58a127;
     margin-bottom: 10px;
@@ -101,7 +100,7 @@
 }
 
 .poll-footer-button:hover {
-    background-color: #485f39;
+    background-color: black;
     color: #f4f5ec;
 }
 

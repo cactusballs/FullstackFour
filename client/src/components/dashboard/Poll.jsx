@@ -85,7 +85,7 @@ const Poll = ({ pollId }) => {
             <div className="poll-header">
                 <div className="poll-title">
                     <BsChatLeftHeart className="poll-title-icon" />
-                    Village poll
+                    Village Poll
                 </div>
             </div>
             <div className="poll-content">
