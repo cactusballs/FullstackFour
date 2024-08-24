@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './Navbar.css'; 
+import LogoutButton from '../logoutbutton/LogoutButton';
 
 // had to rename from Navbar to work with bootstrap prenamed components.
 function NavbarComp() {
@@ -21,6 +22,7 @@ function NavbarComp() {
             <Nav.Link as={Link} to="/events">Events</Nav.Link>
             <Nav.Link as={Link} to="/meet-the-team">Meet the Team</Nav.Link>
           </Nav>
+          <LogoutButton />
         </Navbar.Collapse>
         </Container>
     </Navbar>
