@@ -1,13 +1,8 @@
-/* body {
-  background-color: #d0d2b7;
-  margin: 0;
-  padding: 0;
-} */
-
 .event-card {
   background-color: #f0f1e8;
   max-width: 310px;
   max-height: 510px;
+  box-shadow: 0 3px 8px rgb(0 0 0 / 0.2);
 }
 
 #event-image {
@@ -49,14 +44,14 @@
   justify-content: center;
 }
 
-.event-link {
+#event-link {
   color: black;
   padding: 0;
   margin: 0;
-  font-size: 16px;
+  font-size: 18px;
 }
 
-.event-link:hover {
-  color: #d3d3d3;
+#event-link:hover {
+  color: #7e3400;
   text-decoration: underline;
 }

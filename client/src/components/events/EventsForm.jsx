@@ -3,20 +3,18 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./EventsForm.css";
 
-function EventsForm() {
-  const [keywordsQuery, setKeywordsQuery] = useState("");
-  //const [events, setEvents] = useState([]);
+function EventsForm({ onFormSubmit }) {
+  const [formData, setFormData] = useState({
+    keyword: "",
+    startDateTime: "",
+    endDateTime: "",
+    latlong: "",
+    radius: "",
+  });
 
-  const handleSearch = async (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
-
-    try {
-      const response = await fetch(`http://localhost:3000/events`);
-      const json = await response.json();
-      return json;
-    } catch (err) {
-      console.log("Error: ", err);
-    }
+    onFormSubmit(formData);
   };
 
   return (
@@ -25,10 +23,9 @@ function EventsForm() {
         <Form.Label>Search keywords</Form.Label>
         <Form.Control
           type="text"
-          value={keywordsQuery}
+          value={formData.keyword}
           onChange={(e) => {
-            setKeywordsQuery(e.target.value);
-            console.log(e.target.value);
+            setFormData({ ...formData, keyword: e.target.value });
           }}
         />
       </Form.Group>
@@ -37,36 +34,67 @@ function EventsForm() {
       <Form.Group className="mb-3" controlId="formBasicPassword">
         {/* <Form.Control type="location" placeholder="" /> */}
         <Form.Label>Location</Form.Label>
-        <Form.Select aria-label="location">
+        <Form.Select
+          aria-label="location"
+          onChange={(e) => {
+            setFormData({ ...formData, latlong: e.target.value });
+          }}
+        >
           <option>London </option>
-          <option value="1">Use my current location</option>
-          <option value="2">North London</option>
-          <option value="3">South London</option>
-          <option value="4">West London</option>
-          <option value="5">East London</option>
+          <option value="51.5413,-0.1419">North London</option>
+          <option value="51.4456,-0.1557">South London</option>
+          <option value="51.5029,-0.0219">West London</option>
+          <option value="51.5302,-0.0219">East London</option>
         </Form.Select>
       </Form.Group>
 
       {/* select menu - location radius */}
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Label>Location radius</Form.Label>
-        <Form.Select aria-label="location-radius">
-          <option>From ...</option>
+        <Form.Select
+          aria-label="location-radius"
+          onChange={(e) => {
+            setFormData({ ...formData, radius: e.target.value });
+          }}
+        >
+          <option>Distance</option>
           <option value="1">Within 1 mile</option>
-          <option value="2">Within 3 miles</option>
-          <option value="3">Within 5 miles</option>
-          <option value="4">Within 10 miles</option>
+          <option value="3">Within 3 miles</option>
+          <option value="5">Within 5 miles</option>
+          <option value="10">Within 10 miles</option>
         </Form.Select>
       </Form.Group>
 
       <Form.Group className="mb-3" id="event-dates">
         <Form.Group className="mb-3" id="label-date-block">
           <Form.Label>From</Form.Label>
-          <Form.Control type="date" id="from-date" />
+          <Form.Control
+            type="datetime-local"
+            id="from-date"
+            value={formData.startDateTime}
+            onChange={(e) => {
+              console.log("fromDate", e);
+              setFormData({
+                ...formData,
+                startDateTime: e.target.value,
+              });
+            }}
+          />
         </Form.Group>
         <Form.Group className="mb-3" id="label-date-block">
           <Form.Label>To</Form.Label>
-          <Form.Control type="date" id="to-date" />
+          <Form.Control
+            type="datetime-local"
+            id="to-date"
+            value={formData.endDateTime}
+            onChange={(e) => {
+              console.log("toDate", e);
+              setFormData({
+                ...formData,
+                endDateTime: e.target.value,
+              });
+            }}
+          />
         </Form.Group>
       </Form.Group>
 
