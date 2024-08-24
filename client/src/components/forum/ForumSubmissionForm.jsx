@@ -19,7 +19,7 @@ const ForumSubmission = () => {
   const [success, setSuccess] = useState('');
   const navigate = useNavigate();
 
-  const user_name = 'PlaceholderTillLinkLoginUserInfo';
+  const user_name = 'FA';
 
   const handleTagChange = (e) => {
     setTags({
