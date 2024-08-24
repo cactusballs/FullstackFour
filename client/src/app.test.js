@@ -1,12 +1,15 @@
-import {render, screen} from '@testing-library/react'
-import React from 'react'
-import '@testing-library/jest-dom'
+import React from "react";
+import { render, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import store from './store/Store';
 import App from './App';
-import {BrowserRouter, MemoryRouter} from 'react-router-dom'
   
-  test('App routing and rendering', async () => {
-    render(<App />)
-    expect(screen.getByText(/Log In/i)).toBeInTheDocument()
+test('App routing and rendering', async () => {
+  render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
   
-  });
-  
+  expect(screen.getByText(/Log In/i)).toBeInTheDocument();
+});

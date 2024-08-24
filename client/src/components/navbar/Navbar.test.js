@@ -4,18 +4,19 @@ import '@testing-library/jest-dom';
 import NavbarComp from './Navbar.jsx';
 import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
+import { Provider } from 'react-redux';
+import store from '../../store/Store';
 
 const routes = ['Dashboard', 'Forum', 'Events', 'Meet the Team'];
 
 describe('Navbar', () => {
   beforeEach(() => {
     render(
-      <BrowserRouter>
+      <Provider store={store}>
         <NavbarComp />
-      </BrowserRouter>
-    );
-  });
-
+      </Provider>,
+      { wrapper: BrowserRouter }
+    )});
   it('should render the Navbar and its links', async () => {
     expect(await screen.findByText('Village')).toBeVisible();
 
