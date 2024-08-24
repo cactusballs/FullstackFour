@@ -45,9 +45,9 @@ function EventsSpotlight() {
           return (
             <li key={event.id}>
               <p>
-                {event.name},{event._embedded?.venues[0]?.postalCode}
+                <a href={event.url}>{event.name}</a>,{" "}
+                {event._embedded?.venues[0]?.postalCode}
               </p>
-              <a href={event.url}>See More</a>
             </li>
           );
         })}

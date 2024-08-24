@@ -18,7 +18,7 @@ function Dashboard() {
         <div className="dashboard-item">
           <EventsSpotlight />
         </div>
-        <div className="dashboard-item">
+        <div className="dashboard-item" id="dashboard-middle-column">
           <ImageCarousel />
         </div>
         <div className="dashboard-item">
@@ -27,7 +27,7 @@ function Dashboard() {
         <div className="dashboard-item">
           <OnSaleEvents />
         </div>
-        <div className="dashboard-item">
+        <div className="dashboard-item" id="dashboard-middle-column">
           <Poll pollId={2} />
         </div>
         <div className="dashboard-item">

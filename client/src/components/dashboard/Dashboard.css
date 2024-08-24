@@ -1,11 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
 .dashboard-page {
   padding-top: 120px;
 }
 
 .dashboard-grid {
   display: grid;
+  margin: 0px 20px;
   width: 100%;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 500px;
-  grid-gap: 10px;
+  grid-gap: 18px;
+}
+
+.dashboard-middle-column {
 }
