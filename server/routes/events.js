@@ -15,7 +15,7 @@ const apiClient = async (baseUrl, path, queryParams) => {
   const response = await fetch(url.toString(), {
     method: "GET",
   });
-  console.log("url", url.toString());
+
   // checking response headers to see if it has content type = application/json
   const isResponseJson = response.headers
     .get("Content-Type")
@@ -23,7 +23,6 @@ const apiClient = async (baseUrl, path, queryParams) => {
 
   // if the response = json, execute the await response.json(), else make response = text
   const result = isResponseJson ? await response.json() : await response.text();
-  console.log("apiResponse:", result);
   return result;
 };
 

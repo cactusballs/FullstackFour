@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card.jsx";
-import { TbLocation } from "react-icons/tb";
+import { LuTag } from "react-icons/lu";
+import "./OnSaleEvents.css";
 
 function OnSaleEvents() {
   const [onSaleEvents, setOnSaleEvents] = useState([]);
@@ -45,11 +46,11 @@ function OnSaleEvents() {
         {groupedEventsAsArray?.slice(0, 5)?.map((item) => {
           const event = item[0];
           return (
-            <li key={event.id}>
+            <li key={event.id} id="on-sale-events-item">
               <p>
-                {event.name},{event._embedded?.venues[0]?.postalCode}
+                <a href={event.url}>{event.name}</a>,
+                {event._embedded?.venues[0]?.postalCode}
               </p>
-              <a href={event.url}>See More</a>
             </li>
           );
         })}
@@ -59,7 +60,7 @@ function OnSaleEvents() {
 
   return (
     <Card
-      leftIcon={<TbLocation />}
+      leftIcon={<LuTag />}
       title="Events On Sale Now"
       link=""
       linkText="View All"

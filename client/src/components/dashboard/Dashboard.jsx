@@ -1,7 +1,4 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import OnSaleEvents from "./OnSaleEvents.jsx";
 import ImageCarousel from "./ImageCarousel";
 import RecentForumPosts from "./RecentForumPosts";
@@ -9,34 +6,41 @@ import BroadcastMessages from "./Broadcast";
 import NavbarComp from "../navbar/Navbar.jsx";
 import EventsSpotlight from "./EventsSpotlight.jsx";
 import Poll from "./Poll";
+import Footer from "../footer/Footer.jsx";
+import "./Dashboard.css";
 
 function Dashboard() {
   return (
     <div className="dashboard-page">
-      <NavbarComp />
-      <Container>
-        <Row>
-          <Col sm={12} md={3}>
-            <EventsSpotlight />
-          </Col>
-          <Col sm={12} md={6}>
-            <ImageCarousel />
-          </Col>
-          <Col sm={12} md={3}>
-            <RecentForumPosts />
-          </Col>
+      <div className="dashboard-grid">
+        {/* <div className="dashboard-row"> */}
+        <div className="dashboard-item">
+          <NavbarComp />
+        </div>
+        <div className="dashboard-item">
+          <EventsSpotlight />
+        </div>
+        <div className="dashboard-item">
+          <ImageCarousel />
+        </div>
+        <div className="dashboard-item">
+          <RecentForumPosts />
+        </div>
+      </div>
+      <div className="dashboard-row">
+        <div className="dashboard-item">
+          <OnSaleEvents />
+        </div>
+        <div className="dashboard-item">
+          <Poll pollId={2} />
+        </div>
+        <div className="dashboard-item">
+          <BroadcastMessages />
+        </div>
+        {/* </div> */}
+      </div>
 
-          <Col sm={12} md={3}>
-            <OnSaleEvents />
-          </Col>
-          <Col sm={12} md={6}>
-            <BroadcastMessages />
-          </Col>
-          <Col sm={12} md={3}>
-            <Poll pollId={2} />
-          </Col>
-        </Row>
-      </Container>
+      <Footer />
     </div>
   );
 }
