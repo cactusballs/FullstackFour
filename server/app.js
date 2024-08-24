@@ -268,13 +268,13 @@ app.get("/pollInfo/:pollId", async (req, res) => {
 app.post("/pollVote", async (req, res) => {
   const { poll_id, poll_options_id } = req.body;
 
-  if (!poll_id, poll_options_id) {
-    res.status(400).json({ message: "Values cannot be blank" });
+  if (!poll_id || !poll_options_id) {
+    return res.status(400).json({ message: "Values cannot be blank" });
   }
 
   try {
     await database.query(
-      "INSERT INTO poll_votes (poll_id, poll_options_id, created_at) VALUES (?, ?,CURRENT_TIMESTAMP())",
+      "INSERT INTO poll_votes (poll_id, poll_options_id, created_at) VALUES (?, ?, CURRENT_TIMESTAMP())",
       [poll_id, poll_options_id]
     );
     res.status(201).json({ message: "Vote successfully submitted", data: req.body });
