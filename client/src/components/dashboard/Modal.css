@@ -1,3 +1,16 @@
+.broadcast-footer-button {
+  background-color: #f4f5ec;
+  color: black;
+  border: none;
+}
+
+.broadcast-footer-button:hover {
+  background-color: black;
+  color: white;
+  transition: 0.3s ease;
+  border: 0.6px solid orange;
+}
+
 .modal-content {
   /* doesn't work, something is overriding it */
   /* background-color: #f4f5ec; */

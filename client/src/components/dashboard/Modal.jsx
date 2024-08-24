@@ -52,7 +52,7 @@ function MessageModal() {
   return (
     <>
       {/* button to click on and open modal/pop-up */}
-      <Button onClick={handleShow} className="footer-button">
+      <Button onClick={handleShow} className="broadcast-footer-button">
         Create
       </Button>
       {/* modal content */}

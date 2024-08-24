@@ -5,6 +5,7 @@
   border-radius: 10px;
   margin: 0;
   padding: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard-card-header {
@@ -112,7 +113,9 @@
   font-size: 24px;
 }
 
-.broadcast-buttons:hover {
+.broadcast-arrow:hover {
   background-color: #f0f1e8;
   transition: 0.3s ease-in;
+  color: black;
+  border: none;
 }
