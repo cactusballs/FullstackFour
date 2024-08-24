@@ -240,7 +240,7 @@ app.get("/pollInfo/:pollId", async (req, res) => {
   const pollId = req.params.pollId;
   const sqlPollMain = "SELECT * FROM poll WHERE id = ?";
   const sqlPollOptions =
-    "SELECT poll_options.label from poll_options WHERE poll_id = ?";
+    "SELECT poll_options.label, poll_options.id from poll_options WHERE poll_id = ?";
 
   try {
     const [pollMainResults] = await database.query(sqlPollMain, [pollId]);
@@ -268,13 +268,13 @@ app.get("/pollInfo/:pollId", async (req, res) => {
 app.post("/pollVote", async (req, res) => {
   const { poll_id, poll_options_id } = req.body;
 
-  if (!poll_id, poll_options_id) {
-    res.status(400).json({ message: "Values cannot be blank" });
+  if (!poll_id || !poll_options_id) {
+    return res.status(400).json({ message: "Values cannot be blank" });
   }
 
   try {
     await database.query(
-      "INSERT INTO poll_votes (poll_id, poll_options_id, created_at) VALUES (?, ?,CURRENT_TIMESTAMP())",
+      "INSERT INTO poll_votes (poll_id, poll_options_id, created_at) VALUES (?, ?, CURRENT_TIMESTAMP())",
       [poll_id, poll_options_id]
     );
     res.status(201).json({ message: "Vote successfully submitted", data: req.body });
@@ -287,7 +287,7 @@ app.post("/pollVote", async (req, res) => {
 app.get("/pollResults/:pollId", async (req, res) => {
   const pollId = req.params.pollId;
   const sqlPollTotalVotes = " SELECT COUNT(*) as totalVotes FROM poll_votes WHERE poll_votes.poll_id = ?";
-  const sqlPollOptionsVotes = "SELECT poll_options.id, poll_options.label, COUNT(poll_votes.poll_options_id), (COUNT(poll_votes.poll_options_id) * 100.0 / SUM(COUNT(poll_votes.poll_options_id)) OVER ()) AS percentage FROM poll_options LEFT JOIN poll_votes ON poll_options.id = poll_votes.poll_options_id WHERE poll_options.poll_id = ? GROUP BY poll_options.id, poll_options.label ORDER BY poll_options.id;"
+  const sqlPollOptionsVotes = "SELECT poll_options.id, poll_options.label, COUNT(poll_votes.poll_options_id), ROUND((COUNT(poll_votes.poll_options_id) * 100.0 / SUM(COUNT(poll_votes.poll_options_id)) OVER ()), 0) AS percentage FROM poll_options LEFT JOIN poll_votes ON poll_options.id = poll_votes.poll_options_id WHERE poll_options.poll_id = ? GROUP BY poll_options.id, poll_options.label ORDER BY poll_options.id;"
 
   try {
     const [pollTotalVotes] = await database.query(sqlPollTotalVotes, [pollId]);
