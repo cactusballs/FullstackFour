@@ -4,7 +4,7 @@ import "./App.css";
 import BroadcastMessages from "./components/dashboard/Broadcast.jsx";
 import ImageCarousel from "./components/dashboard/ImageCarousel.jsx";
 // import "./components/dashboard/ImageCarousel.css";
-import ForumTopicThreads from "./components/forum/ForumTopicThreads";
+import ForumTopicThreads from "./components/forum/ForumTopicThreads"; 
 import RecentForumPosts from "./components/dashboard/RecentForumPosts";
 import ForumMain from "./components/forum/ForumMain";
 import Login from "./components/login/Login"; // Import the Login component
@@ -20,13 +20,14 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import Events from "./components/events/Events.jsx";
 import Dashboard from "./components/dashboard/Dashboard.jsx";
 
+
 function App() {
   return (
     <Router>
       <div>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/forum" element={<Forum />} />
+          <Route path="/forum" element={<ForumMain />} />
           <Route path="/threads/:topic" element={<ForumTopicThreads />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/events" element={<Events />} />
@@ -34,43 +35,14 @@ function App() {
           <Route path="/signup" element={<Registration />} />
           <Route
             path="/meet-the-team"
-            element={
-              <>
-                <MeetTheTeam />
-              </>
-            }
+            element={<MeetTheTeam />}
           />
-          {/* Add more routes here if needed */}
           <Route path="/conversation/:id" element={<SingleThread />} />
         </Routes>
       </div>
     </Router>
   );
 }
-
-function Forum() {
-  return (
-    <div>
-      <ForumMain />
-      {/* <ForumTopicThreads />
-      <SingleThread id={5} /> */}
-      <Footer />
-      {/* update thread id to navigate between conversations*/}
-    </div>
-  );
-}
-
-// function Dashboard() {
-//   return (
-//     <>
-//       <BroadcastMessages />
-//       <RecentForumPosts />
-//       <ImageCarousel />
-//       <LocalEvents />
-//       {/* Use ImageCarousel component with correct capitalization */}
-//     </>
-//   );
-// }
 
 function FooterPage() {
   return (

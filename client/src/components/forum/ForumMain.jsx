@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+/*import React, { useState, useEffect } from 'react';
 import './ForumMain.css'; 
 import ForumSubmissionForm from './ForumSubmissionForm.jsx';
 import NavbarComp from '../navbar/Navbar.jsx';
-import ThreadReply from './ThreadReply.jsx'; // Import the ThreadReply component
+//import ThreadReply from './ThreadReply.jsx'; // Import the ThreadReply component
 import { Link } from 'react-router-dom';
 
 const ForumMain = () => {
@@ -67,17 +67,16 @@ const ForumMain = () => {
   );
 }
 
-export default ForumMain;
+export default ForumMain;*/
 
-/*
 import React, { useState, useEffect } from 'react';
-import './ForumMain.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './ForumMain.css'; 
 import ForumSubmissionForm from './ForumSubmissionForm.jsx';
 import NavbarComp from '../navbar/Navbar.jsx';
 import { Link } from 'react-router-dom';
 
-const ForumMain = ({handleSubmit}) => {
-  //  trying to connect to the DB
+const ForumMain = () => {
   const [threads, setThreads] = useState([]);
   const [error, setError] = useState(null);
 
@@ -90,15 +89,7 @@ const ForumMain = ({handleSubmit}) => {
         return response.json();
       })
       .then(data => {
-        // just bringing back one topic to create the menu as links
-        const uniqueTopics = new Map();
-        data.forEach(thread => {
-          if (!uniqueTopics.has(thread.topic)) {
-            uniqueTopics.set(thread.topic, thread);
-          }
-        });
-
-        setThreads(Array.from(uniqueTopics.values()));
+        setThreads(data);
       })
       .catch(error => {
         console.error('Error fetching threads:', error);
@@ -108,48 +99,48 @@ const ForumMain = ({handleSubmit}) => {
 
   return (
     <>
-     <NavbarComp/>
-    <div className="AllForums">
-     
-      <div className='header'>
-        <h2>Welcome to the Village Town Hall</h2>
-        <p>...explore threads by topic or start your own!</p>
-      </div>
-      <div className='TownHall'>
-        <h3>All forums...</h3>
-        {error ? (
-          <p>{error}</p>
-        ) : (
-          <ul className="TownHallPosts">
-            {threads.map((thread, index) => (
-              <li key={thread.topic}>
-                <Link to={`/threads/${encodeURIComponent(thread.topic)}`}>
-                  {thread.topic}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-      <div className='TopPicks'>
-        <h3>Start a thread...</h3>
-        
-    
-        <ForumSubmissionForm onSubmit={handleSubmit} threads={threads} />
-          <ul>
-            {threads.map(thread => (
-              <li key={thread.thread_id}>
-                <h2>{thread.title}</h2>
-                <p>{thread.description}</p>
-                <p><strong>Topic:</strong> {thread.topic}</p>
-                {/*add time too?? *//*}
-              </li>
-            ))}
-          </ul>
+      <NavbarComp />
+      <div className="container mt-4">
+        <div className="row">
+          {/* Topics Column */}
+          <div className="col-md-6">
+            <div className="card">
+              <div className="card-header bg-success text-white">
+                <h2>All Topics</h2>
+              </div>
+              <div className="card-body">
+                {error ? (
+                  <p>{error}</p>
+                ) : (
+                  <ul className="list-group">
+                    {threads.map((thread, index) => (
+                      <li key={index} className="list-group-item">
+                        <Link to={`/threads/${encodeURIComponent(thread.topic)}`}>
+                          {thread.topic}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Create New Thread Column */}
+          <div className="col-md-6">
+            <div className="card">
+              <div className="card-header bg-success text-white">
+                <h2>Start a New Thread</h2>
+              </div>
+              <div className="card-body">
+                <ForumSubmissionForm />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
   );
-};
+}
 
-export default ForumMain;*/
+export default ForumMain;

@@ -17,8 +17,8 @@ const ThreadReply = ({ threadId, onReplySubmit }) => {
     }
 
     const newReply = {
-      id: Date.now(), // Unique ID for the reply
-      threadId: threadId, // The ID of the thread being replied to
+      id: Date.now(), // Consider using a more robust ID generator if needed
+      threadId: threadId, 
       content: replyContent,
       author: 'Current User', // Replace with actual user data
       timestamp: new Date().toISOString()
@@ -39,9 +39,10 @@ const ThreadReply = ({ threadId, onReplySubmit }) => {
           value={replyContent}
           onChange={handleInputChange}
           rows="4"
+          aria-label="Write your reply" // Accessibility improvement
         />
         {error && <p className="error-message">{error}</p>}
-        <button type="submit">Submit Reply</button>
+        <button type="submit" disabled={!replyContent.trim()}>Submit Reply</button> {/* Disabled when input is empty */}
       </form>
     </div>
   );

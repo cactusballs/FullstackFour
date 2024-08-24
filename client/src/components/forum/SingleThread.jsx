@@ -4,6 +4,7 @@ import "./SingleThread.css";
 import NavbarComp from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import BackButton from "./BackButton";
+import ThreadReply from "./ThreadReply"; // Import ThreadReply component
 
 const SingleThread = () => {
   const { id } = useParams();
@@ -11,7 +12,7 @@ const SingleThread = () => {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
 
-  //get thread title and initial post
+  // Get thread title and initial post
   useEffect(() => {
     fetch(`http://localhost:3000/threads/threadheader/?thread_id=${id}`)
       .then((response) => {
@@ -30,7 +31,7 @@ const SingleThread = () => {
       });
   }, [id]);
 
-  //get posts (responses) to thread
+  // Get posts (responses) to thread
   useEffect(() => {
     fetch(`http://localhost:3000/threads/threadheader/posts?thread_id=${id}`)
       .then((response) => {
@@ -48,6 +49,11 @@ const SingleThread = () => {
         setError("Failed to fetch posts");
       });
   }, [id]);
+
+  const handleReplySubmit = (newReply) => {
+    // Update the posts state with the new reply
+    setPosts(prevPosts => [...prevPosts, newReply]);
+  };
 
   let threadsArr = threads[0];
 
@@ -70,10 +76,10 @@ const SingleThread = () => {
             </div>
           </>
         ) : (
-          <p>Loading thread</p>
+          <p>Loading thread...</p>
         )}
 
-        {/* post reply/replies to question */}
+        {/* Display reply/replies to the question */}
         {posts.length > 0 ? (
           posts.map((post) => (
             <div key={post.post_id} className="postItem">
@@ -87,8 +93,11 @@ const SingleThread = () => {
         ) : (
           <p>No posts found for this thread.</p>
         )}
+
+        {/* Render the ThreadReply component to allow new replies */}
+        <ThreadReply threadId={id} onReplySubmit={handleReplySubmit} />
       </div>
-      <BackButton/>
+      <BackButton />
       <Footer />
     </>
   );

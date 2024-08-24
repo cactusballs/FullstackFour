@@ -35,40 +35,6 @@ CREATE TABLE IF NOT EXISTS villagers (
     event_postcode TEXT NOT NULL
 );
 
--- CREATE TABLE IF NOT EXISTS messages (
---     message_id INT AUTO_INCREMENT PRIMARY KEY,
---     sender_id INT NOT NULL,
---     receiver_id INT NOT NULL,
---     content TEXT NOT NULL,
---     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---     FOREIGN KEY (sender_id) REFERENCES villagers(villager_id) ON DELETE CASCADE,
---     FOREIGN KEY (receiver_id) REFERENCES villagers(villager_id) ON DELETE CASCADE
--- );
-
--- CREATE TABLE IF NOT EXISTS group_chats (
---     group_id INT AUTO_INCREMENT PRIMARY KEY,
---     group_name VARCHAR(50) NOT NULL,
---     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
--- );
-
--- CREATE TABLE IF NOT EXISTS group_members (
---     group_id INT NOT NULL,
---     villager_id INT NOT NULL,
---     added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---     PRIMARY KEY (group_id, villager_id),
---     FOREIGN KEY (group_id) REFERENCES group_chats(group_id) ON DELETE CASCADE,
---     FOREIGN KEY (villager_id) REFERENCES villagers(villager_id) ON DELETE CASCADE
--- );
-
--- CREATE TABLE IF NOT EXISTS group_messages (
---     message_id INT AUTO_INCREMENT PRIMARY KEY,
---     group_id INT NOT NULL,
---     sender_id INT NOT NULL,
---     content TEXT NOT NULL,
---     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---     FOREIGN KEY (group_id) REFERENCES group_chats(group_id) ON DELETE CASCADE,
---     FOREIGN KEY (sender_id) REFERENCES villagers(villager_id) ON DELETE CASCADE
--- );
 
 CREATE TABLE IF NOT EXISTS broadcast_messages (
 	broadcast_message_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -128,6 +94,14 @@ CREATE TABLE IF NOT EXISTS posts_to_threads (
     content TEXT NOT NULL,
     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_name) REFERENCES villagers(user_name) ON DELETE CASCADE,
+    FOREIGN KEY (thread_id) REFERENCES threads(thread_id) ON DELETE CASCADE
+);
+CREATE TABLE IF NOT EXISTS replies (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    thread_id INT NOT NULL,
+    content TEXT NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (thread_id) REFERENCES threads(thread_id) ON DELETE CASCADE
 );
 
