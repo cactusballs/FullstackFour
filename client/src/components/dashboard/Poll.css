@@ -73,7 +73,7 @@
 
 .poll-error,
 .poll-message {
-    color: red;
+    color: #58a127;
     margin-bottom: 10px;
     text-align: center;
 }
