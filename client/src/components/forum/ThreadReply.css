@@ -1,0 +1,68 @@
+/* Container for the reply form */
+.reply-to-thread {
+    padding: 20px;
+    background-color: #ABB3AB;
+    color: #233115;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  
+  /* Styling for the textarea where users input their reply */
+  .reply-to-thread textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #233115;
+    font-size: 16px;
+    margin-bottom: 10px;
+    resize: vertical;
+    background-color: #F0F1E8;
+    color: #233115;
+  }
+  
+  
+  /* Error message styling */
+  .reply-to-thread .error-message {
+    color: #7E3400;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  
+  /* Styling for the submit button */
+  .reply-to-thread button {
+    padding: 10px 20px;
+    background-color: #0F5C3C;
+    color: #F0F1E8;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  
+  /* Hover effect for the submit button */
+  .reply-to-thread button:hover {
+    background-color: #233115;
+  }
+  
+  
+  /* Container for the section where replies are displayed */
+  .replies-section {
+    margin-top: 40px;
+  }
+  
+  
+  /* Styling for individual reply items */
+  .reply {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #233115;
+    border-radius: 4px;
+    background-color: #F0F1E8;
+    color: #233115;
+  }
+  
