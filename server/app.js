@@ -11,6 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 //routing
+
 const threadRouter = require("./routes/threads");
 app.use("/threads", threadRouter);
 
@@ -376,5 +377,8 @@ app.post("/signup", async (req, res) => {
     });
   }
 });
+
+
+
 
 module.exports = database;

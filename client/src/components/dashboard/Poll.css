@@ -20,20 +20,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   margin: 0px 30px;
-  /* padding: 10px; */
+  width: 100%;
   height: 78px;
   background-color: #485f39;
   border-radius: 10px;
   color: white;
   text-align: center;
-  font-size: 30px;
+  font-size: 28px;
   font-family: "League Spartan";
 }
 
 .poll-title-icon {
-  /* margin-right: 50px; */
   font-size: 30px;
   color: #ffffff;
 }
@@ -52,9 +50,9 @@
 
 .poll-question {
   font-size: 20px;
-  font-weight: bold;
+
   margin-bottom: 20px;
-  color: #485f39;
+  color: #7e3400;
 }
 
 .poll-option {
@@ -71,12 +69,11 @@
 
 .poll-content label {
   font-weight: normal;
-  color: #485f39;
+  color: black;
   margin: 0px;
   text-align: center;
 }
 
-.poll-error,
 .poll-message {
   color: #58a127;
   margin-bottom: 10px;
@@ -106,7 +103,7 @@
 }
 
 .poll-footer-button:hover {
-  background-color: #485f39;
+  background-color: black;
   color: #f4f5ec;
 }
 

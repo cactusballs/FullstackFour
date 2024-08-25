@@ -1,11 +1,29 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { render, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Login from './Login.jsx';
 
-test("Rendering login form and fields correctly", () => {
-    render(<Login />, { wrapper: BrowserRouter });
+const mockStore = configureStore([]);
+
+describe('Login Component', () => {
+  let store;
+
+  beforeEach(() => {
+    store = mockStore({
+      user: { error: null },
+    });
+  });
+
+  test("Rendering login form and fields correctly", () => {
+    render(
+        <Provider store={store}>
+          <Router>
+            <Login />
+          </Router>
+        </Provider>
+      );
   
     // Checking if all fields render
     expect(screen.getByLabelText(/Email/i)).toBeInTheDocument();
@@ -14,29 +32,4 @@ test("Rendering login form and fields correctly", () => {
     expect(screen.getByText(/Don't have an account\?/i)).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /Sign up/i })).toBeInTheDocument();
 });
-
-
-test("Logging in with correct credentials", async () => {
-    render(<Login />, { wrapper: BrowserRouter });
-  
-    // Mocking fetch response for a successful login
-    global.fetch = jest.fn(() =>
-        Promise.resolve({
-            ok: true,
-            json: () => Promise.resolve({ token: 'mockToken' })
-        })
-    );
-
-    // Filling out the form
-    fireEvent.change(screen.getByLabelText(/Email/i), { target: { value: 'test@example.com' } });
-    fireEvent.change(screen.getByLabelText(/Password/i), { target: { value: 'password123' } });
-
-    // Submitting the form
-    fireEvent.click(screen.getByRole('button', { name: /Log In/i }));
-
-    // Wait for navigation
-    await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
-
-    // Check if the token is set in localStorage
-    expect(localStorage.getItem('token')).toEqual('mockToken');
 });

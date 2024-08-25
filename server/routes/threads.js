@@ -126,4 +126,81 @@ threadRouter.get('/:topic/:tag', async (req, res) => {
   }
 });
 
+// API endpoint to create a new thread/post
+threadRouter.post('/create', async (req, res) => {
+  const { thread_title, content, topic, carersTag, expectingParentsTag, newParentsTag, singleParentsTag, lgbtqiaPlusParentsTag, user_name } = req.body;
+
+  // Validate required fields
+  if (!thread_title || !content || !topic || !user_name) {
+    return res.status(400).json({ message: 'Title, content, topic, and user name are required' });
+  }
+
+  try {
+    const sqlInsert = `
+      INSERT INTO threads (thread_title, content, topic, carers_tag, expecting_parents_tag, new_parents_tag, single_parents_tag, lgbtqia_plus_parents_tag, user_name)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+    const values = [
+      thread_title,
+      content,
+      topic,
+      carersTag ? 1 : 0,
+      expectingParentsTag ? 1 : 0,
+      newParentsTag ? 1 : 0,
+      singleParentsTag ? 1 : 0,
+      lgbtqiaPlusParentsTag ? 1 : 0,
+      user_name,
+    ];
+
+    const [result] = await database.query(sqlInsert, values);
+
+    if (result.affectedRows > 0) {
+      res.status(201).json({ message: 'Post created successfully!' });
+    } else {
+      res.status(500).json({ message: 'Failed to create post' });
+    }
+  } catch (error) {
+    console.error('Error while creating thread:', error);
+    res.status(500).json({ message: 'Internal Server Error', error: error.message });
+  }
+});
+
+// API endpoint to create a new reply
+threadRouter.post('/reply', async (req, res) => {
+  const { threadId, content, author } = req.body;
+
+
+  // Validate required fields
+  if (!threadId || !content || !author) {
+    return res.status(400).json({ message: 'Thread ID, content, and author are required' });
+  }
+
+
+  try {
+    const sqlInsert = `
+      INSERT INTO posts_to_threads (thread_id, user_name, content, sent_at)
+      VALUES (?, ?, ?, NOW())
+    `;
+    const values = [
+      threadId,
+      author,
+      content
+    ];
+
+
+    const [result] = await database.query(sqlInsert, values);
+
+
+    if (result.affectedRows > 0) {
+      res.status(201).json({ message: 'Reply created successfully!' });
+    } else {
+      res.status(500).json({ message: 'Failed to create reply' });
+    }
+  } catch (error) {
+    console.error('Error while creating reply:', error);
+    res.status(500).json({ message: 'Internal Server Error', error: error.message });
+  }
+});
+
+
 module.exports = threadRouter;
