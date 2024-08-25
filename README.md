@@ -5,7 +5,7 @@
 Welcome to __Village__ - the home of connection, community and support for parents and carers. Our aspiration is to provide a safe space to reach out, ask questions, and find events to meet like-minded people.
 
 The main features of this React/Bootstrap Node/Express app are:
-- login / registration
+- login / registration using hashing for passwords and user authentication
 - personal dashboard with broadcast messages, poll, recent conversations and events spotlights
 - event search using Ticketmaster API
 - forum with filtering, start thread and reply functionality.
