@@ -17,7 +17,7 @@ const ForumButton = ({
     <button onClick={onClick} aria-placeholder="Submit">
       {/* submit */}
       {icon}
-      {buttonContent}
+      {buttonContent="Submit"}
     </button>
   );
 };
