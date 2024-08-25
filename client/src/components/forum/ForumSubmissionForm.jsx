@@ -18,7 +18,7 @@ const ForumSubmission = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const navigate = useNavigate();
- // Update the state of the tag when it's checked or unchecked
+
   const handleTagChange = (e) => {
     const { name, checked } = e.target;
     setTags((prevTags) => ({
@@ -38,15 +38,15 @@ const ForumSubmission = () => {
       thread_title: title,
       content,
       topic,
-      user_name: localStorage.getItem('user_name') || 'FA', // Default to 'FA' if user_name is not in localStorage
+      user_name: localStorage.getItem('user_name') || 'FA', // Default to 'FA' if no username(for mocking)
       ...tags,
     };
 
-    try {  // Making a POST request to create a new thread
+    try { 
       const res = await axios.post('http://localhost:3000/threads/create', newThread);
       if (res.status === 201) {
         setSuccess('Sent to the Village!');
-        setTimeout(() => {  // Navigate to the new thread's page
+        setTimeout(() => { 
           navigate(`/threads/${topic}`);
         });
       }

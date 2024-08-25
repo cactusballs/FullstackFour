@@ -1,8 +1,6 @@
 import React from "react";
 import "./ForumButton.css";
 
-// function for reusable button
-
 const ForumButton = ({
   onClick,
   buttonContent,

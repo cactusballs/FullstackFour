@@ -2,7 +2,6 @@
   padding: 20px;
   display: flex;
   width: 100%;
-  /* grid-template-columns: 50vw 40vw; */
   gap: 20px;
   align-items: start;
   overflow: hidden;
@@ -11,12 +10,13 @@
   font-size: 16px;
 }
 
-/* the title */
+
 .header {
   text-align: left;
   margin-bottom: 20px;
   color: #233115;
 }
+
 /* the two cards */
 .TownHall,
 .TopPicks {

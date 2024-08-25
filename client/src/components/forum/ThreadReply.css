@@ -1,18 +1,12 @@
-/* Container for the reply form */
+
 .reply-to-thread {
     padding: 20px;
-    /* background-color: #ABB3AB; */
     color: #233115;
-    /* border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     margin-top: 20px;
     display: flex;
     justify-content: center;
   }
   
-  
-  /* Styling for the textarea where users input their reply */
   .reply-to-thread textarea {
     width: 100%;
     padding: 10px;
@@ -25,16 +19,12 @@
     color: #233115;
   }
   
-  
-  /* Error message styling */
   .reply-to-thread .error-message {
     color: #7E3400;
     font-size: 14px;
     margin-top: 10px;
   }
   
-  
-  /* Styling for the submit button */
   .reply-to-thread button {
     padding: 10px 20px;
     background-color: #0F5C3C;
@@ -45,20 +35,14 @@
     font-size: 16px;
   }
   
-  
-  /* Hover effect for the submit button */
   .reply-to-thread button:hover {
     background-color: #233115;
   }
   
-  
-  /* Container for the section where replies are displayed */
   .replies-section {
     margin-top: 40px;
   }
   
-  
-  /* Styling for individual reply items */
   .reply {
     margin-bottom: 20px;
     padding: 10px;
