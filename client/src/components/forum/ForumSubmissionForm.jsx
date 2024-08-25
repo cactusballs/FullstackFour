@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from 'react'
-import ReactDOM from 'react-dom/client'
-import './ForumSubmissionForm.css'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import './ForumSubmissionForm.css';
 import ForumButton from './ForumButton';
-// import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
 
-//up dated 'N's to 0 and 'Y's to 1
 const ForumSubmission = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [topic, setTopic] = useState('');
   const [tags, setTags] = useState({
-    carers_tag: 0,
-    expecting_parents_tag: 0,
-    new_parents_tag: 0,
-    single_parents_tag: 0,
-    LGBTQIA_plus_parents_tag: 0,
+    carersTag: false,
+    expectingParentsTag: false,
+    newParentsTag: false,
+    singleParentsTag: false,
+    lgbtqiaPlusParentsTag: false,
   });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // Placeholder user data
-  const user_name = 'PlaceholderTillLinkLoginUserInfo';
+  const user_name = 'FA';
 
-  const handleTagChange = (tag) => {
-    setTags({ ...tags, [tag]: tags[tag] === 0 ? 1 : 0 });
+  const handleTagChange = (e) => {
+    setTags({
+      ...tags,
+      [e.target.name]: e.target.checked,
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -35,36 +35,29 @@ const ForumSubmission = () => {
       return;
     }
 
-    const newTopic = {
-      title,
+    const newThread = {
+      thread_title: title,
       content,
-      user_name, // Use placeholder username
       topic,
+      user_name: localStorage.getItem('user_name') || 'FA', //trying to look for user_name in local storage but just using FA as back, only hardcoding works not localStorage.getItem('user_name')
       ...tags,
     };
 
     try {
-      const res = await axios.post('http://localhost:3000/api/forum', newTopic);
+      const res = await axios.post('http://localhost:3000/threads/create', newThread);
       if (res.status === 201) {
-        setSuccess('Sent to the village!');
+        setSuccess('Thread created successfully!');
         setTimeout(() => {
-          navigate('/');
-        }, 2000);
+          navigate(`/threads/${topic}`);
+        }, 3000);
       }
     } catch (err) {
-      setError('An error occurred while creating the topic');
+      setError('An error occurred while creating the thread');
     }
-  };
- //charactercount 100 more than reddit
-  const updateCharCount = (input) => {
-    document.getElementById('charCount').textContent = input.value.length;
   };
 
   return (
     <div className="container">
-      {/* <div className="header">
-        <h1>Create a New Forum Topic</h1>
-      </div> */}
       <form onSubmit={handleSubmit} className="form">
         <div className="title">
           <label>Title</label>
@@ -75,7 +68,6 @@ const ForumSubmission = () => {
             maxLength="400"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            onInput={(e) => updateCharCount(e.target)}
           />
           <div className="char-count">
             <span id="charCount">0</span>/400
@@ -98,6 +90,7 @@ const ForumSubmission = () => {
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
           >
+            <option value="">Select a topic</option>
             <option value="Becoming a parent">Becoming a parent</option>
             <option value="Being a parent">Being a parent</option>
             <option value="Being a carer">Being a carer</option>
@@ -112,16 +105,51 @@ const ForumSubmission = () => {
         <div className="tags mt-3">
           <label>Tags</label>
           <div className="mt-2 flex flex-wrap gap-2">
-            {['Carers', 'Expecting Parents', 'New Parents', 'Single Parents', 'LGBTQIA_plus_parents_tags'].map(tag => (
-              <label key={tag}>
-                <input
-                  type="checkbox"
-                  checked={tags[tag] === 1}
-                  onChange={() => handleTagChange(tag)}
-                />
-                {tag.replace(/_/g, ' ')}
-              </label>
-            ))}
+            <label>
+              <input
+                type="checkbox"
+                name="carersTag"
+                checked={tags.carersTag}
+                onChange={handleTagChange}
+              />
+              Carers Tag
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="expectingParentsTag"
+                checked={tags.expectingParentsTag}
+                onChange={handleTagChange}
+              />
+              Expecting Parents Tag
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="newParentsTag"
+                checked={tags.newParentsTag}
+                onChange={handleTagChange}
+              />
+              New Parents Tag
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="singleParentsTag"
+                checked={tags.singleParentsTag}
+                onChange={handleTagChange}
+              />
+              Single Parents Tag
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="lgbtqiaPlusParentsTag"
+                checked={tags.lgbtqiaPlusParentsTag}
+                onChange={handleTagChange}
+              />
+              LGBTQIA+ Parents Tag
+            </label>
           </div>
         </div>
         <ForumButton onClick={handleSubmit} placeholder="Submit">

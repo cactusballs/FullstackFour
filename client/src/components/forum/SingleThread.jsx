@@ -4,6 +4,7 @@ import "./SingleThread.css";
 import NavbarComp from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import BackButton from "./BackButton";
+import ThreadReply from "./ThreadReply";
 
 const SingleThread = () => {
   const { id } = useParams();
@@ -51,6 +52,10 @@ const SingleThread = () => {
 
   let threadsArr = threads[0];
 
+  const handleReplySubmit = (newReply) => {
+    // Update the posts state with the new reply
+    setPosts((prevPosts) => [...prevPosts, newReply]);
+  };
   return (
     <>
       <div className="threadContainer">
@@ -87,6 +92,7 @@ const SingleThread = () => {
         ) : (<div className="no-posts-yet">
           <p>No replies to this thread yet :(</p></div>
         )}
+        <ThreadReply threadId={id} onReplySubmit={handleReplySubmit} />
       </div>
       <BackButton/>
       <Footer />
