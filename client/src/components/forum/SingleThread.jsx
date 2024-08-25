@@ -23,7 +23,6 @@ const SingleThread = () => {
       })
       .then((data) => {
         setThreads(data);
-        console.log("this is the thread object", data);
       })
       .catch((error) => {
         console.error("Error fetching threads:", error);
@@ -42,7 +41,6 @@ const SingleThread = () => {
       })
       .then((data) => {
         setPosts(data);
-        console.log("this is the posts object", data);
       })
       .catch((error) => {
         console.error("Error fetching posts:", error);
@@ -60,7 +58,6 @@ const SingleThread = () => {
     <>
       <div className="threadContainer">
         <NavbarComp />
-        {console.log("Current thread ID:", id)}
         {threads.length > 0 ? (
           <>
             {/* post initial thread information = starting question */}
