@@ -42,6 +42,3 @@ describe("Forum Main Page", () => {
   });
 });
 
-// tests for the threads by topic screen 
-
-

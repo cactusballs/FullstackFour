@@ -23,7 +23,7 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/forum" element={<Forum />} />
+          <Route path="/forum" element={<ForumMain />} />
           <Route path="/threads/:topic" element={<ForumTopicThreads />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/events" element={<Events />} />
