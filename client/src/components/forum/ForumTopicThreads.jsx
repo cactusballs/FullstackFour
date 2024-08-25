@@ -43,7 +43,6 @@ const ForumTopicThreads = () => {
       )
         .then((response) => {
           if (response.status === 404) {
-            // 404 handling for if no threads exist with that tag/topic combination
             return response.json().then((data) => {
               setError(data.message);
               console.log(data.message);

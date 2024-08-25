@@ -12,7 +12,6 @@ const SingleThread = () => {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
 
-  //get thread title and initial post
   useEffect(() => {
     fetch(`http://localhost:3000/threads/threadheader/?thread_id=${id}`)
       .then((response) => {
@@ -30,7 +29,6 @@ const SingleThread = () => {
       });
   }, [id]);
 
-  //get posts (responses) to thread
   useEffect(() => {
     fetch(`http://localhost:3000/threads/threadheader/posts?thread_id=${id}`)
       .then((response) => {
@@ -51,7 +49,6 @@ const SingleThread = () => {
   let threadsArr = threads[0];
 
   const handleReplySubmit = (newReply) => {
-    // Update the posts state with the new reply
     setPosts((prevPosts) => [...prevPosts, newReply]);
   };
   return (
@@ -75,7 +72,7 @@ const SingleThread = () => {
           <p>Loading thread</p>
         )}
 
-        {/* post reply/replies to question */}
+        {/* posts the reply/replies to thread */}
         {posts.length > 0 ? (
           posts.map((post) => (
             <div key={post.post_id} className="postItem">

@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import './ThreadReply.css';
 
-// Handles input changes for the reply content
 const ThreadReply = ({ threadId, onReplySubmit }) => {
   const [replyContent, setReplyContent] = useState('');
   const [error, setError] = useState('');
 
-  // Handles changes in the textarea input
   const handleInputChange = (e) => {
     setReplyContent(e.target.value);
   };
