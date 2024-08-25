@@ -1,5 +1,6 @@
 import "./Broadcast.css";
 import React from "react";
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { PiSpeakerHighLight } from "react-icons/pi";
 import { FaChevronLeft } from "react-icons/fa6";
@@ -50,19 +51,11 @@ function BroadcastMessages() {
   useEffect(() => {
     async function fetchMessages() {
       try {
-        const response = await fetch(
-          "http://localhost:3000/broadcastmessages",
-          {
-            method: "get",
-          }
+        const response = await axios.get(
+          "http://localhost:3000/broadcastmessages"
         );
 
-        if (!response.ok) {
-          throw new Error(`Response status: ${response.status}`);
-        }
-
-        const json = await response.json();
-        setMessages(json);
+        setMessages(response.data);
       } catch (err) {
         console.log(err);
       }

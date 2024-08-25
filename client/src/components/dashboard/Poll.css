@@ -18,8 +18,9 @@
 
 .poll-title {
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
   margin: 0px 30px;
   /* padding: 10px; */
   height: 78px;
@@ -32,7 +33,7 @@
 }
 
 .poll-title-icon {
-  margin-right: 50px;
+  /* margin-right: 50px; */
   font-size: 30px;
   color: #ffffff;
 }

@@ -16,12 +16,23 @@
   display: grid;
   width: 100%;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 500px;
-  grid-gap: 10px;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.dashboard-item > div {
+  width: 100%;
+  /* height: 100%; */
 }
 
 /* media queries */
-/* https://css-tricks.com/snippets/css/media-queries-for-standard-devices/ */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* OnSaleEvents.jsx,
 EventsSpotlight.jsx  */

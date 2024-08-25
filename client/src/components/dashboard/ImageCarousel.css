@@ -4,7 +4,7 @@
 .carousel .slider-wrapper {
     background-color: #Df0f1e8;
     border-radius: 10px;
-    padding: 10px;
+    /* padding: 10px; */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     border: none;
 }
