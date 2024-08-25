@@ -46,9 +46,9 @@ const ForumSubmission = () => {
       const res = await axios.post('http://localhost:3000/threads/create', newThread);
       if (res.status === 201) {
         setSuccess('Sent to the Village!');
-        setTimeout(() => {  // Navigate to the new thread's page after a time delay
+        setTimeout(() => {  // Navigate to the new thread's page
           navigate(`/threads/${topic}`);
-        }, 3000);
+        });
       }
     } catch (err) {
       setError('Whoops! Something went wrong... Please try again.');
