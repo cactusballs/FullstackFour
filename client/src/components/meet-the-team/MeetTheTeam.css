@@ -75,3 +75,9 @@ h2 {
   text-align: left;
   margin-left: 0 !important;
 }
+
+
+.name-title{
+  margin-top: 0 !important;
+  margin-bottom: 0.2rem !important;
+}
