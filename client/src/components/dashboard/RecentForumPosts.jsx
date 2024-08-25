@@ -24,9 +24,11 @@ const RecentForumPosts = () => {
   return (
     <div className="RecentForumPosts-card">
       <div className="RecentForumPosts-card-header">
-        <h4>
-          <TbMessages style={{ marginRight: "8px" }} /> Recent forum posts
-        </h4>
+        <div className="RecentForumPosts-header-container">
+          <div className="RecentForumPosts-title">
+            <TbMessages className="RecentForumPosts-icon" />
+            Recent Forum Posts</div>
+        </div>
       </div>
       <div className="RecentForumPosts-card-content">
         <div className="forum-posts-container">
