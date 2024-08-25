@@ -1,31 +1,29 @@
 import React, { useState } from 'react';
 import './ThreadReply.css';
 
-
+// Handles input changes for the reply content
 const ThreadReply = ({ threadId, onReplySubmit }) => {
   const [replyContent, setReplyContent] = useState('');
   const [error, setError] = useState('');
 
-
+  // Handles changes in the textarea input
   const handleInputChange = (e) => {
     setReplyContent(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
     const user_name = localStorage.getItem('user_name') || 'FA';
     if (replyContent.trim() === '') {
       setError('Reply cannot be empty');
       return;
     }
-
-
     const newReply = {
-      id: Date.now(), 
+      id: Date.now(),
       threadId: threadId,
       content: replyContent,
       author: user_name,
+      sent_at: new Date().toISOString()
     };
 
     onReplySubmit(newReply);
@@ -41,10 +39,11 @@ const ThreadReply = ({ threadId, onReplySubmit }) => {
           value={replyContent}
           onChange={handleInputChange}
           rows="4"
-          aria-label="Write your reply" 
+          aria-label="Write your reply"
         />
         {error && <p className="error-message">{error}</p>}
-        <button type="submit" disabled={!replyContent.trim()}>Submit Reply</button>       </form>
+        <button type="submit" disabled={!replyContent.trim()}>Submit Reply</button>
+      </form>
     </div>
   );
 };
