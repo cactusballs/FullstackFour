@@ -27,7 +27,7 @@ test("displays a message correctly", async () => {
 
   const image = screen.getByRole("img");
   expect(image).toBeInTheDocument();
-  // can't render objects (messages) but html/svg elements like image
+
   const message = await screen.findByText(
     `Brought a new pair of asic trainers`
   );

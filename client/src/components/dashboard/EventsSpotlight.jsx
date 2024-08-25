@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 function EventsSpotlight() {
   const [relevantEvents, setRelevantEvents] = useState([]);
 
+  // mapping events array and extracting unique events by name
   const groupEventsByName = Map.groupBy(relevantEvents, ({ name }) => name);
   const groupedEventsAsArray = [...groupEventsByName.values()];
 
