@@ -34,7 +34,6 @@ eventsRouter.get("/", async (req, res) => {
   const radius = req.query.radius;
   const sort = req.query.sort;
   const classificationName = req.query.classificationName;
-  // const size = req.query.size;
 
   const baseUrl = "https://app.ticketmaster.com/discovery/v2";
 
@@ -48,7 +47,7 @@ eventsRouter.get("/", async (req, res) => {
       ...(latlong ? { latlong } : {}),
       ...(radius ? { radius } : {}),
       ...(sort ? { sort } : { sort: "date,asc" }),
-      ...(classificationName ? { classificationName } : {}),
+      includeFamily: "yes",
       city: "London",
       size: 200,
       apikey: apiKey,

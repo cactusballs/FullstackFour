@@ -59,9 +59,8 @@ textarea.form-control {
   color: green;
 }
 
-
-@media (max-width: 576px) {
+@media (min-width: 576px) {
   textarea.form-control {
-    width: 100px;
+    width: 420px;
   }
 }

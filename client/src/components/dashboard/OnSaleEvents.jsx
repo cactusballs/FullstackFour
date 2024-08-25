@@ -34,7 +34,7 @@ function OnSaleEvents() {
     }
   };
 
-  // checking events that are recently added / opened sales
+  // checking family-friendly events that are recently added / opened sales
 
   useEffect(() => {
     fetchOnSaleEvents({
