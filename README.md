@@ -1,29 +1,42 @@
 # Village - Group Project
 
+<img src="./client/src/assets/images/village-logo.png" width="200" alt="Village logo">
+
+Welcome to __Village__ - the home of connection, community and support for parents and carers. Our aspiration is to provide a safe space to reach out, ask questions, and find events to meet like-minded people.
+
+The main features of this React/Bootstrap Node/Express app are:
+- login / registration
+- personal dashboard with broadcast messages, poll, recent conversations and events spotlights
+- event search using Ticketmaster API
+- forum with filtering, start thread and reply functionality.
+
+We hope you feel as passionate about this project as we do.
+
+__"It takes a village. We are Village."__
+
+
 ## Setting up the project
 
-- git clone from repo
-- run .sql file in MySQL
+- `git clone` from repo
+- run [villagers.sql](./server/sql/villagers.sql) in your local SQL server or database (e.g. in MySQL workbench).
 
 
 ## Server setup
-- Navigate into the server folder 
-- copy of .env.example save as '.env' and update with personal details (you don't need to update the JWT_SECRET password provided in the env.example)
-- run `npm install`
-
-Running server:
-- run `npm start` in the console
+- Navigate into the server folder using `cd server` in the terminal.
+- Create a copy of .env.example, save as '.env' and update with personal details (you do not need to update the JWT_SECRET password provided in the env.example).
+- Run `npm install` to install necessary packages.
+- Run `npm start` to run the server.
 
 
 ## Client setup
-- Navigate into the client folder 
-- run `npm install`
+- Navigate into the client folder using `cd client`.
+- Run `npm install`.
 
 Running frontend / client:
-- `npm run dev` in the console (Vite used for Client)
+- `npm run dev` in the console (Vite is used for running the Client)
 
-Testing / client: 
-- `npm test` in the console
+Testing (Jest) / client: 
+- `cd client` and `npm test` in the console.
 
 
 ## Testing registration and login with hashing:

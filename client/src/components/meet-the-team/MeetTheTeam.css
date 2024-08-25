@@ -58,7 +58,8 @@ h2 {
 }
 
 .card {
-  background-color: #e1d6cb;
+  background-color: #f0f1e8;
+  /* #e1d6cb */
   /* #d0d2b7; */
   border: 0pt;
   text-align: left;
@@ -66,10 +67,17 @@ h2 {
   display: flex;
   padding: 0;
   width: 95%;
+  box-shadow: none !important;
 }
 
 /* for names */
 .card-title {
   text-align: left;
-  margin-left: 0;
+  margin-left: 0 !important;
+}
+
+
+.name-title{
+  margin-top: 0 !important;
+  margin-bottom: 0.2rem !important;
 }

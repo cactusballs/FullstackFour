@@ -25,41 +25,6 @@ CREATE TABLE IF NOT EXISTS villagers (
     event_postcode TEXT NOT NULL
 );
 
--- CREATE TABLE IF NOT EXISTS messages (
---     message_id INT AUTO_INCREMENT PRIMARY KEY,
---     sender_id INT NOT NULL,
---     receiver_id INT NOT NULL,
---     content TEXT NOT NULL,
---     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---     FOREIGN KEY (sender_id) REFERENCES villagers(villager_id) ON DELETE CASCADE,
---     FOREIGN KEY (receiver_id) REFERENCES villagers(villager_id) ON DELETE CASCADE
--- );
-
--- CREATE TABLE IF NOT EXISTS group_chats (
---     group_id INT AUTO_INCREMENT PRIMARY KEY,
---     group_name VARCHAR(50) NOT NULL,
---     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
--- );
-
--- CREATE TABLE IF NOT EXISTS group_members (
---     group_id INT NOT NULL,
---     villager_id INT NOT NULL,
---     added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---     PRIMARY KEY (group_id, villager_id),
---     FOREIGN KEY (group_id) REFERENCES group_chats(group_id) ON DELETE CASCADE,
---     FOREIGN KEY (villager_id) REFERENCES villagers(villager_id) ON DELETE CASCADE
--- );
-
--- CREATE TABLE IF NOT EXISTS group_messages (
---     message_id INT AUTO_INCREMENT PRIMARY KEY,
---     group_id INT NOT NULL,
---     sender_id INT NOT NULL,
---     content TEXT NOT NULL,
---     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---     FOREIGN KEY (group_id) REFERENCES group_chats(group_id) ON DELETE CASCADE,
---     FOREIGN KEY (sender_id) REFERENCES villagers(villager_id) ON DELETE CASCADE
--- );
-
 CREATE TABLE IF NOT EXISTS broadcast_messages (
 	broadcast_message_id INT AUTO_INCREMENT PRIMARY KEY,
     villager_id INT,
@@ -83,10 +48,10 @@ VALUES
 
 
 -- db schema for forums: 
--- -- TOPICS: e.g. becoming a parent, sleep, SEND. (sit in one only).
--- -- users = villagers table above, user_name FK. no need to make new table.
--- -- threads (starter post on thread), this will be marked with tags (parent type eg carer)
--- -- posts_to_threads (replies to threads).
+-- -- TOPICS: e.g. becoming a parent, sleep, SEND. (threads sit in one only).
+-- -- users = villagers table above.
+-- -- threads (starter post on conversation), this will be marked with tags (parent type e.g. carer, LGBTQIA+)
+-- -- posts_to_threads are replies to threads.
 
 
 CREATE TABLE IF NOT EXISTS threads (
@@ -96,10 +61,7 @@ CREATE TABLE IF NOT EXISTS threads (
     content TEXT NOT NULL,
     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     topic ENUM('Becoming a parent','Being a parent','Being a carer','Education','Childcare','Sleep','SEND','Mind, body and soul','Charities') NOT NULL,
-    --  topic in becoming a parent, etc... from figma screen.
-    -- tags for themes (will sit with a Y/N). only ask this for the ORIGINAL question/forum post (i.e. thread) 
-    -- and then following replies inherit the tags from the original comment
-    -- can have as many tags as wanted, will be checkbox on front-end.
+-- only one topic (select from dropdown on frontend) but as many tags as wanted (checkbox on frontend when starting a conversation / thread).
     carers_tag BOOLEAN,
     expecting_parents_tag BOOLEAN,
     new_parents_tag BOOLEAN,
