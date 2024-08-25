@@ -1,5 +1,8 @@
 # Village - Group Project
 
+![Sonny and Mariel high fiving.](https://content.codecademy.com/courses/learn-cpp/community-challenge/highfive.gif)
+
+
 ## Setting up the project
 
 - `git clone` from repo
