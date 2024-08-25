@@ -56,7 +56,7 @@ const Footer = () => {
             <a href="/meet-the-team">
               <p>Meet the Team</p>
             </a>
-           
+
             <a href="mailto:john@example.com">
               <p>Contact Us</p>
             </a>
