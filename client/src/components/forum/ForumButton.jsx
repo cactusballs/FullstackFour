@@ -1,7 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 import "./ForumButton.css";
-import { useNavigate } from "react-router-dom";
 
 // function for reusable button
 
