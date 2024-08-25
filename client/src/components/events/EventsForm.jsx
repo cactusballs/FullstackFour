@@ -99,7 +99,6 @@ function EventsForm({ onFormSubmit }) {
               name="fromDate"
               value={formData.startDateTime}
               onChange={(e) => {
-                // console.log("fromDate", e);
                 setFormData({
                   ...formData,
                   startDateTime: e.target.value,
@@ -117,7 +116,6 @@ function EventsForm({ onFormSubmit }) {
               name="toDate"
               value={formData.endDateTime}
               onChange={(e) => {
-                // console.log("toDate", e);
                 setFormData({
                   ...formData,
                   endDateTime: e.target.value,
@@ -129,7 +127,6 @@ function EventsForm({ onFormSubmit }) {
         <Col sm={12}>
         <p className="events-error-message">{errorMessage}</p>
           <Button
-            variant="ghost"
             id="submit-event-form"
             type="submit"
             name="search"

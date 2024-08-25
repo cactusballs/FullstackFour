@@ -11,9 +11,15 @@
 }
 
 #submit-event-form {
-  background-color: rgb(68, 97, 4);
-  border: 0.8px #f9820a solid;
+  background-color: black;
+  border: none;
   color: white;
+}
+
+#submit-event-form:hover {
+  background-color: #f4f5ec;
+  color: black;
+  transition: 0.2s ease-in;
 }
 
 .events-error-message {
