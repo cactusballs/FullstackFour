@@ -11,7 +11,6 @@ const ThreadReply = ({ threadId, onReplySubmit }) => {
     setReplyContent(e.target.value);
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -23,22 +22,16 @@ const ThreadReply = ({ threadId, onReplySubmit }) => {
 
 
     const newReply = {
-      id: Date.now(), // Consider using a more robust ID generator if needed
+      id: Date.now(), 
       threadId: threadId,
       content: replyContent,
       author: user_name,
-      timestamp: new Date().toISOString()
     };
 
-
-    // Call the onReplySubmit function passed from parent
     onReplySubmit(newReply);
-
-
     setReplyContent('');
     setError('');
   };
-
 
   return (
     <div className="reply-to-thread">
@@ -48,14 +41,12 @@ const ThreadReply = ({ threadId, onReplySubmit }) => {
           value={replyContent}
           onChange={handleInputChange}
           rows="4"
-          aria-label="Write your reply" // Accessibility improvement
+          aria-label="Write your reply" 
         />
         {error && <p className="error-message">{error}</p>}
-        <button type="submit" disabled={!replyContent.trim()}>Submit Reply</button> {/* Disabled when input is empty */}
-      </form>
+        <button type="submit" disabled={!replyContent.trim()}>Submit Reply</button>       </form>
     </div>
   );
 };
-
 
 export default ThreadReply;

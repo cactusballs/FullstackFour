@@ -23,8 +23,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  background-color: #d0d2b7;
-  background-color: #e1d6cb;
+  background-color: #f1f1e9;
   /* have changed this so we can view it while we work - it kept showing in dark mode */
   overflow-x: hidden;
 }
