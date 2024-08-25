@@ -39,7 +39,7 @@ function OnSaleEvents() {
   useEffect(() => {
     fetchOnSaleEvents({
       sort: "date,desc",
-      classificationName: "family",
+      keyword: "family",
     });
   }, []);
 

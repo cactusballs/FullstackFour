@@ -47,7 +47,6 @@ eventsRouter.get("/", async (req, res) => {
       ...(latlong ? { latlong } : {}),
       ...(radius ? { radius } : {}),
       ...(sort ? { sort } : { sort: "date,asc" }),
-      includeFamily: "yes",
       city: "London",
       size: 200,
       apikey: apiKey,
