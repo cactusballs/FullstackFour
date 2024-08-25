@@ -2,7 +2,7 @@
 
 <img src="./client/src/assets/images/village-logo.png" width="200" alt="Village logo">
 
-Welcome to __Village__ - the home of connection, community and support for parents, carers, and new or long-time parents. Our aspiration is to provide a safe space to reach out, ask questions, and find events to meet like-minded people.
+Welcome to __Village__ - the home of connection, community and support for parents and carers. Our aspiration is to provide a safe space to reach out, ask questions, and find events to meet like-minded people.
 
 The main features of this React/Bootstrap Node/Express app are:
 - login / registration
