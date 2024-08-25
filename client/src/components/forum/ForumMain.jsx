@@ -38,7 +38,7 @@ const ForumMain = () => {
      <NavbarComp/>
     <div className="AllForums">
      
-      <div className='header'>
+      <div className='header' data-testid="forum-test-1">
         <h2>Welcome to the Village Town Hall</h2>
         <p>...explore threads by topic or start your own!</p>
       </div>
