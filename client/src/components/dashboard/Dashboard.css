@@ -16,17 +16,74 @@
   display: grid;
   width: 100%;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 500px;
-  grid-gap: 10px;
+  grid-template-rows: auto;
+  grid-gap: 16px;
+}
+
+.dashboard-item > div {
+  width: 100%;
 }
 
 /* media queries */
-/* https://css-tricks.com/snippets/css/media-queries-for-standard-devices/ */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1500px) {
+  h4 {
+    font-size: 30px;
+  }
+}
 
 /* OnSaleEvents.jsx,
 EventsSpotlight.jsx  */
 
-#on-sale-events-item,
-#spotlight-list {
+.on-sale-events-item,
+.spotlight-list {
   list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.spotlight-details {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.spotlight-list-item {
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #d0d2b7;
+}
+
+.spotlight-name {
+  color: #7e3400;
+  transition: opacity 0.25s ease-in-out;
+  opacity: 1;
+}
+
+.spotlight-name:hover {
+  color: #6a2c00;
+  opacity: 0.5;
+}
+
+.on-sale-event-name {
+  color: #7e3400;
+}
+
+.on-sale-event-name:hover {
+  color: #d3d3d3;
+}
+
+.on-sale-events-item {
+  display: flex;
+  gap: 10px;
 }

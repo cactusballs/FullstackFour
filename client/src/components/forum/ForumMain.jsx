@@ -64,8 +64,9 @@ const ForumMain = () => {
         <ForumSubmission />
       </div>
     </div>
-    <Footer/>
+    <Footer />
     </>
+       
   );
 }
 

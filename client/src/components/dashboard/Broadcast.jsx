@@ -1,12 +1,11 @@
 import "./Broadcast.css";
 import React from "react";
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { PiSpeakerHighLight } from "react-icons/pi";
 import { FaChevronLeft } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa6";
 import MessageModal from "./Modal.jsx";
-// import ForumButton from "../forum/ForumButton.jsx";
-// import Card from "./Card.jsx";
 
 function BroadcastMessages() {
   const [messages, setMessages] = useState([]);
@@ -46,23 +45,15 @@ function BroadcastMessages() {
     <p id="empty-broadcast-message">Currently no new broadcast messages</p>
   );
 
-  // calling endpoints from frontend
+  // calling endpoint from frontend
   useEffect(() => {
     async function fetchMessages() {
       try {
-        const response = await fetch(
-          "http://localhost:3000/broadcastmessages",
-          {
-            method: "get",
-          }
+        const response = await axios.get(
+          "http://localhost:3000/broadcastmessages"
         );
 
-        if (!response.ok) {
-          throw new Error(`Response status: ${response.status}`);
-        }
-
-        const json = await response.json();
-        setMessages(json);
+        setMessages(response.data);
       } catch (err) {
         console.log(err);
       }
@@ -76,13 +67,8 @@ function BroadcastMessages() {
         <div className="dashboard-card-header">
           <PiSpeakerHighLight className="broadcast-icon" />
           <h4 id="broadcast-title">Broadcast</h4>
-          {/* <PiSpeakerHighLight
-            className="broadcast-icon"
-            id="loudspeaker-right"
-          /> */}
         </div>
         <div className="dashboard-card-content">
-          {/* need to work on - show image when there are messages, hide when there's no messages */}
           <img
             src="../src/assets/images/default-user-icon.png"
             className="profile-image"
