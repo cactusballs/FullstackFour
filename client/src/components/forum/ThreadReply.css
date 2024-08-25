@@ -1,0 +1,54 @@
+
+.reply-to-thread {
+    padding: 20px;
+    color: #233115;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .reply-to-thread textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #233115;
+    font-size: 16px;
+    margin-bottom: 10px;
+    resize: vertical;
+    background-color: #F0F1E8;
+    color: #233115;
+  }
+  
+  .reply-to-thread .error-message {
+    color: #7E3400;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .reply-to-thread button {
+    padding: 10px 20px;
+    background-color: #0F5C3C;
+    color: #F0F1E8;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .reply-to-thread button:hover {
+    background-color: #233115;
+  }
+  
+  .replies-section {
+    margin-top: 40px;
+  }
+  
+  .reply {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #233115;
+    border-radius: 4px;
+    background-color: #F0F1E8;
+    color: #233115;
+  }
+  

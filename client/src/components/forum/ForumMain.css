@@ -1,0 +1,64 @@
+.AllForums {
+  padding: 20px;
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  align-items: start;
+  overflow: hidden;
+  margin-top: 2rem;
+  align-items: stretch;
+  font-size: 16px;
+}
+
+
+.header {
+  text-align: left;
+  margin-bottom: 20px;
+  color: #233115;
+}
+
+/* the two cards */
+.TownHall,
+.TopPicks {
+  background-color: #cfd2b7;
+  color: #233115;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+/* styling for the headers of the two cards */
+.TownHall h3,
+.TopPicks h3 {
+  background-color: #485e39;
+  color: #f0f1e8;
+  margin: 0;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* height and column of each card */
+
+.TownHall {
+  grid-column: 1 / 2;
+}
+
+.TopPicks {
+  grid-column: 2 / 3;
+}
+
+.TownHallPosts {
+  list-style: none;
+  text-decoration: underline;
+  text-align: left;
+  margin-top: 1.2rem;
+}
+
+.TownHallPosts a {
+  color: #485e39;
+  font-size: 1.2rem;
+}

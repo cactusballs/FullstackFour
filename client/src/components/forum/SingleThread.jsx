@@ -1,0 +1,97 @@
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import "./SingleThread.css";
+import NavbarComp from "../navbar/Navbar";
+import Footer from "../footer/Footer";
+import BackButton from "./BackButton";
+import ThreadReply from "./ThreadReply";
+
+const SingleThread = () => {
+  const { id } = useParams();
+  const [threads, setThreads] = useState([]);
+  const [posts, setPosts] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/threads/threadheader/?thread_id=${id}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setThreads(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching threads:", error);
+        setError("Failed to fetch threads");
+      });
+  }, [id]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/threads/threadheader/posts?thread_id=${id}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setPosts(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching posts:", error);
+        setError("Failed to fetch posts");
+      });
+  }, [id]);
+
+  let threadsArr = threads[0];
+
+  const handleReplySubmit = (newReply) => {
+    setPosts((prevPosts) => [...prevPosts, newReply]);
+  };
+  return (
+    <>
+      <div className="threadContainer">
+        <NavbarComp />
+        {threads.length > 0 ? (
+          <>
+            {/* post initial thread information = starting question */}
+            <h3>Join the conversation</h3>
+            <div className="threadStart">
+              <p className="threadTitle">{threadsArr.thread_title}</p>
+              <p className="mainQuestion">{threadsArr.content}</p>
+              <p className="postInfo">
+                {threadsArr.user_name} @{" "}
+                {new Date(threadsArr.sent_at).toLocaleString()}
+              </p>
+            </div>
+          </>
+        ) : (
+          <p>Loading thread</p>
+        )}
+
+        {/* posts the reply/replies to thread */}
+        {posts.length > 0 ? (
+          posts.map((post) => (
+            <div key={post.post_id} className="postItem">
+              <p>{post.content}</p>
+              <p className="postInfo">
+                Reply from {post.user_name} @{" "}
+                {new Date(post.sent_at).toLocaleString()}
+              </p>
+            </div>
+          ))
+        ) : (<div className="no-posts-yet">
+          <p>No replies to this thread yet :(</p></div>
+        )}
+        <ThreadReply threadId={id} onReplySubmit={handleReplySubmit} />
+      </div>
+      <BackButton/>
+      <Footer />
+    </>
+  );
+};
+
+export default SingleThread;

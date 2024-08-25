@@ -1,0 +1,29 @@
+.events-form {
+  text-align: left;
+  font-family: "Verdana";
+  max-width: 386px;
+}
+
+#event-dates {
+  display: flex;
+  width: 200px;
+  gap: 14px;
+}
+
+#submit-event-form {
+  background-color: black;
+  border: none;
+  color: white;
+}
+
+#submit-event-form:hover {
+  background-color: #f4f5ec;
+  color: black;
+  transition: 0.2s ease-in;
+}
+
+.events-error-message {
+  color: #d20000;
+  text-align: center;
+  font-size: 14px;
+}

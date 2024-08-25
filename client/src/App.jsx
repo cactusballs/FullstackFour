@@ -1,0 +1,33 @@
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css";
+import ForumTopicThreads from "./components/forum/ForumTopicThreads";
+import ForumMain from "./components/forum/ForumMain";
+import Login from "./components/login/Login"; // Import the Login component
+import SingleThread from "./components/forum/SingleThread.jsx";
+import Registration from "./components/registration/Registration.jsx";
+import MeetTheTeam from "./components/meet-the-team/MeetTheTeam.jsx";
+import Events from "./components/events/Events.jsx";
+import Dashboard from "./components/dashboard/Dashboard.jsx";
+
+function App() {
+  return (
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/forum" element={<ForumMain />} />
+          <Route path="/threads/:topic" element={<ForumTopicThreads />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/signup" element={<Registration />} />
+          <Route path="/meet-the-team" element={<MeetTheTeam />} />
+          {/* Add more routes here if needed */}
+          <Route path="/conversation/:id" element={<SingleThread />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;

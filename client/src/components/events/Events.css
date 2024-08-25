@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=League+Spartan:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.events-page {
+  background-color: #d0d2b7;
+  padding-top: 80px;
+}
+
+.events-container {
+  margin-bottom: 100px;
+}
+
+.events-headline-form {
+  margin: 30px 0px 90px 40px;
+}
+
+#events-headline {
+  font-family: "League Spartan";
+  font-size: 70px;
+  text-align: left;
+  margin-left: 80px;
+}
+
+#events-form-image {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 40px;
+}
+
+#events-image {
+  width: 700px;
+  transform: scaleX(-1);
+}

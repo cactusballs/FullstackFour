@@ -1,0 +1,88 @@
+.card {
+  background-color: #f0f1e8;
+  /* width: 390px; */
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card svg {
+  font-size: 30px;
+}
+
+.card-header {
+  background-color: #485f39;
+  display: flex;
+  align-items: center;
+  height: 78px;
+  border-radius: 10px;
+  color: white;
+  text-align: left;
+  font-family: "League Spartan";
+}
+
+#dashboard-events-icon {
+  padding-right: 30px;
+}
+
+.card-title {
+  margin-left: 26px;
+  margin-top: 12px;
+}
+
+.card-link {
+  color: white;
+  text-decoration: none;
+  margin-top: 5px;
+  margin-left: 56px;
+  font-size: 13px;
+}
+
+.card-link:hover {
+  color: black;
+}
+
+.card-content {
+  display: flex;
+  border-radius: 10px;
+  background-color: hsl(67, 24%, 93%);
+  color: black;
+  padding: 20px;
+}
+
+.card-footer {
+  background-color: #485f39;
+  display: flex;
+  align-items: center;
+  height: 62px;
+  padding: 0px 14px;
+  border-radius: 10px;
+  color: white;
+  justify-content: flex-end;
+}
+
+.card-footer-button {
+  /* padding: "8px 16px"; */
+  color: "black";
+  font-family: "Verdana";
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 8px;
+  width: 100px;
+  background-color: #f4f5ec;
+  color: black;
+}
+
+.card-footer-button:hover {
+  background-color: black;
+  color: white;
+  transition: 0.3s ease-out;
+  border-color: black;
+}
+
+@media (max-width: 576px) {
+  .card-title {
+    font-size: 20px;
+  }
+}
