@@ -27,7 +27,7 @@ const RecentForumPosts = () => {
         <div className="RecentForumPosts-header-container">
           <div className="RecentForumPosts-title">
             <TbMessages className="RecentForumPosts-icon" />
-            Recent Forum Posts
+            <h4>Recent Forum Posts</h4>
           </div>
         </div>
       </div>

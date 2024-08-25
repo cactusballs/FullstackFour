@@ -69,8 +69,6 @@ function EventsSpotlight() {
     <Card
       leftIcon={<LuSparkle />}
       title="Events Spotlight"
-      link="http://localhost:5173/events?keyword=children&sort=relevance%2Cdesc"
-      linkText="View All"
       content={listOfEvents}
     ></Card>
   );

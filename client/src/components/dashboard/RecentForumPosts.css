@@ -1,13 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=League+Spartan:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
-
 .RecentForumPosts-header-container {
   display: flex;
   align-items: center;
 }
 
 .RecentForumPosts-icon {
-  margin-right: 50px;
+  margin-right: 30px;
   font-size: 30px;
   color: #ffffff;
 }
@@ -17,7 +16,7 @@
   justify-content: space-between;
   align-items: center;
   margin: 0px 30px;
-  padding: 10px;
+  padding: 0px 0px;
   height: 78px;
   background-color: #485f39;
   border-radius: 10px;
@@ -25,6 +24,10 @@
   text-align: center;
   font-size: 28px;
   font-family: "League Spartan";
+}
+
+.RecentForumPosts-title h4 {
+  margin-top: 12px;
 }
 
 .RecentForumPosts-title-icon {

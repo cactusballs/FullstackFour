@@ -72,8 +72,6 @@ function OnSaleEvents() {
     <Card
       leftIcon={<LuTag />}
       title="Events On Sale Now"
-      link="http://localhost:5173/events?sort=date%2Cdesc&classificationName=family"
-      linkText="View All"
       content={eventsOnSaleNow}
     ></Card>
   );
