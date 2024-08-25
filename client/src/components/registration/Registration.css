@@ -66,8 +66,8 @@ input {
 }
 
 .button-signup {
-  width: 95px;
-  height: 32px;
+  width: 300px;
+  height: 40px;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -82,7 +82,7 @@ input {
 }
 
 .button-signup:hover {
-  background-color: #779d5e;
+  background-color: #4caf50;
 }
 
 @media (max-width: 768px) {

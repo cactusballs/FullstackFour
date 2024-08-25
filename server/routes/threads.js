@@ -130,7 +130,6 @@ threadRouter.get('/:topic/:tag', async (req, res) => {
 threadRouter.post('/create', async (req, res) => {
   const { thread_title, content, topic, carersTag, expectingParentsTag, newParentsTag, singleParentsTag, lgbtqiaPlusParentsTag, user_name } = req.body;
 
-  // Validate required fields
   if (!thread_title || !content || !topic || !user_name) {
     return res.status(400).json({ message: 'Title, content, topic, and user name are required' });
   }
@@ -169,13 +168,9 @@ threadRouter.post('/create', async (req, res) => {
 threadRouter.post('/reply', async (req, res) => {
   const { threadId, content, author } = req.body;
 
-
-  // Validate required fields
   if (!threadId || !content || !author) {
     return res.status(400).json({ message: 'Thread ID, content, and author are required' });
   }
-
-
   try {
     const sqlInsert = `
       INSERT INTO posts_to_threads (thread_id, user_name, content, sent_at)
@@ -187,9 +182,7 @@ threadRouter.post('/reply', async (req, res) => {
       content
     ];
 
-
     const [result] = await database.query(sqlInsert, values);
-
 
     if (result.affectedRows > 0) {
       res.status(201).json({ message: 'Reply created successfully!' });

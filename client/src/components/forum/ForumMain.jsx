@@ -3,6 +3,7 @@ import './ForumMain.css';
 import ForumSubmission from './ForumSubmissionForm.jsx';
 import NavbarComp from '../navbar/Navbar.jsx';
 import { Link } from 'react-router-dom';
+import Footer from '../footer/Footer.jsx';
 
 const ForumMain = () => {
   const [threads, setThreads] = useState([]);
@@ -63,7 +64,9 @@ const ForumMain = () => {
         <ForumSubmission />
       </div>
     </div>
+    <Footer />
     </>
+       
   );
 }
 

@@ -11,7 +11,6 @@ const ThreadReply = ({ threadId, onReplySubmit }) => {
     setReplyContent(e.target.value);
   };
 
-  // Handles the form submission for the reply
   const handleSubmit = (e) => {
     e.preventDefault();
     const user_name = localStorage.getItem('user_name') || 'FA';
@@ -26,6 +25,7 @@ const ThreadReply = ({ threadId, onReplySubmit }) => {
       author: user_name,
       sent_at: new Date().toISOString()
     };
+
     onReplySubmit(newReply);
     setReplyContent('');
     setError('');

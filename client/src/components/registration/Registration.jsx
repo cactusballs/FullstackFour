@@ -34,7 +34,7 @@ const Registration = () => {
       return false;
     } else if (!passwordRegex.test(password)) {
       setPasswordError(
-        "Password must have min. 8 characters, 1 uppercase and 1 lowercase letters, 1 number and 1 special character (@$!%*?&#)"
+        "Password must have min. 8 characters, 1 uppercase letter and 1 lowercase letter, 1 number and 1 special character (@$!%*?&#)"
       );
       return false;
     }

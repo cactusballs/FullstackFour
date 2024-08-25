@@ -8,6 +8,7 @@
   overflow: hidden;
   margin-top: 2rem;
   align-items: stretch;
+  font-size: 16px;
 }
 
 /* the title */
@@ -19,7 +20,7 @@
 /* the two cards */
 .TownHall,
 .TopPicks {
-  background-color: #ABB3AB;
+  background-color: #CFD2B7;
   color: #233115;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -31,7 +32,7 @@
 /* styling for the headers of the two cards */
 .TownHall h3,
 .TopPicks h3 {
-  background-color: #0F5C3C; 
+  background-color: #485E39; 
   color: #F0F1E8;
   margin: 0;
   padding: 20px;
@@ -54,8 +55,14 @@
 
 .TownHallPosts {
   list-style: none;
+  text-decoration: underline;
   text-align: left;
   margin-top: 1.2rem;
+}
+
+.TownHallPosts a {
+  color: #485E39;
+  font-size: 1.2rem;
 }
 
 /* Media queries below (make cards go into one column two rows!) */

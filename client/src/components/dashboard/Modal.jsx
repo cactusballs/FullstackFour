@@ -15,6 +15,8 @@ function MessageModal() {
   // for post request
   const [message, setMessage] = useState("");
 
+  const userId = localStorage.getItem("user_id") || 6
+
   const handleMessageChange = (e) => {
     let message = e.target.value;
     console.log(message);
@@ -27,10 +29,10 @@ function MessageModal() {
     try {
       const response = await fetch("http://localhost:3000/broadcastmessages", {
         method: "POST",
-        // need to get user id from centralised storage - hard-coded user's id in
-        body: JSON.stringify({ id: 6, message_content: message }),
+        // need to get user id from centralised storage
+        body: JSON.stringify({ id: userId, message_content: message }),
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
       });
 
@@ -52,7 +54,7 @@ function MessageModal() {
   return (
     <>
       {/* button to click on and open modal/pop-up */}
-      <Button onClick={handleShow} className="footer-button">
+      <Button onClick={handleShow} className="broadcast-footer-button">
         Create
       </Button>
       {/* modal content */}
@@ -89,15 +91,15 @@ function MessageModal() {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="outline-success" onClick={handleSubmit}>
-            Submit
-          </Button>
           <Button
             variant="outline-danger"
             onClick={handleClose}
             id="cancel-button"
           >
             Cancel
+          </Button>
+          <Button variant="outline-success" onClick={handleSubmit}>
+            Submit
           </Button>
         </Modal.Footer>
       </Modal>
