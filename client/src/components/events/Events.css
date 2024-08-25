@@ -37,6 +37,6 @@ body {
 }
 
 #events-image {
-  width: 700px;
+  width: 600px;
   transform: scaleX(-1);
 }

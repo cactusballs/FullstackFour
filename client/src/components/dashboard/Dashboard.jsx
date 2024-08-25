@@ -15,6 +15,7 @@ function Dashboard() {
       <div className="dashboard-page">
         <NavbarComp />
         <div className="dashboard-grid">
+          {/* <div className="dashboard-row"> */}
           <div className="dashboard-item">
             <EventsSpotlight />
           </div>
@@ -34,6 +35,9 @@ function Dashboard() {
             <BroadcastMessages />
           </div>
         </div>
+        {/* <div className="dashboard-row"> */}
+        {/* </div> */}
+        {/* </div> */}
       </div>
       <Footer />
     </div>

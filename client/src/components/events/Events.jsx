@@ -4,13 +4,12 @@ import "./Events.css";
 import NavbarComp from "../navbar/Navbar.jsx";
 import Footer from "../footer/Footer.jsx";
 import { useState, useEffect } from "react";
-import axios from "axios";
 
 const cleanFormData = (formData) => {
   const { keyword, startDateTime, endDateTime, latlong, radius } = formData;
 
   return {
-    ...(keyword != "" ? { keyword } : { keyword: "children" }),
+    ...(keyword != "" ? { keyword } : {}),
     ...(startDateTime != "" ? { startDateTime } : {}),
     ...(endDateTime != "" ? { endDateTime } : {}),
     ...(latlong != "" ? { latlong } : {}),
@@ -31,8 +30,17 @@ function Events() {
       if (params) {
         url.search = new URLSearchParams(params).toString();
       }
-      const result = await axios.get(url.toString());
-      setEvents(result.data);
+
+      const response = await fetch(url.toString(), {
+        method: "GET",
+      });
+
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      setEvents(result);
     } catch (err) {
       console.log("Error: ", err);
     }
@@ -60,7 +68,6 @@ function Events() {
               src="../../src/assets/images/event-father-child.png"
               alt="kid hitting pinata in a party"
               id="events-image"
-              className="d-none d-lg-block"
             ></img>
           </div>
         </div>

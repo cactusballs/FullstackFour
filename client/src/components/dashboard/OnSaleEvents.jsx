@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Card from "./Card.jsx";
 import { LuTag } from "react-icons/lu";
 import "./Dashboard.css";
-import dayjs from "dayjs";
 
 function OnSaleEvents() {
   const [onSaleEvents, setOnSaleEvents] = useState([]);
@@ -34,33 +33,25 @@ function OnSaleEvents() {
     }
   };
 
-  // checking family-friendly events that are recently added / opened sales
-
   useEffect(() => {
     fetchOnSaleEvents({
+      // sort: "onSaleStartDate,asc",
       sort: "date,desc",
-      keyword: "family",
+      classificationName: "family",
     });
   }, []);
 
   const eventsOnSaleNow = (
     <>
-      <ul className="spotlight-list">
-        {groupedEventsAsArray?.slice(0, 4)?.map((item) => {
+      <ul>
+        {groupedEventsAsArray?.slice(0, 6)?.map((item) => {
           const event = item[0];
-          const startDate = dayjs(event.sales?.public?.endDateTime).format(
-            "D MMM YYYY"
-          );
           return (
-            <li key={event.id} className="spotlight-list-item">
-              <a href={event.url} className="spotlight-name">
-                {event.name}
-              </a>
-
-              <div className="spotlight-details">
-                <span>{event._embedded?.venues[0]?.postalCode}</span>
-                <span>{startDate}</span>
-              </div>
+            <li key={event.id} id="on-sale-events-item">
+              <p>
+                <a href={event.url}>{event.name}</a>,{" "}
+                {event._embedded?.venues[0]?.postalCode}
+              </p>
             </li>
           );
         })}
@@ -72,6 +63,8 @@ function OnSaleEvents() {
     <Card
       leftIcon={<LuTag />}
       title="Events On Sale Now"
+      link=""
+      linkText="View All"
       content={eventsOnSaleNow}
     ></Card>
   );

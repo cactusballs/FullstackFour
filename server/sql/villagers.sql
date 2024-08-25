@@ -248,8 +248,6 @@ VALUES (1,'LJ','Lottie is a cool name!'),(1,'FA','Fatima is a cool name!'),
 
 INSERT INTO broadcast_messages (villager_id, message_content, created_at)
 VALUES 
-(5, "Brought a new pair of asic trainers", default),
-(6, "Going to see my kid this weekend- have a lovely weekend guys", default),
 (2, "hi guys, i'm new here and this is my first broadcast message!", default),
 (1, "I've just been told I'm with triplets and wanted to share my joy with you all!", default),
 (3, "hello world", "2024-08-01 19:09:39"),

@@ -1,17 +1,5 @@
-.broadcast-footer-button {
-  background-color: #f4f5ec;
-  color: black;
-  border: none;
-}
-
-.broadcast-footer-button:hover {
-  background-color: black;
-  color: white;
-  transition: 0.3s ease;
-  border: 0.6px solid orange;
-}
-
 .modal-content {
+  /* doesn't work, something is overriding it */
   /* background-color: #f4f5ec; */
   box-shadow: 0 4 4 0 hsl(0, 0, 73, 1);
 }
@@ -57,10 +45,4 @@ textarea.form-control {
 
 .modal-button svg {
   color: green;
-}
-
-@media (min-width: 576px) {
-  textarea.form-control {
-    width: 420px;
-  }
 }

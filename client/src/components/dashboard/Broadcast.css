@@ -1,9 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=League+Spartan:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
 .dashboard-card {
   background-color: #485f39;
   border-radius: 10px;
   margin: 0;
   padding: 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard-card-header {
@@ -77,7 +78,7 @@
   text-align: left;
   margin-left: 30px;
   margin-right: 24px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .broadcast-arrows {
@@ -95,6 +96,10 @@
   color: #485f39;
 }
 
+/* #loudspeaker-right {
+  transform: rotate(180deg);
+} */
+
 .broadcast-footer {
   background-color: #485f39;
   display: flex;
@@ -107,13 +112,7 @@
   font-size: 24px;
 }
 
-.broadcast-arrow:hover {
+.broadcast-buttons:hover {
   background-color: #f0f1e8;
   transition: 0.3s ease-in;
-  color: black;
-  border: none;
-}
-
-.broadcast-footer-button {
-  font-weight: 500;
 }
