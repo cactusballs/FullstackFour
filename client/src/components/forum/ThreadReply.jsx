@@ -1,44 +1,35 @@
 import React, { useState } from 'react';
 import './ThreadReply.css';
 
-
+// Handles input changes for the reply content
 const ThreadReply = ({ threadId, onReplySubmit }) => {
   const [replyContent, setReplyContent] = useState('');
   const [error, setError] = useState('');
 
-
+  // Handles changes in the textarea input
   const handleInputChange = (e) => {
     setReplyContent(e.target.value);
   };
 
-
+  // Handles the form submission for the reply
   const handleSubmit = (e) => {
     e.preventDefault();
-    
     const user_name = localStorage.getItem('user_name') || 'FA';
     if (replyContent.trim() === '') {
       setError('Reply cannot be empty');
       return;
     }
-
-
     const newReply = {
-      id: Date.now(), // Consider using a more robust ID generator if needed
+      id: Date.now(),
       threadId: threadId,
       content: replyContent,
       author: user_name,
-      timestamp: new Date().toISOString()
+      sent_at: new Date().toISOString()
     };
-
-
-    // Call the onReplySubmit function passed from parent
     onReplySubmit(newReply);
-
-
     setReplyContent('');
     setError('');
   };
-
 
   return (
     <div className="reply-to-thread">
@@ -48,14 +39,13 @@ const ThreadReply = ({ threadId, onReplySubmit }) => {
           value={replyContent}
           onChange={handleInputChange}
           rows="4"
-          aria-label="Write your reply" // Accessibility improvement
+          aria-label="Write your reply"
         />
         {error && <p className="error-message">{error}</p>}
-        <button type="submit" disabled={!replyContent.trim()}>Submit Reply</button> {/* Disabled when input is empty */}
+        <button type="submit" disabled={!replyContent.trim()}>Submit Reply</button>
       </form>
     </div>
   );
 };
-
 
 export default ThreadReply;
