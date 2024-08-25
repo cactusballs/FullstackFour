@@ -7,4 +7,9 @@ export default defineConfig({
   server: {
     open: true, // to enable auto-opening of browser
   },
+  optimizeDeps: {
+    exclude: ['js-big-decimal']}
 });
+
+
+

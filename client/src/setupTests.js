@@ -1,2 +1,5 @@
 // Solved some syntax issues with jest boiler plates
-import '@testing-library/jest-dom';
+require('@testing-library/jest-dom');
+
+// Makes jest recognise fetch requests for unit testing 
+require('isomorphic-fetch');
