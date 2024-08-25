@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './ForumSubmissionForm.css';
@@ -18,48 +18,47 @@ const ForumSubmission = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const navigate = useNavigate();
-
-  const user_name = 'FA';
-
+ // Update the state of the tag when it's checked or unchecked
   const handleTagChange = (e) => {
-    setTags({
-      ...tags,
-      [e.target.name]: e.target.checked,
-    });
+    const { name, checked } = e.target;
+    setTags((prevTags) => ({
+      ...prevTags,
+      [name]: checked,
+    }));
   };
-
+// Check if any tag is selected
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title || !content || !topic) {
       setError('All fields are required');
       return;
     }
-
+//making data object for new thread
     const newThread = {
       thread_title: title,
       content,
       topic,
-      user_name: localStorage.getItem('user_name') || 'FA', //trying to look for user_name in local storage but just using FA as back, only hardcoding works not localStorage.getItem('user_name')
+      user_name: localStorage.getItem('user_name') || 'FA', // Default to 'FA' if user_name is not in localStorage
       ...tags,
     };
 
-    try {
+    try {  // Making a POST request to create a new thread
       const res = await axios.post('http://localhost:3000/threads/create', newThread);
       if (res.status === 201) {
-        setSuccess('Thread created successfully!');
-        setTimeout(() => {
+        setSuccess('Sent to the Village!');
+        setTimeout(() => {  // Navigate to the new thread's page after a time delay
           navigate(`/threads/${topic}`);
         }, 3000);
       }
     } catch (err) {
-      setError('An error occurred while creating the thread');
+      setError('Whoops! Something went wrong... Please try again.');
     }
   };
 
   return (
     <div className="container">
       <form onSubmit={handleSubmit} className="form">
-        <div className="title">
+        <div className="form-group">
           <label>Title</label>
           <input
             name="title"
@@ -70,10 +69,10 @@ const ForumSubmission = () => {
             onChange={(e) => setTitle(e.target.value)}
           />
           <div className="char-count">
-            <span id="charCount">0</span>/400
+            <span id="charCount">{title.length}</span>/400
           </div>
         </div>
-        <div className="desc mt-3">
+        <div className="form-group mt-3">
           <label>Content</label>
           <textarea
             name="content"
@@ -82,7 +81,7 @@ const ForumSubmission = () => {
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
         </div>
-        <div className="topic mt-3">
+        <div className="form-group mt-3">
           <label>Topic</label>
           <select
             name="topic"
@@ -102,52 +101,65 @@ const ForumSubmission = () => {
             <option value="Charities">Charities</option>
           </select>
         </div>
-        <div className="tags mt-3">
+        <div className="form-group mt-3">
           <label>Tags</label>
-          <div className="mt-2 flex flex-wrap gap-2">
-            <label>
-              <input
-                type="checkbox"
-                name="carersTag"
-                checked={tags.carersTag}
-                onChange={handleTagChange}
-              />
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              name="carersTag"
+              checked={tags.carersTag}
+              onChange={handleTagChange}
+            />
+            <label className="form-check-label" htmlFor="carersTag">
               Carers Tag
             </label>
-            <label>
-              <input
-                type="checkbox"
-                name="expectingParentsTag"
-                checked={tags.expectingParentsTag}
-                onChange={handleTagChange}
-              />
+          </div>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              name="expectingParentsTag"
+              checked={tags.expectingParentsTag}
+              onChange={handleTagChange}
+            />
+            <label className="form-check-label" htmlFor="expectingParentsTag">
               Expecting Parents Tag
             </label>
-            <label>
-              <input
-                type="checkbox"
-                name="newParentsTag"
-                checked={tags.newParentsTag}
-                onChange={handleTagChange}
-              />
+          </div>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              name="newParentsTag"
+              checked={tags.newParentsTag}
+              onChange={handleTagChange}
+            />
+            <label className="form-check-label" htmlFor="newParentsTag">
               New Parents Tag
             </label>
-            <label>
-              <input
-                type="checkbox"
-                name="singleParentsTag"
-                checked={tags.singleParentsTag}
-                onChange={handleTagChange}
-              />
+          </div>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              name="singleParentsTag"
+              checked={tags.singleParentsTag}
+              onChange={handleTagChange}
+            />
+            <label className="form-check-label" htmlFor="singleParentsTag">
               Single Parents Tag
             </label>
-            <label>
-              <input
-                type="checkbox"
-                name="lgbtqiaPlusParentsTag"
-                checked={tags.lgbtqiaPlusParentsTag}
-                onChange={handleTagChange}
-              />
+          </div>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              name="lgbtqiaPlusParentsTag"
+              checked={tags.lgbtqiaPlusParentsTag}
+              onChange={handleTagChange}
+            />
+            <label className="form-check-label" htmlFor="lgbtqiaPlusParentsTag">
               LGBTQIA+ Parents Tag
             </label>
           </div>
@@ -161,5 +173,4 @@ const ForumSubmission = () => {
     </div>
   );
 };
-
 export default ForumSubmission;
