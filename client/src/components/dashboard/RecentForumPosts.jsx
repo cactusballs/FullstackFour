@@ -25,7 +25,7 @@ const RecentForumPosts = () => {
     <div className="RecentForumPosts-card">
       <div className="RecentForumPosts-card-header">
         <h4>
-          <TbMessages style={{ marginRight: "8px" }} /> Recent forum posts
+          <TbMessages style={{ marginRight: "8px" }} /> Recent Forum Posts
         </h4>
       </div>
       <div className="RecentForumPosts-card-content">

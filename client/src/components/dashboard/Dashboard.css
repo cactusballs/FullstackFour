@@ -16,7 +16,8 @@
   display: grid;
   width: 100%;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr 1fr;
+  /* grid-template-rows: 1fr 1fr; */
+  grid-template-rows: auto;
   grid-gap: 16px;
 }
 
@@ -37,7 +38,52 @@
 /* OnSaleEvents.jsx,
 EventsSpotlight.jsx  */
 
-#on-sale-events-item,
-#spotlight-list {
+.on-sale-events-item,
+.spotlight-list {
   list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.spotlight-details {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.spotlight-list-item {
+  /* display: flex;
+  gap: 10px; */
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #d0d2b7;
+}
+
+.spotlight-datetime {
+}
+
+.spotlight-name {
+  color: #7e3400;
+  transition: opacity 0.25s ease-in-out;
+  opacity: 1;
+}
+
+.spotlight-name:hover {
+  color: #6a2c00;
+  opacity: 0.5;
+}
+
+.on-sale-event-name {
+  color: #7e3400;
+}
+
+.on-sale-event-name:hover {
+  color: #d3d3d3;
+}
+
+.on-sale-events-item {
+  display: flex;
+  gap: 10px;
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Card from "./Card.jsx";
 import { LuSparkle } from "react-icons/lu";
 import "./Dashboard.css";
+import dayjs from "dayjs";
 
 function EventsSpotlight() {
   const [relevantEvents, setRelevantEvents] = useState([]);
@@ -32,6 +33,7 @@ function EventsSpotlight() {
     }
   };
 
+  // doesn't allow relevance,desc and date,asc together - only sorted by relevance
   useEffect(() => {
     fetchRelevantEvents({
       keyword: "children",
@@ -40,15 +42,22 @@ function EventsSpotlight() {
   }, []);
   const listOfEvents = (
     <>
-      <ul id="spotlight-list">
-        {groupedEventsAsArray?.slice(0, 5)?.map((item) => {
+      <ul className="spotlight-list">
+        {groupedEventsAsArray?.slice(0, 4)?.map((item) => {
           const event = item[0];
+          const startDate = dayjs(event.sales?.public?.endDateTime).format(
+            "D MMM"
+          );
           return (
-            <li key={event.id}>
-              <p>
-                <a href={event.url}>{event.name}</a>,{" "}
-                {event._embedded?.venues[0]?.postalCode}
-              </p>
+            <li key={event.id} className="spotlight-list-item">
+              <a href={event.url} className="spotlight-name">
+                {event.name}
+              </a>
+
+              <div className="spotlight-details">
+                <span>{event._embedded?.venues[0]?.postalCode}</span>
+                <span>{startDate}</span>
+              </div>
             </li>
           );
         })}
@@ -59,7 +68,7 @@ function EventsSpotlight() {
     <Card
       leftIcon={<LuSparkle />}
       title="Events Spotlight"
-      link=""
+      link="http://localhost:5173/events?keyword=children&sort=relevance%2Cdesc"
       linkText="View All"
       content={listOfEvents}
     ></Card>

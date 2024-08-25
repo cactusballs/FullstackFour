@@ -15,9 +15,6 @@ function EventCard({ events }) {
       <Row md={4} className="g-4">
         {events.map((item) => {
           const event = item[0];
-          // const startDate = dayjs(event.sales?.public?.startDateTime).format(
-          //   "D MMM YYYY h:mm A"
-          // );
           const endDate = dayjs(event.sales?.public?.endDateTime).format(
             "D MMM YYYY, h:mm A"
           );

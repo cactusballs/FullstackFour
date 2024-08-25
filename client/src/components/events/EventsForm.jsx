@@ -12,12 +12,30 @@ function EventsForm({ onFormSubmit }) {
     startDateTime: "",
     endDateTime: "",
     latlong: "",
-    radius: "",
+    radius: ""
   });
+
+  // error message states
+ const [errorMessage, setErrorMessage] = useState(""); 
+
+ const validateFormData = ({startDateTime, endDateTime}) => {
+  if (startDateTime && endDateTime) {
+    const fromDate = new Date(startDateTime)
+    const toDate = new Date(endDateTime)
+    if(fromDate > toDate) {
+      setErrorMessage("Invalid range: 'From' date must be before 'to' date")
+      return false
+    }
+  }
+  return true
+}
 
   const handleSearch = (e) => {
     e.preventDefault();
-    onFormSubmit(formData);
+    setErrorMessage("");
+    if (validateFormData(formData)) {
+      onFormSubmit(formData);
+    };
   };
 
   return (
@@ -46,7 +64,7 @@ function EventsForm({ onFormSubmit }) {
                 setFormData({ ...formData, latlong: e.target.value });
               }}
             >
-              <option>London </option>
+              <option value="51.509865,-0.118092">London</option>
               <option value="51.5413,-0.1419">North London</option>
               <option value="51.4456,-0.1557">South London</option>
               <option value="51.5029,-0.0219">West London</option>
@@ -78,9 +96,10 @@ function EventsForm({ onFormSubmit }) {
             <Form.Control
               type="datetime-local"
               id="from-date"
+              name="fromDate"
               value={formData.startDateTime}
               onChange={(e) => {
-                console.log("fromDate", e);
+                // console.log("fromDate", e);
                 setFormData({
                   ...formData,
                   startDateTime: e.target.value,
@@ -95,9 +114,10 @@ function EventsForm({ onFormSubmit }) {
             <Form.Control
               type="datetime-local"
               id="to-date"
+              name="toDate"
               value={formData.endDateTime}
               onChange={(e) => {
-                console.log("toDate", e);
+                // console.log("toDate", e);
                 setFormData({
                   ...formData,
                   endDateTime: e.target.value,
@@ -107,6 +127,7 @@ function EventsForm({ onFormSubmit }) {
           </Form.Group>
         </Col>
         <Col sm={12}>
+        <p className="events-error-message">{errorMessage}</p>
           <Button
             variant="ghost"
             id="submit-event-form"

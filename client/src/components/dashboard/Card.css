@@ -79,3 +79,9 @@
   transition: 0.3s ease-out;
   border-color: black;
 }
+
+@media (max-width: 576px) {
+  .card-title {
+    font-size: 20px;
+  }
+}
