@@ -2,13 +2,13 @@
 
 ## Setting up the project
 
-- git clone from repo
-- run .sql file in MySQL
+- `git clone` from repo
+- run [villagers.sql](./server/sql/villagers.sql) in your local SQL server or database (e.g. MySQL workbench).
 
 
 ## Server setup
-- Navigate into the server folder 
-- copy of .env.example save as '.env' and update with personal details (you don't need to update the JWT_SECRET password provided in the env.example)
+- Navigate into the server folder: using `cd server`
+- create a copy of .env.example, save as '.env' and update with personal details (you don't need to update the JWT_SECRET password provided in the env.example)
 - run `npm install`
 
 Running server:
