@@ -1,34 +1,58 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=League+Spartan:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
-.RecentForumPosts-card {
-  /* height: 500px;
-    width: 550px; */
+
+.RecentForumPosts-header-container {
+  display: flex;
+  align-items: center;
+}
+
+.RecentForumPosts-icon {
+  margin-right: 50px;
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.RecentForumPosts-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 30px;
+  padding: 10px;
+  height: 78px;
   background-color: #485f39;
   border-radius: 10px;
-  /* margin: 0; */
+  color: white;
+  text-align: center;
+  font-size: 28px;
+  font-family: "League Spartan";
+}
+
+.RecentForumPosts-title-icon {
+  font-size: 30px;
+  color: white;
+  margin-right: 50px;
+}
+
+.RecentForumPosts-card {
+  background-color: #485f39;
+  border-radius: 10px;
   padding: 0;
 }
 
 .RecentForumPosts-card-header {
+  background-color: #485f39;
   display: flex;
   align-items: center;
-  /* margin: 0 30px; */
-  padding: 10px 0;
-  background-color: #485f39;
-  border-radius: 10px;
+  height: 78px;
+  border-radius: 10px 10px 0 0;
   color: white;
-  font-size: 14px;
-  font-family: "League Spartan";
+  text-align: center;
 }
 
 .RecentForumPosts-card-content {
-  /* height: 350px;
-  width: 550px; */
   background-color: #f0f1e8;
   color: black;
   overflow-y: auto;
-  padding: 10px;
-  /* box-sizing: border-box; */
 }
 
 .RecentForumPosts-card-footer {
@@ -50,7 +74,6 @@
 .RecentForumPosts-card-content li {
   position: relative;
   padding-left: 20px;
-  /* margin-bottom: 10px; */
   border-bottom: 1px solid #ddd;
 }
 
@@ -70,26 +93,36 @@
 
 .forum-post-title {
   font-size: 14px;
-  font-weight: bold;
   margin: 0;
+  color: black;
+  padding-left: 10px;
+}
+
+.forum-post-title:hover {
+  color: #7e3400;
 }
 
 .forum-post-date {
   font-size: 12px;
   color: #666;
+  padding-right: 10px;
 }
 
-/* Alternate background colors for forum posts */
+/* Alternating background colours for forum posts */
 .RecentForumPosts-card-content li:nth-child(odd) {
-  background-color: #d0d2b7;
+  background-color: #ffffff;
 }
 
 .RecentForumPosts-card-content li:nth-child(even) {
-  background-color: #f485f39;
+  background-color: #f0f1e8;
 }
 
-/* New container for list items */
 .forum-posts-container {
   margin: 0;
   padding: 0;
+}
+
+.forum-posts-container li::before {
+  padding-left: 10px;
+  padding-top: 5px;
 }
