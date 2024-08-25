@@ -18,7 +18,7 @@ const Card = ({
         className="card-header"
         style={{ backgroundColor: "#485f39", color: "white" }}
       >
-        <span className="card-icon">{leftIcon}</span>
+        <span className="card-icon" id="dashboard-events-icon">{leftIcon}</span>
         <h4 className="card-title" data-testid="card-test-2">
           {title}
         </h4>

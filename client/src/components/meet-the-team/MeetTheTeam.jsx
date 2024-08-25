@@ -93,7 +93,7 @@ const MeetTheTeam = () => {
 
                   <Col md={8}>
                     <Card.Body>
-                      <Card.Title className="card-title">
+                      <Card.Title className="card-title name-title">
                         {person.firstName}
                       </Card.Title>
                       <Card.Text>{person.autobiography}</Card.Text>

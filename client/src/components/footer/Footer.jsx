@@ -56,7 +56,7 @@ const Footer = () => {
             <a href="/meet-the-team">
               <p>Meet the Team</p>
             </a>
-           
+
             <a href="mailto:john@example.com">
               <p>Contact Us</p>
             </a>
@@ -77,7 +77,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* line break with horizonal line: below this copyright, etc. */}
+        {/* line break with horizontal line: below this copyright, Ts + Cs, etc. */}
         <hr></hr>
 
         <div className="footer-below">
